@@ -41,8 +41,8 @@ class Token {
                 monthlyRateBorrow = json.rates[key].borrow.monthlyAmount;
             }
         });
-        let earnMessage = "Earn at " + parseFloat(highestRateLend).toFixed(2) + "% or " +
-            parseFloat(monthlyReturnLend) + "$USD " + " per month (with your current balance)";
+        let earnMessage = "Earn at " + parseFloat(highestRateLend).toFixed(2) + "% or " + "$USD " +
+            parseFloat(monthlyReturnLend) + " per month (with your current balance)";
         let borrowMessage = "Borrow at " + parseFloat(rateBorrow).toFixed(2) + "%";
         document.getElementById("lendMessage").innerHTML = earnMessage;
         document.getElementById("borrowMessage").innerHTML = borrowMessage;
