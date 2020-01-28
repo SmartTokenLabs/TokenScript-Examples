@@ -42,7 +42,7 @@ class Token {
             }
         });
         let earnMessage = "Earn at " + parseFloat(highestRateLend).toFixed(2) + "% or " +
-            parseFloat(monthlyReturnLend) + " " + this.props.name + " per month (with your current balance)";
+            parseFloat(monthlyReturnLend) + "$USD " + " per month (with your current balance)";
         let borrowMessage = "Borrow at " + parseFloat(rateBorrow).toFixed(2) + "%";
         document.getElementById("lendMessage").innerHTML = earnMessage;
         document.getElementById("borrowMessage").innerHTML = borrowMessage;
