@@ -4,6 +4,7 @@
     <!ENTITY sai-to-dai.en SYSTEM "sai-to-dai.en.shtml">
     <!ENTITY enable.en SYSTEM "enable.en.shtml">
     <!ENTITY important.en SYSTEM "important.en.shtml">
+    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.shtml">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
           xmlns="http://www.w3.org/1999/xhtml"
@@ -79,6 +80,14 @@
             </ts:name>
             <style type="text/css">&style;</style>
             <ts:view xml:lang="en">&important.en;</ts:view>
+        </ts:action>
+
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Best Rates</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view>&bestRates.en;</ts:view>
         </ts:action>
 
     </ts:cards>

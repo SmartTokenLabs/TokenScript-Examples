@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
-    <!ENTITY DAI-bridge.en SYSTEM "DAI-bridge.en.shtml">
+    <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.shtml">
+    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.shtml">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
           xmlns="http://www.w3.org/1999/xhtml"
@@ -52,6 +53,13 @@
             </ts:transaction>
             <style type="text/css">&style;</style>
             <ts:view>&DAI-bridge.en;</ts:view>
+        </ts:action>
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Best Rates</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view>&bestRates.en;</ts:view>
         </ts:action>
     </ts:cards>
     <ts:attribute-types>
