@@ -18,13 +18,13 @@
     </ts:name>
 
     <!-- need to make your own contract address -->
-    <ts:contract name="Ticket Template" interface="erc721">
+    <ts:contract name="TicketContract" interface="erc721">
         <ts:address network="100">0x5e8c614cac6d140fbd5a454f41a1d5dc5da1a218</ts:address>
     </ts:contract>
 
     <ts:origins>
         <!-- Define the contract which holds the token that the user will use -->
-        <ts:ethereum contract="Ticket Template">
+        <ts:ethereum contract="TicketContract">
         </ts:ethereum>
     </ts:origins>
 
