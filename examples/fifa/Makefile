@@ -1,3 +1,6 @@
+ifeq ($(TOKENSCRIPT_SCHEMA),)
+TOKENSCRIPT_SCHEMA=http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd
+endif
 XMLSECTOOL=xmlsectool
 KEYSTORE=
 KEY=1
@@ -23,7 +26,7 @@ help:
 	# XML Validation
     # if failed, run validation again with xmllint to get meaningful error
     # then delete the canonicalized file
-	-xmlstarlet val --xsd http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd $@ || (xmllint --noout --schema http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd $@; rm $@)
+	-xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@; rm $@)
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
