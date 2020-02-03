@@ -9,7 +9,7 @@ SIGNATURE_ALGORITHM=rsa-sha256
 
 help:
 	# Needs a target, example: $$ make AdmissionTicket.canonicalized.xml
-	#  
+	#
 	# Let's say you have a TokenScript "AdmissionTicket.xml"
 	#- to validate and canonicalize, add 'canonicalized' in the filename
 	@echo $$ make AdmissionTicket.canonicalized.xml
@@ -30,12 +30,12 @@ help:
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
-	@echo ---------------- Keystore missing. Try this ---------------- 
+	@echo ---------------- Keystore missing. Try this ----------------
 	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang $@
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
-	$(XMLSECTOOL) --sign --keyInfoKeyName 'Shong Wang' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
+	$(XMLSECTOOL) --sign --keyInfoKeyName 'AlphaWallet' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
 	# removing the canonicalized created for validation
 	rm $^
 endif
