@@ -36,7 +36,7 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
+        <ts:token>
             <style type="text/css">&style;</style>
             <ts:view-iconified xml:lang="en">
                 &fifa.en;
@@ -44,7 +44,7 @@
             <ts:view xml:lang="en">
                 &fifa.en;
             </ts:view>
-        </ts:token-card>
+        </ts:token>
     </ts:cards>
 
     <ts:ordering>

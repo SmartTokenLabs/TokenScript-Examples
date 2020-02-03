@@ -27,11 +27,11 @@
         </ts:ethereum>
     </ts:origins>
     <ts:cards>
-        <ts:token-card>
+        <ts:token>
             <ts:view-iconified/>
             <ts:view>
             </ts:view>
-        </ts:token-card>
+        </ts:token>
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>

@@ -35,7 +35,7 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
+        <ts:token>
             <style type="text/css">&style;</style>
             <ts:view-iconified xml:lang="en">
                 &SPORTS.en;
@@ -49,7 +49,7 @@
             <ts:view xml:lang="zh">
                 &SPORTS.zh;
             </ts:view>
-        </ts:token-card>
+        </ts:token>
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Surprise</ts:string>

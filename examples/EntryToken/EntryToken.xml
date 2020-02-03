@@ -49,7 +49,7 @@
     </ts:selection>
   </ts:selections>
   <ts:cards>
-    <ts:token-card>
+    <ts:token>
       <style type="text/css">&style;</style>
       <ts:view-iconified xml:lang="en">
         &icon.en;
@@ -57,7 +57,7 @@
       <ts:view xml:lang="en">
         &token.en;
       </ts:view>
-    </ts:token-card>
+    </ts:token>
     <ts:action>
       <!-- this action is of the model confirm-back.
       It should be <ts:action model="confirm-back"> but Weiwu
