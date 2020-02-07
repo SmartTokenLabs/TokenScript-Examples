@@ -2,12 +2,12 @@
 A repo full of complete TokenScripts which you can use for your own tokens that run natively on AlphaWallet iOS and Android 
 
 ## Why TokenScript?
-TokenScripts are secure modules which execute token logic in a signed container. TokenScripts are designed to run on mobile ethereum wallets with a native feel and authenticity protection as each TokenScript is signed by a valid authority and cannot be tampered with.
+TokenScripts are signed modules which execute token logic in a secure container. TokenScripts are designed to run on mobile ethereum wallets with a native feel and authenticity protection as each TokenScript is signed by a valid authority, thus tampering can be detected.
 
-If you are a token issuer who wants to provide you token as a service to mobile users or you want third party developers to use your token logic securly, then TokenScript is the perfect framework for you. 
+If you are a token issuer who wants to provide your token as a service to mobile users, or you want third party developers to use your token logic securly, then TokenScript is the perfect framework for you. 
 
 ## How to benefit from this repository 
-If you have a token and you want to create your own TokenScript you can easily do so by copying some of the existing examples and fitting your own logic into them
+If you have a token and you want to create your own TokenScript you can easily do so by copying some of the existing examples and fitting your own logic into them.
 
 ## For generic ERC20 Tokens
 Copy the AlphaWallet-Discovery-Token or WETH TokenScript and fit your logic into it. With ERC20 TokenScripts you can easily display relevant information to the user via an action page or execute transaction logic like making deposits or converting your token. 
