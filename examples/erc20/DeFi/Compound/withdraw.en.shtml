@@ -17,7 +17,7 @@ class Token {
             <span><bold><h3>${this.props.name} Balance: ${cTokenBalance}</h3></bold></span>
             <span><bold><h3>${this.props.underlyingToken} Balance: ${tokenBalance}</h3></bold></span>
             <span><bold><h3>Interest Rate: ${APR}%</h3></bold></span>
-            <span><bold><h3>Rate: 1 ${this.props.underlyingToken} = ${this.props.rate} ${this.props.name}</h3></bold></span>
+            <span><bold><h3>1 ${this.props.underlyingToken} = ${this.props.rate} ${this.props.name}</h3></bold></span>
             <span><bold><h3>You must enable compound before you can withdraw ${this.props.underlyingToken}</h3></bold></span>
           </div>
         </div>
@@ -46,7 +46,7 @@ class Token {
             <span><bold><h3>${this.props.name} Balance: ${cTokenBalance}</h3></bold></span>
             <span><bold><h3>${this.props.underlyingToken} Balance: ${tokenBalance}</h3></bold></span>
             <span><bold><h3>Interest Rate: ${APR}%</h3></bold></span>
-            <span><bold><h3>Rate: 1 ${this.props.underlyingToken} = ${this.props.rate} ${this.props.name}</h3></bold></span>
+            <span><bold><h3>1 ${this.props.underlyingToken} = ${this.props.rate} ${this.props.name}</h3></bold></span>
           </div>
           <div id="inputBox">
               <bold><h3>Withdraw ${this.props.name} for ${this.props.underlyingToken} from Compound</h3></bold>
