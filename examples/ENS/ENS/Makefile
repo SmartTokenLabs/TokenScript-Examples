@@ -1,3 +1,6 @@
+ifeq ($(TOKENSCRIPT_SCHEMA),)
+TOKENSCRIPT_SCHEMA=http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd
+endif
 XMLSECTOOL=xmlsectool
 KEYSTORE=
 KEY=1
@@ -6,7 +9,7 @@ SIGNATURE_ALGORITHM=rsa-sha256
 
 help:
 	# Needs a target, example: $$ make EntryToken.canonicalized.xml
-	#  
+	#
 	# Let's say you have a TokenScript "EntryToken.xml"
 	#- to validate and canonicalize, add 'canonicalized' in the filename
 	@echo $$ make EntryToken.canonicalized.xml
@@ -23,7 +26,7 @@ help:
 	# XML Validation
     # if INVALID, run validation again with xmllint to get meaningful error
     # then delete the canonicalized file
-	-xmlstarlet val --xsd http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd $@ || (mv $@ $@.INVALID; xmllint --noout --schema http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd $@.INVALID)
+	-xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
@@ -32,7 +35,7 @@ ifeq (,$(KEYSTORE))
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
-	$(XMLSECTOOL) --sign --keyInfoKeyName 'Shong Wang' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
+	$(XMLSECTOOL) --sign --keyInfoKeyName 'AlphaWallet' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
 	# removing the canonicalized created for validation
 	rm $^
 endif

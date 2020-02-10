@@ -9,7 +9,7 @@
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
           xmlns="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
@@ -22,7 +22,7 @@
     <ts:address network="1">0xFaC7BEA255a6990f749363002136aF6556b31e04</ts:address>
   </ts:contract>
   <ts:contract name="registrar">
-    <ts:address network="1">0xF0AD5cAd05e10572EfcEB849f6Ff0c68f9700455</ts:address>
+    <ts:address network="1">0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85</ts:address>
     <ts:data name="EventRegistered">
       <ts:string name="name" />
       <ts:bytes32 name="label" />
@@ -37,15 +37,7 @@
     </ts:ethereum>
   </ts:origins>
 
-  <ts:attribute-types>
-    <ts:attribute-type id="name" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-      <ts:origins>
-        <ts:ethereum event="EventRegistered" filter="label=${tokenId}" value="name"/>
-      </ts:origins>
-    </ts:attribute-type>
-  </ts:attribute-types>
   <ts:cards>
-
     <ts:action>
       <ts:name>
         <ts:string xml:lang="en">Refund</ts:string>
@@ -94,10 +86,9 @@
       <ts:view xml:lang="en">&renew.en;</ts:view>
     </ts:action>
 
-
     <ts:action>
       <ts:name>
-        <ts:string xml:lang="en">Subdomain</ts:string>
+        <ts:string xml:lang="en">Add Subdomain</ts:string>
       </ts:name>
 
       <ts:attribute-type id="subdomainHash" syntax="1.3.6.1.4.1.1466.115.121.1.36">
@@ -136,6 +127,12 @@
 
   <ts:attribute-types>
 
+    <ts:attribute-type id="name" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+      <ts:origins>
+        <ts:ethereum event="EventRegistered" filter="label=${tokenId}" select="name"/>
+      </ts:origins>
+    </ts:attribute-type>
+
     <ts:attribute-type id="nameExpires" syntax="1.3.6.1.4.1.1466.115.121.1.36">
       <ts:origins>
         <ts:ethereum function="nameExpires" contract="ENS" as="uint">
@@ -146,6 +143,7 @@
       </ts:origins>
     </ts:attribute-type>
 
+    <!-- TODO get from events -->
     <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.36">
       <ts:origins>
         <ts:user-entry as="utf8"/>

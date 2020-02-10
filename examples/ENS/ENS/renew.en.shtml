@@ -4,6 +4,7 @@ class Token {
     constructor(tokenInstance) {
         this.props = tokenInstance;
         this.props.ensName = this.props.description.replace(", an ENS name.", "").replace(/`/g, "");
+        //TODO add slider to determine the duration by year
     }
 
     formatTimeStamp(UNIX_timestamp) {

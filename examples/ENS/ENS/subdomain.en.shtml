@@ -15,6 +15,7 @@
                 let subdomainElement = document.getElementById("subdomain");
                 subdomainElement.addEventListener("keyup", function() {
                     let subdomain = subdomainElement.value.toString().trim().toLowerCase().replace(ensName, "");
+                    //TODO for the sake of cleanliness, it might be better to execute namehash from a smart contract instead
                     document.getElementById("subdomainHash").innerHTML = namehash.hash(subdomain + "." + ensName);
                 });
             }

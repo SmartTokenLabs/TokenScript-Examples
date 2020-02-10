@@ -3,9 +3,12 @@ class Token {
 
     constructor(tokenInstance) {
         this.props = tokenInstance;
+        //TODO get from events rather than shoehorning opensea
         this.props.ensName = this.props.description.replace(", an ENS name.", "").replace(/`/g, "");
+        //TODO get the block timestamp from the event NameRegistered to find out if the domain can be refunded (requires a year)
+        // if the domain cannot be refunded then show an error on the screen and set the confirm button to window.close
     }
-    
+
     formatTimeStamp(UNIX_timestamp) {
         let a = new Date(UNIX_timestamp * 1000);
         let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
