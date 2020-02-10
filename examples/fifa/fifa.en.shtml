@@ -112,13 +112,13 @@ class Token {
           <div class="ticket_inner">
 
             <div class="country_container">
-              <span class="tbml-country">${this.props.countryA}-${this.props.countryB}</span>
+              <span class="tbml-country">${this.props.numero}x ${this.props.countryA} vs ${this.props.countryB} tickets</span>
             </div>
 
             <div class="datetime_container">
               <span class="tbml-date">${date} | ${time}</span>
             </div>
-            
+
             <div class="venue_container">
                 <span class="tbml-venue">${this.props.venue} | ${this.props.locality}</span>
             </div>
@@ -126,7 +126,7 @@ class Token {
             <div class="category_container">
               <span class="tbml-category">${this.props.category}, M${this.props.match}</span>
             </div>
- 
+
           </div>
         </div>
         `;
