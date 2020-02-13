@@ -7,10 +7,11 @@
         <!ENTITY bundle.en SYSTEM "bundle.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           custodian="false"
 >
   <ts:name>
@@ -23,13 +24,15 @@
   </ts:contract>
   <ts:contract name="registrar">
     <ts:address network="1">0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85</ts:address>
-    <ts:data name="EventRegistered">
-      <ts:string name="name" />
-      <ts:bytes32 name="label" />
-      <ts:address name="owner"/>
-      <ts:uint name="cost"/>
-      <ts:uint name="expires"/>
-    </ts:data>
+    <asnx:module name="EventRegistered">
+      <sequence>
+        <element name="name" ethereum-type="string"/>
+        <element name="label" ethereum-type="bytes32"/>
+        <element name="owner" ethereum-type="address"/>
+        <element name="cost" ethereum-type="uint"/>
+        <element name="expires" ethereum-type="uint"/>
+      </sequence>
+    </asnx:module>
   </ts:contract>
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
@@ -49,8 +52,10 @@
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
-      <style type="text/css">&style;</style>
-      <ts:view xml:lang="en">&release.en;</ts:view>
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&style;</xhtml:style>
+        <xhtml:script type="text/javascript">&release.en;</xhtml:script>
+      </ts:view>
     </ts:action>
 
     <ts:action>
@@ -81,9 +86,10 @@
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
-
-      <style type="text/css">&style;</style>
-      <ts:view xml:lang="en">&renew.en;</ts:view>
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&style;</xhtml:style>
+        <xhtml:script type="text/javascript">&renew.en;</xhtml:script>
+      </ts:view>
     </ts:action>
 
     <ts:action>
@@ -119,8 +125,10 @@
         </ts:ethereum>
       </ts:transaction>
 
-      <style type="text/css">&style;</style>
-      <ts:view xml:lang="en">&subdomain.en;</ts:view>
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&style;</xhtml:style>
+        <xhtml:script type="text/javascript">&subdomain.en;</xhtml:script>
+      </ts:view>
     </ts:action>
 
   </ts:cards>
