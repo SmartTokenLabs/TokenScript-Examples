@@ -26,7 +26,7 @@ help:
 	# XML Validation
     # if INVALID, run validation again with xmllint to get meaningful error
     # then delete the canonicalized file
-	-xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
+	xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))

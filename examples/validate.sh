@@ -13,6 +13,7 @@ if [ $# -eq 0 ]; then
 fi
 
 CWD=${PWD}
+PASS=TRUE
 for i in "$@"
 do
 	# ignore all folders with space in it
@@ -26,7 +27,11 @@ do
 
 	cd "${i%/*.xml}"
 
-	make "${BN}.canonicalized.xml" > /dev/null && echo "[Valid] : $i"
+	if make "${BN}.canonicalized.xml" > /dev/null; then
+		echo "[Valid]   : $i"
+        else
+		PASS=FALSE
+        fi
 
 	cd $CWD
 	## the following is very important to prevent these XML files being picked up in the next run
@@ -34,3 +39,4 @@ do
 	    rm  "${i%.xml}.canonicalized.xml"
 	fi
 done;
+if [ $PASS = FALSE ] ; then exit 1; fi
