@@ -11,7 +11,7 @@ help:
 	# Needs a target, example: $$ make EntryToken.canonicalized.xml
 	#
 	# Let's say you have a TokenScript "EntryToken.xml"
-	#- to validate and canonicalize, add 'canonicalized' in the filename
+	# - to validate and canonicalize, add 'canonicalized' in the filename
 	@echo $$ make EntryToken.canonicalized.xml
 	# - to sign, use tsml as file extension:
 	@echo $$ make EntryToken.tsml
@@ -30,7 +30,7 @@ help:
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
-	@echo ---------------- Keystore missing. Try this ---------------- 
+	@echo ---------------- Keystore missing. Try this ----------------
 	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang $@
 	@echo replace it with your .p12 file and your password
 	rm $^

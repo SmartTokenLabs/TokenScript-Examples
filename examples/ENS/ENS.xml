@@ -70,7 +70,7 @@
         <ts:origins>
           <ts:ethereum function="rentPrice" contract="registrar" as="uint">
             <ts:data>
-              <ts:string ref="ensName"/>
+              <ts:string ref="name"/>
               <ts:uint256>31540000</ts:uint256>
             </ts:data>
           </ts:ethereum>
@@ -81,7 +81,7 @@
         <ts:ethereum function="renew" contract="registrar" as="uint">
           <ts:value ref="renewalPricePerYear"/>
           <ts:data>
-            <ts:string ref="ensName"/>
+            <ts:string ref="name"/>
             <ts:uint256>31540000</ts:uint256>
           </ts:data>
         </ts:ethereum>
@@ -114,7 +114,7 @@
           <ts:user-entry as="address"/>
         </ts:origins>
       </ts:attribute-type>
-
+      <!-- TODO need to cast tokenId from uint to bytes -->
       <ts:transaction>
         <ts:ethereum function="setSubnodeOwner" contract="ENS">
           <ts:data>
@@ -148,13 +148,6 @@
             <ts:uint256 ref="tokenId"/>
           </ts:data>
         </ts:ethereum>
-      </ts:origins>
-    </ts:attribute-type>
-
-    <!-- TODO get from events -->
-    <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-      <ts:origins>
-        <ts:user-entry as="utf8"/>
       </ts:origins>
     </ts:attribute-type>
 
