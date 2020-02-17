@@ -6,10 +6,10 @@
         <!ENTITY renew.en SYSTEM "renew.en.shtml">
         <!ENTITY bundle.en SYSTEM "bundle.js">
         ]>
-<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           custodian="false"
