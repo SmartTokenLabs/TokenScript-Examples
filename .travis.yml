@@ -1,0 +1,20 @@
+os: osx
+
+language: bash
+
+branches:
+  only:
+    - master
+env:
+  - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
+
+before_install:
+  - brew update
+  - brew install xmlsectool
+  - brew install xmlstarlet
+
+script:
+  - cd examples && TOKENSCRIPT_SCHEMA=http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd ./validate.sh */*.xml */*/*.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
