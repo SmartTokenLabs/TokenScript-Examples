@@ -4,7 +4,13 @@ class Token {
     constructor(tokenInstance) {
         this.props = tokenInstance;
         this.props.underlyingToken = this.props.name.replace("c", "");
+        // https://www.reddit.com/r/Compound/comments/ezk9i4/trying_to_make_sense_of_the_exchange_rate/
         this.props.rate = (1 / (this.props.exchangeRate / 1e28)).toFixed(2);
+        if(this.props.name === "cUSDC") {
+            this.props.rate = (this.props.rate / 1e12).toFixed(2);
+        } else if(this.props.name === "cWBTC") {
+            this.props.rate = (this.props.rate / 1e10).toFixed(2);
+        }
     }
 
     mustEnableFirstPage(APR, cTokenBalance, tokenBalance) {
