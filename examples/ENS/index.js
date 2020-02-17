@@ -32,7 +32,6 @@ class Token {
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
-    currentTokenInstance.ensName = currentTokenInstance.description.replace(", an ENS name.", "").replace(/`/g, "").toLowerCase();
     let token = new Token(currentTokenInstance);
     document.getElementById('root').innerHTML = token.render();
     //need to render elements before calling setup

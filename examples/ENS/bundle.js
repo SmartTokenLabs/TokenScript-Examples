@@ -8,8 +8,6 @@ class Token {
     setup() {
         let namehash = require("eth-ens-namehash");
         let ensName = this.props.ensName;
-        //TODO shouldn't need to do this, should be able to add it as a prop and execute from there
-        document.getElementById("ensName").innerHTML = ensName;
         let subdomainElement = document.getElementById("subdomain");
         subdomainElement.addEventListener("keyup", function() {
             let subdomain = subdomainElement.value.toString().trim().toLowerCase().replace(ensName, "");
@@ -27,7 +25,6 @@ class Token {
           <h3>Owner of subdomain</h3>
           <input id="owner" type="text" value=${this.props.ownerAddress}/>
           <div id="subdomainHash" hidden></div>
-          <div id="ensName" hidden></div>
           </div>
           <br>
         </div>`;
@@ -36,7 +33,6 @@ class Token {
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
-    currentTokenInstance.ensName = currentTokenInstance.description.replace(", an ENS name.", "").replace(/`/g, "").toLowerCase();
     let token = new Token(currentTokenInstance);
     document.getElementById('root').innerHTML = token.render();
     //need to render elements before calling setup
