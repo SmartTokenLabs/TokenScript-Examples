@@ -2,9 +2,9 @@
   "name": "ENS",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "subdomain.en.js",
   "scripts": {
-    "build": "browserify index.js > bundle.js"
+    "build": "browserify subdomain.en.js > subdomainBundle.en.js"
   },
   "keywords": [],
   "author": "",

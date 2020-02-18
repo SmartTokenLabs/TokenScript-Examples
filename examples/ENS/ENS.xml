@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
-        <!ENTITY release.en SYSTEM "release.en.shtml">
-        <!ENTITY subdomain.en SYSTEM "subdomain.en.shtml">
-        <!ENTITY renew.en SYSTEM "renew.en.shtml">
-        <!ENTITY bundle.en SYSTEM "bundle.js">
+        <!ENTITY release.en SYSTEM "release.en.js">
+        <!ENTITY subdomain.en SYSTEM "subdomainBundle.en.js">
+        <!ENTITY renew.en SYSTEM "renew.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"

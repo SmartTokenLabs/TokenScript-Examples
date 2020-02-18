@@ -1,3 +1,4 @@
+//<![CDATA[
 class Token {
 
     constructor(tokenInstance) {
@@ -37,3 +38,4 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     //need to render elements before calling setup
     token.setup();
 };
+//]]>
