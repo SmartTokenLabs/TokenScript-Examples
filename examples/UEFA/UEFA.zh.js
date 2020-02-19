@@ -1,88 +1,87 @@
-<script type="text/javascript">
-    (function() {
-        'use strict'
+//<![CDATA[
+(function() {
+    'use strict'
 
-        function GeneralizedTime(generalizedTime) {
-            this.rawData = generalizedTime;
-        }
+    function GeneralizedTime(generalizedTime) {
+        this.rawData = generalizedTime;
+    }
 
-        GeneralizedTime.prototype.getYear = function () {
-            return parseInt(this.rawData.substring(0, 4), 10);
-        }
+    GeneralizedTime.prototype.getYear = function () {
+        return parseInt(this.rawData.substring(0, 4), 10);
+    }
 
-        GeneralizedTime.prototype.getMonth = function () {
-            return parseInt(this.rawData.substring(4, 6), 10) - 1;
-        }
+    GeneralizedTime.prototype.getMonth = function () {
+        return parseInt(this.rawData.substring(4, 6), 10) - 1;
+    }
 
-        GeneralizedTime.prototype.getDay = function () {
-            return parseInt(this.rawData.substring(6, 8), 10)
-        },
+    GeneralizedTime.prototype.getDay = function () {
+        return parseInt(this.rawData.substring(6, 8), 10)
+    },
 
-        GeneralizedTime.prototype.getHours = function () {
-            return parseInt(this.rawData.substring(8, 10), 10)
-        },
+    GeneralizedTime.prototype.getHours = function () {
+        return parseInt(this.rawData.substring(8, 10), 10)
+    },
 
-        GeneralizedTime.prototype.getMinutes = function () {
-            var minutes = parseInt(this.rawData.substring(10, 12), 10)
-            if (minutes) return minutes
-            return 0
-        },
+    GeneralizedTime.prototype.getMinutes = function () {
+        var minutes = parseInt(this.rawData.substring(10, 12), 10)
+        if (minutes) return minutes
+        return 0
+    },
 
-        GeneralizedTime.prototype.getSeconds = function () {
-            var seconds = parseInt(this.rawData.substring(12, 14), 10)
-            if (seconds) return seconds
-            return 0
-        },
+    GeneralizedTime.prototype.getSeconds = function () {
+        var seconds = parseInt(this.rawData.substring(12, 14), 10)
+        if (seconds) return seconds
+        return 0
+    },
 
-        GeneralizedTime.prototype.getMilliseconds = function () {
-            var startIdx
-            if (time.indexOf('.') !== -1) {
-                startIdx = this.rawData.indexOf('.') + 1
-            } else if (time.indexOf(',') !== -1) {
-                startIdx = this.rawData.indexOf(',') + 1
-            } else {
-                return 0
-            }
-
-            var stopIdx = time.length - 1
-            var fraction = '0' + '.' + time.substring(startIdx, stopIdx)
-            var ms = parseFloat(fraction) * 1000
-            return ms
-        },
-
-        GeneralizedTime.prototype.getTimeZone = function () {
-            let time = this.rawData;
-            var length = time.length
-            var symbolIdx
-            if (time.charAt(length - 1 ) === 'Z') return 0
-            if (time.indexOf('+') !== -1) {
-                symbolIdx = time.indexOf('+')
-            } else if (time.indexOf('-') !== -1) {
-                symbolIdx = time.indexOf('-')
-            } else {
-                return NaN
-            }
-
-            var minutes = time.substring(symbolIdx + 2)
-            var hours = time.substring(symbolIdx + 1, symbolIdx + 2)
-            var one = (time.charAt(symbolIdx) === '+') ? 1 : -1
-
-            var intHr = one * parseInt(hours, 10) * 60 * 60 * 1000
-            var intMin = one * parseInt(minutes, 10) * 60 * 1000
-            var ms = minutes ? intHr + intMin : intHr
-            return ms
-        }
-
-        if (typeof exports === 'object') {
-            module.exports = GeneralizedTime
-        } else if (typeof define === 'function' &amp;&amp; define.amd) {
-            define(GeneralizedTime)
+    GeneralizedTime.prototype.getMilliseconds = function () {
+        var startIdx
+        if (time.indexOf('.') !== -1) {
+            startIdx = this.rawData.indexOf('.') + 1
+        } else if (time.indexOf(',') !== -1) {
+            startIdx = this.rawData.indexOf(',') + 1
         } else {
-            window.GeneralizedTime = GeneralizedTime
+            return 0
         }
-    }())
-</script>
-<script type="text/javascript"><![CDATA[
+
+        var stopIdx = time.length - 1
+        var fraction = '0' + '.' + time.substring(startIdx, stopIdx)
+        var ms = parseFloat(fraction) * 1000
+        return ms
+    },
+
+    GeneralizedTime.prototype.getTimeZone = function () {
+        let time = this.rawData;
+        var length = time.length
+        var symbolIdx
+        if (time.charAt(length - 1 ) === 'Z') return 0
+        if (time.indexOf('+') !== -1) {
+            symbolIdx = time.indexOf('+')
+        } else if (time.indexOf('-') !== -1) {
+            symbolIdx = time.indexOf('-')
+        } else {
+            return NaN
+        }
+
+        var minutes = time.substring(symbolIdx + 2)
+        var hours = time.substring(symbolIdx + 1, symbolIdx + 2)
+        var one = (time.charAt(symbolIdx) === '+') ? 1 : -1
+
+        var intHr = one * parseInt(hours, 10) * 60 * 60 * 1000
+        var intMin = one * parseInt(minutes, 10) * 60 * 1000
+        var ms = minutes ? intHr + intMin : intHr
+        return ms
+    }
+
+    if (typeof exports === 'object') {
+        module.exports = GeneralizedTime
+    } else if (typeof define === 'function' &amp;&amp; define.amd) {
+        define(GeneralizedTime)
+    } else {
+        window.GeneralizedTime = GeneralizedTime
+    }
+}())
+
 class Token {
     constructor(tokenInstance) {
         this.props = tokenInstance
@@ -110,15 +109,15 @@ class Token {
         let redeemedMessage = "";
         //might not have loaded so only set if actually loaded
         if(this.props.redeemed === "1") {
-            redeemedMessage = "(Redeemed)"
+            redeemedMessage = "(已兑换)"
         } else if(this.props.redeemed === "0") {
-            redeemedMessage = "(Not redeemed)"
+            redeemedMessage = "(未兑换)"
         }
         return `<div class="ticket">
         <div class="top-section">
                 <div class="left-column">
                     <span class="ticketname">
-                        EURO 2020 VIP EVENT TICKET
+                        欧足联2020款待
                     </span>
                     <span class="tbml-city">
                             ${this.props.countryA} - ${this.props.countryB}
@@ -137,7 +136,7 @@ class Token {
                     </span>
                 </div>
             </div>
-            <hr class="white-line"> 
+            <hr class="white-line">
             <div class="ticket-bottom-section">
                 <div class="left-col">
                     <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTQgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYwICg4ODEwMykgLSBodHRwczovL3NrZXRjaC5jb20gLS0+CiAgICA8dGl0bGU+aWNfc2NoZWR1bGVfYmxhY2tfMjRweDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJTeW1ib2xzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQW5kcm9pZC9DYXJkcy9UaWNrZXRzXzUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMi4wMDAwMDAsIC0xNTcuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4LjAwMDAwMCwgMC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJpY19zY2hlZHVsZV9ibGFja18yNHB4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMy4wMDAwMDAsIDE1Ni4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iR3JvdXAiPgogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNy45OTMzMzMzMywxLjMzMzMzMzMzIEM0LjMxMzMzMzMzLDEuMzMzMzMzMzMgMS4zMzMzMzMzMyw0LjMyIDEuMzMzMzMzMzMsOCBDMS4zMzMzMzMzMywxMS42OCA0LjMxMzMzMzMzLDE0LjY2NjY2NjcgNy45OTMzMzMzMywxNC42NjY2NjY3IEMxMS42OCwxNC42NjY2NjY3IDE0LjY2NjY2NjcsMTEuNjggMTQuNjY2NjY2Nyw4IEMxNC42NjY2NjY3LDQuMzIgMTEuNjgsMS4zMzMzMzMzMyA3Ljk5MzMzMzMzLDEuMzMzMzMzMzMgWiBNOCwxMy4zMzMzMzMzIEM1LjA1MzMzMzMzLDEzLjMzMzMzMzMgMi42NjY2NjY2NywxMC45NDY2NjY3IDIuNjY2NjY2NjcsOCBDMi42NjY2NjY2Nyw1LjA1MzMzMzMzIDUuMDUzMzMzMzMsMi42NjY2NjY2NyA4LDIuNjY2NjY2NjcgQzEwLjk0NjY2NjcsMi42NjY2NjY2NyAxMy4zMzMzMzMzLDUuMDUzMzMzMzMgMTMuMzMzMzMzMyw4IEMxMy4zMzMzMzMzLDEwLjk0NjY2NjcgMTAuOTQ2NjY2NywxMy4zMzMzMzMzIDgsMTMuMzMzMzMzMyBaIiBpZD0iU2hhcGUiIGZpbGw9IiNGRkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iU2hhcGUiIHBvaW50cz0iMCAwIDE2IDAgMTYgMTYgMCAxNiI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iU2hhcGUiIGZpbGw9IiNGRkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgcG9pbnRzPSI4LjMzMzMzMzMzIDQuNjY2NjY2NjcgNy4zMzMzMzMzMyA0LjY2NjY2NjY3IDcuMzMzMzMzMzMgOC42NjY2NjY2NyAxMC44MzMzMzMzIDEwLjc2NjY2NjcgMTEuMzMzMzMzMyA5Ljk0NjY2NjY3IDguMzMzMzMzMzMgOC4xNjY2NjY2NyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" class="data-icon"/>
@@ -160,5 +159,4 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
     document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
 };
-]]></script>
-<div id="root"></div>
+//]]>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
-        <!ENTITY unicon.en SYSTEM "unicon.en.shtml">
+        <!ENTITY unicon.en SYSTEM "unicon.en.js">
         <!ENTITY style SYSTEM "shared.css">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
@@ -28,15 +28,16 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
-            <style type="text/css">&style;</style>
-            <ts:view-iconified xml:lang="en">
-                &unicon.en;
-            </ts:view-iconified>
-            <ts:view xml:lang="en">
-                &unicon.en;
+        <ts:token>
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&unicon.en;</script>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&unicon.en;</script>
             </ts:view>
-        </ts:token-card>
+        </ts:token>
     </ts:cards>
 
     <ts:attribute-types>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
-        <!ENTITY UEFA.en SYSTEM "UEFA.en.shtml">
-        <!ENTITY UEFA.zh SYSTEM "UEFA.zh.shtml">
+        <!ENTITY UEFA.en SYSTEM "UEFA.en.js">
+        <!ENTITY UEFA.zh SYSTEM "UEFA.zh.js">
         <!ENTITY style SYSTEM "shared.css">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
@@ -35,21 +35,24 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
-            <style type="text/css">&style;</style>
-            <ts:view-iconified xml:lang="en">
-                &UEFA.en;
-            </ts:view-iconified>
-            <ts:view-iconified xml:lang="zh">
-                &UEFA.zh;
-            </ts:view-iconified>
-            <ts:view xml:lang="en">
-                &UEFA.en;
+        <ts:token>
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.en;</script>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.en;</script>
             </ts:view>
-            <ts:view xml:lang="zh">
-                &UEFA.zh;
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.zh;</script>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.zh;</script>
             </ts:view>
-        </ts:token-card>
+        </ts:token>
     </ts:cards>
 
     <ts:attribute-types>

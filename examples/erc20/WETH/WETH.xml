@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
-    <!ENTITY wrap.en SYSTEM "weth-wrap.en.shtml">
-    <!ENTITY unwrap.en SYSTEM "weth-unwrap.en.shtml">
-    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.shtml">
+    <!ENTITY wrap.en SYSTEM "weth-wrap.en.js">
+    <!ENTITY unwrap.en SYSTEM "weth-unwrap.en.js">
+    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -23,12 +23,6 @@
         </ts:ethereum>
     </ts:origins>
     <ts:cards>
-        <ts:token-card>
-            <ts:view-iconified/>
-            <ts:view>
-            </ts:view>
-        </ts:token-card>
-
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Wrap</ts:string>
@@ -48,8 +42,10 @@
                     <ts:value ref="amount"/>
                 </ts:ethereum>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view>&wrap.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&wrap.en;</xhtml:script>
+            </ts:view>
         </ts:action>
         <ts:action>
             <ts:name>
@@ -72,15 +68,19 @@
                     </ts:data>
                 </ts:ethereum>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view>&unwrap.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&unwrap.en;</xhtml:script>
+            </ts:view>
         </ts:action>
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:name>
-            <style type="text/css">&style;</style>
-            <ts:view>&bestRates.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
+            </ts:view>
         </ts:action>
     </ts:cards>
     <ts:attribute-types>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
-    <!ENTITY sai-to-dai.en SYSTEM "sai-to-dai.en.shtml">
-    <!ENTITY enable.en SYSTEM "enable.en.shtml">
-    <!ENTITY important.en SYSTEM "important.en.shtml">
-    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.shtml">
+    <!ENTITY sai-to-dai.en SYSTEM "sai-to-dai.en.js">
+    <!ENTITY enable.en SYSTEM "enable.en.js">
+    <!ENTITY important.en SYSTEM "important.en.js">
+    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.js">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -27,11 +27,6 @@
         </ts:ethereum>
     </ts:origins>
     <ts:cards>
-        <ts:token-card>
-            <ts:view-iconified/>
-            <ts:view>
-            </ts:view>
-        </ts:token-card>
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
@@ -54,8 +49,10 @@
                     </ts:data>
                 </ts:ethereum>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view>&sai-to-dai.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&sai-to-dai.en;</xhtml:script>
+            </ts:view>
         </ts:action>
 
         <ts:action>
@@ -70,24 +67,30 @@
                     </ts:data>
                 </ts:ethereum>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&enable.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
         </ts:action>
 
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Important!</ts:string>
             </ts:name>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&important.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&important.en;</xhtml:script>
+            </ts:view>
         </ts:action>
 
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:name>
-            <style type="text/css">&style;</style>
-            <ts:view>&bestRates.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
+            </ts:view>
         </ts:action>
 
     </ts:cards>
