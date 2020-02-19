@@ -14,7 +14,7 @@ before_install:
   - brew install xmlstarlet
 
 script:
-  - cd examples && TOKENSCRIPT_SCHEMA=http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd ./validate.sh */*.xml */*/*.xml
+  - cd examples && ./validate.sh */*.xml */*/*.xml
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
