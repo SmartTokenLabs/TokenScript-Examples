@@ -2,7 +2,6 @@ ifeq ($(TOKENSCRIPT_SCHEMA),)
 TOKENSCRIPT_SCHEMA=http://tokenscript.org/2020/03/tokenscript.xsd
 endif
 XMLSECTOOL=xmlsectool
-KEYSTORE=
 KEY=1
 KEYPASSWORD=
 SIGNATURE_ALGORITHM=rsa-sha256
@@ -26,16 +25,17 @@ help:
 	# XML Validation
     # if INVALID, run validation again with xmllint to get meaningful error
     # then delete the canonicalized file
-	-xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
+	mv $@ $@.TEST
+	xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@.TEST || xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.TEST && mv $@.TEST $@
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
 	@echo ---------------- Keystore missing. Try this ----------------
-	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang $@
+	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang KEYINFO='"Shong Wang"' $@
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
-	$(XMLSECTOOL) --sign --keyInfoKeyName 'AlphaWallet' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
+	$(XMLSECTOOL) --sign --keyInfoKeyName $(KEYINFO) --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
 	# removing the canonicalized created for validation
 	rm $^
 endif
