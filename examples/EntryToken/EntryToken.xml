@@ -52,11 +52,11 @@
   <ts:cards>
     <ts:token>
       <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <style type="text/css">&style;</style>
+        <xhtml:style type="text/css">&style;</xhtml:style>
         <body>&icon.en;</body>
       </ts:item-view>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <style type="text/css">&style;</style>
+        <xhtml:style type="text/css">&style;</xhtml:style>
         <script type="text/javascript">&token.en;</script>
       </ts:view>
     </ts:token>
@@ -74,7 +74,7 @@
       </ts:name>
       <ts:exclude selection="expired"/>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <style type="text/css">&style;</style>
+        <xhtml:style type="text/css">&style;</xhtml:style>
         <script type="text/javascript">&enter.en;</script>
         <body>&enter.en.shtml;</body>
       </ts:view>
