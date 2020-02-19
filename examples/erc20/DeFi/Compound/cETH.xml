@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "../shared.css">
-        <!ENTITY mint.en SYSTEM "supply.en.shtml">
-        <!ENTITY redeem.en SYSTEM "withdraw.en.shtml">
+        <!ENTITY mint.en SYSTEM "supply.en.js">
+        <!ENTITY redeem.en SYSTEM "withdraw.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -49,8 +49,10 @@
                 </ts:data>
             </ts:ethereum>
         </ts:transaction>
-        <style type="text/css">&style;</style>
-        <ts:view xml:lang="en">&mint.en;</ts:view>
+        <ts:view xml:lang="en">
+            <xhtml:style type="text/css">&style;</xhtml:style>
+            <xhtml:script type="text/javascript">&mint.en;</xhtml:script>
+        </ts:view>
     </ts:action>
 
     <ts:action>
@@ -72,8 +74,10 @@
                 </ts:data>
             </ts:ethereum>
         </ts:transaction>
-        <style type="text/css">&style;</style>
-        <ts:view xml:lang="en">&redeem.en;</ts:view>
+        <ts:view xml:lang="en">
+            <xhtml:style type="text/css">&style;</xhtml:style>
+            <xhtml:script type="text/javascript">&redeem.en;</xhtml:script>
+        </ts:view>
     </ts:action>
 
 </ts:cards>
