@@ -11,11 +11,6 @@ body {
 html {
   font-size: 14px;
 }
-#duration {
-  -webkit-appearance: menulist-button;
-  height: 25px;
-  width: 50%;
-}
 body {
   margin: 0px;
   padding: 0px;

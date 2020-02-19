@@ -1,0 +1,15 @@
+{
+  "name": "ENS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "subdomain.en.js",
+  "scripts": {
+    "build": "browserify subdomain.en.js > subdomainBundle.en.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eth-ens-namehash": "^2.0.8"
+  }
+}
