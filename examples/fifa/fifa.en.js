@@ -132,9 +132,8 @@ class Token {
     }
 }
 
-web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
-    const currentTokenInstance = web3.tokens.data.currentInstance;
-    const domHtml = new Token(currentTokenInstance).render();
-    document.getElementById('root').innerHTML = domHtml
+web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
+    const currentTokenInstance = updatedTokens.currentInstance;
+    document.getElementById(tokenCardId).getElementsByClassName("contents")[0].innerHTML = new Token(currentTokenInstance).render()
 };
 //]]>

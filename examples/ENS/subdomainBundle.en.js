@@ -32,12 +32,11 @@ class Token {
     }
 }
 
-web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
-    const currentTokenInstance = web3.tokens.data.currentInstance;
-    let token = new Token(currentTokenInstance);
-    document.getElementById('root').innerHTML = token.render();
-    //need to render elements before calling setup
-    token.setup();
+web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
+  const currentTokenInstance = updatedTokens.currentInstance;
+  let token = new Token(currentTokenInstance);
+  document.getElementById(tokenCardId).getElementsByClassName("contents")[0].innerHTML = token.render();
+  token.setup();
 };
 
 },{"eth-ens-namehash":2}],2:[function(require,module,exports){
