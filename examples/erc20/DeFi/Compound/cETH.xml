@@ -22,12 +22,6 @@
 </ts:origins>
 
 <ts:cards>
-    <ts:token-card>
-        <ts:view-iconified/>
-        <ts:view>
-        </ts:view>
-    </ts:token-card>
-
     <ts:action>
         <ts:name>
             <ts:string xml:lang="en">Supply</ts:string>
