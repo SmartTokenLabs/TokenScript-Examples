@@ -27,7 +27,7 @@
     <ts:output>
         <ts:token name="dai">
             <ts:contract>
-                <ts:address network="1">0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359</ts:address>
+                <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
             </ts:contract>
         </ts:token>
     </ts:output>
