@@ -1,9 +1,15 @@
 ifeq ($(TOKENSCRIPT_SCHEMA),)
 TOKENSCRIPT_SCHEMA=http://tokenscript.org/2020/03/tokenscript.xsd
 endif
+
+ifeq ($(XMLSECTOOL),)
 XMLSECTOOL=xmlsectool
+endif
+
+ifndef KEY
 KEY=1
-KEYPASSWORD=
+endif
+
 SIGNATURE_ALGORITHM=rsa-sha256
 
 help:
@@ -29,13 +35,16 @@ help:
 	xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@.TEST || xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.TEST && mv $@.TEST $@
 
 %.tsml: %.canonicalized.xml
+ifeq (,$(KEYPASSWORD))
+	$(error KEYPASSWORD is not set)
+endif
 ifeq (,$(KEYSTORE))
 	@echo ---------------- Keystore missing. Try this ----------------
 	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang KEYINFO='"Shong Wang"' $@
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
-	$(XMLSECTOOL) --sign --keyInfoKeyName $(KEYINFO) --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
+	$(XMLSECTOOL) --sign --keyInfoKeyName "$(KEYINFO)" --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword "$(KEYPASSWORD)" --signaturePosition LAST
 	# removing the canonicalized created for validation
 	rm $^
 endif
