@@ -1,0 +1,108 @@
+<script type="text/javascript"><![CDATA[
+    class Token {
+        constructor(tokenInstance) {
+            this.props = tokenInstance
+            document.getElementById("contractAddress").value = this.props.CarToken;
+        }
+    }
+
+    web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+        const currentTokenInstance = web3.tokens.data.currentInstance;
+        document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+    };
+
+]]></script>
+<script type="text/javascript"><![CDATA[
+    var iotAddr = "0xC1AB71408395235416AFC97F0E7A0B144ED34AAD";
+    var serverAddr = "http://james.lug.org.cn";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        window.onload = function startup() {
+            document.getElementById('msg').innerHTML = web3.tokens.data.currentInstance.ownerAddress;
+            // 1. call API to fetch challenge
+            var buttons = document.getElementById('buttonPanel');
+            buttons.style.display = 'none';
+            fetch(`${serverAddr}:8080/api/${iotAddr}/getChallenge`)
+                .then(function (response) {
+                    return response.text()
+                })
+                .then(function (response) {
+                    document.getElementById('msg').innerHTML = 'Challenge: ' + response
+                    window.challenge = response
+                })
+        }
+
+        window.onConfirm = function onConfirm(signature) {
+            if (window.challenge === undefined || window.challenge.length == 0) return
+            const challenge = window.challenge
+            document.getElementById('status').innerHTML = 'Wait for signature...'
+            // 2. sign challenge to generate response
+            web3.personal.sign({ data: challenge }, function (error, value) {
+                if (error != null) {
+                    document.getElementById('status').innerHTML = error
+                    window.onload();
+                    return
+                }
+
+                document.getElementById('status').innerHTML = 'Verifying credentials ...'
+                // 3. start car
+                let contractAddress = document.getElementById("contractAddress").textContent;
+                fetch(`${serverAddr}:8080/api/${iotAddr}/checkSignature?sig=${value}`)
+                    .then(function (response) {
+                        return response.text()
+                    })
+                    .then(function (response) {
+                        if (response == "pass") {
+                            var buttons = document.getElementById("buttonPanel");
+                            document.getElementById('status').innerHTML = 'You have control!'
+                            buttons.style.display = '';
+                        } else {
+                            document.getElementById('status').innerHTML = 'Failed with: ' + response
+                        }
+                    })
+            });
+            window.challenge = '';
+            document.getElementById('msg').innerHTML = web3.tokens.data.currentInstance.ownerAddress;
+        }
+    })
+
+    function carControl(apiType)
+    {
+        fetch(`${serverAddr}:8080/api/${iotAddr}/${apiType}?addr=${web3.tokens.data.currentInstance.ownerAddress}`)
+            .then(function (response) {
+                return response.text()
+            })
+            .then(function (response) {
+                document.getElementById('msg').innerHTML = 'Input: ' + response
+                window.challenge = response
+            })
+    }
+]]></script>
+<h3>Karma Car Token</h3>
+<div id="msg">Please wait for challenge ...</div>
+<div id="buttonPanel" >
+    <table style="text-align: center;" border="0" cellpadding="2" width="80%" cellspacing="2">
+        <tbody>
+        <tr>
+            <td>   </td><td></td>
+            <td><button onclick="carControl('allForward')" id="forwardButton" class="stormbut">Forward</button></td>
+            <td></td><td>   </td>
+        </tr>
+        <tr><td>   </td></tr>
+        <tr>
+            <td>   </td>
+            <td><button onclick="carControl('turnLeft')" id="leftButton" class="stormbut">Left</button></td><td></td>
+            <td><button onclick="carControl('turnRight')" id="rightButton" class="stormbut">Right</button></td>
+            <td>   </td>
+        </tr>
+        <tr><td> </td></tr>
+        <tr>
+            <td>   </td><td></td>
+            <td><button onclick="carControl('backwards')" id="backButton" class="stormbut">Backward</button></td>
+            <td></td><td>   </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="contractAddress"></div>
+<div id="status"></div>
