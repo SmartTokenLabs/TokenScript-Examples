@@ -1,0 +1,46 @@
+<script type="text/javascript"><![CDATA[
+    function openPage()
+    {
+        fetch('https://margin.ddex.io/funding')
+            .then(function (response) {
+                return response.text()
+            })
+            .then(function (response) {
+                document.getElementById('msg').innerHTML = 'Input: ' + response
+                window.challenge = response
+            })
+    }
+]]></script>
+<h3>Market</h3>
+<table style="text-align: center;" border="0" cellpadding="2" width="80%" cellspacing="2">
+    <tbody>
+    <tr>
+        <td>   </td>
+        <td><input id="btntest" class="stormbutwide" type="button" value="List for Sale"
+                   onclick="window.location.href = 'https://google.com'" /></td>
+        <td>   </td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+        <td>   </td>
+        <td><input id="btntest" class="stormbutwide" type="button" value="Auction"
+                   onclick="window.location.href = 'https://margin.ddex.io/funding'" /></td> <!-- https://www.lendf.me/supply -->
+        <td>   </td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+        <td>   </td>
+        <td><input id="btntest" class="stormbutwide" type="button" value="Collateralise"
+                   onclick="window.location.href = 'https://www.lendf.me/supply'" /></td>
+        <td>   </td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+        <td>   </td>
+        <td><input id="btntest" class="stormbutwide" type="button" value="List for Hire"
+                   onclick="window.location.href = 'https://usdx.dforce.network'" /></td>
+        <td>   </td>
+    </tr>
+    </tbody>
+</table>
+<div id="msg">Data</div>

@@ -1,0 +1,48 @@
+<h3>Karma Attestations</h3>
+<table style="text-align: left;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+    <tr><td><h4>Claim Attestations</h4></td></tr>
+    <tr>
+        <td><span class="ts-count">Registration</span></td>
+        <td><span style="font-family: monospace;">Issuer: </span></td>
+        <td>NSW Transport Auth</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="font-family: monospace;">Expiry: </span></td>
+        <td>23/12/2020</td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+        <td><span class="ts-count">Insurance</span></td>
+        <td><span style="font-family: monospace;">Issuer: </span></td>
+        <td>Alliance</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="font-family: monospace;">Expiry: </span></td>
+        <td>15/09/2020</td>
+    </tr>
+    <tr><td> </td></tr>
+    <tr>
+        <td><span class="ts-count">Service</span></td>
+        <td><span style="font-family: monospace;">Due: </span></td>
+        <td>31/10/2020</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="font-family: monospace;">Milage: </span></td>
+        <td>20,000</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="font-family: monospace;">Svs Level:</span></td>
+        <td>Full</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="font-family: monospace;">Recommended:</span></td>
+        <td>Karma Service</td>
+    </tr>
+    </tbody>
+</table>
