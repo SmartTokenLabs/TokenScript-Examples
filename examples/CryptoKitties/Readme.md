@@ -106,7 +106,7 @@ There's no 'isPregant' function in kitties but you can use the 'isReadyToBreed' 
 
 Assuming everything went ok you should see a 'TRUE' here. Click on the 'Birth' button at the bottom and the breeding function will be called:
 ```
-		<ts:transaction>
+	<ts:transaction>
             <ts:ethereum contract="Kitty" function="giveBirth">
                 <ts:data>
                     <ts:uint256 ref="tokenId"/>
