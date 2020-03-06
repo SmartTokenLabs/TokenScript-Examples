@@ -1,0 +1,28 @@
+<script type="text/javascript">
+<![CDATA[
+class Token {
+
+    constructor(tokenInstance) {
+        this.props = tokenInstance
+    }
+
+    render() {
+        return `
+        <div class="ui container">
+        <div class="ui segment">
+        <span><b>Breed Kitties</b><br></span>
+        <span>Kitty mom: ${this.props.tokenIds[0]}</span><span> Ready to breed: ${this.props.canBreed}<br></span>
+        <span>Kitty pop: ${this.props.tokenIds[1]}<br></span><br>
+        <span>Valid breeding pair: ${this.props.isAllowedToBreed}</span>
+        </div></div>`;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+]]>
+</script>
+<div id="root"></div>

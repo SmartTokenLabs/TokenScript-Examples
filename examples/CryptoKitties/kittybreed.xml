@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE action  [
+<!ENTITY style SYSTEM "style.css">
+<!ENTITY breed.en SYSTEM "breed.en.shtml">
+<!ENTITY birth.en SYSTEM "birth.en.shtml">
+]>
+<ts:token
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ts="http://tokenscript.org/2019/05/tokenscript"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" custodian="false" xsi:schemaLocation="http://tokenscript.org/2019/05/tokenscript ../../schema/tokenscript.xsd">
+    <ts:name>
+        <ts:string xml:lang="en">CryptoKittys</ts:string>
+        <ts:string xml:lang="zh">隐性猫咪</ts:string>
+    </ts:name>
+    <ts:contract interface="erc721" name="Kitty">
+		<ts:address network="1">0x06012c8cf97bead5deae237070f9587f8e7a266d</ts:address>
+        <ts:address network="4">0x16baf0de678e52367adc69fd067e5edd1d33e3bf</ts:address>
+    </ts:contract>
+    <ts:origins>
+        <ts:ethereum contract="Kitty"></ts:ethereum>
+    </ts:origins>
+    <ts:cards>
+        <ts:token-card>
+            <ts:view-iconified></ts:view-iconified>
+            <ts:view></ts:view>
+        </ts:token-card>
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Breed Kitty</ts:string>
+                <ts:string xml:lang="zh">繁殖猫咪</ts:string>
+            </ts:name>
+            <ts:transaction>
+                <ts:ethereum contract="Kitty" function="breedWithAuto">
+                    <ts:data>
+                        <ts:uint256 ref="tokenId[0]"/>
+                        <ts:uint256 ref="tokenId[1]"/>
+                    </ts:data>
+                    <ts:value>1000000000000000</ts:value>
+                </ts:ethereum>
+            </ts:transaction>
+            <style type="text/css">&style;</style>
+            <ts:view>
+				&breed.en;
+            </ts:view>
+        </ts:action>
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Birth</ts:string>
+                <ts:string xml:lang="zh">Birth</ts:string>
+            </ts:name>
+            <ts:transaction>
+                <ts:ethereum contract="Kitty" function="giveBirth">
+                    <ts:data>
+                        <ts:uint256 ref="tokenId"/>
+                    </ts:data>
+                </ts:ethereum>
+            </ts:transaction>
+            <style type="text/css">&style;</style>
+            <ts:view>
+                &birth.en;
+            </ts:view>
+        </ts:action>
+    </ts:cards>
+    <ts:attribute-types>
+        <!-- is kitty breedable? -->
+        <ts:attribute-type id="canBreed" syntax="1.3.6.1.4.1.1466.115.121.1.7">
+            <!-- boolean -->
+            <ts:origins>
+                <ts:ethereum as="bool" contract="Kitty" function="isReadyToBreed">
+                    <ts:data>
+                        <ts:uint256 ref="tokenId"/>
+                    </ts:data>
+                </ts:ethereum>
+            </ts:origins>
+        </ts:attribute-type>
+        <!-- are these two kitties allowed to breed together? -->
+        <ts:attribute-type id="isAllowedToBreed" syntax="1.3.6.1.4.1.1466.115.121.1.7">
+            <!-- boolean -->
+            <ts:origins>
+                <ts:ethereum as="bool" contract="Kitty" function="canBreedWith">
+                    <ts:data>
+                        <ts:uint256 ref="tokenId[0]"/>
+                        <ts:uint256 ref="tokenId[1]"/>
+                    </ts:data>
+                </ts:ethereum>
+            </ts:origins>
+        </ts:attribute-type>
+    </ts:attribute-types>
+</ts:token>

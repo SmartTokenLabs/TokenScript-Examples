@@ -1,0 +1,30 @@
+<script type="text/javascript">
+<![CDATA[
+class Token {
+
+    constructor(tokenInstance) {
+        this.props = tokenInstance
+    }
+
+    render() {
+        var pregnant = "FALSE";
+        if (this.props.canBreed == "FALSE") {
+          pregnant = "TRUE";
+        }
+        return `
+        <div class="ui container">
+        <div class="ui segment"><span>
+        <b>Midwife Function</b><br></span>
+        <span>Kitty to give Birth: ${this.props.tokenId}<br></span>
+        <span>Kitty pregnant?: ${pregnant}<br></span></div></div>`;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+]]>
+</script>
+<div id="root"></div>
