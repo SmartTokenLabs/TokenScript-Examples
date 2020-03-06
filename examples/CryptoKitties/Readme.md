@@ -26,7 +26,7 @@ bool isReadyToBreed(kittyMom#ID)
 ```
 
 ```
-bool canBreedWith(kitty#1 candidate, kitty#2 candidate)
+bool canBreedWith(kittyCandidate1#ID, kittyCandidate2#ID)
 ```
 
 Both functions need to return true in order to breed. Notice that this allows a surreal situation - you can make a kitty pregnant, then use that kitty as the 'pop' in another breeding - Iain M Banks would approve.
