@@ -23,6 +23,9 @@
   </ts:contract>
   <ts:contract name="registrar">
     <ts:address network="1">0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e</ts:address>
+  </ts:contract>
+  <ts:contract name="controller">
+    <ts:address network="1">0xF0AD5cAd05e10572EfcEB849f6Ff0c68f9700455</ts:address>
     <asnx:module name="EventRegistered">
       <sequence>
         <element name="ensName" ethereum-type="string"/>
