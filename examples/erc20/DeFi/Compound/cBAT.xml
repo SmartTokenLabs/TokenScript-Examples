@@ -24,7 +24,14 @@
 <ts:origins>
     <ts:ethereum contract="cBAT"/>
 </ts:origins>
-
+<ts:selections>
+    <ts:selection id="enabled">
+        <ts:name>
+            <ts:string xml:lang="en">Approved</ts:string>
+        </ts:name>
+        <ts:filter>allowance != 0</ts:filter>
+    </ts:selection>
+</ts:selections>
 <ts:cards>
     <ts:token-card>
         <ts:view-iconified/>
@@ -36,6 +43,7 @@
         <ts:name>
             <ts:string xml:lang="en">Enable</ts:string>
         </ts:name>
+        <ts:exclude selection="enabled"/>
         <ts:transaction>
             <ts:ethereum function="approve" contract="BAT" as="bool">
                 <ts:data>

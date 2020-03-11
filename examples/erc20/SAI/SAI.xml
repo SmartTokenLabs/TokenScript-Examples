@@ -26,6 +26,14 @@
         <ts:ethereum contract="SAI">
         </ts:ethereum>
     </ts:origins>
+    <ts:selections>
+        <ts:selection id="enabled">
+            <ts:name>
+                <ts:string xml:lang="en">Approved</ts:string>
+            </ts:name>
+            <ts:filter>allowance != 0</ts:filter>
+        </ts:selection>
+    </ts:selections>
     <ts:cards>
         <ts:action>
             <ts:name>
