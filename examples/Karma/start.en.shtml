@@ -13,7 +13,7 @@
 
 ]]></script>
 <script type="text/javascript"><![CDATA[
-    var iotAddr = "0xC1AB71408395235416AFC97F0E7A0B144ED34AAD";
+    var iotAddr = "0x74b80f1bf819393a72e885e32e0ec17d407581e7";
     var serverAddr = "http://james.lug.org.cn";
 
     document.addEventListener("DOMContentLoaded", function() {
