@@ -1,4 +1,5 @@
 *.pdf
+*.TEST
 .DS_Store
 .idea
 *.canonicalized.xml
