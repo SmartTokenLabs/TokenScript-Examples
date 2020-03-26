@@ -6,7 +6,7 @@ Since NFTs can encode information inside their 32 bytes such as genes or what ti
 
 To inspect the example EntryToken.xml file we have for you, simply:
 
-    $ cd examples/nft && cat EntryToken.xml
+    $ cd examples/EntryToken && cat EntryToken.xml
 
 We have set up contracts on mainnet, ropsten, kovan & rinkeby that will always return a balance of two NFTs. You can use these to test against the sample TokenScript provided in the tutorial examples. 
 
