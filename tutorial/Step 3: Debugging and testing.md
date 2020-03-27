@@ -1,10 +1,15 @@
 ## Debugging and testing on iOS and Android
-So you now have your completed .xml and .shtml files, excellent! You can now merge the files together and drop them for testing in AlphaWallet iOS and Android. To merge the files together run 'make EntryToken.canonicalized.xml' which will validate the files and put them all together. Since we have hardcoded the balances for this contract, you will be able to see them immediately in your wallet after you add them by clicking the + button on the homescreen and entering the contract address '0x63cCEF733a093E5Bd773b41C96D3eCE361464942' or your choice of testnet (see EntryToken.xml for all the addresses available). 
+So you now have your completed .xml and .shtml files, excellent! You can now merge the files together and drop them for testing in AlphaWallet iOS and Android. To merge the files together run 'make EntryToken.canonicalized.xml' which will validate the files and put them all together. Since we have hardcoded the balances for this contract, you will be able to see them immediately in your wallet after you add them by clicking the + button in the top-right of the wallet tab, and entering the contract address.
+For Ethereum mainnet:
+![qr code](https://github.com/AlphaWallet/TokenScript-Examples/blob/master/tutorial/img/QR_EntryToken_ETH_address.png)
 
-** We have uploaded this example file to our repo server, this means you do not have to drag and drop it to the device unless you are planning to edit it or create your own ** 
+'0x63cCEF733a093E5Bd773b41C96D3eCE361464942'
+Or your choice of testnet (see the `ts:address` tag in EntryToken.xml for each available network's address). 
+
+** We have uploaded this example xml file to our repo server, this means you do not have to drag and drop it to the device unless you are planning to edit it or create your own ** 
 
 ### Get AlphaWallet iOS or Android
-[<img src=https://github.com/AlphaWallet/alpha-wallet-ios/blob/master/resources/app-store-badge.png height="88">](https://itunes.apple.com/us/app/alphawallet/id1358230430?ls=1&mt=8) [<img src=https://github.com/AlphaWallet/alpha-wallet-android/blob/master/dmz/src/main/resources/static/images/googleplay.png height="88">](https://play.google.com/store/apps/details?id=io.stormbird.wallet&hl=en_US)
+[<img src=https://github.com/AlphaWallet/alpha-wallet-ios/blob/master/resources/app-store-badge.png height="88">](https://itunes.apple.com/us/app/alphawallet/id1358230430?ls=1&mt=8) [<img src=https://github.com/AlphaWallet/alpha-wallet-android/blob/master/dmz/src/main/resources/static/images/googleplay.png height="68">](https://play.google.com/store/apps/details?id=io.stormbird.wallet&hl=en_US)
 
 ### Clone the source
 Go to either [iOS](https://github.com/AlphaWallet/alpha-wallet-ios) or [Android](https://github.com/AlphaWallet/alpha-wallet-android) source repo
