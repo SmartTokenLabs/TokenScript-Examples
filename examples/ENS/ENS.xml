@@ -24,8 +24,9 @@
   <ts:contract name="registrar">
     <ts:address network="1">0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e</ts:address>
   </ts:contract>
-  <ts:contract name="controller">
-    <ts:address network="1">0xF0AD5cAd05e10572EfcEB849f6Ff0c68f9700455</ts:address>
+  <!-- emitted via: function registerWithConfig(string memory name, address owner, uint duration, bytes32 secret, address resolver, address addr) public payable -->
+  <ts:contract name="ETHRegistrarController">
+    <ts:address network="1">0x283af0b28c62c092c9727f1ee09c02ca627eb7f5</ts:address>
     <asnx:module name="NameRegistered">
       <sequence>
         <element name="name" ethereum-type="string"/>
