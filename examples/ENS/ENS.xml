@@ -72,7 +72,7 @@
           <ts:string xml:lang="en">renewal price per year</ts:string>
         </ts:name>
         <ts:origins>
-          <ts:ethereum function="rentPrice" contract="controller" as="uint">
+          <ts:ethereum function="rentPrice" contract="ETHRegistrarController" as="uint">
             <ts:data>
               <ts:string ref="ensName"/>
               <ts:uint256>31540000</ts:uint256>
