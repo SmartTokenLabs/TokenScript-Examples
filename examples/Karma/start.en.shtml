@@ -13,7 +13,7 @@
 
 ]]></script>
 <script type="text/javascript"><![CDATA[
-    var iotAddr = "0x74b80f1bf819393a72e885e32e0ec17d407581e7";
+    var iotAddr = "0xc1ab71408395235416afc97f0e7a0b144ed34aad"; //Simulated car IoT address - device running in office
     var serverAddr = "http://james.lug.org.cn";
 
     document.addEventListener("DOMContentLoaded", function() {
