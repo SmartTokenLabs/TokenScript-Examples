@@ -11,36 +11,17 @@
             })
     }
 ]]></script>
-<h3>Market</h3>
-<table style="text-align: center;" border="0" cellpadding="2" width="80%" cellspacing="2">
-    <tbody>
-    <tr>
-        <td>   </td>
-        <td><input id="btntest" class="stormbutwide" type="button" value="List for Sale"
-                   onclick="window.location.href = 'https://google.com'" /></td>
-        <td>   </td>
-    </tr>
-    <tr><td> </td></tr>
-    <tr>
-        <td>   </td>
-        <td><input id="btntest" class="stormbutwide" type="button" value="Auction"
-                   onclick="window.location.href = 'https://margin.ddex.io/funding'" /></td> <!-- https://www.lendf.me/supply -->
-        <td>   </td>
-    </tr>
-    <tr><td> </td></tr>
-    <tr>
-        <td>   </td>
-        <td><input id="btntest" class="stormbutwide" type="button" value="Collateralise"
-                   onclick="window.location.href = 'https://www.lendf.me/supply'" /></td>
-        <td>   </td>
-    </tr>
-    <tr><td> </td></tr>
-    <tr>
-        <td>   </td>
-        <td><input id="btntest" class="stormbutwide" type="button" value="List for Hire"
-                   onclick="window.location.href = 'https://usdx.dforce.network'" /></td>
-        <td>   </td>
-    </tr>
-    </tbody>
-</table>
-<div id="msg">Data</div>
+<div class="content-market">
+	<div class="list-background">
+		<p class="list-text" onclick="window.location.href = 'https://google.com'">List for Sale <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAWqADAAQAAAABAAAAWgAAAABJfIu3AAABz0lEQVR4Ae3b3WnDMBSG4bgepB3EhozQUbpB0gnaUbpBi23wHN3DP/UhFZRQ5S7ofMevLiwsGenoQUYgy4cDCQEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQTuKND3/fGOzRdp+qFIrzc63ZDP67p+Wn7jMbmqylPEv8inFFNVVa9t257TvXLuBvoaOaFGwXYBnUOOhF0cehiGl2VZ3hJqLlef2cUXw7quPzbE7xxwKt8WyJPyAll8RhvkOI5P0zR9bZiPCTaXq85sF9B7wHYDHR3bFXRkbHfQUbFdQkfEdgsdDds1dCRs99BRsCWgI2DLQKtjS0ErY8tBq2JLQitiy0KrYUtDK2EX3/g3rD0k6Rmt9MFAFloJ2d5YSWg1ZEloRWQ5aFVkKWhlZBlodWQJ6AjI7qGjILuGjoTsFjoaskvoiMjuoKMiu4KOjOwGOjqyC+g9IBt08Y3/eZ6fIx9AN2RLxaGbpnm3U/yXcP6/qp7y/zsaN/vRuT+zIiAbuBtoC+YaOwqyjc1dMuyu61blP7DcoeYC2pCPuTrKEUAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQKC0wA8Cabr6iodssAAAAABJRU5ErkJggg==" alt="arrrow" class="arrowimg"/></p>
+	</div>
+	<div class="list-background">
+		<p class="list-text" onclick="window.location.href = 'https://margin.ddex.io/funding'">Auction <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAWqADAAQAAAABAAAAWgAAAABJfIu3AAABz0lEQVR4Ae3b3WnDMBSG4bgepB3EhozQUbpB0gnaUbpBi23wHN3DP/UhFZRQ5S7ofMevLiwsGenoQUYgy4cDCQEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQTuKND3/fGOzRdp+qFIrzc63ZDP67p+Wn7jMbmqylPEv8inFFNVVa9t257TvXLuBvoaOaFGwXYBnUOOhF0cehiGl2VZ3hJqLlef2cUXw7quPzbE7xxwKt8WyJPyAll8RhvkOI5P0zR9bZiPCTaXq85sF9B7wHYDHR3bFXRkbHfQUbFdQkfEdgsdDds1dCRs99BRsCWgI2DLQKtjS0ErY8tBq2JLQitiy0KrYUtDK2EX3/g3rD0k6Rmt9MFAFloJ2d5YSWg1ZEloRWQ5aFVkKWhlZBlodWQJ6AjI7qGjILuGjoTsFjoaskvoiMjuoKMiu4KOjOwGOjqyC+g9IBt08Y3/eZ6fIx9AN2RLxaGbpnm3U/yXcP6/qp7y/zsaN/vRuT+zIiAbuBtoC+YaOwqyjc1dMuyu61blP7DcoeYC2pCPuTrKEUAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQKC0wA8Cabr6iodssAAAAABJRU5ErkJggg==" alt="arrrow" class="arrowimg"/></p>
+	</div>
+	<div class="list-background">
+		<p class="list-text" onclick="window.location.href = 'https://www.lendf.me/supply'">Collateralise <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAWqADAAQAAAABAAAAWgAAAABJfIu3AAABz0lEQVR4Ae3b3WnDMBSG4bgepB3EhozQUbpB0gnaUbpBi23wHN3DP/UhFZRQ5S7ofMevLiwsGenoQUYgy4cDCQEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQTuKND3/fGOzRdp+qFIrzc63ZDP67p+Wn7jMbmqylPEv8inFFNVVa9t257TvXLuBvoaOaFGwXYBnUOOhF0cehiGl2VZ3hJqLlef2cUXw7quPzbE7xxwKt8WyJPyAll8RhvkOI5P0zR9bZiPCTaXq85sF9B7wHYDHR3bFXRkbHfQUbFdQkfEdgsdDds1dCRs99BRsCWgI2DLQKtjS0ErY8tBq2JLQitiy0KrYUtDK2EX3/g3rD0k6Rmt9MFAFloJ2d5YSWg1ZEloRWQ5aFVkKWhlZBlodWQJ6AjI7qGjILuGjoTsFjoaskvoiMjuoKMiu4KOjOwGOjqyC+g9IBt08Y3/eZ6fIx9AN2RLxaGbpnm3U/yXcP6/qp7y/zsaN/vRuT+zIiAbuBtoC+YaOwqyjc1dMuyu61blP7DcoeYC2pCPuTrKEUAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQKC0wA8Cabr6iodssAAAAABJRU5ErkJggg==" alt="arrrow" class="arrowimg"/></p>
+	</div>
+	<div class="list-background">
+		<p class="list-text" onclick="window.location.href = 'https://usdx.dforce.network'">List for Hire <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAWqADAAQAAAABAAAAWgAAAABJfIu3AAABz0lEQVR4Ae3b3WnDMBSG4bgepB3EhozQUbpB0gnaUbpBi23wHN3DP/UhFZRQ5S7ofMevLiwsGenoQUYgy4cDCQEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQTuKND3/fGOzRdp+qFIrzc63ZDP67p+Wn7jMbmqylPEv8inFFNVVa9t257TvXLuBvoaOaFGwXYBnUOOhF0cehiGl2VZ3hJqLlef2cUXw7quPzbE7xxwKt8WyJPyAll8RhvkOI5P0zR9bZiPCTaXq85sF9B7wHYDHR3bFXRkbHfQUbFdQkfEdgsdDds1dCRs99BRsCWgI2DLQKtjS0ErY8tBq2JLQitiy0KrYUtDK2EX3/g3rD0k6Rmt9MFAFloJ2d5YSWg1ZEloRWQ5aFVkKWhlZBlodWQJ6AjI7qGjILuGjoTsFjoaskvoiMjuoKMiu4KOjOwGOjqyC+g9IBt08Y3/eZ6fIx9AN2RLxaGbpnm3U/yXcP6/qp7y/zsaN/vRuT+zIiAbuBtoC+YaOwqyjc1dMuyu61blP7DcoeYC2pCPuTrKEUAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQKC0wA8Cabr6iodssAAAAABJRU5ErkJggg==" alt="arrrow" class="arrowimg"/></p>
+	</div>
+</div>
