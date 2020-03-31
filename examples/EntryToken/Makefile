@@ -1,6 +1,8 @@
 ifeq ($(TOKENSCRIPT_SCHEMA),)
 TOKENSCRIPT_SCHEMA=http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd
 endif
+XMLLINT=xmllint
+XMLSEC=xmlsec1 # xmlsec for Linux/Windows
 XMLSECTOOL=xmlsectool
 KEYSTORE=
 KEY=1
@@ -16,17 +18,24 @@ help:
 	# - to sign, use tsml as file extension:
 	@echo $$ make EntryToken.tsml
 
+clean:
+	rm *.canonicalized.xml
+	rm *.tsml
+
 %.canonicalized.xml : %.xml
-    # xmlsectool canonicalises automatically when needed, but leaving an xml:base attribute which creates trouble later.
-    # xmlstarlet does it neatly
+	$(XMLLINT) --c14n $^ > $@
+	$(XMLLINT) --noout --schema http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd $@
+
+	# xmlsectool canonicalises automatically when needed, but leaving an xml:base attribute which creates trouble later.
+	# xmlstarlet does it neatly
 	# XML Canonicalization
-	xmlstarlet c14n $^  > $@
-    # xmlsectool validates too, albeit adding xml:base with breaks schema. Example:
-    # JVMOPTS=-Djavax.xml.accessExternalDTD=all /opt/xmlsectool-2.0.0/xmlsectool.sh --validateSchema --xsd --schemaDirectory ../../schema --inFile $^
+	#xmlstarlet c14n $^  > $@
+	# xmlsectool validates too, albeit adding xml:base with breaks schema. Example:
+	# JVMOPTS=-Djavax.xml.accessExternalDTD=all /opt/xmlsectool-2.0.0/xmlsectool.sh --validateSchema --xsd --schemaDirectory ../../schema --inFile $^
 	# XML Validation
-    # if INVALID, run validation again with xmllint to get meaningful error
-    # then delete the canonicalized file
-	xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
+	# if INVALID, run validation again with xmllint to get meaningful error
+	# then delete the canonicalized file
+	#xmlstarlet val --xsd $(TOKENSCRIPT_SCHEMA) $@ || (mv $@ $@.INVALID; xmllint --noout --schema $(TOKENSCRIPT_SCHEMA) $@.INVALID)
 
 %.tsml: %.canonicalized.xml
 ifeq (,$(KEYSTORE))
@@ -35,7 +44,10 @@ ifeq (,$(KEYSTORE))
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
-	$(XMLSECTOOL) --sign --keyInfoKeyName 'Shong Wang' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
+	# requires original .xml file to contain the Signature tag.
+	$(XMLSEC) sign --pkcs12:"Shong Wang" $(KEYSTORE) --pwd $(KEYPASSWORD) --output $@ $^
+
+	#$(XMLSECTOOL) --sign --keyInfoKeyName 'Shong Wang' --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword $(KEYPASSWORD) --signaturePosition LAST
 	# removing the canonicalized created for validation
-	rm $^
+	#keep for reference rm $^
 endif
