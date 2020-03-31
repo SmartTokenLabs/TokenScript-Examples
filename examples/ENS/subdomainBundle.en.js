@@ -35,7 +35,7 @@ class Token {
 web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
   const currentTokenInstance = updatedTokens.currentInstance;
   let token = new Token(currentTokenInstance);
-  document.getElementById(tokenCardId).getElementsByClassName("contents")[0].innerHTML = token.render();
+  document.getElementById(tokenCardId).innerHTML = token.render();
   token.setup();
 };
 
