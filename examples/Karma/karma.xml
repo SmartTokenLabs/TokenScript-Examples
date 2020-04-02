@@ -54,7 +54,7 @@
                 &view-iconified.en;
             </ts:view-iconified>
             <ts:view xml:lang="en">
-                &view.en;
+                &view-iconified.en;
             </ts:view>
         </ts:token-card>
         <ts:action>

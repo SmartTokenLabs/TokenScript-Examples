@@ -1,3 +1,9 @@
+<script type="text/javascript"><![CDATA[
+window.onConfirm = function() {
+    window.close();
+};
+]]></script>
+
 <h3>Karma Attestations</h3>
 <table style="text-align: left;" border="0" cellpadding="2" cellspacing="2">
     <tbody>

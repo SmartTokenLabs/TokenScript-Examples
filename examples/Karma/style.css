@@ -40,6 +40,28 @@
   margin: 0;
 }
 
+.list-background{
+  width: auto;
+  height: 50px;
+  margin: 20px;
+  background: #FF0000;
+}
+
+.greater-sign-image {
+  width: 25px;
+  height: 25px;
+}
+
+.stormbutwide {
+  background-color: #DB393A;
+  justify-content: center;
+  padding: 16px 30px 16px 30px;
+  text-align: center;
+  border: none;
+  color: white;
+  width: 100%;
+}
+
 @media screen and (min-width: 1600px) and (max-width: 1980px) {
   .right-content {
     position: absolute;
@@ -339,3 +361,121 @@
     top: 22px;
   }
 }
+
+/* Market start */
+
+.content-market {
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.arrowimg {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  margin-top: -5px;
+}
+
+.list-background {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0 0px 0;
+  height: 40px;
+  margin:0;
+}
+
+.list-text {
+  font-size: 17px;
+  font-weight: 400;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: left;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  margin:0;
+}
+
+/* Market End */
+
+/* Challenge Start */
+
+#buttonPanel {
+   text-align: center;
+}
+
+.challenge-content {
+  text-align: center;
+  margin: 5% auto;
+}
+.challenge-image {
+  width: 50%;
+  height: auto;
+}
+
+.challenge-header {
+  font-size: 36px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: rgb(0, 0, 0);
+  line-height: 1.7;
+}
+
+.challenge-message {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 21px;
+  color: rgb(47, 47, 47);
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 330px) and (max-width: 395px) {
+  .challenge-image {
+    width: 340px;
+    height: auto;
+  }
+  .challenge-header {
+    font-size: 30px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: rgb(0, 0, 0);
+    line-height: 1.7;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 495px) {
+  .challenge-image {
+    width: 400px;
+    height: auto;
+  }
+}
+
+@media screen and (device-width: 320px) {
+  .challenge-image {
+    width: 300px;
+    height: auto;
+  }
+  .challenge-header {
+    font-size: 26px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: rgb(0, 0, 0);
+    line-height: 1.4;
+  }
+  .challenge-message {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    color: rgb(47, 47, 47);
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width: 520px) and (max-width: 896px) {
+  .challenge-message {
+    margin: 5%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .challenge-message {
+    margin: 5%;
+  }
+}
+
+/* Challenge End */
