@@ -1,4 +1,9 @@
 <script type="text/javascript"><![CDATA[
+
+	window.onConfirm = function() {
+		window.close();
+	};
+
     function openPage()
     {
         fetch('https://margin.ddex.io/funding')
