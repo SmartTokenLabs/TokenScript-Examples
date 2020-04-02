@@ -1,22 +1,21 @@
-<script type="text/javascript"><![CDATA[
+<script type="text/javascript">            <![CDATA[
     var iotAddr = "0xc1ab71408395235416afc97f0e7a0b144ed34aad"; //Simulated car IoT address - device running in office
     var serverAddr = "http://james.lug.org.cn";
 
-    document.addEventListener("DOMContentLoaded", function() {
-        window.onload = function startup() {
-            document.getElementById('msg').innerHTML = "Loading!";
-            // 1. call API to fetch challenge
-            var buttons = document.getElementById('buttonPanel');
-            buttons.style.display = 'none';
-            fetch(`${serverAddr}:8080/api/${iotAddr}/getChallenge`)
-                .then(function (response) {
-                    return response.text()
-                })
-                .then(function (response) {
-                    document.getElementById('msg').innerHTML = 'Challenge: ' + response
-                    window.challenge = response
-                })
-        };
+    function getChallenge()
+	{
+		document.getElementById('msg').innerHTML = "Getting challenge...";
+        // 1. call API to fetch challenge
+        var buttons = document.getElementById('buttonPanel');
+        buttons.style.display = 'none';
+        fetch(`${serverAddr}:8080/api/${iotAddr}/getChallenge`)
+            .then(function (response) {
+                return response.text()
+            })
+            .then(function (response) {
+                document.getElementById('msg').innerHTML = 'Challenge: ' + response
+                window.challenge = response
+            })
 
         window.onConfirm = function onConfirm(signature) {
             if (window.challenge === undefined || window.challenge.length == 0) return
@@ -30,27 +29,26 @@
                     return
                 }
 
-                document.getElementById('status').innerHTML = 'Verifying credentials ...'
-                // 3. start car
+                // 3. send signature to car
+                document.getElementById('msg').innerHTML = "Verifying credentials ...";
                 let contractAddress = document.getElementById("contractAddress").textContent;
                 fetch(`${serverAddr}:8080/api/${iotAddr}/checkSignature?sig=${value}`)
                     .then(function (response) {
                         return response.text()
                     })
                     .then(function (response) {
+                        //4. check car response
                         if (response == "pass") {
                             var buttons = document.getElementById("buttonPanel");
-                            document.getElementById('status').innerHTML = 'You have control!';
+                            document.getElementById('msg').innerHTML = 'You have control!';
                             buttons.style.display = '';
                         } else {
                             document.getElementById('status').innerHTML = 'Failed with: ' + response
                         }
                     })
             });
-            window.challenge = '';
-            document.getElementById('msg').innerHTML = "Ready!";
         }
-    });
+    };
 
     function carControl(apiType)
     {
@@ -64,7 +62,7 @@
             })
     }
 ]]></script>
-<script type="text/javascript"><![CDATA[
+<script type="text/javascript">    <![CDATA[
 class Token {
     constructor(tokenInstance) {
         this.props = tokenInstance;
@@ -112,6 +110,8 @@ class Token {
 web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
     document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+    //now that view has rendered the 'msg' object tag has been created and we can call the function to fetch challenge
+	getChallenge();
 };
 
 ]]></script>
