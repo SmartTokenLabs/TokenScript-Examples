@@ -112,110 +112,6 @@
   }
 }
 
-@media screen and (min-width: 400px) and (max-width: 480px) {
-  .right-content {
-    position: absolute;
-    right: 30px;
-    top: 50px;
-  }
-  .left-content {
-    padding: 10px 18px;
-    text-align: center;
-    position: absolute;
-    top: 42px;
-  }
-  .car-image {
-    width: 130px !important;
-    height: 130px !important;
-  }
-  .content {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 14pt;
-    letter-spacing: 0;
-    margin: 0;
-    position: relative;
-    top: -25px;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 390px) {
-  .right-content {
-    position: absolute;
-    right: 20px;
-    top: 35px;
-  }
-  .left-content {
-    padding: 10px 15px;
-    text-align: center;
-    position: fixed;
-    top: 30px;
-  }
-  .car-image {
-    width: 115px !important;
-    height: 115px !important;
-  }
-  .content {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 14pt;
-    letter-spacing: 0;
-    margin: 0;
-    position: relative;
-    top: -26px;
-  }
-}
-
-@media screen and (min-width: 370px) and (max-width: 379px) {
-  .left-content {
-    padding: 10px 18px;
-    text-align: center;
-    position: fixed;
-    top: 35px;
-  }
-  .right-content {
-    position: absolute;
-    right: 20px;
-    top: 40px;
-  }
-}
-
-@media screen and (min-width: 380px) and (max-width: 395px) {
-  .left-content {
-    padding: 10px 18px;
-    text-align: center;
-    position: absolute;
-    top: 40px;
-  }
-  .right-content {
-    position: absolute;
-    right: 30px;
-    top: 40px;
-  }
-}
-
-@media screen and (min-width: 600px) and (max-width: 695px) {
-  .left-content {
-    padding: 10px 30px;
-    text-align: center;
-    position: absolute;
-    top: 75px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .right-content {
-    position: absolute;
-    right: 18%;
-    top: 90px;
-  }
-  .car-image {
-    width: 160px;
-    height: 160px;
-  }
-}
-
 @media screen and (min-width: 1000px) and (max-width: 1090px) {
   .right-content {
     position: absolute;
@@ -282,21 +178,23 @@
   }
 }
 
-@media screen and (device-width: 480px) {
-  .car-image {
-    width: 140px !important;
-    height: 140px !important;
-  }
+@media screen and (min-width: 600px) and (max-width: 695px) {
   .left-content {
     padding: 10px 30px;
     text-align: center;
     position: absolute;
-    top: 60px;
+    top: 75px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .right-content {
     position: absolute;
-    right: 50px;
-    top: 75px;
+    right: 18%;
+    top: 90px;
+  }
+  .car-image {
+    width: 160px;
+    height: 160px;
   }
 }
 
@@ -317,6 +215,128 @@
     position: absolute;
     right: 15%;
     top: 85px;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 480px) {
+  .right-content {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+  }
+  .left-content {
+    padding: 10px 18px;
+    text-align: center;
+    position: absolute;
+    top: 42px;
+  }
+  .car-image {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .content {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14pt;
+    letter-spacing: 0;
+    margin: 0;
+    position: relative;
+    top: -25px;
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 395px) {
+  .left-content {
+    padding: 10px 18px;
+    text-align: center;
+    position: absolute;
+    top: 40px;
+  }
+  .right-content {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+  }
+  .attestation-insurance-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 17% !important;
+  }
+  .attestation-service-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 20.5% !important;
+  }
+}
+
+@media screen and (min-width: 370px) and (max-width: 379px) {
+  .left-content {
+    padding: 10px 18px;
+    text-align: center;
+    position: fixed;
+    top: 35px;
+  }
+  .right-content {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 390px) {
+  .right-content {
+    position: absolute;
+    right: 20px;
+    top: 35px;
+  }
+  .left-content {
+    padding: 10px 15px;
+    text-align: center;
+    position: fixed;
+    top: 30px;
+  }
+  .car-image {
+    width: 115px !important;
+    height: 115px !important;
+  }
+  .content {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14pt;
+    letter-spacing: 0;
+    margin: 0;
+    position: relative;
+    top: -26px;
+  }
+}
+
+@media screen and (device-width: 480px) {
+  .car-image {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  .left-content {
+    padding: 10px 30px;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+  }
+  .right-content {
+    position: absolute;
+    right: 50px;
+    top: 75px;
   }
 }
 
@@ -438,6 +458,18 @@
     color: rgb(0, 0, 0);
     line-height: 1.7;
   }
+  .attestation-insurance-image {
+    position: relative;
+    left: -18% !important;
+    top: 15%;
+	width: 180px;
+  }
+  .attestation-insurance-issuer {
+	text-align: left;
+	position: relative;
+	left: -22% !important;
+	display: inline-block;
+  }
 }
 
 @media screen and (min-width: 400px) and (max-width: 495px) {
@@ -479,3 +511,1304 @@
 }
 
 /* Challenge End */
+
+/* Attestation Start */
+
+#Attestation {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*Registeration start*/
+
+.attestation-registration {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  display: inline;
+  position: relative;
+  left: -10.5%;
+  margin: 10px 0;
+}
+
+.attestation-registration-details {
+  display: inline;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #0098ff;
+  text-decoration: none;
+  position: relative;
+  left: 9%;
+}
+
+.attestation-angle-right {
+  position: relative;
+  top: 2px;
+  left: 10px;
+  font-size: 28px;
+}
+
+.attestation-card-content {
+  background-color: #fff;
+  border: 1px solid #9e9e9e;
+  border-radius: 10px;
+  max-width: 100%;
+  width: 540px;
+  height: 265px;
+  margin: 2% auto 4% auto;
+  text-align: center;
+}
+
+.attestation-transport-image {
+  position: relative;
+  left: -20%;
+  top: 15%;
+  width: 180px;
+}
+
+.attestation-image-content {
+  margin: 4% 0;
+}
+
+.attestation-registration-issuer {
+  text-align: left;
+  position: relative;
+  left: -13%;
+  display: inline-block;
+}
+
+.attestation-registration-issuer h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-registration-issuer h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+.attestation-registration-expiry {
+  text-align: left;
+  position: relative;
+  left: 5%;
+  display: inline-block;
+}
+
+.attestation-registration-expiry h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-registration-expiry h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+hr {
+  margin: 30px 0 20px 0;
+}
+
+.attestation-arrow {
+  position: relative;
+  top: 2px;
+  width: 15px;
+  left: 10px;
+}
+
+/*ends here*/
+
+/*Insurance*/
+
+.attestation-insurance-content {
+  margin: 6% 0;
+}
+
+.attestation-insurance-image {
+  position: relative;
+  left: -26%;
+  top: 15%;
+  width: 180px;
+}
+
+.attestation-insurance {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  display: inline;
+  position: relative;
+  left: -11.5%;
+  margin: 10px 0;
+}
+
+.attestation-insurance-details {
+  display: inline;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #0098ff;
+  text-decoration: none;
+  position: relative;
+  left: 10.2%;
+}
+
+.attestation-insurance-issuer {
+  text-align: left;
+  position: relative;
+  left: -26%;
+  display: inline-block;
+}
+
+.attestation-insurance-issuer h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-insurance-issuer h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+.attestation-insurance-expiry {
+  text-align: left;
+  position: relative;
+  left: 17%;
+  display: inline-block;
+}
+
+.attestation-insurance-expiry h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-insurance-expiry h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+/*ends here*/
+
+/*Service CSS*/
+
+.attestation-service {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  display: inline;
+  position: relative;
+  left: -12.5%;
+  margin: 10px 0;
+}
+
+.attestation-service-details {
+  display: inline;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #0098ff;
+  text-decoration: none;
+  position: relative;
+  left: 11.5%;
+}
+
+.attestation-service-milage {
+  text-align: left;
+  position: relative;
+  left: -22%;
+  top: 20%;
+  display: inline-block;
+}
+
+.attestation-service-milage h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-service-milage h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+.attestation-service-recommend {
+  text-align: left;
+  position: relative;
+  left: 17%;
+  top: 20%;
+  display: inline-block;
+}
+
+.attestation-service-recommend h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-service-recommend h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+.attestation-service-issuer {
+  text-align: left;
+  position: relative;
+  left: -28%;
+  top: 25%;
+  display: inline-block;
+}
+
+.attestation-service-issuer h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-service-issuer h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+.attestation-service-svs-level {
+  text-align: left;
+  position: relative;
+  left: 9%;
+  top: 25%;
+  display: inline-block;
+}
+
+.attestation-service-svs-level h4 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.attestation-service-svs-level h2 {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4e4e4e;
+}
+
+/*Media Queries*/
+
+@media screen and (min-width: 1600px) and (max-width: 1980px) {
+  .attestation-registration {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    display: inline;
+    position: relative;
+    left: -7.5%;
+    margin: 10px 0;
+  }
+  .attestation-registration-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 7%;
+  }
+  .attestation-insurance {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    display: inline;
+    position: relative;
+    left: -8.2%;
+    margin: 10px 0;
+  }
+  .attestation-insurance-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 8%;
+  }
+  .attestation-service {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    display: inline;
+    position: relative;
+    left: -9%;
+    margin: 10px 0;
+  }
+  .attestation-service-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 9%;
+  }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1499px) {
+  .attestation-registration {
+    left: -9.5%;
+  }
+  .attestation-registration-details {
+    left: 9%;
+  }
+  .attestation-insurance {
+    left: -11%;
+  }
+  .attestation-insurance-details {
+    left: 9.8%;
+  }
+  .attestation-service {
+    left: -12%;
+  }
+  .attestation-service-details {
+    left: 11%;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1299px) {
+  .attestation-registration {
+    left: -10.8%;
+  }
+  .attestation-registration-details {
+    left: 10%;
+  }
+  .attestation-insurance {
+    left: -12%;
+  }
+  .attestation-insurance-details {
+    left: 11%;
+  }
+  .attestation-service {
+    left: -13.8%;
+  }
+  .attestation-service-details {
+    left: 12.5%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .attestation-registration {
+    left: -13.8%;
+  }
+  .attestation-registration-details {
+    left: 12%;
+  }
+  .attestation-insurance {
+    left: -15%;
+  }
+  .attestation-insurance-details {
+    left: 14%;
+  }
+  .attestation-service {
+    left: -16.8%;
+  }
+  .attestation-service-details {
+    left: 15.5%;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 980px) {
+  .attestation-registration {
+    left: -14.8%;
+  }
+  .attestation-registration-details {
+    left: 13.5%;
+  }
+  .attestation-insurance {
+    left: -16%;
+  }
+  .attestation-insurance-details {
+    left: 15%;
+  }
+  .attestation-service {
+    left: -17.8%;
+  }
+  .attestation-service-details {
+    left: 16.5%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 895px) {
+  .attestation-registration {
+    left: -17.8%;
+  }
+  .attestation-registration-details {
+    left: 16%;
+  }
+  .attestation-insurance {
+    left: -20%;
+  }
+  .attestation-insurance-details {
+    left: 18%;
+  }
+  .attestation-service {
+    left: -21.8%;
+  }
+  .attestation-service-details {
+    left: 20.5%;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 795px) {
+  .attestation-registration {
+    left: -18.8%;
+  }
+  .attestation-registration-details {
+    left: 17.5%;
+  }
+  .attestation-insurance {
+    left: -21%;
+  }
+  .attestation-insurance-details {
+    left: 19.5%;
+  }
+  .attestation-service {
+    left: -23.8%;
+  }
+  .attestation-service-details {
+    left: 22%;
+  }
+}
+
+@media screen and (min-width: 665px) and (max-width: 695px) {
+  .attestation-registration {
+    left: -20.8%;
+  }
+  .attestation-registration-details {
+    left: 19%;
+  }
+  .attestation-insurance {
+    left: -23%;
+  }
+  .attestation-insurance-details {
+    left: 22%;
+  }
+  .attestation-service {
+    left: -25.8%;
+  }
+  .attestation-service-details {
+    left: 24.5%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 660px) {
+  .attestation-registration {
+    left: -22.8%;
+  }
+  .attestation-registration-details {
+    left: 22%;
+  }
+  .attestation-insurance {
+    left: -26%;
+  }
+  .attestation-insurance-details {
+    left: 25%;
+  }
+  .attestation-service {
+    left: -28.8%;
+  }
+  .attestation-service-details {
+    left: 28.5%;
+  }
+  .attestation-transport-image {
+    position: relative;
+    left: -30%;
+    top: 15%;
+    width: 180px;
+  }
+  .attestation-insurance-image {
+    position: relative;
+    left: -30%;
+    top: 15%;
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 510px) and (max-width: 580px) {
+  .attestation-registration {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    display: inline;
+    position: relative;
+    left: -15.5%;
+    margin: 10px 0;
+  }
+  .attestation-registration-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 12%;
+  }
+  .attestation-card-content {
+    background-color: #fff;
+    border: 1px solid #9e9e9e;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 325px;
+    height: 180px;
+    margin: 2% auto 8% auto;
+    text-align: center;
+  }
+  .transportimg {
+    position: relative;
+    left: -11%;
+    top: 15%;
+  }
+  .attestation-registration-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 2.2;
+  }
+  .attestation-registration-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-registration-expiry h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 2.2;
+  }
+  .attestation-registration-expiry h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-registration-issuer {
+    text-align: left;
+    position: relative;
+    left: -8%;
+    display: inline-block;
+  }
+  .attestation-insurance {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    display: inline;
+    position: relative;
+    left: -17.5%;
+    margin: 10px 0;
+  }
+  .attestation-insurance-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 15.2%;
+  }
+  .attestation-insurance-image {
+    position: relative;
+    left: -12%;
+    top: 15%;
+  }
+  .attestation-insurance-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-insurance-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-insurance-issuer {
+    text-align: left;
+    position: relative;
+    left: -20%;
+    display: inline-block;
+  }
+  .attestation-insurance-expiry h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-insurance-expiry h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-insurance-expiry {
+    text-align: left;
+    position: relative;
+    left: 20%;
+    display: inline-block;
+  }
+  .attestation-service {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    display: inline;
+    position: relative;
+    left: -20.5%;
+    margin: 10px 0;
+  }
+  .attestation-service-milage h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-milage h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-recommend h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-recommend h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-milage {
+    text-align: left;
+    position: relative;
+    left: -18%;
+    top: 20%;
+    display: inline-block;
+  }
+  .attestation-service-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 18.5%;
+  }
+  .attestation-service-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-svs-level h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-svs-level h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-issuer {
+    text-align: left;
+    position: relative;
+    left: -23%;
+    top: 30%;
+    display: inline-block;
+  }
+  .attestation-service-svs-level {
+    text-align: left;
+    position: relative;
+    left: 9%;
+    top: 30%;
+    display: inline-block;
+  }
+  .attestation-service-milage {
+    text-align: left;
+    position: relative;
+    left: -18%;
+    top: 15%;
+    display: inline-block;
+  }
+  .attestation-service-recommend {
+    text-align: left;
+    position: relative;
+    left: 17%;
+    top: 15%;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 495px) {
+  .attestation-card-content {
+    background-color: #fff;
+    border: 1px solid #9e9e9e;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 440px;
+    height: 190px;
+    margin: 2% auto 8% auto;
+    text-align: center;
+  }
+  .attestation-transport-image {
+    left: -26%;
+    top: 15%;
+  }
+  .attestation-registration {
+    left: -22%;
+    font-size: 26px;
+  }
+  .attestation-registration-details {
+    left: 22%;
+    font-size: 22px;
+  }
+  .attestation-registration-issuer {
+    left: -8%;
+  }
+  .attestation-registration-issuer h4 {
+    font-size: 16px;
+  }
+  .attestation-registration-issuer h2 {
+    font-size: 22px;
+  }
+  .attestation-registration-expiry {
+    left: 5%;
+  }
+  .attestation-registration-expiry h4 {
+    font-size: 16px;
+  }
+  .attestation-registration-expiry h2 {
+    font-size: 22px;
+  }
+  .attestation-insurance {
+    left: -26%;
+    font-size: 26px;
+  }
+  .attestation-insurance-details {
+    left: 26%;
+    font-size: 22px;
+  }
+  .attestation-service {
+    left: -29%;
+    font-size: 26px;
+  }
+  .attestation-service-details {
+    left: 28%;
+    font-size: 22px;
+  }
+  .attestation-insurance-image {
+    position: relative;
+    left: -24%;
+    top: 15%;
+  }
+  .attestation-insurance-issuer {
+    left: -22%;
+  }
+  .attestation-insurance-issuer h4 {
+    font-size: 16px;
+  }
+  .attestation-insurance-issuer h2 {
+    font-size: 22px;
+  }
+  .attestation-insurance-expiry {
+    left: 10%;
+  }
+  .attestation-insurance-expiry h4 {
+    font-size: 16px;
+  }
+  .attestation-insurance-expiry h2 {
+    font-size: 22px;
+  }
+  .attestation-service-milage {
+    left: -18%;
+  }
+  .attestation-service-milage h4 {
+    font-size: 16px;
+  }
+  .attestation-service-milage h2 {
+    font-size: 22px;
+  }
+  .attestation-service-recommend h4 {
+    font-size: 16px;
+  }
+  .attestation-service-recommend h2 {
+    font-size: 22px;
+  }
+  .attestation-service-issuer {
+    left: -25%;
+    top: 30%;
+  }
+  .attestation-service-issuer h4 {
+    font-size: 16px;
+  }
+  .attestation-service-issuer h2 {
+    font-size: 22px;
+  }
+  .attestation-service-svs-level {
+    left: 7%;
+	top: 30%;
+  }
+  .attestation-service-svs-level h4 {
+    font-size: 16px;
+  }
+  .attestation-service-svs-level h2 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 370px) and (max-width: 379px) {
+  .attestation-registration-details {
+    left: 15%;
+  }
+  .attestation-insurance {
+    left: -19.5%;
+  }
+  .attestation-insurance-details {
+    left: 18.2%;
+  }
+  .attestation-service {
+    left: -22.5%;
+  }
+  .attestation-service-details {
+    left: 21.5%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 390px) {
+  .attestation-registration {
+    font-size: 24px;
+    left: -22%;
+  }
+  .attestation-registration-details {
+    font-size: 17px;
+    left: 22%;
+  }
+  .attestation-insurance {
+    font-size: 24px;
+    left: -26%;
+  }
+  .attestation-insurance-details {
+    font-size: 17px;
+    left: 26%;
+  }
+  .attestation-service {
+    font-size: 24px;
+    left: -29%;
+  }
+  .attestation-service-details {
+    font-size: 17px;
+    left: 29%;
+  }
+  .attestation-card-content {
+    width: 540px;
+    height: 180px;
+  }
+  .attestation-registration-issuer {
+    left: -8%;
+  }
+  .attestation-registration-issuer h4 {
+    font-size: 13px;
+  }
+  .attestation-registration-issuer h2 {
+    font-size: 17px;
+  }
+  .attestation-registration-expiry h4 {
+    font-size: 13px;
+  }
+  .attestation-registration-expiry h2 {
+    font-size: 17px;
+  }
+  .attestation-insurance-issuer {
+    left: -26%;
+  }
+  .attestation-insurance-issuer h4{
+    font-size: 13px;
+  }
+  .attestation-insurance-issuer h2{
+    font-size: 17px;
+  }
+  .attestation-insurance-expiry {
+    left: 12%;
+  }
+  .attestation-insurance-expiry h4 {
+    font-size: 13px;
+  }
+  .attestation-insurance-expiry h2 {
+    font-size: 17px;
+  }
+  .attestation-service-milage {
+    left: -20%;
+  }
+  .attestation-service-milage h4 {
+    font-size: 13px;
+  }
+  .attestation-service-milage h2 {
+    font-size: 17px;
+  }
+  .attestation-service-recommend h4 {
+    font-size: 13px;
+  }
+  .attestation-service-recommend h2 {
+    font-size: 17px;
+  }
+  .attestation-service-issuer {
+    left: -26%;
+    top: 30%;
+  }
+  .attestation-service-issuer h4 {
+    font-size: 12px;
+  }
+  .attestation-service-issuer h2 {
+    font-size: 17px;
+  }
+  .attestation-service-svs-level {
+    left: 8%;
+	top: 30%;
+  }
+  .attestation-service-svs-level h4 {
+    font-size: 13px;
+  }
+  .attestation-service-svs-level h2 {
+    font-size: 17px;
+  }
+}
+
+@media screen and (device-width: 320px) {
+  #Attestation {
+    margin: 0 5px;
+    text-align: center;
+  }
+  hr {
+    margin: 0 0 20px 0;
+	max-width: 100%;
+  }
+  .transportimg {
+    position: relative;
+    left: -10%;
+    top: 15%;
+  }
+  .attestation-registration {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    display: inline;
+    position: relative;
+    left: -17.5%;
+    margin: 10px 0;
+  }
+  .attestation-registration-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 18%;
+  }
+  .attestation-transport-image {
+    position: relative;
+    left: -18%;
+    top: 15%;
+    width: 160px;
+  }
+  .attestation-registration-issuer {
+    text-align: left;
+    position: relative;
+    left: -6%;
+    display: inline-block;
+  }
+  .attestation-registration-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-registration-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 2.2;
+  }
+  .attestation-registration-expiry h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-registration-expiry h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 2.2;
+  }
+  .attestation-registration-expiry {
+    text-align: left;
+    position: relative;
+    left: 6%;
+    display: inline-block;
+  }
+  .attestation-insurance {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    display: inline;
+    position: relative;
+    left: -21.5%;
+    margin: 10px 0;
+  }
+  .attestation-insurance-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 20.2%;
+  }
+  .attestation-insurance-image {
+    position: relative;
+    left: -18%;
+    top: 15%;
+	width: 160px !important;
+  }
+    .attestation-insurance-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-insurance-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-insurance-issuer {
+    text-align: left;
+    position: relative;
+    left: -20%;
+    display: inline-block;
+  }
+  .attestation-insurance-expiry h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-insurance-expiry h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-insurance-expiry {
+    text-align: left;
+    position: relative;
+    left: 20%;
+    display: inline-block;
+  }
+  .attestation-service {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    display: inline;
+    position: relative;
+    left: -24.5%;
+    margin: 10px 0;
+  }
+  .attestation-service-details {
+    display: inline;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #0098ff;
+    text-decoration: none;
+    position: relative;
+    left: 24.5%;
+  }
+  .attestation-service-milage h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-milage h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-recommend h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-recommend h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-milage {
+    text-align: left;
+    position: relative;
+    left: -18%;
+    top: 20%;
+    display: inline-block;
+  }
+  .attestation-service-issuer h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-issuer h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-svs-level h4 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #878787;
+  }
+  .attestation-service-svs-level h2 {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .attestation-service-issuer {
+    text-align: left;
+    position: relative;
+    left: -23%;
+    top: 15%;
+    display: inline-block;
+  }
+  .attestation-service-svs-level {
+    text-align: left;
+    position: relative;
+    left: 9%;
+    top: 15%;
+    display: inline-block;
+  }
+  .attestation-service-milage {
+    text-align: left;
+    position: relative;
+    left: -18%;
+    top: 15%;
+    display: inline-block;
+  }
+  .attestation-service-recommend {
+    text-align: left;
+    position: relative;
+    left: 17%;
+    top: 15%;
+    display: inline-block;
+  }
+}
+
+/* Attestation End */
