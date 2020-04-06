@@ -75,18 +75,18 @@
           <ts:ethereum function="rentPrice" contract="ETHRegistrarController" as="uint">
             <ts:data>
               <ts:string ref="ensName"/>
-              <ts:uint256>31540000</ts:uint256>
+              <ts:uint256>31556952</ts:uint256>
             </ts:data>
           </ts:ethereum>
         </ts:origins>
       </ts:attribute-type>
 
       <ts:transaction>
-        <ts:ethereum function="renew" contract="registrar" as="uint">
+        <ts:ethereum function="renew" contract="ETHRegistrarController" as="uint">
           <ts:value ref="renewalPricePerYear"/>
           <ts:data>
             <ts:string ref="ensName"/>
-            <ts:uint256>31540000</ts:uint256>
+            <ts:uint256>31556952</ts:uint256>
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
