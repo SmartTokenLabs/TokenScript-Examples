@@ -22,7 +22,7 @@
   <ts:contract interface="erc721" name="ENS">
     <ts:address network="1">0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85</ts:address>
   </ts:contract>
-  <ts:contract name="registrar">
+  <ts:contract name="registry">
     <ts:address network="1">0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e</ts:address>
   </ts:contract>
   <!-- emitted via: function registerWithConfig(string memory name, address owner, uint duration, bytes32 secret, address resolver, address addr) public payable -->
@@ -127,13 +127,16 @@
           <ts:user-entry as="address"/>
         </ts:origins>
       </ts:attribute-type>
-      <!-- TODO need to cast tokenId from uint to bytes -->
       <ts:transaction>
-        <ts:ethereum function="setSubnodeOwner" contract="ENS">
+        <ts:ethereum function="setSubnodeRecord" contract="registry">
           <ts:data>
             <ts:bytes32 ref="node"/>
             <ts:bytes32 ref="subdomainHash"/>
             <ts:address ref="owner"/>
+            <!-- default resolver -->
+            <ts:address>0xDaaF96c344f63131acadD0Ea35170E7892d3dfBA</ts:address>
+            <!-- TTL, set to 0 -->
+            <ts:uint>0</ts:uint>
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
