@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
-        <!ENTITY release.en SYSTEM "release.en.js">
         <!ENTITY subdomain.en SYSTEM "subdomainBundle.en.js">
         <!ENTITY renew.en SYSTEM "renew.en.js">
         ]>
@@ -45,23 +44,6 @@
   </ts:origins>
 
   <ts:cards>
-    <ts:action>
-      <ts:name>
-        <ts:string xml:lang="en">Refund</ts:string>
-      </ts:name>
-      <ts:transaction>
-        <ts:ethereum function="releaseDeed" contract="ENS">
-          <ts:data>
-            <ts:bytes32 ref="tokenId"/>
-          </ts:data>
-        </ts:ethereum>
-      </ts:transaction>
-      <ts:view xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&release.en;</xhtml:script>
-      </ts:view>
-    </ts:action>
-
     <ts:action>
       <ts:name>
         <ts:string xml:lang="en">Renew</ts:string>
