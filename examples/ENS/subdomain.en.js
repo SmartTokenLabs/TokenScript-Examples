@@ -9,6 +9,7 @@ class Token {
         let namehash = require("eth-ens-namehash");
         let ensName = this.props.ensName;
         let subdomainElement = document.getElementById("subdomain");
+        document.getElementById("node").innerHTML = namehash.hash(ensName);
         subdomainElement.addEventListener("keyup", function() {
             let subdomain = subdomainElement.value.toString().trim().toLowerCase();
             document.getElementById("subdomainHash").innerHTML = namehash.hash(subdomain + "." + ensName);
@@ -25,6 +26,7 @@ class Token {
           <h3>Owner of subdomain</h3>
           <input id="owner" type="text" value=${this.props.ownerAddress}/>
           <div id="subdomainHash" hidden></div>
+          <div id="node" hidden></div>
           </div>
           <br>
         </div>`;
