@@ -24,7 +24,6 @@ class Token {
               <div id="inputBox">
                  <h3>Price of one year renewal: ${(this.props.renewalPricePerYear / 1e+18).toFixed(3)} ETH</h3>
                  <h3>Name expires: ${this.formatTimeStamp(this.props.nameExpires)}</h3>
-                 <input id="ensName" type="hidden" value=${this.props.ensName}>
                  <br>
               </div>
           </div>
