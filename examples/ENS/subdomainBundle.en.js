@@ -10,6 +10,7 @@ class Token {
         let namehash = require("eth-ens-namehash");
         let ensName = this.props.ensName;
         let subdomainElement = document.getElementById("subdomain");
+        document.getElementById("node").innerHTML = namehash.hash(ensName);
         subdomainElement.addEventListener("keyup", function() {
             let subdomain = subdomainElement.value.toString().trim().toLowerCase();
             document.getElementById("subdomainHash").innerHTML = namehash.hash(subdomain + "." + ensName);
@@ -26,6 +27,7 @@ class Token {
           <h3>Owner of subdomain</h3>
           <input id="owner" type="text" value=${this.props.ownerAddress}/>
           <div id="subdomainHash" hidden></div>
+          <div id="node" hidden></div>
           </div>
           <br>
         </div>`;
@@ -33,10 +35,10 @@ class Token {
 }
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
-  const currentTokenInstance = updatedTokens.currentInstance;
-  let token = new Token(currentTokenInstance);
-  document.getElementById(tokenCardId).getElementsByClassName("contents")[0].innerHTML = token.render();
-  token.setup();
+    const currentTokenInstance = updatedTokens.currentInstance;
+    let token = new Token(currentTokenInstance);
+    document.getElementById(tokenCardId).getElementsByClassName("contents")[0].innerHTML = token.render();
+    token.setup();
 };
 
 },{"eth-ens-namehash":2}],2:[function(require,module,exports){
