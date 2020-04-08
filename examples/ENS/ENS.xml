@@ -136,7 +136,7 @@
             <!-- default resolver -->
             <ts:address>0xDaaF96c344f63131acadD0Ea35170E7892d3dfBA</ts:address>
             <!-- TTL, set to 0 -->
-            <ts:uint>0</ts:uint>
+            <ts:uint256>0</ts:uint256>
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
