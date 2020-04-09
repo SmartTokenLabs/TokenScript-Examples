@@ -167,6 +167,14 @@
       </ts:origins>
     </ts:attribute-type>
 
+    <!-- TODO dynamically get this for .xzy etc -->
+<!--    <ts:attribute-type id="baseNode" syntax="1.3.6.1.4.1.1466.115.121.1.15">-->
+<!--      <ts:origins>-->
+<!--        <ts:ethereum function="baseNode" contract="ETHRegistrarController" as="bytes">-->
+<!--        </ts:ethereum>-->
+<!--      </ts:origins>-->
+<!--    </ts:attribute-type>-->
+
   </ts:attribute-types>
 
 </ts:token>
