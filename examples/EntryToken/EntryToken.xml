@@ -7,7 +7,6 @@
     <!ENTITY style SYSTEM "shared.css">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
-          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,7 +37,7 @@
     </ts:ethereum>
   </ts:origins>
   <ts:selections>
-    <ts:selection id="expired">
+    <ts:selection id="expired" filter="expired=TRUE">
       <ts:name>
         <ts:plurals xml:lang="en">
           <ts:string quantity="one">Expired Ticket</ts:string>
@@ -46,21 +45,20 @@
         </ts:plurals>
         <ts:string xml:lang="zh">已经过期的票</ts:string>
       </ts:name>
-      <ts:filter>expired</ts:filter>
     </ts:selection>
   </ts:selections>
   <ts:cards>
     <ts:token>
       <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
+        <style type="text/css">&style;</style>
         <body>&icon.en;</body>
       </ts:item-view>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
+        <style type="text/css">&style;</style>
         <script type="text/javascript">&token.en;</script>
       </ts:view>
     </ts:token>
-    <ts:action>
+    <ts:action exclude="expired">
       <!-- this action is of the model confirm-back.
       It should be <ts:action model="confirm-back"> but Weiwu
       shied away from specifying that due to the likely change of design causing an upgrade path issue.
@@ -72,9 +70,8 @@
         <ts:string xml:lang="zh">入場</ts:string>
         <ts:string xml:lang="es">Entrar</ts:string>
       </ts:name>
-      <ts:exclude selection="expired"/>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
+        <style type="text/css">&style;</style>
         <script type="text/javascript">&enter.en;</script>
         <body>&enter.en.shtml;</body>
       </ts:view>

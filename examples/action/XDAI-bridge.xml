@@ -4,11 +4,11 @@
         <!ENTITY xdai-bridge.en SYSTEM "xdai-bridge.en.js">
 ]>
 <ts:action xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
-          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+           exclude="small_balance"
 >
     <ts:name>
         <ts:string xml:lang="en">Convert to DAI</ts:string>
@@ -42,28 +42,20 @@
             <ts:user-entry as="e18"/>
         </ts:origins>
     </ts:attribute-type>
-    <!-- if the user tries to use this action when having little xdai
-         balance, either by clicking this action under the XDAI's
-         token view, or by clicking "create" token and choosing DAI,
-         the following message shows. -->
-    <!-- The exclusion rule here is excluded out to reduce the scope of schema-2019-05
-    <ts:exclude>
-        <ts:selection>
-            <ts:token filter="balance<=1000000000"/>
+    <!-- if the user tries to use this action when having little xdai balance -->
+        <ts:selection id="low-balance" filter="!(balance>1000000000)">
+            <ts:denial>
+                <ts:string xml:lang="en">Not enough balance.</ts:string>
+            </ts:denial>
         </ts:selection>
-        <ts:message>
-            <ts:string xml:lang="en">Not enough balance.</ts:string>
-        </ts:message>
-    </exclude>
-    -->
     <ts:transaction>
         <ts:ethereum>
             <ts:to>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</ts:to>
             <ts:value ref="amount"/>
         </ts:ethereum>
     </ts:transaction>
-    <ts:view xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&xdai-bridge.en;</xhtml:script>
+    <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <style type="text/css">&style;</style>
+        <script type="text/javascript">&xdai-bridge.en;</script>
     </ts:view>
 </ts:action>
