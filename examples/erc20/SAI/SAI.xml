@@ -4,7 +4,7 @@
     <!ENTITY sai-to-dai.en SYSTEM "sai-to-dai.en.js">
     <!ENTITY enable.en SYSTEM "enable.en.js">
     <!ENTITY important.en SYSTEM "important.en.js">
-    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.js">
+    <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"

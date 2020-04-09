@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-        <!ENTITY style SYSTEM "../shared.css">
+        <!ENTITY style SYSTEM "shared.css">
         <!ENTITY mint.en SYSTEM "supply.en.js">
         <!ENTITY redeem.en SYSTEM "withdraw.en.js">
         <!ENTITY enable.en SYSTEM "enable.en.js">
@@ -26,12 +26,6 @@
 </ts:origins>
 
 <ts:cards>
-    <ts:token-card>
-        <ts:view-iconified/>
-        <ts:view>
-        </ts:view>
-    </ts:token-card>
-
     <ts:action>
         <ts:name>
             <ts:string xml:lang="en">Enable</ts:string>
@@ -44,10 +38,11 @@
                 </ts:data>
             </ts:ethereum>
         </ts:transaction>
-        <xhtml:style type="text/css">&style;</xhtml:style>
-        <ts:view xml:lang="en">&enable.en;</ts:view>
+        <ts:view xml:lang="en">
+            <xhtml:style type="text/css">&style;</xhtml:style>
+            <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+        </ts:view>
     </ts:action>
-
 
     <ts:action>
         <ts:name>

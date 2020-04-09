@@ -3,7 +3,7 @@
     <!ENTITY style SYSTEM "shared.css">
     <!ENTITY wrap.en SYSTEM "weth-wrap.en.js">
     <!ENTITY unwrap.en SYSTEM "weth-unwrap.en.js">
-    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.js">
+    <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"

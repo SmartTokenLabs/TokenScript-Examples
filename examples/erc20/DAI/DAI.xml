@@ -2,7 +2,7 @@
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
     <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.js">
-    <!ENTITY bestRates.en SYSTEM "../DeFi/BestRates/bestRates.en.js">
+    <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"

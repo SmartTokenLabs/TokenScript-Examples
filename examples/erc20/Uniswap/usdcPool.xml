@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-        <!ENTITY style SYSTEM "../shared.css">
+        <!ENTITY style SYSTEM "shared.css">
         <!ENTITY about.en SYSTEM "about.en.shtml">
         ]>
-<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
@@ -28,8 +28,10 @@
             <ts:name>
                 <ts:string xml:lang="en">About</ts:string>
             </ts:name>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&about.en;</ts:view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&about.en;</body>
+            </ts:view>
         </ts:action>
     </ts:cards>
     <ts:attribute-types>

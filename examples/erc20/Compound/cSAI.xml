@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-        <!ENTITY style SYSTEM "../shared.css">
+        <!ENTITY style SYSTEM "shared.css">
         <!ENTITY supply.en SYSTEM "supply.en.js">
         <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
         <!ENTITY enable.en SYSTEM "enable.en.js">
@@ -26,12 +26,6 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
-            <ts:view-iconified/>
-            <ts:view>
-            </ts:view>
-        </ts:token-card>
-
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Enable</ts:string>

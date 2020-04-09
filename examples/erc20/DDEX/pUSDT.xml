@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-        <!ENTITY style SYSTEM "../shared.css">
+        <!ENTITY style SYSTEM "shared.css">
         <!ENTITY guide.en SYSTEM "guide.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
@@ -24,13 +24,6 @@
   </ts:origins>
 
   <ts:cards>
-
-    <ts:token-card>
-      <ts:view-iconified/>
-      <ts:view>
-      </ts:view>
-    </ts:token-card>
-
     <ts:action>
       <ts:name>
         <ts:string xml:lang="en">Guide</ts:string>
