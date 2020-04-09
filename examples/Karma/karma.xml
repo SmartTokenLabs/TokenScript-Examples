@@ -4,14 +4,14 @@
         <!ENTITY market.en SYSTEM "market.en.shtml">
         <!ENTITY style SYSTEM "style.css">
         <!ENTITY start.en SYSTEM "start.en.shtml">
-        <!ENTITY view.en SYSTEM "view.en.shtml">
-        <!ENTITY view-iconified.en SYSTEM "view-iconified.en.shtml">
+        <!ENTITY item-view.en SYSTEM "item-view.en.shtml">
 ]>
-<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript"
 >
     <ts:name>
         <ts:plurals xml:lang="en">
@@ -30,6 +30,7 @@
     <ts:contract interface="erc875" name="CarToken">
         <ts:address network="4">0x75cb2cc380d1387a79ee64b1b7c9fa051139a319</ts:address>
     </ts:contract>
+
     <ts:origins>
         <!-- Define the contract which holds the token that the user will use -->
         <ts:ethereum contract="CarToken">
@@ -44,29 +45,29 @@
                 </ts:plurals>
                 <ts:string xml:lang="zh">已经过期的票</ts:string>
             </ts:name>
-            <ts:filter>expired</ts:filter>
         </ts:selection>
     </ts:selections>
     <ts:cards>
-        <ts:token-card>
-            <style type="text/css">&style;</style>
-            <ts:view-iconified xml:lang="en">
-                &view-iconified.en;
-            </ts:view-iconified>
-            <ts:view xml:lang="en">
-                &view-iconified.en;
+        <ts:token>
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&item-view.en;</body>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&item-view.en;</body>
             </ts:view>
-        </ts:token-card>
+        </ts:token>
+
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">Start</ts:string>
                 <ts:string xml:lang="zh">开车</ts:string>
                 <ts:string xml:lang="es">Start</ts:string>
             </ts:name>
-            <ts:exclude selection="expired"/>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">
-                &start.en;
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&start.en;</body>
             </ts:view>
         </ts:action>
         <ts:action>
@@ -75,10 +76,9 @@
                 <ts:string xml:lang="zh">认证</ts:string>
                 <ts:string xml:lang="es">Attestationes</ts:string>
             </ts:name>
-            <ts:exclude selection="expired"/>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">
-                &attestations.en;
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&attestations.en;</body>
             </ts:view>
         </ts:action>
         <ts:action>
@@ -87,9 +87,9 @@
                 <ts:string xml:lang="zh">市场</ts:string>
                 <ts:string xml:lang="es">Market</ts:string>
             </ts:name>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">
-                &market.en;
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <body>&market.en;</body>
             </ts:view>
         </ts:action>
     </ts:cards>

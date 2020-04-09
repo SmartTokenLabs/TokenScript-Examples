@@ -2,7 +2,7 @@
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "../shared.css">
         <!ENTITY about.en SYSTEM "about.en.shtml">
-]>
+        ]>
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
           xmlns="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -11,10 +11,10 @@
           custodian="false"
 >
     <ts:name>
-        <ts:string xml:lang="en">Uniswap sETH V1</ts:string>
+        <ts:string xml:lang="en">Uniswap USDC V1</ts:string>
     </ts:name>
     <ts:contract interface="erc20" name="uniswap">
-        <ts:address network="1">0x4740C758859D4651061CC9CDEFdBa92BDc3a845d</ts:address>     <!--mainnet-->
+        <ts:address network="1">0x97dec872013f6b5fb443861090ad931542878126</ts:address>     <!--mainnet-->
     </ts:contract>
 
     <ts:origins>
@@ -24,11 +24,6 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
-            <ts:view-iconified/>
-            <ts:view>
-            </ts:view>
-        </ts:token-card>
         <ts:action>
             <ts:name>
                 <ts:string xml:lang="en">About</ts:string>
