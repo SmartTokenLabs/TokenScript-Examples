@@ -61,7 +61,6 @@
         </ts:order>
     </ts:ordering>
 
-    <ts:attribute-types>
         <!--
     There are 64 matches (1-64), each has up to 16 ticket classes,
     within each class, there are less than 65536 tickets.  A compact
@@ -418,5 +417,4 @@
             </ts:origins>
         </ts:attribute-type>
 
-    </ts:attribute-types>
 </ts:token>

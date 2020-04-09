@@ -36,7 +36,6 @@
     </ts:action>
 
   </ts:cards>
-  <ts:attribute-types>
     <!-- placeholder for future functions -->
     <ts:attribute-type id="symbol" syntax="1.3.6.1.4.1.1466.115.121.1.26">
       <ts:origins>
@@ -44,5 +43,4 @@
         </ts:ethereum>
       </ts:origins>
     </ts:attribute-type>
-  </ts:attribute-types>
 </ts:token>

@@ -98,7 +98,6 @@
 
 </ts:cards>
 
-<ts:attribute-types>
 
     <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
         <ts:origins>
@@ -161,5 +160,4 @@
         </ts:origins>
     </ts:attribute-type>
 
-</ts:attribute-types>
 </ts:token>

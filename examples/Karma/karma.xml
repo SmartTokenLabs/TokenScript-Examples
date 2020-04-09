@@ -36,17 +36,6 @@
         <ts:ethereum contract="CarToken">
         </ts:ethereum>
     </ts:origins>
-    <ts:selections>
-        <ts:selection id="expired">
-            <ts:name>
-                <ts:plurals xml:lang="en">
-                    <ts:string quantity="one">Expired Token</ts:string>
-                    <ts:string quantity="other">Expired Tokens</ts:string>
-                </ts:plurals>
-                <ts:string xml:lang="zh">已经过期的票</ts:string>
-            </ts:name>
-        </ts:selection>
-    </ts:selections>
     <ts:cards>
         <ts:token>
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -93,7 +82,6 @@
             </ts:view>
         </ts:action>
     </ts:cards>
-    <ts:attribute-types>
         <ts:attribute-type id="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:origins>
                 <ts:ethereum as="utf8" contract="CarToken" function="getLocality">
@@ -149,5 +137,4 @@
                 </ts:ethereum>
             </ts:origins>
         </ts:attribute-type>
-    </ts:attribute-types>
 </ts:token>
