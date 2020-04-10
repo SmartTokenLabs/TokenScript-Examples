@@ -8,7 +8,6 @@
           xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
-           exclude="small_balance"
 >
     <ts:name>
         <ts:string xml:lang="en">Convert to DAI</ts:string>
@@ -42,12 +41,23 @@
             <ts:user-entry as="e18"/>
         </ts:origins>
     </ts:attribute-type>
-    <!-- if the user tries to use this action when having little xdai balance -->
-        <ts:selection id="low-balance" filter="!(balance>1000000000)">
+    <!-- this selection prevents the user to use the action when
+         having little xdai balance.
+
+         This section is commented out since we don't know of
+         selection should be placed inside <action> - the alternative
+         design being that it is inside <token>. With this, it isn't
+         apparent that the filters are applicable to the input token:
+
+        <ts:selection id="low_balance" filter="!(balance>1000000000)">
             <ts:denial>
                 <ts:string xml:lang="en">Not enough balance.</ts:string>
             </ts:denial>
         </ts:selection>
+
+         to make it work, first uncomment, then add
+         exclude="low_balance" to the root element.
+    -->
     <ts:transaction>
         <ts:ethereum>
             <ts:to>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</ts:to>
