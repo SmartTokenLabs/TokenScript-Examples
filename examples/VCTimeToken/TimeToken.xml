@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE token  [
+        <!ENTITY style SYSTEM "shared.css">
+        <!ENTITY book.en SYSTEM "book.en.js">
+        ]>
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          custodian="false"
+>
+  <ts:name>
+    <ts:plurals xml:lang="en">
+      <ts:string quantity="one">VC TimeToken</ts:string>
+    </ts:plurals>
+  </ts:name>
+  <ts:contract interface="erc721" name="TimeToken">
+    <ts:address network="1">0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85</ts:address>
+  </ts:contract>
+  <ts:origins>
+    <!-- Define the contract which holds the token that the user will use -->
+    <ts:ethereum contract="TimeToken">
+    </ts:ethereum>
+  </ts:origins>
+
+  <ts:cards>
+    <ts:action>
+      <ts:name>
+        <ts:string xml:lang="en">Book</ts:string>
+      </ts:name>
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&style;</xhtml:style>
+        <xhtml:script type="text/javascript">&book.en;</xhtml:script>
+      </ts:view>
+    </ts:action>
+  </ts:cards>
+
+
+</ts:token>
