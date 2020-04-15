@@ -37,8 +37,9 @@
 
     <ts:cards>
         <ts:token>
+            <!-- style needs to go out of here to prevent override from render call inside js -->
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
+                <style type="text/css">&style;</style>
                 <script type="text/javascript">&fifa.en;</script>
             </ts:item-view>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">

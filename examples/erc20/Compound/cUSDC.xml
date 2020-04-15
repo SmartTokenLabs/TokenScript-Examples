@@ -40,7 +40,7 @@
         </ts:transaction>
         <ts:view xml:lang="en">
             <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            <script type="text/javascript">&enable.en;</script>
         </ts:view>
     </ts:action>
 
@@ -67,7 +67,7 @@
         </ts:transaction>
         <ts:view xml:lang="en">
             <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&mint.en;</xhtml:script>
+            <script type="text/javascript">&mint.en;</script>
         </ts:view>
     </ts:action>
 
@@ -92,7 +92,7 @@
         </ts:transaction>
         <ts:view xml:lang="en">
             <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&redeem.en;</xhtml:script>
+            <script type="text/javascript">&redeem.en;</script>
         </ts:view>
     </ts:action>
 

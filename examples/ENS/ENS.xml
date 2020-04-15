@@ -58,7 +58,7 @@
       </ts:transaction>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&release.en;</xhtml:script>
+        <script type="text/javascript">&release.en;</script>
       </ts:view>
     </ts:action>
 
@@ -92,7 +92,7 @@
       </ts:transaction>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&renew.en;</xhtml:script>
+        <script type="text/javascript">&renew.en;</script>
       </ts:view>
     </ts:action>
 
@@ -143,7 +143,7 @@
 
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&subdomain.en;</xhtml:script>
+        <script type="text/javascript">&subdomain.en;</script>
       </ts:view>
     </ts:action>
 

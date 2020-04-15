@@ -43,7 +43,7 @@
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+                <script type="text/javascript">&enable.en;</script>
             </ts:view>
         </ts:action>
 
@@ -69,7 +69,7 @@
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&supply.en;</xhtml:script>
+                <script type="text/javascript">&supply.en;</script>
             </ts:view>
         </ts:action>
 
@@ -95,7 +95,7 @@
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
+                <script type="text/javascript">&withdraw.en;</script>
             </ts:view>
         </ts:action>
 

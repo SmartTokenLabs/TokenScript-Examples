@@ -31,7 +31,7 @@
       </ts:name>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&guide.en;</xhtml:script>
+        <script type="text/javascript">&guide.en;</script>
       </ts:view>
     </ts:action>
 
@@ -41,7 +41,7 @@
       </ts:name>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&moreInfo.en;</xhtml:script>
+        <script type="text/javascript">&moreInfo.en;</script>
       </ts:view>
     </ts:action>
 

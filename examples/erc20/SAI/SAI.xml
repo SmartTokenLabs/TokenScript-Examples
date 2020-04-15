@@ -51,7 +51,7 @@
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&sai-to-dai.en;</xhtml:script>
+                <script type="text/javascript">&sai-to-dai.en;</script>
             </ts:view>
         </ts:action>
 
@@ -69,7 +69,7 @@
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+                <script type="text/javascript">&enable.en;</script>
             </ts:view>
         </ts:action>
 
@@ -79,7 +79,7 @@
             </ts:name>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&important.en;</xhtml:script>
+                <script type="text/javascript">&important.en;</script>
             </ts:view>
         </ts:action>
 
@@ -89,7 +89,7 @@
             </ts:name>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
+                <script type="text/javascript">&bestRates.en;</script>
             </ts:view>
         </ts:action>
 
