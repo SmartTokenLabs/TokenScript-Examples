@@ -2,6 +2,7 @@
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY book.en SYSTEM "book.en.js">
+        <!ENTITY view.en SYSTEM "view.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -17,8 +18,8 @@
       <ts:string quantity="one">VC TimeToken</ts:string>
     </ts:plurals>
   </ts:name>
-  <ts:contract interface="erc721" name="TimeToken">
-    <ts:address network="1">0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85</ts:address>
+  <ts:contract interface="erc875" name="TimeToken">
+    <ts:address network="1">0x63cCEF733a093E5Bd773b41C96D3eCE361464942</ts:address>
   </ts:contract>
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
@@ -27,6 +28,16 @@
   </ts:origins>
 
   <ts:cards>
+    <ts:token>
+      <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">&style;</style>
+        <script type="text/javascript">&view.en;</script>
+      </ts:item-view>
+      <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">&style;</style>
+        <script type="text/javascript">&view.en;</script>
+      </ts:view>
+    </ts:token>
     <ts:action>
       <ts:name>
         <ts:string xml:lang="en">Book</ts:string>
