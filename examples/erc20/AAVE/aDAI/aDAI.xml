@@ -87,7 +87,7 @@
                     <ts:string xml:lang="en">Amount of aTokens to redeem</ts:string>
                 </ts:name>
                 <ts:origins>
-                    <ts:user-entry as="e8"/>
+                    <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
