@@ -96,58 +96,6 @@
         <xhtml:script type="text/javascript">&renew.en;</xhtml:script>
       </ts:view>
     </ts:action>
-
-    <ts:action>
-      <ts:name>
-        <ts:string xml:lang="en">Add Subdomain</ts:string>
-      </ts:name>
-
-      <ts:attribute-type id="node" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
-          <ts:string xml:lang="en">node</ts:string>
-        </ts:name>
-        <ts:origins>
-          <ts:user-entry as="bytes"/>
-        </ts:origins>
-      </ts:attribute-type>
-
-      <ts:attribute-type id="subdomainHash" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
-          <ts:string xml:lang="en">subdomainHash</ts:string>
-        </ts:name>
-        <ts:origins>
-          <ts:user-entry as="bytes"/>
-        </ts:origins>
-      </ts:attribute-type>
-
-      <ts:attribute-type id="owner" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
-          <ts:string xml:lang="en">owner</ts:string>
-        </ts:name>
-        <ts:origins>
-          <ts:user-entry as="address"/>
-        </ts:origins>
-      </ts:attribute-type>
-      <ts:transaction>
-        <ts:ethereum function="setSubnodeRecord" contract="registry">
-          <ts:data>
-            <ts:bytes32 ref="node"/>
-            <ts:bytes32 ref="subdomainHash"/>
-            <ts:address ref="owner"/>
-            <!-- default resolver -->
-            <ts:address>0xDaaF96c344f63131acadD0Ea35170E7892d3dfBA</ts:address>
-            <!-- TTL, set to 0 -->
-            <ts:uint64>0</ts:uint64>
-          </ts:data>
-        </ts:ethereum>
-      </ts:transaction>
-
-      <ts:view xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&subdomain.en;</xhtml:script>
-      </ts:view>
-    </ts:action>
-
   </ts:cards>
 
   <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.15">
