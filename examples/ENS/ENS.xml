@@ -3,6 +3,7 @@
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY release.en SYSTEM "release.en.js">
         <!ENTITY renew.en SYSTEM "renew.en.js">
+        <!ENTITY records.en SYSTEM "recordsBundle.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -24,6 +25,10 @@
   <ts:contract name="registry">
     <ts:address network="1">0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e</ts:address>
   </ts:contract>
+  <ts:contract name="PublicResolver">
+    <ts:address network="1">0xDaaF96c344f63131acadD0Ea35170E7892d3dfBA</ts:address>
+  </ts:contract>
+
   <!-- emitted via: function registerWithConfig(string memory name, address owner, uint duration, bytes32 secret, address resolver, address addr) public payable -->
   <ts:contract name="ETHRegistrarController">
     <ts:address network="1">0x283af0b28c62c092c9727f1ee09c02ca627eb7f5</ts:address>
@@ -64,6 +69,66 @@
 
     <ts:action>
       <ts:name>
+        <ts:string xml:lang="en">Records</ts:string>
+      </ts:name>
+
+      <ts:attribute-type id="node" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+          <ts:string xml:lang="en">node</ts:string>
+        </ts:name>
+        <ts:origins>
+          <ts:user-entry as="bytes"/>
+        </ts:origins>
+      </ts:attribute-type>
+
+      <ts:attribute-type id="key" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+          <ts:string xml:lang="en">key</ts:string>
+        </ts:name>
+        <ts:origins>
+          <ts:user-entry as="utf8"/>
+        </ts:origins>
+      </ts:attribute-type>
+
+      <ts:attribute-type id="value" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+          <ts:string xml:lang="en">value</ts:string>
+        </ts:name>
+        <ts:origins>
+          <ts:user-entry as="utf8"/>
+        </ts:origins>
+      </ts:attribute-type>
+
+      <ts:attribute-type id="emailRecord" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:origins>
+          <ts:ethereum function="text" contract="PublicResolver" as="utf8">
+            <ts:data>
+              <ts:bytes32 ref="node"/>
+              <ts:string>email</ts:string>
+            </ts:data>
+          </ts:ethereum>
+        </ts:origins>
+      </ts:attribute-type>
+
+      <ts:transaction>
+        <ts:ethereum function="setText" contract="PublicResolver" as="bool">
+          <ts:data>
+            <ts:bytes32 ref="node"/>
+            <ts:string>email</ts:string>
+            <ts:string ref="value"/>
+          </ts:data>
+        </ts:ethereum>
+      </ts:transaction>
+
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&style;</xhtml:style>
+        <xhtml:script type="text/javascript">&records.en;</xhtml:script>
+      </ts:view>
+
+    </ts:action>
+
+    <ts:action>
+      <ts:name>
         <ts:string xml:lang="en">Renew</ts:string>
       </ts:name>
 
@@ -95,6 +160,7 @@
         <xhtml:script type="text/javascript">&renew.en;</xhtml:script>
       </ts:view>
     </ts:action>
+
   </ts:cards>
 
   <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.15">
