@@ -45,22 +45,23 @@
   </ts:origins>
 
   <ts:cards>
-    <ts:action>
-      <ts:name>
-        <ts:string xml:lang="en">Refund</ts:string>
-      </ts:name>
-      <ts:transaction>
-        <ts:ethereum function="releaseDeed" contract="ENS">
-          <ts:data>
-            <ts:bytes32 ref="tokenId"/>
-          </ts:data>
-        </ts:ethereum>
-      </ts:transaction>
-      <ts:view xml:lang="en">
-        <xhtml:style type="text/css">&style;</xhtml:style>
-        <xhtml:script type="text/javascript">&release.en;</xhtml:script>
-      </ts:view>
-    </ts:action>
+    <!-- TODO Re add when selection is working properly (you can only do this if you have held for on year -->
+<!--    <ts:action>-->
+<!--      <ts:name>-->
+<!--        <ts:string xml:lang="en">Refund</ts:string>-->
+<!--      </ts:name>-->
+<!--      <ts:transaction>-->
+<!--        <ts:ethereum function="releaseDeed" contract="ENS">-->
+<!--          <ts:data>-->
+<!--            <ts:bytes32 ref="tokenId"/>-->
+<!--          </ts:data>-->
+<!--        </ts:ethereum>-->
+<!--      </ts:transaction>-->
+<!--      <ts:view xml:lang="en">-->
+<!--        <xhtml:style type="text/css">&style;</xhtml:style>-->
+<!--        <xhtml:script type="text/javascript">&release.en;</xhtml:script>-->
+<!--      </ts:view>-->
+<!--    </ts:action>-->
 
     <ts:action>
       <ts:name>
@@ -149,30 +150,20 @@
 
   </ts:cards>
 
+  <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+    <ts:origins>
+      <ts:ethereum event="NameRegistered" filter="label=${tokenId}" select="name"/>
+    </ts:origins>
+  </ts:attribute-type>
 
-    <ts:attribute-type id="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-      <ts:origins>
-        <ts:ethereum event="NameRegistered" filter="label=${tokenId}" select="name"/>
-      </ts:origins>
-    </ts:attribute-type>
-
-    <ts:attribute-type id="nameExpires" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-      <ts:origins>
-        <ts:ethereum function="nameExpires" contract="ENS" as="uint">
-          <ts:data>
-            <ts:uint256 ref="tokenId"/>
-          </ts:data>
-        </ts:ethereum>
-      </ts:origins>
-    </ts:attribute-type>
-
-    <!-- TODO dynamically get this for .xzy etc -->
-<!--    <ts:attribute-type id="baseNode" syntax="1.3.6.1.4.1.1466.115.121.1.15">-->
-<!--      <ts:origins>-->
-<!--        <ts:ethereum function="baseNode" contract="ETHRegistrarController" as="bytes">-->
-<!--        </ts:ethereum>-->
-<!--      </ts:origins>-->
-<!--    </ts:attribute-type>-->
-
+  <ts:attribute-type id="nameExpires" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:origins>
+      <ts:ethereum function="nameExpires" contract="ENS" as="uint">
+        <ts:data>
+          <ts:uint256 ref="tokenId"/>
+        </ts:data>
+      </ts:ethereum>
+    </ts:origins>
+  </ts:attribute-type>
 
 </ts:token>
