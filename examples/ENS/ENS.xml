@@ -30,7 +30,7 @@
     <ts:address network="1">0x283af0b28c62c092c9727f1ee09c02ca627eb7f5</ts:address>
     <asnx:module name="NameRegistered">
       <sequence>
-        <element name="ensName" ethereum:type="string"/>
+        <element name="name" ethereum:type="string"/>
         <element name="label" ethereum:type="bytes32" ethereum:indexed="true"/>
         <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
         <element name="cost" ethereum:type="uint"/>
