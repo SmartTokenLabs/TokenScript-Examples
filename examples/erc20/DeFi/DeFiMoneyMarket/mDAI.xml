@@ -148,7 +148,7 @@
                 <ts:string xml:lang="en">Token Decimals</ts:string>
             </ts:name>
             <ts:origins>
-                <ts:ethereum function="decimals" contract="mDAI" as="uint8">
+                <ts:ethereum function="decimals" contract="mDAI" as="uint">
                 </ts:ethereum>
             </ts:origins>
         </ts:attribute-type>

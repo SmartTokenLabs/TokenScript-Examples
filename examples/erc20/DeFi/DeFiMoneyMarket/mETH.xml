@@ -48,9 +48,7 @@
             </ts:attribute-type>
             <ts:transaction>
                 <ts:ethereum function="mint" contract="mETH" as="uint">
-                    <ts:data>
-                        <ts:uint256 ref="mintAmount"/>
-                    </ts:data>
+                    <ts:value ref="mintAmount"/>
                 </ts:ethereum>
             </ts:transaction>
             <style type="text/css">&style;</style>
@@ -128,7 +126,7 @@
                 <ts:string xml:lang="en">Token Decimals</ts:string>
             </ts:name>
             <ts:origins>
-                <ts:ethereum function="decimals" contract="mETH" as="uint8">
+                <ts:ethereum function="decimals" contract="mETH" as="uint">
                 </ts:ethereum>
             </ts:origins>
         </ts:attribute-type>

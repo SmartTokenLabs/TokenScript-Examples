@@ -6,6 +6,12 @@ class Token {
         this.props.underlyingToken = this.props.name.replace("m", "");
         // exchangeRate in DMM is always 18 decimals
         this.props.rate = (1 / (this.props.exchangeRate / 1e18)).toFixed(2);
+        if(this.props.name === "mUSDC") {
+            //we don't have the e6 multiplier
+            window.onConfirm = function() {
+                document.getElementById("mintAmount").value = parseFloat(document.getElementById("mintAmount").value) * 1e+6;
+            }
+        }
     }
 
     mustEnableFirstPage(APR, mTokenBalance, tokenBalance) {

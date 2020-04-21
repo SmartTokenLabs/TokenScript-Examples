@@ -61,9 +61,7 @@
                     <ts:string xml:lang="en">Amount to supply</ts:string>
                 </ts:name>
                 <ts:origins>
-                    <!-- e6 is a hard coded multiplier.
-                    rationale for hard-coding: avoiding over-design  -->
-                    <ts:user-entry as="e6"/>
+                    <ts:user-entry as="uint"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
@@ -87,7 +85,7 @@
                 </ts:name>
                 <ts:origins>
                     <!--mUSDC has 18 decimals -->
-                    <ts:user-entry as="e6"/>
+                    <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
@@ -148,7 +146,7 @@
                 <ts:string xml:lang="en">Token Decimals</ts:string>
             </ts:name>
             <ts:origins>
-                <ts:ethereum function="decimals" contract="mUSDC" as="uint8">
+                <ts:ethereum function="decimals" contract="mUSDC" as="uint">
                 </ts:ethereum>
             </ts:origins>
         </ts:attribute-type>
