@@ -24,9 +24,14 @@
     <ts:origins>
         <ts:ethereum contract="cDAI"/>
     </ts:origins>
-
+    <ts:selection id="enabled" filter="allowance>0">
+        <ts:name>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:name>
+    </ts:selection>
     <ts:cards>
-        <ts:action>
+        <!-- Do not show this card if the token contract is already enabled -->
+        <ts:action exclude="enabled">
             <ts:name>
                 <ts:string xml:lang="en">Enable</ts:string>
             </ts:name>
@@ -96,69 +101,67 @@
             </ts:view>
         </ts:action>
 
-
     </ts:cards>
 
+    <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:origins>
+            <ts:ethereum function="allowance" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</ts:address>
+                </ts:data>
+            </ts:ethereum>
+        </ts:origins>
+    </ts:attribute-type>
 
-        <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:origins>
-                <ts:ethereum function="allowance" contract="DAI" as="uint">
-                    <ts:data>
-                        <ts:address ref="ownerAddress"/>
-                        <ts:address>0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</ts:address>
-                    </ts:data>
-                </ts:ethereum>
-            </ts:origins>
-        </ts:attribute-type>
+    <!-- your balance in DAI (not compound DAI) -->
+    <ts:attribute-type id="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:name>
+        <ts:origins>
+            <ts:ethereum function="balanceOf" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ts:ethereum>
+        </ts:origins>
+    </ts:attribute-type>
 
-        <!-- your balance in DAI (not compound DAI) -->
-        <ts:attribute-type id="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
-                <ts:string xml:lang="en">Balance</ts:string>
-                <ts:string xml:lang="zh">餘額</ts:string>
-            </ts:name>
-            <ts:origins>
-                <ts:ethereum function="balanceOf" contract="DAI" as="uint">
-                    <ts:data>
-                        <ts:address ref="ownerAddress"/>
-                    </ts:data>
-                </ts:ethereum>
-            </ts:origins>
-        </ts:attribute-type>
+    <!-- DAI to cDAI exchange rate -->
+    <ts:attribute-type id="exchangeRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+            <ts:string xml:lang="en">Exchange Rate</ts:string>
+        </ts:name>
+        <ts:origins>
+            <ts:ethereum function="exchangeRateCurrent" contract="cDAI" as="uint">
+            </ts:ethereum>
+        </ts:origins>
+    </ts:attribute-type>
 
-        <!-- DAI to cDAI exchange rate -->
-        <ts:attribute-type id="exchangeRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
-                <ts:string xml:lang="en">Exchange Rate</ts:string>
-            </ts:name>
-            <ts:origins>
-                <ts:ethereum function="exchangeRateCurrent" contract="cDAI" as="uint">
-                </ts:ethereum>
-            </ts:origins>
-        </ts:attribute-type>
+    <ts:attribute-type id="cTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:name>
+        <ts:origins>
+            <ts:ethereum function="balanceOf" contract="cDAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ts:ethereum>
+        </ts:origins>
+    </ts:attribute-type>
 
-        <ts:attribute-type id="cTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
-                <ts:string xml:lang="en">Balance</ts:string>
-                <ts:string xml:lang="zh">餘額</ts:string>
-            </ts:name>
-            <ts:origins>
-                <ts:ethereum function="balanceOf" contract="cDAI" as="uint">
-                    <ts:data>
-                        <ts:address ref="ownerAddress"/>
-                    </ts:data>
-                </ts:ethereum>
-            </ts:origins>
-        </ts:attribute-type>
-
-        <ts:attribute-type id="supplyInterestRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
-                <ts:string xml:lang="en">Supply Interest Rate</ts:string>
-            </ts:name>
-            <ts:origins>
-                <ts:ethereum function="supplyRatePerBlock" contract="cDAI" as="uint">
-                </ts:ethereum>
-            </ts:origins>
-        </ts:attribute-type>
+    <ts:attribute-type id="supplyInterestRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:name>
+            <ts:string xml:lang="en">Supply Interest Rate</ts:string>
+        </ts:name>
+        <ts:origins>
+            <ts:ethereum function="supplyRatePerBlock" contract="cDAI" as="uint">
+            </ts:ethereum>
+        </ts:origins>
+    </ts:attribute-type>
 
 </ts:token>

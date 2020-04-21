@@ -24,9 +24,14 @@
 <ts:origins>
     <ts:ethereum contract="cWBTC"/>
 </ts:origins>
-
+    <ts:selection id="enabled" filter="allowance>0">
+        <ts:name>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:name>
+    </ts:selection>
 <ts:cards>
-    <ts:action>
+    <!-- Do not show this card if the token contract is already enabled -->
+    <ts:action exclude="enabled">
         <ts:name>
             <ts:string xml:lang="en">Enable</ts:string>
         </ts:name>
