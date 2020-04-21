@@ -2,7 +2,6 @@
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY release.en SYSTEM "release.en.js">
-        <!ENTITY subdomain.en SYSTEM "subdomainBundle.en.js">
         <!ENTITY renew.en SYSTEM "renew.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
