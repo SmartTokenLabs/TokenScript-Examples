@@ -29,6 +29,11 @@
             <ts:string xml:lang="en">contract already enabled</ts:string>
         </ts:name>
     </ts:selection>
+    <ts:selection id="notEnabled" filter="allowance=0">
+        <ts:name>
+            <ts:string xml:lang="en">contract not enabled</ts:string>
+        </ts:name>
+    </ts:selection>
 <ts:cards>
     <!-- Do not show this card if the token contract is already enabled -->
     <ts:action exclude="enabled">
@@ -49,7 +54,7 @@
         </ts:view>
     </ts:action>
 
-    <ts:action>
+    <ts:action exclude="notEnabled">
         <ts:name>
             <ts:string xml:lang="en">Supply</ts:string>
         </ts:name>
@@ -76,7 +81,7 @@
         </ts:view>
     </ts:action>
 
-    <ts:action>
+    <ts:action exclude="notEnabled">
         <ts:name>
             <ts:string xml:lang="en">Withdraw</ts:string>
         </ts:name>
