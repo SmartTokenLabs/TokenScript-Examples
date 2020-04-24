@@ -61,7 +61,8 @@
                     <ts:string xml:lang="en">Amount to supply</ts:string>
                 </ts:name>
                 <ts:origins>
-                    <ts:user-entry as="uint"/>
+                    <!--USDC has 6 decimals -->
+                    <ts:user-entry as="e6"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
@@ -84,8 +85,8 @@
                     <ts:string xml:lang="en">Amount to withdraw</ts:string>
                 </ts:name>
                 <ts:origins>
-                    <!--mUSDC has 18 decimals -->
-                    <ts:user-entry as="e18"/>
+                    <!--mUSDC has 6 decimals -->
+                    <ts:user-entry as="e6"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>

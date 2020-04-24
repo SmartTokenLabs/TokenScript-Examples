@@ -47,7 +47,7 @@
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ts:ethereum function="mint" contract="mETH" as="uint">
+                <ts:ethereum function="mintViaEther" contract="mETH" as="uint">
                     <ts:value ref="mintAmount"/>
                 </ts:ethereum>
             </ts:transaction>
