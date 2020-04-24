@@ -4,12 +4,15 @@
   "description": "",
   "main": "subdomain.en.js",
   "scripts": {
-    "build": "browserify subdomain.en.js > subdomainBundle.en.js"
+    "build": "browserify subdomain.en.js > subdomainBundle.en.js && browserify records.en.js > recordsBundle.en.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "eth-ens-namehash": "^2.0.8"
+  },
+  "devDependencies": {
+    "browserify": "^16.5.1"
   }
 }
