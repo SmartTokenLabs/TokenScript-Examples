@@ -4,7 +4,7 @@
   "description": "",
   "main": "subdomain.en.js",
   "scripts": {
-    "build": "browserify subdomain.en.js > subdomainBundle.en.js && browserify records.en.js > recordsBundle.en.js"
+    "build": "browserify records.en.js > recordsBundle.en.js"
   },
   "keywords": [],
   "author": "",

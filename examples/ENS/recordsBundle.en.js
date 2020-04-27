@@ -4190,6 +4190,5 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
     document.getElementById(tokenCardId).innerHTML = token.render();
     token.setup();
 };
-//]]>
-
 },{"eth-ens-namehash":4}]},{},[10]);
+//]]>
