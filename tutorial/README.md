@@ -127,8 +127,8 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
   * notice the "create-address" and "create-address" input fields
 
 
-* Coin.xml
-  * At the top of the xml (after the version tag), include references to front-end files `app.css` and `mint.shtml`:
+* Coin.xml: At the top of the xml (after the version tag), include references to front-end files `app.css` and `mint.shtml`:
+  * (For reference, full TokenScript file provided -> `tutorial-files/Coin.xml`)
 ```
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "app.css">
@@ -136,7 +136,7 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
     ]>
 ```
 
-  * Inside the <ts:cards> section, add the following <ts:action>. The english name is "Mint", and front-end files referenced (style and view).
+  * Coin.xml: Inside the <ts:cards> section, add the following <ts:action>. The english name is "Mint", and front-end files referenced (style and view).
 ```
         <ts:action>
             <ts:name>
@@ -152,7 +152,7 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
         </ts:action>
 ```
 
-  * To refer to the input types that will be used in a smart contract call, add their attribute-type (notice "create-address" and "create-amount")
+  * Coin.xml: To refer to the input types that will be used in a smart contract call, add their attribute-type (notice "create-address" and "create-amount")
 
 ```
 			...
@@ -179,7 +179,7 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
             ...
 ```
 
-  * Lastly add the transaction (refers to ethereum smart contract, function, and params in the data tag)
+  * Coin.xml: Lastly add the transaction (refers to ethereum smart contract, function, and params in the data tag)
 ```
             <ts:transaction>
                 <ts:ethereum function="mint" contract="Coin">
@@ -190,8 +190,11 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
                 </ts:ethereum>
             </ts:transaction>
 ```
-* Download the xml, css, shtml files, and jump to test using the section below on `Combining files and testing`
-  * The required Makefile for combining these files is in `tutorial-files`
+* Download the xml, css, shtml files, and jump to the section below to test: `Combining files and testing`
+  * The required `Makefile` for combining these files is in `tutorial-files`
+* Next steps: Once you have been able to test the Mint action, you'll notice the transaction is sent, but does not succeed because the wallet is not the minter.
+  * Add a function in the smart contract to set the minter address with a parameter, call from remix with the wallet address
+  * Alternately, add a standard `approve` function in the smart contract, and duplicate/modify the `mint` action in `Coin.xml`.
 
 ### [future] Obtaining sample files (schema 2020/03)
 
@@ -232,7 +235,8 @@ Congratulations, you can now add `Coin.canonicalized.xml` TokenScript for use in
 * you can either open the file directly, or manually move it to the AlphaWallet directory
   * eg Android: Internal storage `/AlphaWallet`
 * Now in AlphaWallet's Wallet tab, you should see the Coin token card.
-* Tapping on the token card will go to the token view, and you will see updated actions
+* Tapping on the token card will go to the token view, and the row of buttons (or "...") will see additional actions
+  * Tap the action to see your action card, enter inputs, then `Confirm` to execute the transaction
 
 ## Tools
 
