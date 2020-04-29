@@ -92,9 +92,9 @@ To see the default rendering of the contract as a fungible token:
 
 In the contract address, where the network is 3 for Ropsten, paste your contract address in place of `YOUR_CONTRACT_ADDRESS`.
 
-The UI elements rendering in studio (app.html) will captured differently for TokenScript.
+The UI elements rendering in studio (app.html) will be captured differently for TokenScript. Rather than a single view, individual actions are isolated in action cards.
 
-* Create a new file called mint.shtml, and initialise with this template:
+* For the action of Minting, create a new file called mint.shtml, and initialise with this template:
 ```
 <script type="text/javascript"><![CDATA[
 class Token {
@@ -122,7 +122,75 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
 <div id="root"></div>
 
 ```
-< to be continued >
+
+* mint.shtml: Inside the "ui segment" div, copy/paste contents of the "create" div from app.html
+  * notice the "create-address" and "create-address" input fields
+
+
+* Coin.xml
+  * At the top of the xml (after the version tag), include references to front-end files `app.css` and `mint.shtml`:
+```
+<!DOCTYPE token  [
+    <!ENTITY style SYSTEM "app.css">
+    <!ENTITY mint.en SYSTEM "mint.shtml">
+    ]>
+```
+
+  * Inside the <ts:cards> section, add the following <ts:action>. The english name is "Mint", and front-end files referenced (style and view).
+```
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Mint</ts:string>
+            </ts:name>
+            ...
+            <!-- attributetype tags -->
+            ...
+            <!-- transaction tag -->
+            ...
+            <style type="text/css">&style;</style>
+            <ts:view>&mint.en;</ts:view>
+        </ts:action>
+```
+
+  * To refer to the input types that will be used in a smart contract call, add their attribute-type (notice "create-address" and "create-amount")
+
+```
+			...
+            <ts:attribute-type id="create-address" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+                <ts:name>
+                    <ts:string xml:lang="en">Address to create</ts:string>
+                </ts:name>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design -->
+                    <ts:user-entry as="address"/>
+                </ts:origins>
+            </ts:attribute-type>
+            <ts:attribute-type id="create-amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:name>
+                    <ts:string xml:lang="en">Amount to create</ts:string>
+                </ts:name>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute-type>
+            ...
+```
+
+  * Lastly add the transaction (refers to ethereum smart contract, function, and params in the data tag)
+```
+            <ts:transaction>
+                <ts:ethereum function="mint" contract="Coin">
+                    <ts:data>
+                        <ts:address ref="create-address"/>
+                        <ts:uint256 ref="create-amount"/>
+                    </ts:data>
+                </ts:ethereum>
+            </ts:transaction>
+```
+* Download the xml, css, shtml files, and jump to test using the section below on `Combining files and testing`
 
 ### [future] Obtaining sample files (schema 2020/03)
 
@@ -158,6 +226,7 @@ When you want to have the file associated with your domain's SSL key, you will t
 
 Congratulations, you can now add `Coin.canonicalized.xml` TokenScript for use in AlphaWallet!
 
+* Note: Android users will have to ensure "TokenScript Overrides" is turned on in the Settings tab to give access to locally stored xml files.
 * Using your tool of choice, copy the file to your device that has AlphaWallet installed
 * you can either open the file directly, or manually move it to the AlphaWallet directory
   * eg Android: Internal storage `/AlphaWallet`
@@ -196,7 +265,12 @@ In lieu of adding each of the corresponding `bin` folders to your PATH variable,
 ### xmlsectool (optional signing)
 Each OS: installation instructions [here](https://wiki.shibboleth.net/confluence/display/XSTJ2/xmlsectool+V2+Home#xmlsectoolV2Home-ObtainingandUsingxmlsectool) (java).
 
+### (deprecated) xmlstarlet
+Linux: `sudo apt install xmlstarlet`
+OSX: `brew install xmlstarlet`
+Windows: https://sourceforge.net/projects/xmlstar/files/
+
 ### (future) xmlsec
 Linux: `sudo apt install xmlsec1`
 OSX: `brew install libxmlsec1`
-Windows: See above
+Windows: See section `Windows users` above.
