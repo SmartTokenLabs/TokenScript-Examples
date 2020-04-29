@@ -191,6 +191,7 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
             </ts:transaction>
 ```
 * Download the xml, css, shtml files, and jump to test using the section below on `Combining files and testing`
+  * The required Makefile for combining these files is in `tutorial-files`
 
 ### [future] Obtaining sample files (schema 2020/03)
 
