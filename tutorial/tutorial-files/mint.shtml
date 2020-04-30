@@ -1,0 +1,29 @@
+<script type="text/javascript"><![CDATA[
+class Token {
+    constructor(tokenInstance) {
+        this.props = tokenInstance
+
+    }
+
+    render() {
+        return `
+        <h2>Create new coins</h2>
+        <div class="input-group">
+            <h3>Address</h3>
+            <input type="text" id="create-address" placeholder="Address to receive Coin..." />
+        </div>
+        <div class="input-group">
+            <h3>Amount</h3>
+            <input type="number" id="create-amount" placeholder="Enter amount..." />
+        </div>
+        `;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+]]></script>
+<div id="root"></div>
