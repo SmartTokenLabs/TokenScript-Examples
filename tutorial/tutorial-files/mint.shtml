@@ -10,7 +10,7 @@ class Token {
         <h2>Create new coins</h2>
         <div class="input-group">
             <h3>Address</h3>
-            <input type="text" id="create-address" placeholder="Enter address..." />
+            <input type="text" id="create-address" placeholder="Address to receive Coin..." />
         </div>
         <div class="input-group">
             <h3>Amount</h3>
