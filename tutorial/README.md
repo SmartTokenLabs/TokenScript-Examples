@@ -1,12 +1,12 @@
 
 # TokenScript for your token
 These instructions will help you create a TokenScript interface for a smart contract.
-User interface code and business logic is organised in XML declarations for a TokenScript engine to render in a mobile wallet. Eg [AlphaWallet](https://alphawallet.com/).
+User interface code and business logic is organised in XML declarations for a TokenScript engine to render in a mobile wallet. E.g. [AlphaWallet](https://alphawallet.com/).
 
 
 ## Creating your token and UI widgets
 
-* Open studio.ethereum.org, and start the Coin project
+* Open (Ethereum Studio)[studio.ethereum.org], and start the Coin project
   * It shows the smart contract and front-end files, and runs a vm and the Coin files in the browser
 
 Although not conforming to the ERC20 interface, a few changes to the example code will have it demonstrable in AlphaWallet
@@ -41,8 +41,10 @@ At the time of writing, studio.ethereum.org defaults contract deployment to the 
 * Create a new file (also name it Coin.sol)
 * From studio, copy the source of `contracts/Coin.sol`. Then in remix, paste in the new Coin.sol
 * In the next studio tab, `compiler`, click `Compile Coin.sol`
-* In the next studio tab, click `Deploy`
-  * keep studio open you'll need it later for the contract abi
+* In the next studio tab
+  * select `Environment` -> `Injected Web3` (e.g. MetaMask, Ropsten)
+  * click `Deploy`
+  * (keep studio open you'll need it later for the contract abi)
 * Once deployed, copy the contract address to the clipboard
 
 ### View in AlphaWallet
@@ -54,7 +56,8 @@ To see the default rendering of the contract as a fungible token:
   * this is required to manually show tokens that you don't have a balance for
   * (alternately, in remix you can use the `mint` function, to give your wallet address some Coin, eg: `wallet_address, 88000000000000000000`)
 * Enter your contract address:
-  * The most convenient way is (from your computer) to paste the contract address into any [QR code generator](https://www.cssscript.com/demo/flexible-client-side-qr-code-generator/)
+  * A convenient way is (from your computer) to open (etherscan)[etherscan.io], paste in your address (then enter). Then click on the little QR icon to the right of the address in the top-left (next to the copy button).
+  * Alternately, paste the contract address into any [QR code generator](https://www.cssscript.com/demo/flexible-client-side-qr-code-generator/) (Like TokenScript, this one rendered locally in the browser)
   * Tap the camera on the address field to scan
 * Once you've added the contract address (QR code or otherwise), you should see the token card `Coin (COIN)`, tagged as `Ropsten`
 
@@ -62,7 +65,7 @@ To see the default rendering of the contract as a fungible token:
 
 ### Constructing your xml file (current schema 2019/10)
 
-* In studio, create a new file Coin.xml, and initialise with this template:
+* In studio, create a new file Coin.xml, and initialise with this template (notice the `name="Coin"` and reference in `origins` for your Coin token contract):
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
@@ -158,11 +161,9 @@ web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
 			...
             <ts:attribute-type id="create-address" syntax="1.3.6.1.4.1.1466.115.121.1.15">
                 <ts:name>
-                    <ts:string xml:lang="en">Address to create</ts:string>
+                    <ts:string xml:lang="en">Address to receive created tokens</ts:string>
                 </ts:name>
                 <ts:origins>
-                    <!-- e18 is a hard coded multiplier.
-                    rationale for hardcoding: avoiding over-design -->
                     <ts:user-entry as="address"/>
                 </ts:origins>
             </ts:attribute-type>
@@ -203,14 +204,15 @@ A really good starting point to generating your own TokenScript (for the upcomin
 * Enter the contract address
 * From remix, copy the contract abi, and paste it in the ABI-to-TokenScript tool
 * Enter a contract name, eg "Coin"
-* Finally select erc20 (although this example from studio doesn't completely conform to the erc20 interface)
+* Select erc20 (although this example from studio doesn't completely conform to the erc20 interface)
+* Finally, select your network (e.g. Ropsten)
 * Click `Create your TokenScript!`, and download `Coin.zip`
 
 Inside you will find:
 * A shared.css file
-* javascript files of the form <name>.<lang>.js (about.en.js, approve.en.js)
+* javascript files of the form <name>.<lang>.js (e.g. for actions: about.en.js, approve.en.js)
 * The precursor to your tokenscript file: Coin-TokenScript.xml
-  * update `<ts:address network="1">...contract_address...` to ropsten `<ts:address network="3">...contract_address...`
+  * Confirm the network e.g. ropsten `<ts:address network="3">...contract_address...`
   * Rename this file to Coin.xml for simplicity
 * A Makefile to combine the above files
 
@@ -223,7 +225,7 @@ Disclaimer: iOS users can simply airdrop the set of js/css/xml files to their de
 To combine the files you will need at least xmllint(ref) to combine the files, this will give you an unsigned (.canonicalized.xml) file for testing.
 When you want to have the file associated with your domain's SSL key, you will then need xmlsectool(ref) create a signed file (.tsml).
 
-* download/install the xmllint command line tool (ref)
+* download/install the xmllint command line tool (See [xmllint](#Header3) below)
   * can check with `xmllint --version`
 * in terminal, from the project directory, run `make Coin.canonicalized.xml`
   * this will look for Coin.xml and use xmllint to combine resources into the output file
