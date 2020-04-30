@@ -222,10 +222,10 @@ In the following section we'll combine these files in the xml.
 
 Disclaimer: iOS users can simply airdrop the set of js/css/xml files to their device.
 
-To combine the files you will need at least xmllint(ref) to combine the files, this will give you an unsigned (.canonicalized.xml) file for testing.
-When you want to have the file associated with your domain's SSL key, you will then need xmlsectool(ref) create a signed file (.tsml).
+To combine the files you will need at least [xmllint](#xmllint) to combine the files, this will give you an unsigned (.canonicalized.xml) file for testing.
+When you want to have the file associated with your domain's SSL key, you will then need [xmlsectool](#xmlsectool-optional-signing) create a signed file (.tsml).
 
-* download/install the xmllint command line tool (See [xmllint](#Header3) below)
+* download/install the xmllint command line tool (See instructions [below](#xmllint))
   * can check with `xmllint --version`
 * in terminal, from the project directory, run `make Coin.canonicalized.xml`
   * this will look for Coin.xml and use xmllint to combine resources into the output file
