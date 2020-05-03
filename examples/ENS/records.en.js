@@ -9,7 +9,9 @@ class Token {
 
     setup() {
         let namehash = require("eth-ens-namehash");
-        document.getElementById("node").value = namehash.hash(this.props.fullName);
+        web3.action.setProps({
+            nodeHash: namehash.hash(this.props.fullName)
+        })
         if(this.props.emailRecord === "") {
             document.getElementById("info").innerText = "No email record set for " + this.props.fullName;
         } else {
