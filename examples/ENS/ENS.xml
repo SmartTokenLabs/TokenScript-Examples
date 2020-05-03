@@ -94,7 +94,7 @@
         <ts:origins>
           <ts:ethereum as="utf8" contract="PublicResolver" function="text">
             <ts:data>
-              <ts:bytes32 local-ref="nodeRefs"></ts:bytes32>
+              <ts:bytes32 local-ref="nodeHash"></ts:bytes32>
               <ts:string>email</ts:string>
             </ts:data>
           </ts:ethereum>
@@ -104,7 +104,7 @@
       <ts:transaction>
         <ts:ethereum function="setText" contract="PublicResolver" as="bool">
           <ts:data>
-            <ts:bytes32 local-ref="nodeRefs"></ts:bytes32>
+            <ts:bytes32 local-ref="nodeHash"></ts:bytes32>
             <ts:string>email</ts:string>
             <ts:string ref="value"/>
           </ts:data>
