@@ -1,4 +1,4 @@
-<script type="text/javascript"><![CDATA[
+//<![CDATA[
 class Token {
 
     constructor(tokenInstance) {
@@ -24,10 +24,9 @@ class Token {
     }
 }
 
-web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
-    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+    document.getElementById(tokenCardId).innerHTML = new Token(currentTokenInstance).render();
 };
 
-]]></script>
-<div id="root"></div>
+//]]>
