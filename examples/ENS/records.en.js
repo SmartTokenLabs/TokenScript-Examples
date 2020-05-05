@@ -5,15 +5,15 @@ class Token {
         this.props = tokenInstance;
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
+        let namehash = require("eth-ens-namehash");
+        web3.action.setProps({
+            nodeHash: namehash.hash(this.props.fullName)
+        });
     }
 
     setup() {
-        let namehash = require("eth-ens-namehash");
         if(this.props.emailRecord === "") {
             document.getElementById("info").innerText = "No email record set for " + this.props.fullName;
-            web3.action.setProps({  //moved into here so we don't get an infinte refresh view loop
-                nodeHash: namehash.hash(this.props.fullName)
-            })
         } else {
             document.getElementById("info").innerText = `Email record for ${this.props.fullName} is ${this.props.emailRecord}`;
         }
@@ -28,7 +28,6 @@ class Token {
           <h3 id="info"></h3>
           <br>
           <h3>Set email record</h3>
-          <input type="hidden" id="node"> 
           <input type="text" id="value"> 
           </div>
         </div>`;
