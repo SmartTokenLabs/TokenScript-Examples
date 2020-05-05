@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
-        <!ENTITY release.en SYSTEM "release.en.js">
         <!ENTITY renew.en SYSTEM "renew.en.js">
         <!ENTITY records.en SYSTEM "recordsBundle.en.js">
         ]>
@@ -49,37 +48,11 @@
   </ts:origins>
 
   <ts:cards>
-    <!-- TODO Re add when selection is working properly (you can only do this if you have held for on year -->
-<!--    <ts:action>-->
-<!--      <ts:name>-->
-<!--        <ts:string xml:lang="en">Refund</ts:string>-->
-<!--      </ts:name>-->
-<!--      <ts:transaction>-->
-<!--        <ts:ethereum function="releaseDeed" contract="ENS">-->
-<!--          <ts:data>-->
-<!--            <ts:bytes32 ref="tokenId"/>-->
-<!--          </ts:data>-->
-<!--        </ts:ethereum>-->
-<!--      </ts:transaction>-->
-<!--      <ts:view xml:lang="en">-->
-<!--        <xhtml:style type="text/css">&style;</xhtml:style>-->
-<!--        <xhtml:script type="text/javascript">&release.en;</xhtml:script>-->
-<!--      </ts:view>-->
-<!--    </ts:action>-->
 
     <ts:action>
       <ts:name>
         <ts:string xml:lang="en">Records</ts:string>
       </ts:name>
-
-      <ts:attribute-type id="key" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
-          <ts:string xml:lang="en">key</ts:string>
-        </ts:name>
-        <ts:origins>
-          <ts:user-entry as="utf8"/>
-        </ts:origins>
-      </ts:attribute-type>
 
       <ts:attribute-type id="value" syntax="1.3.6.1.4.1.1466.115.121.1.36">
         <ts:name>
