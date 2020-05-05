@@ -26,8 +26,18 @@
         <ts:ethereum contract="SAI">
         </ts:ethereum>
     </ts:origins>
+    <ts:selection id="enabled" filter="allowance>0">
+        <ts:name>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:name>
+    </ts:selection>
+    <ts:selection id="notEnabled" filter="allowance=0">
+        <ts:name>
+            <ts:string xml:lang="en">contract not enabled</ts:string>
+        </ts:name>
+    </ts:selection>
     <ts:cards>
-        <ts:action>
+        <ts:action exclude="notEnabled">
             <ts:name>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
             </ts:name>
@@ -55,7 +65,7 @@
             </ts:view>
         </ts:action>
 
-        <ts:action>
+        <ts:action exclude="enabled">
             <ts:name>
                 <ts:string xml:lang="en">Enable Migration</ts:string>
             </ts:name>
