@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
+        <!ENTITY item-view-style SYSTEM "item-view.css">
+        <!ENTITY view-style SYSTEM "view.css">
         <!ENTITY renew.en SYSTEM "renew.en.js">
         <!ENTITY records.en SYSTEM "recordsBundle.en.js">
+        <!ENTITY view.en SYSTEM "viewBundle.en.js">
+        <!ENTITY item-view.en SYSTEM "item-view.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -48,6 +52,16 @@
   </ts:origins>
 
   <ts:cards>
+    <ts:token>
+      <ts:item-view xml:lang="en">
+        <xhtml:style type="text/css">&item-view-style;</xhtml:style>
+        <xhtml:script type="text/javascript">&item-view.en;</xhtml:script>
+      </ts:item-view>
+      <ts:view xml:lang="en">
+        <xhtml:style type="text/css">&view-style;</xhtml:style>
+        <xhtml:script type="text/javascript">&view.en;</xhtml:script>
+      </ts:view>
+    </ts:token>
 
     <ts:action>
       <ts:name>
@@ -138,6 +152,16 @@
       <ts:ethereum function="nameExpires" contract="ENS" as="uint">
         <ts:data>
           <ts:uint256 ref="tokenId"/>
+        </ts:data>
+      </ts:ethereum>
+    </ts:origins>
+  </ts:attribute-type>
+
+  <ts:attribute-type id="resolverAddress" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+    <ts:origins>
+      <ts:ethereum function="resolver" contract="registry" as="address">
+        <ts:data>
+          <ts:bytes32 local-ref="nodeHash"/>
         </ts:data>
       </ts:ethereum>
     </ts:origins>
