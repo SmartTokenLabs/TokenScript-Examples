@@ -5,6 +5,7 @@
         <!ENTITY redeem.en SYSTEM "withdraw.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
@@ -37,11 +38,11 @@
             </ts:origins>
         </ts:attribute-type>
         <ts:transaction>
-            <ts:ethereum function="mint" contract="cETH" as="uint">
+            <ethereum:call function="mint" contract="cETH" as="uint">
                 <ts:data>
                     <ts:uint256 ref="mintAmount"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:transaction>
         <ts:view xml:lang="en">
             <xhtml:style type="text/css">&style;</xhtml:style>
@@ -62,11 +63,11 @@
             </ts:origins>
         </ts:attribute-type>
         <ts:transaction>
-            <ts:ethereum function="redeem" contract="cETH" as="uint">
+            <ethereum:call function="redeem" contract="cETH" as="uint">
                 <ts:data>
                     <ts:uint256 ref="redeemAmount"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:transaction>
         <ts:view xml:lang="en">
             <xhtml:style type="text/css">&style;</xhtml:style>
@@ -83,8 +84,8 @@
             <ts:string xml:lang="en">Exchange Rate</ts:string>
         </ts:name>
         <ts:origins>
-            <ts:ethereum function="exchangeRateCurrent" contract="cETH" as="uint">
-            </ts:ethereum>
+            <ethereum:call function="exchangeRateCurrent" contract="cETH" as="uint">
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
@@ -94,11 +95,11 @@
             <ts:string xml:lang="zh">餘額</ts:string>
         </ts:name>
         <ts:origins>
-            <ts:ethereum function="balanceOf" contract="cETH" as="uint">
+            <ethereum:call function="balanceOf" contract="cETH" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
@@ -107,8 +108,8 @@
             <ts:string xml:lang="en">Supply Interest Rate</ts:string>
         </ts:name>
         <ts:origins>
-            <ts:ethereum function="supplyRatePerBlock" contract="cETH" as="uint">
-            </ts:ethereum>
+            <ethereum:call function="supplyRatePerBlock" contract="cETH" as="uint">
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 

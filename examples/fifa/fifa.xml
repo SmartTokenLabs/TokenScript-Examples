@@ -4,6 +4,7 @@
         <!ENTITY style SYSTEM "shared.css">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
@@ -31,8 +32,7 @@
 
     <ts:origins>
         <!-- Define the contract which holds the token that the user will use -->
-        <ts:ethereum contract="FIFA">
-        </ts:ethereum>
+        <ts:ethereum contract="FIFA"/>
     </ts:origins>
 
     <ts:cards>

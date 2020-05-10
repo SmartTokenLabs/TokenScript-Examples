@@ -7,6 +7,7 @@
     <!ENTITY style SYSTEM "shared.css">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -33,8 +34,7 @@
   </ts:contract>
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
-    <ts:ethereum contract="EntryToken">
-    </ts:ethereum>
+    <ts:ethereum contract="EntryToken"/>
   </ts:origins>
     <ts:selection id="expired" filter="expired=TRUE">
       <ts:name>
@@ -77,11 +77,11 @@
   </ts:cards>
     <ts:attribute-type id="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
       <ts:origins>
-        <ts:ethereum function="getLocality" contract="EntryToken" as="utf8">
+        <ethereum:call function="getLocality" contract="EntryToken" as="utf8">
             <ts:data>
               <ts:uint256 ref="tokenId"/>
             </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
 
     </ts:attribute-type>
@@ -96,38 +96,38 @@
     </ts:attribute-type>
     <ts:attribute-type id="expired" syntax="1.3.6.1.4.1.1466.115.121.1.7"> <!-- boolean -->
       <ts:origins>
-        <ts:ethereum function="isExpired" contract="EntryToken" as="bool">
+        <ethereum:call function="isExpired" contract="EntryToken" as="bool">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
     <ts:attribute-type id="street" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getStreet" contract="EntryToken" as="utf8">
+        <ethereum:call function="getStreet" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
     <ts:attribute-type id="building" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getBuildingName" contract="EntryToken" as="utf8">
+        <ethereum:call function="getBuildingName" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
     <ts:attribute-type id="state" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getState" contract="EntryToken" as="utf8">
+        <ethereum:call function="getState" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
 </ts:token>

@@ -4,6 +4,7 @@
         <!ENTITY xdai-bridge.en SYSTEM "xdai-bridge.en.js">
 ]>
 <ts:action xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -59,10 +60,10 @@
          exclude="low_balance" to the root element.
     -->
     <ts:transaction>
-        <ts:ethereum>
-            <ts:to>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</ts:to>
-            <ts:value ref="amount"/>
-        </ts:ethereum>
+        <ethereum:transfer>
+            <ethereum:to>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</ethereum:to>
+            <ethereum:ether ref="amount"/>
+        </ethereum:transfer>
     </ts:transaction>
     <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
         <style type="text/css">&style;</style>
