@@ -6,10 +6,10 @@
         <!ENTITY start.en SYSTEM "start.en.shtml">
         <!ENTITY item-view.en SYSTEM "item-view.en.shtml">
 ]>
-<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
