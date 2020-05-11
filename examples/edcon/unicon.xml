@@ -4,6 +4,7 @@
         <!ENTITY style SYSTEM "shared.css">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
@@ -23,8 +24,7 @@
 
     <ts:origins>
         <!-- Define the contract which holds the token that the user will use -->
-        <ts:ethereum contract="unicon">
-        </ts:ethereum>
+        <ts:ethereum contract="unicon"/>
     </ts:origins>
 
     <ts:cards>
@@ -125,11 +125,11 @@
                 <ts:string>Redeemed</ts:string>
             </ts:name>
             <ts:origins>
-                <ts:ethereum function="redeemed" contract="unicon" as="bool">
+                <ethereum:call function="redeemed" contract="unicon" as="bool">
                     <ts:data>
                         <ts:uint256 ref="tokenId"/>
                     </ts:data>
-                </ts:ethereum>
+                </ethereum:call>
             </ts:origins>
         </ts:attribute-type>
 
