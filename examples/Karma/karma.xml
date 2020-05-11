@@ -14,7 +14,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:plurals xml:lang="en">
             <ts:string quantity="one">Car Ownership Token</ts:string>
             <ts:string quantity="other">Car Ownership Tokens</ts:string>
@@ -27,7 +27,7 @@
             <ts:string quantity="one">汽车所有权令牌</ts:string>
             <ts:string quantity="other">汽车所有权令牌</ts:string>
         </ts:plurals>
-    </ts:name>
+    </ts:label>
     <ts:contract interface="erc875" name="CarToken">
         <ts:address network="4">0x75cb2cc380d1387a79ee64b1b7c9fa051139a319</ts:address>
     </ts:contract>
@@ -49,33 +49,33 @@
         </ts:token>
 
         <ts:action>
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Start</ts:string>
                 <ts:string xml:lang="zh">开车</ts:string>
                 <ts:string xml:lang="es">Start</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&start.en;</body>
             </ts:view>
         </ts:action>
         <ts:action>
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Attestations</ts:string>
                 <ts:string xml:lang="zh">认证</ts:string>
                 <ts:string xml:lang="es">Attestationes</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&attestations.en;</body>
             </ts:view>
         </ts:action>
         <ts:action>
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Market</ts:string>
                 <ts:string xml:lang="zh">市场</ts:string>
                 <ts:string xml:lang="es">Market</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&market.en;</body>
@@ -93,10 +93,10 @@
 
         </ts:attribute-type>
         <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id as="utf8" bitmask="00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"/>
             </ts:origins>

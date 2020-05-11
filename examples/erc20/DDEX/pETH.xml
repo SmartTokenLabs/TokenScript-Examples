@@ -11,9 +11,9 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-  <ts:name>
+  <ts:label>
     <ts:string xml:lang="en">DDEX pETH</ts:string>
-  </ts:name>
+  </ts:label>
   <ts:contract interface="erc20" name="pETH">
     <ts:address network="1">0x26F5f49E3bb3626b53E4573F07F8587F010019B5</ts:address>     <!--mainnet-->
   </ts:contract>
@@ -26,9 +26,9 @@
   <ts:cards>
 
     <ts:action>
-      <ts:name>
+      <ts:label>
         <ts:string xml:lang="en">Guide</ts:string>
-      </ts:name>
+      </ts:label>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>
         <xhtml:script type="text/javascript">&guide.en;</xhtml:script>

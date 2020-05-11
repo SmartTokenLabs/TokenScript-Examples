@@ -11,7 +11,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:plurals xml:lang="en">
             <ts:string quantity="one">Ticket</ts:string>
             <ts:string quantity="other">Tickets</ts:string>
@@ -24,7 +24,7 @@
             <ts:string quantity="one">入場券</ts:string>
             <ts:string quantity="other">入場券</ts:string>
         </ts:plurals>
-    </ts:name>
+    </ts:label>
 
     <ts:contract name="FIFA" interface="erc875">
         <ts:address network="1">0xA66A3F08068174e8F005112A8b2c7A507a822335</ts:address>
@@ -108,12 +108,12 @@
     1.3.6.1.4.1.1466.115.121.1.27 is Integer
   -->
         <ts:attribute-type id="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">City</ts:string>
                 <ts:string xml:lang="zh">城市</ts:string>
                 <ts:string xml:lang="es">Ciudad</ts:string>
                 <ts:string xml:lang="ru">город</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000FF000000000000000000000000000000" as="uint">
                     <ts:mapping>
@@ -189,12 +189,12 @@
         </ts:attribute-type>
 
         <ts:attribute-type id="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Venue</ts:string>
                 <ts:string xml:lang="zh">场馆</ts:string>
                 <ts:string xml:lang="es">Lugar</ts:string>
                 <ts:string xml:lang="ru">место встречи</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000FF0000000000000000000000000000" as="uint">
                     <ts:mapping>
@@ -280,44 +280,44 @@
          (SYNTAX 1.3.6.1.4.1.1466.115.121.1.11) per RFC 4519
              CountryName is two-characters long, not 3-characters.
          -->
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Team A</ts:string>
                 <ts:string xml:lang="zh">甲队</ts:string>
                 <ts:string xml:lang="es">Equipo A</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000000000FFFFFF00000000000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
         <ts:attribute-type id="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Team B</ts:string>
                 <ts:string xml:lang="zh">乙队</ts:string>
                 <ts:string xml:lang="es">Equipo B</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000000000000000FFFFFF00000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
         <ts:attribute-type id="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Match</ts:string>
                 <ts:string xml:lang="zh">场次</ts:string>
                 <ts:string xml:lang="es">Evento</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000000000000000000000FF000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
         <ts:attribute-type id="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Cat</ts:string>
                 <ts:string xml:lang="zh">等级</ts:string>
                 <ts:string xml:lang="es">Cat</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000000000000000000000FF0000" as="uint">
                     <ts:mapping>
@@ -370,12 +370,12 @@
             </ts:origins>
         </ts:attribute-type>
         <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
                 <ts:string xml:lang="es">Tiempo</ts:string>
                 <ts:string xml:lang="ru">время</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="000000000000000000000000000000000000FFFFFFFF00000000000000000000" as="uint">
                     <ts:mapping>
@@ -409,9 +409,9 @@
         </ts:attribute-type>
 
         <ts:attribute-type id="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
-            <ts:name>
+            <ts:label>
                 <ts:string>№</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="000000000000000000000000000000000000000000000000000000000000FFFF" as="uint"/>
             </ts:origins>

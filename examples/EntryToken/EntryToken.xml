@@ -13,7 +13,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-  <ts:name>
+  <ts:label>
     <ts:plurals xml:lang="en">
       <ts:string quantity="one">Ticket</ts:string>
       <ts:string quantity="other">Tickets</ts:string>
@@ -26,7 +26,7 @@
       <ts:string quantity="one">入場券</ts:string>
       <ts:string quantity="other">入場券</ts:string>
     </ts:plurals>
-  </ts:name>
+  </ts:label>
   <ts:contract interface="erc875" name="EntryToken">
     <ts:address network="1">0x63cCEF733a093E5Bd773b41C96D3eCE361464942</ts:address>
     <ts:address network="3">0xFB82A5a2922A249f32222316b9D1F5cbD3838678</ts:address>
@@ -37,13 +37,13 @@
     <ts:ethereum contract="EntryToken"/>
   </ts:origins>
     <ts:selection id="expired" filter="expired=TRUE">
-      <ts:name>
+      <ts:label>
         <ts:plurals xml:lang="en">
           <ts:string quantity="one">Expired Ticket</ts:string>
           <ts:string quantity="other">Expired Tickets</ts:string>
         </ts:plurals>
         <ts:string xml:lang="zh">已经过期的票</ts:string>
-      </ts:name>
+      </ts:label>
     </ts:selection>
   <ts:cards>
     <ts:token>
@@ -63,11 +63,11 @@
       window.onConfirm is called if user hit "confirm";
       window.close() causes the back button to be pressed.
       -->
-      <ts:name>
+      <ts:label>
         <ts:string xml:lang="en">Enter</ts:string>
         <ts:string xml:lang="zh">入場</ts:string>
         <ts:string xml:lang="es">Entrar</ts:string>
-      </ts:name>
+      </ts:label>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
         <style type="text/css">&style;</style>
         <script type="text/javascript">&enter.en;</script>
@@ -86,10 +86,10 @@
 
     </ts:attribute-type>
     <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
-      <ts:name>
+      <ts:label>
         <ts:string xml:lang="en">Time</ts:string>
         <ts:string xml:lang="zh">时间</ts:string>
-      </ts:name>
+      </ts:label>
       <ts:origins>
         <ts:token-id bitmask="0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000" as="utf8"/>
       </ts:origins>

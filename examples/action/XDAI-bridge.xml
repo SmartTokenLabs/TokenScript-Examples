@@ -10,10 +10,10 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
 >
-    <ts:name>
+    <ts:label>
         <ts:string xml:lang="en">Convert to DAI</ts:string>
         <ts:string xml:lang="zh">將xDAI轉爲DAI</ts:string>
-    </ts:name>
+    </ts:label>
     <!-- because this action has xdai as input, it should be listed as
          an action under XDAI's token view. -->
     <ts:input>
@@ -32,10 +32,10 @@
         </ts:token>
     </ts:output>
     <ts:attribute-type id="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">Amount</ts:string>
             <ts:string xml:lang="zh">代幣金額</ts:string>
-        </ts:name>
+        </ts:label>
         <ts:origins>
             <!-- e18 is a hard coded multiplier.
             rationale for hardcoding: avoiding over-design  -->
