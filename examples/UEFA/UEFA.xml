@@ -56,7 +56,7 @@
     </ts:cards>
 
 
-        <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+        <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
             <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
@@ -67,7 +67,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="en">City</ts:string>
                 <ts:string xml:lang="zh">城市</ts:string>
@@ -128,7 +128,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="en">Venue</ts:string>
             </ts:label>
@@ -188,7 +188,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="countryA" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute-type name="countryA" syntax="1.3.6.1.4.1.1466.115.121.1.26">
             <!-- Intentionally avoid using countryName
          (SYNTAX 1.3.6.1.4.1.1466.115.121.1.11) per RFC 4519
              CountryName is two-characters long, not 3-characters.
@@ -202,7 +202,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute-type name="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
             <ts:label>
                 <ts:string xml:lang="zh">球队 B</ts:string>
                 <ts:string xml:lang="en">Team B</ts:string>
@@ -212,7 +212,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute-type name="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
             <ts:label>
                 <ts:string xml:lang="zh">比赛</ts:string>
                 <ts:string xml:lang="en">Match</ts:string>
@@ -222,7 +222,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="zh">等级</ts:string>
                 <ts:string xml:lang="en">Cat</ts:string>
@@ -251,7 +251,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute-type name="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
             <ts:label>
                 <ts:string>№</ts:string>
             </ts:label>
@@ -260,7 +260,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute-type name="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
             <ts:label>
                 <ts:string xml:lang="zh">已兑换</ts:string>
                 <ts:string xml:lang="en">Redeemed</ts:string>

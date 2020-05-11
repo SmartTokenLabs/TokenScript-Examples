@@ -41,7 +41,7 @@
     </ts:cards>
 
 
-        <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+        <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
             <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
             </ts:label>
@@ -52,7 +52,7 @@
         </ts:attribute-type>
 
         <!-- TODO get location & venue, if only one then remove this attribute and hardcode it into the UI -->
-        <ts:attribute-type id="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="en">City</ts:string>
             </ts:label>
@@ -67,7 +67,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="en">Venue</ts:string>
             </ts:label>
@@ -82,7 +82,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute-type name="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:label>
                 <ts:string xml:lang="en">Cat</ts:string>
                 <ts:string xml:lang="zh">等级</ts:string>
@@ -111,7 +111,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute-type name="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
             <ts:label>
                 <ts:string>№</ts:string>
             </ts:label>
@@ -120,7 +120,7 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute-type name="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
             <ts:label>
                 <ts:string>Redeemed</ts:string>
             </ts:label>

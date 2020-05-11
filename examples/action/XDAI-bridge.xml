@@ -31,7 +31,7 @@
             </ts:contract>
         </ts:token>
     </ts:output>
-    <ts:attribute-type id="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute-type name="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
         <ts:label>
             <ts:string xml:lang="en">Amount</ts:string>
             <ts:string xml:lang="zh">代幣金額</ts:string>

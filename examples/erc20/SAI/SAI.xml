@@ -41,7 +41,7 @@
             <ts:label>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
             </ts:label>
-            <ts:attribute-type id="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:attribute-type name="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
                 <ts:label>
                     <ts:string xml:lang="en">Amount in SAI</ts:string>
                     <ts:string xml:lang="zh">代幣金額</ts:string>
@@ -104,7 +104,7 @@
         </ts:action>
 
     </ts:cards>
-        <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:origins>
                 <ethereum:call function="allowance" contract="SAI" as="uint">
                     <ts:data>
@@ -114,7 +114,7 @@
                 </ethereum:call>
             </ts:origins>
         </ts:attribute-type>
-        <ts:attribute-type id="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:label>
                 <ts:string xml:lang="en">SAI-Balance</ts:string>
             </ts:label>

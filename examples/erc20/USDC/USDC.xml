@@ -31,7 +31,7 @@
             </ts:view>
         </ts:action>
     </ts:cards>
-        <ts:attribute-type id="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:label>
                 <ts:string xml:lang="en">USDC-Balance</ts:string>
             </ts:label>
