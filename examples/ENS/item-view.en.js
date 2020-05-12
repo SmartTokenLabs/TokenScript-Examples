@@ -22,7 +22,8 @@ class Token {
                 </div>
             </div>
             <div class="arrow">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAAIVBMVEUAAAAyMjIwMDAvLy8uLi4wMDAvLy8vLy8vLy8vLy////97NsRsAAAACXRSTlMAKUtSf4CI+Ppq55EJAAAAAWJLR0QKaND0VgAAACxJREFUGNNjYKA6YE1A4khMReIwVSJLqU8jTspiCoLN3OlAhASKpawBDDQAACvrCHWekQMTAAAAAElFTkSuQmCC">
+                <!-- TODO un-hide this, at the moment it is causing issues on different devices -->
+                <img hidden src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAAIVBMVEUAAAAyMjIwMDAvLy8uLi4wMDAvLy8vLy8vLy8vLy////97NsRsAAAACXRSTlMAKUtSf4CI+Ppq55EJAAAAAWJLR0QKaND0VgAAACxJREFUGNNjYKA6YE1A4khMReIwVSJLqU8jTspiCoLN3OlAhASKpawBDDQAACvrCHWekQMTAAAAAElFTkSuQmCC">
             </div>
         </div>`;
     }
