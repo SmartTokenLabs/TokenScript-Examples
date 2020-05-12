@@ -12,7 +12,7 @@ class Token {
     }
 
     setup() {
-        if(this.props.emailRecord === "") {
+        if(this.props.emailRecord === "" || this.props.emailRecord === undefined) {
             document.getElementById("info").innerText = "No email record set for " + this.props.fullName;
         } else {
             document.getElementById("info").innerText = `Email record for ${this.props.fullName} is ${this.props.emailRecord}`;
