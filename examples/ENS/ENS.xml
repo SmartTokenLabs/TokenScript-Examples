@@ -54,9 +54,9 @@
         <ts:string xml:lang="en">Records</ts:string>
       </ts:name>
 
-      <ts:attribute-type id="value" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+      <ts:attribute-type id="newRecordValue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
         <ts:name>
-          <ts:string xml:lang="en">value</ts:string>
+          <ts:string xml:lang="en">new record value</ts:string>
         </ts:name>
         <ts:origins>
           <ts:user-entry as="utf8"/>
@@ -79,7 +79,7 @@
           <ts:data>
             <ts:bytes32 local-ref="nodeHash"/>
             <ts:string>email</ts:string>
-            <ts:string ref="value"/>
+            <ts:string ref="newRecordValue"/>
           </ts:data>
         </ts:ethereum>
       </ts:transaction>
