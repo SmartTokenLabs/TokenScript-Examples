@@ -37,7 +37,7 @@
     </ts:selection>
     <ts:cards>
         <!-- Do not show this card if the token contract is already enabled -->
-        <ts:action exclude="enabled">
+        <ts:card type="action" exclude="enabled">
             <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
             </ts:label>
@@ -53,9 +53,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Supply</ts:string>
             </ts:label>
@@ -80,9 +80,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&supply.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Withdraw</ts:string>
             </ts:label>
@@ -105,7 +105,7 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
     </ts:cards>
 

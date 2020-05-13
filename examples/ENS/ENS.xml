@@ -48,7 +48,7 @@
 
   <ts:cards>
 
-    <ts:action>
+    <ts:card type="action">
       <ts:label>
         <ts:string xml:lang="en">Records</ts:string>
       </ts:label>
@@ -88,9 +88,9 @@
         <xhtml:script type="text/javascript">&records.en;</xhtml:script>
       </ts:view>
 
-    </ts:action>
+    </ts:card>
 
-    <ts:action>
+    <ts:card type="action">
       <ts:label>
         <ts:string xml:lang="en">Renew</ts:string>
       </ts:label>
@@ -122,7 +122,7 @@
         <xhtml:style type="text/css">&style;</xhtml:style>
         <xhtml:script type="text/javascript">&renew.en;</xhtml:script>
       </ts:view>
-    </ts:action>
+    </ts:card>
 
   </ts:cards>
 

@@ -23,7 +23,7 @@
 </ts:origins>
 
 <ts:cards>
-    <ts:action>
+    <ts:card type="action">
         <ts:label>
             <ts:string xml:lang="en">Supply</ts:string>
         </ts:label>
@@ -48,9 +48,9 @@
             <xhtml:style type="text/css">&style;</xhtml:style>
             <xhtml:script type="text/javascript">&mint.en;</xhtml:script>
         </ts:view>
-    </ts:action>
+    </ts:card>
 
-    <ts:action>
+    <ts:card type="action">
         <ts:label>
             <ts:string xml:lang="en">Withdraw</ts:string>
         </ts:label>
@@ -73,7 +73,7 @@
             <xhtml:style type="text/css">&style;</xhtml:style>
             <xhtml:script type="text/javascript">&redeem.en;</xhtml:script>
         </ts:view>
-    </ts:action>
+    </ts:card>
 
 </ts:cards>
 

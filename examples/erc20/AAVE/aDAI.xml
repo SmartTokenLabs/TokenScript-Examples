@@ -42,7 +42,7 @@
     </ts:selection>
 
     <ts:cards>
-        <ts:action exclude="enabled">
+        <ts:card type="action" exclude="enabled">
             <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
             </ts:label>
@@ -58,9 +58,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-<!--        <ts:action>-->
+<!--        <ts:card type="action">-->
 <!--            <ts:label>-->
 <!--                <ts:string xml:lang="en">Deposit</ts:string>-->
 <!--            </ts:label>-->
@@ -85,9 +85,9 @@
 <!--            </ts:transaction>-->
 <!--            <style type="text/css">&style;</style>-->
 <!--            <ts:view xml:lang="en">&supply.en;</ts:view>-->
-<!--        </ts:action>-->
+<!--        </ts:card>-->
 
-        <ts:action exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Redeem</ts:string>
             </ts:label>
@@ -110,7 +110,7 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
     </ts:cards>
 

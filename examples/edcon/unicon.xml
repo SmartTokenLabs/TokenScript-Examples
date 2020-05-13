@@ -28,7 +28,7 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token>
+        <ts:card type="token">
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&unicon.en;</script>
@@ -37,7 +37,7 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&unicon.en;</script>
             </ts:view>
-        </ts:token>
+        </ts:card>
     </ts:cards>
 
 

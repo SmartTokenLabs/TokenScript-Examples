@@ -24,7 +24,7 @@
   </ts:origins>
 
   <ts:cards>
-    <ts:action>
+    <ts:card type="action">
       <ts:label>
         <ts:string xml:lang="en">Guide</ts:string>
       </ts:label>
@@ -32,7 +32,7 @@
         <xhtml:style type="text/css">&style;</xhtml:style>
         <xhtml:script type="text/javascript">&guide.en;</xhtml:script>
       </ts:view>
-    </ts:action>
+    </ts:card>
 
   </ts:cards>
     <!-- placeholder for future functions -->

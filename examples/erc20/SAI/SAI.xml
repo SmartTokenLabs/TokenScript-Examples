@@ -37,7 +37,7 @@
         </ts:label>
     </ts:selection>
     <ts:cards>
-        <ts:action exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
             </ts:label>
@@ -63,9 +63,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&sai-to-dai.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="enabled">
+        <ts:card type="action" exclude="enabled">
             <ts:label>
                 <ts:string xml:lang="en">Enable Migration</ts:string>
             </ts:label>
@@ -81,9 +81,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Important!</ts:string>
             </ts:label>
@@ -91,9 +91,9 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&important.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:label>
@@ -101,7 +101,7 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
     </ts:cards>
         <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">

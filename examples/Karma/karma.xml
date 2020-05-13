@@ -37,7 +37,7 @@
         <ts:ethereum contract="CarToken"/>
     </ts:origins>
     <ts:cards>
-        <ts:token>
+        <ts:card type="token">
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&item-view.en;</body>
@@ -46,9 +46,9 @@
                 <style type="text/css">&style;</style>
                 <body>&item-view.en;</body>
             </ts:view>
-        </ts:token>
+        </ts:card>
 
-        <ts:action>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Start</ts:string>
                 <ts:string xml:lang="zh">开车</ts:string>
@@ -58,8 +58,8 @@
                 <style type="text/css">&style;</style>
                 <body>&start.en;</body>
             </ts:view>
-        </ts:action>
-        <ts:action>
+        </ts:card>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Attestations</ts:string>
                 <ts:string xml:lang="zh">认证</ts:string>
@@ -69,8 +69,8 @@
                 <style type="text/css">&style;</style>
                 <body>&attestations.en;</body>
             </ts:view>
-        </ts:action>
-        <ts:action>
+        </ts:card>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Market</ts:string>
                 <ts:string xml:lang="zh">市场</ts:string>
@@ -80,7 +80,7 @@
                 <style type="text/css">&style;</style>
                 <body>&market.en;</body>
             </ts:view>
-        </ts:action>
+        </ts:card>
     </ts:cards>
         <ts:attribute-type name="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
             <ts:origins>

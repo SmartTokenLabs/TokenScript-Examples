@@ -22,7 +22,7 @@
         <ts:ethereum contract="DAI"/>
     </ts:origins>
     <ts:cards>
-        <ts:action>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Convert to xDAI</ts:string>
             </ts:label>
@@ -50,8 +50,8 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&DAI-bridge.en;</xhtml:script>
             </ts:view>
-        </ts:action>
-        <ts:action>
+        </ts:card>
+        <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:label>
@@ -59,7 +59,7 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
     </ts:cards>
         <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:label>

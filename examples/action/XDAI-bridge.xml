@@ -3,7 +3,7 @@
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY xdai-bridge.en SYSTEM "xdai-bridge.en.js">
 ]>
-<ts:action xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+<ts:card type="action" xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
@@ -69,4 +69,4 @@
         <style type="text/css">&style;</style>
         <script type="text/javascript">&xdai-bridge.en;</script>
     </ts:view>
-</ts:action>
+</ts:card>
