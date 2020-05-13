@@ -40,14 +40,14 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.en;</script>
             </ts:item-view>
-            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <script type="text/javascript">&UEFA.en;</script>
-            </ts:view>
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.zh;</script>
             </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.en;</script>
+            </ts:view>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.zh;</script>
