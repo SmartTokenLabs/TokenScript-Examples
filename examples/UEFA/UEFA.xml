@@ -12,7 +12,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:plurals xml:lang="en">
             <ts:string quantity="one">Ticket</ts:string>
             <ts:string quantity="other">Tickets</ts:string>
@@ -21,7 +21,7 @@
             <ts:string quantity="one">票</ts:string>
             <ts:string quantity="other">票</ts:string>
         </ts:plurals>
-    </ts:name>
+    </ts:label>
 
     <ts:contract name="UEFA" interface="erc721">
         <ts:address network="100">0x0f43923667843bccafd12a5c001a7838fa5fc8ab</ts:address>
@@ -35,43 +35,43 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token>
+        <ts:card type="token">
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.en;</script>
+            </ts:item-view>
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&UEFA.zh;</script>
             </ts:item-view>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.en;</script>
             </ts:view>
-            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <script type="text/javascript">&UEFA.zh;</script>
-            </ts:item-view>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <script type="text/javascript">&UEFA.zh;</script>
             </ts:view>
-        </ts:token>
+        </ts:card>
     </ts:cards>
 
 
-        <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
-            <ts:name>
+        <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+            <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000" as="utf8">
                 </ts:token-id>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+        <ts:attribute-type name="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+            <ts:label>
                 <ts:string xml:lang="en">City</ts:string>
                 <ts:string xml:lang="zh">城市</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="000000000000000000000000000000000000FF00000000000000000000000000" as="uint">
                     <ts:mapping>
@@ -128,10 +128,10 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+        <ts:attribute-type name="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+            <ts:label>
                 <ts:string xml:lang="en">Venue</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000FF000000000000000000000000" as="uint">
                     <ts:mapping>
@@ -188,45 +188,45 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="countryA" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute-type name="countryA" syntax="1.3.6.1.4.1.1466.115.121.1.26">
             <!-- Intentionally avoid using countryName
          (SYNTAX 1.3.6.1.4.1.1466.115.121.1.11) per RFC 4519
              CountryName is two-characters long, not 3-characters.
          -->
-            <ts:name>
+            <ts:label>
                 <ts:string xml:lang="zh">球队 A</ts:string>
                 <ts:string xml:lang="en">Team A</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000FFFFFF000000000000000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
-            <ts:name>
+        <ts:attribute-type name="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+            <ts:label>
                 <ts:string xml:lang="zh">球队 B</ts:string>
                 <ts:string xml:lang="en">Team B</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000000000FFFFFF000000000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
-            <ts:name>
+        <ts:attribute-type name="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+            <ts:label>
                 <ts:string xml:lang="zh">比赛</ts:string>
                 <ts:string xml:lang="en">Match</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000000000000000FF0000000000" as="utf8"/>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
-            <ts:name>
+        <ts:attribute-type name="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+            <ts:label>
                 <ts:string xml:lang="zh">等级</ts:string>
                 <ts:string xml:lang="en">Cat</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="000000000000000000000000000000000000000000000000000000FF00000000" as="uint">
                     <ts:mapping>
@@ -251,20 +251,20 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
-            <ts:name>
+        <ts:attribute-type name="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+            <ts:label>
                 <ts:string>№</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000000000000000000000FFFF00" as="uint"/>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
-            <ts:name>
+        <ts:attribute-type name="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+            <ts:label>
                 <ts:string xml:lang="zh">已兑换</ts:string>
                 <ts:string xml:lang="en">Redeemed</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="redeemed" contract="UEFA" as="bool">
                     <ts:data>

@@ -13,9 +13,9 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:string xml:lang="en">cSAI</ts:string>
-    </ts:name>
+    </ts:label>
     <ts:contract name="cSAI" interface="erc20">
         <ts:address network="1">0xF5DCe57282A584D2746FaF1593d3121Fcac444dC</ts:address>
     </ts:contract>
@@ -26,21 +26,21 @@
         <ts:ethereum contract="cSAI"/>
     </ts:origins>
     <ts:selection id="enabled" filter="allowance>0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract already enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
     <ts:selection id="notEnabled" filter="allowance=0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract not enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
     <ts:cards>
         <!-- Do not show this card if the token contract is already enabled -->
-        <ts:action exclude="enabled">
-            <ts:name>
+        <ts:card type="action" exclude="enabled">
+            <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:transaction>
                 <ethereum:call function="approve" contract="SAI" as="bool">
                     <ts:data>
@@ -53,16 +53,16 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="notEnabled">
-            <ts:name>
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
                 <ts:string xml:lang="en">Supply</ts:string>
-            </ts:name>
-            <ts:attribute-type id="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-                <ts:name>
+            </ts:label>
+            <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
                     <ts:string xml:lang="en">Amount to supply</ts:string>
-                </ts:name>
+                </ts:label>
                 <ts:origins>
                     <!-- e18 is a hard coded multiplier.
                     rationale for hardcoding: avoiding over-design  -->
@@ -80,16 +80,16 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&supply.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="notEnabled">
-            <ts:name>
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
                 <ts:string xml:lang="en">Withdraw</ts:string>
-            </ts:name>
-            <ts:attribute-type id="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-                <ts:name>
+            </ts:label>
+            <ts:attribute-type name="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
                     <ts:string xml:lang="en">Amount to withdraw</ts:string>
-                </ts:name>
+                </ts:label>
                 <ts:origins>
                     <ts:user-entry as="e8"/>
                 </ts:origins>
@@ -105,13 +105,13 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
 
     </ts:cards>
 
 
-        <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:origins>
                 <ethereum:call function="allowance" contract="SAI" as="uint">
                     <ts:data>
@@ -123,11 +123,11 @@
         </ts:attribute-type>
 
         <!-- your balance in SAI (not compound SAI) -->
-        <ts:attribute-type id="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
+        <ts:attribute-type name="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:label>
                 <ts:string xml:lang="en">Balance</ts:string>
                 <ts:string xml:lang="zh">餘額</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="balanceOf" contract="SAI" as="uint">
                     <ts:data>
@@ -138,21 +138,21 @@
         </ts:attribute-type>
 
         <!-- SAI to cSAI exchange rate -->
-        <ts:attribute-type id="exchangeRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
+        <ts:attribute-type name="exchangeRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:label>
                 <ts:string xml:lang="en">Exchange Rate</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="exchangeRateCurrent" contract="cSAI" as="uint">
                 </ethereum:call>
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="cTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
+        <ts:attribute-type name="cTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:label>
                 <ts:string xml:lang="en">Balance</ts:string>
                 <ts:string xml:lang="zh">餘額</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="balanceOf" contract="cSAI" as="uint">
                     <ts:data>
@@ -162,10 +162,10 @@
             </ts:origins>
         </ts:attribute-type>
 
-        <ts:attribute-type id="supplyInterestRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
+        <ts:attribute-type name="supplyInterestRate" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:label>
                 <ts:string xml:lang="en">Supply Interest Rate</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="supplyRatePerBlock" contract="cSAI" as="uint">
                 </ethereum:call>

@@ -14,9 +14,9 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:string xml:lang="en">SAI</ts:string>
-    </ts:name>
+    </ts:label>
     <ts:contract name="MakerMigration" interface="erc20">
         <ts:address network="1">0xc73e0383f3aff3215e6f04b0331d58cecf0ab849</ts:address>
     </ts:contract>
@@ -27,25 +27,25 @@
         <ts:ethereum contract="SAI"/>
     </ts:origins>
     <ts:selection id="enabled" filter="allowance>0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract already enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
     <ts:selection id="notEnabled" filter="allowance=0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract not enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
     <ts:cards>
-        <ts:action exclude="notEnabled">
-            <ts:name>
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
-            </ts:name>
-            <ts:attribute-type id="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-                <ts:name>
+            </ts:label>
+            <ts:attribute-type name="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
                     <ts:string xml:lang="en">Amount in SAI</ts:string>
                     <ts:string xml:lang="zh">代幣金額</ts:string>
-                </ts:name>
+                </ts:label>
                 <ts:origins>
                     <!-- e18 is a hard coded multiplier.
                     rationale for hardcoding: avoiding over-design  -->
@@ -63,12 +63,12 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&sai-to-dai.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action exclude="enabled">
-            <ts:name>
+        <ts:card type="action" exclude="enabled">
+            <ts:label>
                 <ts:string xml:lang="en">Enable Migration</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:transaction>
                 <ethereum:call function="approve" contract="SAI" as="bool">
                     <ts:data>
@@ -81,30 +81,30 @@
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action>
-            <ts:name>
+        <ts:card type="action">
+            <ts:label>
                 <ts:string xml:lang="en">Important!</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&important.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-        <ts:action>
-            <ts:name>
+        <ts:card type="action">
+            <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
     </ts:cards>
-        <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:origins>
                 <ethereum:call function="allowance" contract="SAI" as="uint">
                     <ts:data>
@@ -114,10 +114,10 @@
                 </ethereum:call>
             </ts:origins>
         </ts:attribute-type>
-        <ts:attribute-type id="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-            <ts:name>
+        <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:label>
                 <ts:string xml:lang="en">SAI-Balance</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:origins>
                 <ethereum:call function="balanceOf" contract="SAI" as="uint">
                     <ts:data>
