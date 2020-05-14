@@ -42,6 +42,7 @@ class Token {
             element.innerText = "Set Correctly";
         } else {
             element.innerText = "Not Set - Action Required";
+            element.style.color = "#ff3b30";
         }
     }
 
