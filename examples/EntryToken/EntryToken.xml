@@ -6,13 +6,14 @@
     <!ENTITY icon.en SYSTEM "icon.en.shtml">
     <!ENTITY style SYSTEM "shared.css">
 ]>
-<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-  <ts:name>
+  <ts:label>
     <ts:plurals xml:lang="en">
       <ts:string quantity="one">Ticket</ts:string>
       <ts:string quantity="other">Tickets</ts:string>
@@ -25,7 +26,7 @@
       <ts:string quantity="one">入場券</ts:string>
       <ts:string quantity="other">入場券</ts:string>
     </ts:plurals>
-  </ts:name>
+  </ts:label>
   <ts:contract interface="erc875" name="EntryToken">
     <ts:address network="1">0x63cCEF733a093E5Bd773b41C96D3eCE361464942</ts:address>
     <ts:address network="3">0xFB82A5a2922A249f32222316b9D1F5cbD3838678</ts:address>
@@ -33,20 +34,19 @@
   </ts:contract>
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
-    <ts:ethereum contract="EntryToken">
-    </ts:ethereum>
+    <ts:ethereum contract="EntryToken"/>
   </ts:origins>
     <ts:selection id="expired" filter="expired=TRUE">
-      <ts:name>
+      <ts:label>
         <ts:plurals xml:lang="en">
           <ts:string quantity="one">Expired Ticket</ts:string>
           <ts:string quantity="other">Expired Tickets</ts:string>
         </ts:plurals>
         <ts:string xml:lang="zh">已经过期的票</ts:string>
-      </ts:name>
+      </ts:label>
     </ts:selection>
   <ts:cards>
-    <ts:token>
+    <ts:card type="token">
       <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
         <style type="text/css">&style;</style>
         <body>&icon.en;</body>
@@ -55,79 +55,79 @@
         <style type="text/css">&style;</style>
         <script type="text/javascript">&token.en;</script>
       </ts:view>
-    </ts:token>
-    <ts:action exclude="expired">
+    </ts:card>
+    <ts:card type="action" exclude="expired">
       <!-- this action is of the model confirm-back.
-      It should be <ts:action model="confirm-back"> but Weiwu
+      It should be <ts:card type="action" model="confirm-back"> but Weiwu
       shied away from specifying that due to the likely change of design causing an upgrade path issue.
       window.onConfirm is called if user hit "confirm";
       window.close() causes the back button to be pressed.
       -->
-      <ts:name>
+      <ts:label>
         <ts:string xml:lang="en">Enter</ts:string>
         <ts:string xml:lang="zh">入場</ts:string>
         <ts:string xml:lang="es">Entrar</ts:string>
-      </ts:name>
+      </ts:label>
       <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
         <style type="text/css">&style;</style>
         <script type="text/javascript">&enter.en;</script>
         <body>&enter.en.shtml;</body>
       </ts:view>
-    </ts:action>
+    </ts:card>
   </ts:cards>
-    <ts:attribute-type id="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+    <ts:attribute-type name="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
       <ts:origins>
-        <ts:ethereum function="getLocality" contract="EntryToken" as="utf8">
+        <ethereum:call function="getLocality" contract="EntryToken" as="utf8">
             <ts:data>
               <ts:uint256 ref="tokenId"/>
             </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
 
     </ts:attribute-type>
-    <ts:attribute-type id="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
-      <ts:name>
+    <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+      <ts:label>
         <ts:string xml:lang="en">Time</ts:string>
         <ts:string xml:lang="zh">时间</ts:string>
-      </ts:name>
+      </ts:label>
       <ts:origins>
         <ts:token-id bitmask="0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000" as="utf8"/>
       </ts:origins>
     </ts:attribute-type>
-    <ts:attribute-type id="expired" syntax="1.3.6.1.4.1.1466.115.121.1.7"> <!-- boolean -->
+    <ts:attribute-type name="expired" syntax="1.3.6.1.4.1.1466.115.121.1.7"> <!-- boolean -->
       <ts:origins>
-        <ts:ethereum function="isExpired" contract="EntryToken" as="bool">
+        <ethereum:call function="isExpired" contract="EntryToken" as="bool">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
-    <ts:attribute-type id="street" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+    <ts:attribute-type name="street" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getStreet" contract="EntryToken" as="utf8">
+        <ethereum:call function="getStreet" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
-    <ts:attribute-type id="building" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+    <ts:attribute-type name="building" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getBuildingName" contract="EntryToken" as="utf8">
+        <ethereum:call function="getBuildingName" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
-    <ts:attribute-type id="state" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+    <ts:attribute-type name="state" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
       <ts:origins>
-        <ts:ethereum function="getState" contract="EntryToken" as="utf8">
+        <ethereum:call function="getState" contract="EntryToken" as="utf8">
           <ts:data>
             <ts:uint256 ref="tokenId"/>
           </ts:data>
-        </ts:ethereum>
+        </ethereum:call>
       </ts:origins>
     </ts:attribute-type>
 </ts:token>

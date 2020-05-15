@@ -3,42 +3,42 @@
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY about.en SYSTEM "about.en.shtml">
         ]>
-<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:string xml:lang="en">Uniswap DAI V1</ts:string>
-    </ts:name>
+    </ts:label>
     <ts:contract interface="erc20" name="uniswap">
         <ts:address network="1">0x2a1530C4C41db0B0b2bB646CB5Eb1A67b7158667</ts:address>     <!--mainnet-->
     </ts:contract>
 
     <ts:origins>
         <!-- Define the contract which holds the token that the user will use -->
-        <ts:ethereum contract="uniswap"> <!-- as above ts:contract name -->
-        </ts:ethereum>
+        <ts:ethereum contract="uniswap"/> <!-- as above ts:contract name -->
     </ts:origins>
 
     <ts:cards>
-        <ts:action>
-            <ts:name>
+        <ts:card type="action">
+            <ts:label>
                 <ts:string xml:lang="en">About</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&about.en;</body>
             </ts:view>
-        </ts:action>
+        </ts:card>
     </ts:cards>
         <!-- placeholder for future functions -->
-        <ts:attribute-type id="symbol" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute-type name="symbol" syntax="1.3.6.1.4.1.1466.115.121.1.26">
             <ts:origins>
-                <ts:ethereum as="utf8" function="symbol">
-                </ts:ethereum>
+                <ethereum:call function="symbol" as="utf8">
+                </ethereum:call>
             </ts:origins>
         </ts:attribute-type>
 </ts:token>

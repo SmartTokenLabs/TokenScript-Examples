@@ -5,18 +5,18 @@
         <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
         <!ENTITY enable.en SYSTEM "enable.en.js">
         ]>
-<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           xmlns:ethereum="urn:ethereum:constantinople"
           custodian="false"
 >
-    <ts:name>
+    <ts:label>
         <ts:string xml:lang="en">aDAI</ts:string>
-    </ts:name>
+    </ts:label>
     <ts:contract name="aDAI" interface="erc20">
         <ts:address network="1">0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
     </ts:contract>
@@ -31,43 +31,43 @@
     </ts:origins>
 
     <ts:selection id="enabled" filter="allowance>0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract already enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
     <ts:selection id="notEnabled" filter="allowance=0">
-        <ts:name>
+        <ts:label>
             <ts:string xml:lang="en">contract not enabled</ts:string>
-        </ts:name>
+        </ts:label>
     </ts:selection>
 
     <ts:cards>
-        <ts:action exclude="enabled">
-            <ts:name>
+        <ts:card type="action" exclude="enabled">
+            <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
-            </ts:name>
+            </ts:label>
             <ts:transaction>
-                <ts:ethereum function="approve" contract="DAI" as="bool">
+                <ethereum:call function="approve" contract="DAI" as="bool">
                     <ts:data>
                         <ts:address>0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
                         <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
                     </ts:data>
-                </ts:ethereum>
+                </ethereum:call>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
-<!--        <ts:action>-->
-<!--            <ts:name>-->
+<!--        <ts:card type="action">-->
+<!--            <ts:label>-->
 <!--                <ts:string xml:lang="en">Deposit</ts:string>-->
-<!--            </ts:name>-->
-<!--            <ts:attribute-type id="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">-->
-<!--                <ts:name>-->
+<!--            </ts:label>-->
+<!--            <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">-->
+<!--                <ts:label>-->
 <!--                    <ts:string xml:lang="en">Amount to Deposit</ts:string>-->
-<!--                </ts:name>-->
+<!--                </ts:label>-->
 <!--                <ts:origins>-->
 <!--                    &lt;!&ndash; e18 is a hard coded multiplier.-->
 <!--                    rationale for hardcoding: avoiding over-design  &ndash;&gt;-->
@@ -75,103 +75,103 @@
 <!--                </ts:origins>-->
 <!--            </ts:attribute-type>-->
 <!--            <ts:transaction>-->
-<!--                <ts:ethereum function="deposit" contract="lendingPoolAddress" as="uint">-->
+<!--                <ethereum:call function="deposit" contract="lendingPoolAddress" as="uint">-->
 <!--                    <ts:data>-->
 <!--                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>-->
 <!--                        <ts:uint256 ref="mintAmount"/>-->
 <!--                        <ts:uint256>1101</ts:uint256> &lt;!&ndash; placeholder referral &ndash;&gt;-->
 <!--                    </ts:data>-->
-<!--                </ts:ethereum>-->
+<!--                </ethereum:call>-->
 <!--            </ts:transaction>-->
 <!--            <style type="text/css">&style;</style>-->
 <!--            <ts:view xml:lang="en">&supply.en;</ts:view>-->
-<!--        </ts:action>-->
+<!--        </ts:card>-->
 
-        <ts:action exclude="notEnabled">
-            <ts:name>
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
                 <ts:string xml:lang="en">Redeem</ts:string>
-            </ts:name>
-            <ts:attribute-type id="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-                <ts:name>
+            </ts:label>
+            <ts:attribute-type name="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
                     <ts:string xml:lang="en">Amount of aTokens to redeem</ts:string>
-                </ts:name>
+                </ts:label>
                 <ts:origins>
                     <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ts:ethereum function="redeem" contract="aDAI" as="uint">
+                <ethereum:call function="redeem" contract="aDAI" as="uint">
                     <ts:data>
                         <ts:uint256 ref="redeemAmount"/>
                     </ts:data>
-                </ts:ethereum>
+                </ethereum:call>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
-        </ts:action>
+        </ts:card>
 
     </ts:cards>
 
-    <ts:attribute-type id="lendingPoolAddress" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+    <ts:attribute-type name="lendingPoolAddress" syntax="1.3.6.1.4.1.1466.115.121.1.15">
         <ts:origins>
-            <ts:ethereum function="getLendingPool" contract="LendingPoolAddressesProvider" as="address">
-            </ts:ethereum>
+            <ethereum:call function="getLendingPool" contract="LendingPoolAddressesProvider" as="address">
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
-    <ts:attribute-type id="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
         <ts:origins>
-            <ts:ethereum function="allowance" contract="DAI" as="uint">
+            <ethereum:call function="allowance" contract="DAI" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                     <ts:address>0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
     <!-- your balance in DAI (not Aave DAI) -->
-    <ts:attribute-type id="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
+    <ts:attribute-type name="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:label>
             <ts:string xml:lang="en">Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
-        </ts:name>
+        </ts:label>
         <ts:origins>
-            <ts:ethereum function="balanceOf" contract="DAI" as="uint">
+            <ethereum:call function="balanceOf" contract="DAI" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
-    <ts:attribute-type id="aTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
+    <ts:attribute-type name="aTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:label>
             <ts:string xml:lang="en">Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
-        </ts:name>
+        </ts:label>
         <ts:origins>
-            <ts:ethereum function="balanceOf" contract="aDAI" as="uint">
+            <ethereum:call function="balanceOf" contract="aDAI" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
-    <ts:attribute-type id="aTokenPrincipleBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
-        <ts:name>
+    <ts:attribute-type name="aTokenPrincipleBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:label>
             <ts:string xml:lang="en">Principal Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
-        </ts:name>
+        </ts:label>
         <ts:origins>
-            <ts:ethereum function="principalBalanceOf" contract="aDAI" as="uint">
+            <ethereum:call function="principalBalanceOf" contract="aDAI" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
-            </ts:ethereum>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 
