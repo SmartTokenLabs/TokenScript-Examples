@@ -9,7 +9,7 @@
           xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
@@ -38,74 +38,74 @@
     <ts:cards>
         <!-- Do not show this card if the token contract is already enabled -->
         <ts:card type="action" exclude="enabled">
-        <ts:label>
-            <ts:string xml:lang="en">Enable</ts:string>
-        </ts:label>
-        <ts:transaction>
-            <ethereum:call function="approve" contract="USDC" as="bool">
-                <ts:data>
-                    <ts:address>0x39AA39c021dfbaE8faC545936693aC917d5E7563</ts:address>
-                    <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
-                </ts:data>
-            </ethereum:call>
-        </ts:transaction>
-        <ts:view xml:lang="en">
-            <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
-        </ts:view>
-    </ts:card>
-
-    <ts:card type="action" exclude="notEnabled">
-        <ts:label>
-            <ts:string xml:lang="en">Supply</ts:string>
-        </ts:label>
-        <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
             <ts:label>
-                <ts:string xml:lang="en">Amount to supply</ts:string>
+                <ts:string xml:lang="en">Enable</ts:string>
             </ts:label>
-            <ts:origins>
-                <!-- e18 is a hard coded multiplier.
-                rationale for hardcoding: avoiding over-design  -->
-                <ts:user-entry as="e18"/>
-            </ts:origins>
-        </ts:attribute-type>
-        <ts:transaction>
-            <ethereum:call function="mint" contract="cUSDC" as="uint">
-                <ts:data>
-                    <ts:uint256 ref="mintAmount"/>
-                </ts:data>
-            </ethereum:call>
-        </ts:transaction>
-        <ts:view xml:lang="en">
-            <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&mint.en;</xhtml:script>
-        </ts:view>
-    </ts:card>
+            <ts:transaction>
+                <ethereum:call function="approve" contract="USDC" as="bool">
+                    <ts:data>
+                        <ts:address>0x39AA39c021dfbaE8faC545936693aC917d5E7563</ts:address>
+                        <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
+                    </ts:data>
+                </ethereum:call>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
 
-    <ts:card type="action" exclude="notEnabled">
-        <ts:label>
-            <ts:string xml:lang="en">Withdraw</ts:string>
-        </ts:label>
-        <ts:attribute-type name="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:card type="action" exclude="notEnabled">
             <ts:label>
-                <ts:string xml:lang="en">Amount to withdraw</ts:string>
+                <ts:string xml:lang="en">Supply</ts:string>
             </ts:label>
-            <ts:origins>
-                <ts:user-entry as="e8"/>
-            </ts:origins>
-        </ts:attribute-type>
-        <ts:transaction>
-            <ethereum:call function="redeem" contract="cETH" as="uint">
-                <ts:data>
-                    <ts:uint256 ref="redeemAmount"/>
-                </ts:data>
-            </ethereum:call>
-        </ts:transaction>
-        <ts:view xml:lang="en">
-            <xhtml:style type="text/css">&style;</xhtml:style>
-            <xhtml:script type="text/javascript">&redeem.en;</xhtml:script>
-        </ts:view>
-    </ts:card>
+            <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to supply</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute-type>
+            <ts:transaction>
+                <ethereum:call function="mint" contract="cUSDC" as="uint">
+                    <ts:data>
+                        <ts:uint256 ref="mintAmount"/>
+                    </ts:data>
+                </ethereum:call>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&mint.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Withdraw</ts:string>
+            </ts:label>
+            <ts:attribute-type name="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to withdraw</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="e8"/>
+                </ts:origins>
+            </ts:attribute-type>
+            <ts:transaction>
+                <ethereum:call function="redeem" contract="cETH" as="uint">
+                    <ts:data>
+                        <ts:uint256 ref="redeemAmount"/>
+                    </ts:data>
+                </ethereum:call>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&redeem.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
 
 </ts:cards>
 
