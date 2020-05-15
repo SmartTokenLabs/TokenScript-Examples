@@ -60,10 +60,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          exclude="low_balance" to the root element.
     -->
     <ts:transaction>
-        <ethereum:transfer>
+        <ethereum:transaction>
             <ethereum:to>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</ethereum:to>
-            <ethereum:ether ref="amount"/>
-        </ethereum:transfer>
+            <ethereum:value ref="amount"/>
+        </ethereum:transaction>
     </ts:transaction>
     <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
         <style type="text/css">&style;</style>

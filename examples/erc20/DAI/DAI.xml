@@ -38,13 +38,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ethereum:call function="transfer" contract="DAI">
+                <ethereum:transaction function="transfer" contract="DAI">
                     <ts:data>
                         <!-- to convert erc20 DAI to native xDAI, transfer to this address -->
                         <ts:address>0x4aa42145Aa6Ebf72e164C9bBC74fbD3788045016</ts:address>
                         <ts:uint256 ref="amount"/>
                     </ts:data>
-                </ethereum:call>
+                </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>

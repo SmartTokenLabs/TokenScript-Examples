@@ -88,13 +88,13 @@
       </ts:attribute-type>
 
       <ts:transaction>
-        <ethereum:call function="setText" contract="PublicResolver" as="bool">
+        <ethereum:transaction function="setText" contract="PublicResolver" as="bool">
           <ts:data>
             <ts:bytes32 local-ref="nodeHash"/>
             <ts:string>email</ts:string>
             <ts:string ref="newRecordValue"/>
           </ts:data>
-        </ethereum:call>
+        </ethereum:transaction>
       </ts:transaction>
 
       <ts:view xml:lang="en">
@@ -124,13 +124,13 @@
       </ts:attribute-type>
 
       <ts:transaction>
-        <ethereum:call function="renew" contract="ETHRegistrarController" as="uint">
-          <ethereum:ether ref="renewalPricePerYear"/>
+        <ethereum:transaction function="renew" contract="ETHRegistrarController" as="uint">
           <ts:data>
             <ts:string ref="ensName"/>
             <ts:uint256>31556952</ts:uint256>
           </ts:data>
-        </ethereum:call>
+          <ethereum:value ref="renewalPricePerYear"/>
+        </ethereum:transaction>
       </ts:transaction>
       <ts:view xml:lang="en">
         <xhtml:style type="text/css">&style;</xhtml:style>

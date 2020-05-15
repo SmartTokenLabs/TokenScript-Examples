@@ -38,9 +38,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ethereum:call function="deposit" contract="weth">
-                    <ethereum:ether ref="amount"/>
-                </ethereum:call>
+                <ethereum:transaction function="deposit" contract="weth">
+                    <ethereum:value ref="amount"/>
+                </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
@@ -62,11 +62,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ethereum:call function="withdraw" contract="weth">
+                <ethereum:transaction function="withdraw" contract="weth">
                     <ts:data>
                         <ts:uint256 ref="amount"/>
                     </ts:data>
-                </ethereum:call>
+                </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>

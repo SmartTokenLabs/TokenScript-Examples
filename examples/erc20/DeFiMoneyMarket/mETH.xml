@@ -42,9 +42,9 @@
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ethereum:call function="mintViaEther" contract="mETH" as="uint">
-                    <ethereum:ether ref="mintAmount"/>
-                </ethereum:call>
+                <ethereum:transaction function="mintViaEther" contract="mETH" as="uint">
+                    <ethereum:value ref="mintAmount"/>
+                </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
@@ -66,11 +66,11 @@
                 </ts:origins>
             </ts:attribute-type>
             <ts:transaction>
-                <ethereum:call function="redeem" contract="mETH" as="uint">
+                <ethereum:transaction function="redeem" contract="mETH" as="uint">
                     <ts:data>
                         <ts:uint256 ref="redeemAmount"/>
                     </ts:data>
-                </ethereum:call>
+                </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
