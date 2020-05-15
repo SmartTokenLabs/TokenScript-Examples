@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
-        <!ENTITY fifa.en SYSTEM "fifa.en.shtml">
+        <!ENTITY fifa.en SYSTEM "fifa.en.js">
         <!ENTITY style SYSTEM "shared.css">
         ]>
-<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
@@ -36,15 +36,16 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:token-card>
-            <style type="text/css">&style;</style>
-            <ts:view-iconified xml:lang="en">
-                &fifa.en;
-            </ts:view-iconified>
-            <ts:view xml:lang="en">
-                &fifa.en;
+        <ts:token>
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&fifa.en;</script>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&fifa.en;</script>
             </ts:view>
-        </ts:token-card>
+        </ts:token>
     </ts:cards>
 
     <ts:ordering>
@@ -60,7 +61,6 @@
         </ts:order>
     </ts:ordering>
 
-    <ts:attribute-types>
         <!--
     There are 64 matches (1-64), each has up to 16 ticket classes,
     within each class, there are less than 65536 tickets.  A compact
@@ -417,5 +417,4 @@
             </ts:origins>
         </ts:attribute-type>
 
-    </ts:attribute-types>
 </ts:token>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
-    <!ENTITY token.en SYSTEM "token.en.shtml">
-    <!ENTITY enter.en SYSTEM "enter.en.shtml">
+    <!ENTITY token.en SYSTEM "token.en.js">
+    <!ENTITY enter.en.shtml SYSTEM "enter.en.shtml">
+    <!ENTITY enter.en SYSTEM "enter.en.js">
     <!ENTITY icon.en SYSTEM "icon.en.shtml">
     <!ENTITY style SYSTEM "shared.css">
 ]>
-<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+<ts:token xmlns:ts="http://tokenscript.org/2020/03/tokenscript"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
+          xsi:schemaLocation="http://tokenscript.org/2020/03/tokenscript http://tokenscript.org/2020/03/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
@@ -36,8 +36,7 @@
     <ts:ethereum contract="EntryToken">
     </ts:ethereum>
   </ts:origins>
-  <ts:selections>
-    <ts:selection id="expired">
+    <ts:selection id="expired" filter="expired=TRUE">
       <ts:name>
         <ts:plurals xml:lang="en">
           <ts:string quantity="one">Expired Ticket</ts:string>
@@ -45,20 +44,19 @@
         </ts:plurals>
         <ts:string xml:lang="zh">已经过期的票</ts:string>
       </ts:name>
-      <ts:filter>expired</ts:filter>
     </ts:selection>
-  </ts:selections>
   <ts:cards>
-    <ts:token-card>
-      <style type="text/css">&style;</style>
-      <ts:view-iconified xml:lang="en">
-        &icon.en;
-      </ts:view-iconified>
-      <ts:view xml:lang="en">
-        &token.en;
+    <ts:token>
+      <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">&style;</style>
+        <body>&icon.en;</body>
+      </ts:item-view>
+      <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">&style;</style>
+        <script type="text/javascript">&token.en;</script>
       </ts:view>
-    </ts:token-card>
-    <ts:action>
+    </ts:token>
+    <ts:action exclude="expired">
       <!-- this action is of the model confirm-back.
       It should be <ts:action model="confirm-back"> but Weiwu
       shied away from specifying that due to the likely change of design causing an upgrade path issue.
@@ -70,14 +68,13 @@
         <ts:string xml:lang="zh">入場</ts:string>
         <ts:string xml:lang="es">Entrar</ts:string>
       </ts:name>
-      <ts:exclude selection="expired"/>
-      <style type="text/css">&style;</style>
-      <ts:view xml:lang="en">
-        &enter.en;
+      <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">&style;</style>
+        <script type="text/javascript">&enter.en;</script>
+        <body>&enter.en.shtml;</body>
       </ts:view>
     </ts:action>
   </ts:cards>
-  <ts:attribute-types>
     <ts:attribute-type id="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
       <ts:origins>
         <ts:ethereum function="getLocality" contract="EntryToken" as="utf8">
@@ -133,5 +130,4 @@
         </ts:ethereum>
       </ts:origins>
     </ts:attribute-type>
-</ts:attribute-types>
 </ts:token>

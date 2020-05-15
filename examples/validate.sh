@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 	echo '	$ ./validate.sh */*.xml */*/*.xml'
 	echo '	'
 	echo 'You can specify a schema file (with absolute path)'
-	echo '	$ TOKENSCRIPT_SCHEMA=/home/james/TokenScript-Repo/www/2019/10/tokenscript/tokenscript.xsd  ./validate.sh */*.xml */*/*.xml'
+	echo '	$ TOKENSCRIPT_SCHEMA=/home/james/TokenScript-Repo/www/2020/03/tokenscript/tokenscript.xsd  ./validate.sh */*.xml */*/*.xml'
 fi
 
 CWD=${PWD}
