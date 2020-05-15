@@ -1,0 +1,79 @@
+.item-view-container {
+    width: 360px;
+    height: 80px;
+    background-color: #ffffff;
+}
+
+.arrow {
+    position: absolute;
+    left: 95%;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 11%;
+}
+
+.ensInfoBox {
+    float: right;
+}
+
+.ENS-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    float: left;
+    padding: 7% 2.5% 5%;
+}
+
+.ens-title {
+    width: 264px;
+    height: 25%;
+    font-family: SourceSansPro, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.7;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+.token-interface-details {
+    width: 282px;
+    height: 20px;
+    font-family: SourceSansPro, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    color: #727272;
+}
+
+#ensNameText {
+    width: 264px;
+    height: 34px;
+    font-family: SourceSansPro-Regular, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.7;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+#ensInfo {
+    width: 282px;
+    height: 20px;
+    font-family: SourceSansPro-Regular, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    color: #727272;
+}
