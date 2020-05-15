@@ -6,7 +6,8 @@
         <!ENTITY enable.en SYSTEM "enable.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -42,7 +43,7 @@
             </ts:attribute-type>
             <ts:transaction>
                 <ethereum:call function="mintViaEther" contract="mETH" as="uint">
-                    <ts:value ref="mintAmount"/>
+                    <ethereum:ether ref="mintAmount"/>
                 </ethereum:call>
             </ts:transaction>
             <ts:view xml:lang="en">
@@ -112,8 +113,8 @@
             <ts:string xml:lang="en">Exchange Rate</ts:string>
         </ts:label>
         <ts:origins>
-            <ts:ethereum function="getCurrentExchangeRate" contract="mETH" as="uint">
-            </ts:ethereum>
+            <ethereum:call function="getCurrentExchangeRate" contract="mETH" as="uint">
+            </ethereum:call>
         </ts:origins>
     </ts:attribute-type>
 

@@ -6,7 +6,8 @@
         <!ENTITY enable.en SYSTEM "enable.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
-          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
