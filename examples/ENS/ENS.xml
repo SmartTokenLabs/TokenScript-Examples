@@ -116,7 +116,7 @@
         <ts:origins>
           <ethereum:call function="rentPrice" contract="ETHRegistrarController" as="uint">
             <ts:data>
-              <ts:string ref="ensName"/>
+              <ts:string local-ref="userEnsName"/>
               <ts:uint256>31556952</ts:uint256>
             </ts:data>
           </ethereum:call>

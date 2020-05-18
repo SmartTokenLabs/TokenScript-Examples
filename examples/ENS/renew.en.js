@@ -6,6 +6,9 @@ class Token {
         this.props = tokenInstance;
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
+        web3.action.setProps({
+            userEnsName: this.props.fullName
+        });
     }
 
     formatTimeStamp(UNIX_timestamp) {
