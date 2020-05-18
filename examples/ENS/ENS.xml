@@ -129,7 +129,7 @@
             <ts:string ref="ensName"/>
             <ts:uint256>31556952</ts:uint256>
           </ts:data>
-          <ethereum:value ref="renewalPricePerYear"/>
+          <ethereum:value local-ref="renewalPricePerYear"/>
         </ethereum:transaction>
       </ts:transaction>
       <ts:view xml:lang="en">
