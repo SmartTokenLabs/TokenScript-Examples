@@ -7,6 +7,13 @@ class Token {
         this.props.fullName = this.props.ensName + this.props.baseNode;
     }
 
+    displayWarningNotOnLatestRegistry() {
+        if(this.props.ensName == undefined || this.props.ensName === "") {
+            document.getElementById("ensNameText").innerText = "INVALID ENS NAME";
+            document.getElementById("ensNameText").style.color = "#ff0000";
+        }
+    }
+
     render() {
         return`
         <div class="item-view-container">
@@ -31,7 +38,9 @@ class Token {
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
     const currentTokenInstance = updatedTokens.currentInstance;
-    document.getElementById(tokenCardId).innerHTML = new Token(currentTokenInstance).render();
+    let token = new Token(currentTokenInstance);
+    document.getElementById(tokenCardId).innerHTML = token.render();
+    token.displayWarningNotOnLatestRegistry();
 };
 
 //]]>
