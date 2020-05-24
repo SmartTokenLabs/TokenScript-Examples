@@ -31,7 +31,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             </ts:view>
         </ts:card>
     </ts:cards>
-        <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute name="balance">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">USDC-Balance</ts:string>
             </ts:label>
@@ -42,5 +43,5 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 </ts:token>

@@ -56,7 +56,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     </ts:cards>
 
 
-        <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+        <ts:attribute name="time">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.24</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
@@ -65,9 +66,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <ts:token-id bitmask="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000" as="utf8">
                 </ts:token-id>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="locality" oid="2.5.4.7" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute name="locality" oid="2.5.4.7">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">City</ts:string>
                 <ts:string xml:lang="zh">城市</ts:string>
@@ -126,9 +128,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:mapping>
                 </ts:token-id>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="venue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute name="venue">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">Venue</ts:string>
             </ts:label>
@@ -186,9 +189,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:mapping>
                 </ts:token-id>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="countryA" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute name="countryA">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.26</ts:syntax></ts:type>
             <!-- Intentionally avoid using countryName
          (SYNTAX 1.3.6.1.4.1.1466.115.121.1.11) per RFC 4519
              CountryName is two-characters long, not 3-characters.
@@ -200,9 +204,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000FFFFFF000000000000000000" as="utf8"/>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="countryB" syntax="1.3.6.1.4.1.1466.115.121.1.26">
+        <ts:attribute name="countryB">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.26</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="zh">球队 B</ts:string>
                 <ts:string xml:lang="en">Team B</ts:string>
@@ -210,9 +215,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000000000FFFFFF000000000000" as="utf8"/>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="match" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute name="match">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.27</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="zh">比赛</ts:string>
                 <ts:string xml:lang="en">Match</ts:string>
@@ -220,9 +226,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:origins>
                 <ts:token-id bitmask="0000000000000000000000000000000000000000000000000000FF0000000000" as="utf8"/>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="category" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute name="category">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="zh">等级</ts:string>
                 <ts:string xml:lang="en">Cat</ts:string>
@@ -249,18 +256,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:mapping>
                 </ts:token-id>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="numero" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute name="numero">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.27</ts:syntax></ts:type>
             <ts:label>
                 <ts:string>№</ts:string>
             </ts:label>
             <ts:origins>
                 <ts:token-id bitmask="00000000000000000000000000000000000000000000000000000000FFFF00" as="uint"/>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
-        <ts:attribute-type name="redeemed" syntax="1.3.6.1.4.1.1466.115.121.1.27">
+        <ts:attribute name="redeemed">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.27</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="zh">已兑换</ts:string>
                 <ts:string xml:lang="en">Redeemed</ts:string>
@@ -272,6 +281,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 
 </ts:token>

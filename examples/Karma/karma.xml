@@ -82,7 +82,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             </ts:view>
         </ts:card>
     </ts:cards>
-        <ts:attribute-type name="locality" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+        <ts:attribute name="locality">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="getLocality" as="utf8" contract="CarToken">
                     <ts:data>
@@ -91,8 +92,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ethereum:call>
             </ts:origins>
 
-        </ts:attribute-type>
-        <ts:attribute-type name="time" syntax="1.3.6.1.4.1.1466.115.121.1.24">
+        </ts:attribute>
+        <ts:attribute name="time">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.24</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">Time</ts:string>
                 <ts:string xml:lang="zh">时间</ts:string>
@@ -100,8 +102,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:origins>
                 <ts:token-id as="utf8" bitmask="00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"/>
             </ts:origins>
-        </ts:attribute-type>
-        <ts:attribute-type name="expired" syntax="1.3.6.1.4.1.1466.115.121.1.7"> <!-- boolean -->
+        </ts:attribute>
+        <ts:attribute name="expired"> <!-- boolean -->
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.7</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="isExpired" as="bool" contract="CarToken">
                     <ts:data>
@@ -109,8 +112,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
-        <ts:attribute-type name="model" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+        </ts:attribute>
+        <ts:attribute name="model"> <!-- string -->
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="getStreet" as="utf8" contract="CarToken">
                     <ts:data>
@@ -118,8 +122,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
-        <ts:attribute-type name="VIN" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+        </ts:attribute>
+        <ts:attribute name="VIN"> <!-- string -->
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="getBuildingName" as="utf8" contract="CarToken">
                     <ts:data>
@@ -127,8 +132,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
-        <ts:attribute-type name="state" syntax="1.3.6.1.4.1.1466.115.121.1.15"> <!-- string -->
+        </ts:attribute>
+        <ts:attribute name="state"> <!-- string -->
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="getState" as="utf8" contract="CarToken">
                     <ts:data>
@@ -136,5 +142,5 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 </ts:token>

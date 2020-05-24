@@ -41,7 +41,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:label>
                 <ts:string xml:lang="en">Convert to DAI</ts:string>
             </ts:label>
-            <ts:attribute-type name="amount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:attribute name="amount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
                 <ts:label>
                     <ts:string xml:lang="en">Amount in SAI</ts:string>
                     <ts:string xml:lang="zh">代幣金額</ts:string>
@@ -51,7 +52,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     rationale for hardcoding: avoiding over-design  -->
                     <ts:user-entry as="e18"/>
                 </ts:origins>
-            </ts:attribute-type>
+            </ts:attribute>
             <ts:transaction>
                 <ethereum:transaction function="swapSaiToDai" contract="MakerMigration">
                     <ts:data>
@@ -104,7 +105,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         </ts:card>
 
     </ts:cards>
-        <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        <ts:attribute name="allowance">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
             <ts:origins>
                 <ethereum:call function="allowance" contract="SAI" as="uint">
                     <ts:data>
@@ -113,8 +115,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
-        <ts:attribute-type name="balance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+        </ts:attribute>
+        <ts:attribute name="balance">
+            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
             <ts:label>
                 <ts:string xml:lang="en">SAI-Balance</ts:string>
             </ts:label>
@@ -125,5 +128,5 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:call>
             </ts:origins>
-        </ts:attribute-type>
+        </ts:attribute>
 </ts:token>
