@@ -67,16 +67,18 @@
         <ts:string xml:lang="en">Records</ts:string>
       </ts:label>
 
-      <ts:attribute-type name="newRecordValue" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+      <ts:attribute name="newRecordValue">
+          <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
         <ts:label>
           <ts:string xml:lang="en">new record value</ts:string>
         </ts:label>
         <ts:origins>
           <ts:user-entry as="utf8"/>
         </ts:origins>
-      </ts:attribute-type>
+      </ts:attribute>
 
-      <ts:attribute-type name="emailRecord" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+      <ts:attribute name="emailRecord">
+          <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
         <ts:origins>
           <ethereum:call as="utf8" contract="PublicResolver" function="text">
             <ts:data>
@@ -85,7 +87,7 @@
             </ts:data>
           </ethereum:call>
         </ts:origins>
-      </ts:attribute-type>
+      </ts:attribute>
 
       <ts:transaction>
         <ethereum:transaction function="setText" contract="PublicResolver" as="bool">
@@ -109,7 +111,8 @@
         <ts:string xml:lang="en">Renew</ts:string>
       </ts:label>
 
-      <ts:attribute-type name="renewalPricePerYear" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+      <ts:attribute name="renewalPricePerYear">
+          <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
           <ts:string xml:lang="en">renewal price per year</ts:string>
         </ts:label>
@@ -121,7 +124,7 @@
             </ts:data>
           </ethereum:call>
         </ts:origins>
-      </ts:attribute-type>
+      </ts:attribute>
 
       <ts:transaction>
         <ethereum:transaction function="renew" contract="ETHRegistrarController" as="uint">
@@ -140,13 +143,15 @@
 
   </ts:cards>
 
-  <ts:attribute-type name="ensName" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+  <ts:attribute name="ensName">
+      <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
     <ts:origins>
       <ethereum:event module="NameRegistered" filter="label=${tokenId}" select="name"/>
     </ts:origins>
-  </ts:attribute-type>
+  </ts:attribute>
 
-  <ts:attribute-type name="nameExpires" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+  <ts:attribute name="nameExpires">
+      <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
     <ts:origins>
       <ethereum:call function="nameExpires" contract="ENS" as="uint">
         <ts:data>
@@ -154,9 +159,10 @@
         </ts:data>
       </ethereum:call>
     </ts:origins>
-  </ts:attribute-type>
+  </ts:attribute>
 
-  <ts:attribute-type name="resolverAddress" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+  <ts:attribute name="resolverAddress">
+      <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
     <ts:origins>
       <ethereum:call function="resolver" contract="registry" as="address">
         <ts:data>
@@ -164,6 +170,6 @@
         </ts:data>
       </ethereum:call>
     </ts:origins>
-  </ts:attribute-type>
+  </ts:attribute>
 
 </ts:token>

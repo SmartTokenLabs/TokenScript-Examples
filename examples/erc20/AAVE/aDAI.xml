@@ -60,45 +60,46 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             </ts:view>
         </ts:card>
 
-<!--        <ts:card type="action">-->
-<!--            <ts:label>-->
-<!--                <ts:string xml:lang="en">Deposit</ts:string>-->
-<!--            </ts:label>-->
-<!--            <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">-->
-<!--                <ts:label>-->
-<!--                    <ts:string xml:lang="en">Amount to Deposit</ts:string>-->
-<!--                </ts:label>-->
-<!--                <ts:origins>-->
-<!--                    &lt;!&ndash; e18 is a hard coded multiplier.-->
-<!--                    rationale for hardcoding: avoiding over-design  &ndash;&gt;-->
-<!--                    <ts:user-entry as="e18"/>-->
-<!--                </ts:origins>-->
-<!--            </ts:attribute-type>-->
-<!--            <ts:transaction>-->
-<!--                <ethereum:call function="deposit" contract="lendingPoolAddress" as="uint">-->
-<!--                    <ts:data>-->
-<!--                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>-->
-<!--                        <ts:uint256 ref="mintAmount"/>-->
-<!--                        <ts:uint256>1101</ts:uint256> &lt;!&ndash; placeholder referral &ndash;&gt;-->
-<!--                    </ts:data>-->
-<!--                </ethereum:call>-->
-<!--            </ts:transaction>-->
-<!--            <style type="text/css">&style;</style>-->
-<!--            <ts:view xml:lang="en">&supply.en;</ts:view>-->
-<!--        </ts:card>-->
+        <!--        <ts:card type="action">-->
+        <!--            <ts:label>-->
+        <!--                <ts:string xml:lang="en">Deposit</ts:string>-->
+        <!--            </ts:label>-->
+        <!--            <ts:attribute-type name="mintAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">-->
+        <!--                <ts:label>-->
+        <!--                    <ts:string xml:lang="en">Amount to Deposit</ts:string>-->
+        <!--                </ts:label>-->
+        <!--                <ts:origins>-->
+        <!--                    &lt;!&ndash; e18 is a hard coded multiplier.-->
+        <!--                    rationale for hardcoding: avoiding over-design  &ndash;&gt;-->
+        <!--                    <ts:user-entry as="e18"/>-->
+        <!--                </ts:origins>-->
+        <!--            </ts:attribute-type>-->
+        <!--            <ts:transaction>-->
+        <!--                <ethereum:call function="deposit" contract="lendingPoolAddress" as="uint">-->
+        <!--                    <ts:data>-->
+        <!--                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>-->
+        <!--                        <ts:uint256 ref="mintAmount"/>-->
+        <!--                        <ts:uint256>1101</ts:uint256> &lt;!&ndash; placeholder referral &ndash;&gt;-->
+        <!--                    </ts:data>-->
+        <!--                </ethereum:call>-->
+        <!--            </ts:transaction>-->
+        <!--            <style type="text/css">&style;</style>-->
+        <!--            <ts:view xml:lang="en">&supply.en;</ts:view>-->
+        <!--        </ts:card>-->
 
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Redeem</ts:string>
             </ts:label>
-            <ts:attribute-type name="redeemAmount" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+            <ts:attribute name="redeemAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
                 <ts:label>
                     <ts:string xml:lang="en">Amount of aTokens to redeem</ts:string>
                 </ts:label>
                 <ts:origins>
                     <ts:user-entry as="e18"/>
                 </ts:origins>
-            </ts:attribute-type>
+            </ts:attribute>
             <ts:transaction>
                 <ethereum:transaction function="redeem" contract="aDAI" as="uint">
                     <ts:data>
@@ -114,14 +115,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
     </ts:cards>
 
-    <ts:attribute-type name="lendingPoolAddress" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+    <ts:attribute name="lendingPoolAddress">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
         <ts:origins>
             <ethereum:call function="getLendingPool" contract="LendingPoolAddressesProvider" as="address">
             </ethereum:call>
         </ts:origins>
-    </ts:attribute-type>
+    </ts:attribute>
 
-    <ts:attribute-type name="allowance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute name="allowance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:origins>
             <ethereum:call function="allowance" contract="DAI" as="uint">
                 <ts:data>
@@ -130,10 +133,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:data>
             </ethereum:call>
         </ts:origins>
-    </ts:attribute-type>
+    </ts:attribute>
 
     <!-- your balance in DAI (not Aave DAI) -->
-    <ts:attribute-type name="tokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute name="tokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
             <ts:string xml:lang="en">Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
@@ -145,9 +149,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:data>
             </ethereum:call>
         </ts:origins>
-    </ts:attribute-type>
+    </ts:attribute>
 
-    <ts:attribute-type name="aTokenBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute name="aTokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
             <ts:string xml:lang="en">Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
@@ -159,9 +164,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:data>
             </ethereum:call>
         </ts:origins>
-    </ts:attribute-type>
+    </ts:attribute>
 
-    <ts:attribute-type name="aTokenPrincipleBalance" syntax="1.3.6.1.4.1.1466.115.121.1.36">
+    <ts:attribute name="aTokenPrincipleBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
             <ts:string xml:lang="en">Principal Balance</ts:string>
             <ts:string xml:lang="zh">餘額</ts:string>
@@ -173,6 +179,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 </ts:data>
             </ethereum:call>
         </ts:origins>
-    </ts:attribute-type>
+    </ts:attribute>
 
 </ts:token>
