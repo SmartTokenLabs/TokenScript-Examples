@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE token  [
+        <!ENTITY style SYSTEM "shared.css">
+        <!ENTITY deposit.en SYSTEM "deposit.en.js">
+        <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
+        <!ENTITY dividend.en SYSTEM "dividend.en.js">
+        <!ENTITY enable.en SYSTEM "enable.en.js">
+        ]>
+<ts:token
+    xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+    xmlns:ethereum="urn:ethereum:constantinople"
+    xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
+    custodian="false"
+>
+    <ts:label>
+        <ts:string xml:lang="en">NEST</ts:string>
+    </ts:label>
+
+    <ts:contract interface="erc20" name="NEST">
+        <ts:address network="1">0x04abEdA201850aC0124161F037Efd70c74ddC74C</ts:address>
+    </ts:contract>
+    <ts:contract name="NESTRevenueDistribution">
+        <ts:address network="1">0xF67B829397Dc05751a98f243DbdE5Db63f86E7f6</ts:address>
+    </ts:contract>
+    <ts:contract name="NESTEarnings">
+        <ts:address network="1">0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+    </ts:contract>
+    <ts:contract name="time">
+        <ts:address network="1">0x7976F22815a7a5D29AbDc996DA2feCEE229CA661</ts:address>
+    </ts:contract>
+
+    <ts:origins>
+        <ts:ethereum contract="NEST"/>
+    </ts:origins>
+
+    <ts:selection id="enabled" filter="allowance>0">
+        <ts:label>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+
+    <ts:selection id="notEnabled" filter="allowance=0">
+        <ts:label>
+            <ts:string xml:lang="en">contract not enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+
+    <ts:cards>
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Deposit</ts:string>
+            </ts:label>
+            <ts:attribute name="amount">
+                <ts:type>
+                    <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+                </ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">amount to deposit</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="depositIn" contract="NESTRevenueDistribution">
+                    <ts:data>
+                        <ts:uint256 ref="amount"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view
+                    xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <script type="text/javascript">&deposit.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Withdraw</ts:string>
+            </ts:label>
+            <ts:attribute name="amount">
+                <ts:type>
+                    <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+                </ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">amount to withdraw</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="takeOut" contract="NESTRevenueDistribution">
+                    <ts:data>
+                        <ts:uint256 ref="amount"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view
+                    xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <script type="text/javascript">&withdraw.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Dividend</ts:string>
+            </ts:label>
+            <ts:transaction>
+                <ethereum:transaction function="getETH" contract="NESTRevenueDistribution">
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <script type="text/javascript">&dividend.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="enabled">
+            <ts:label>
+                <ts:string xml:lang="en">Enable</ts:string>
+            </ts:label>
+            <ts:transaction>
+                <ethereum:transaction function="approve" contract="NEST" as="uint">
+                    <ts:data>
+                        <ts:address>0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+                        <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <style type="text/css">&style;</style>
+                <script type="text/javascript">&enable.en;</script>
+            </ts:view>
+        </ts:card>
+
+    </ts:cards>
+
+    <ts:attribute name="balanceOf">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">balanceOf</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="NEST" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="allowance">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">allowance</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="allowance" contract="NEST" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="nextTime">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the next time dividends are available</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getNextTime" contract="NESTRevenueDistribution" as="uint">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="getNow">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the current block</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getNow" contract="time" as="uint">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="withdrawable">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the amount a user can withdraw</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="checkAmount" contract="NESTEarnings" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+</ts:token>
