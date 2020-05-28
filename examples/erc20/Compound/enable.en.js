@@ -8,10 +8,10 @@ class Token {
     render() {
         let message = "";
         if(this.props.allowance > 0) {
-            message = "Compound " + this.props.name + " is already enabled";
+            message = "Compound " + this.props.label + " is already enabled";
             window.onConfirm = function() { window.close(); }
         } else {
-           message = "Please enable compound " + this.props.name +  " before supplying or withdrawing";
+           message = "Please enable compound " + this.props.label +  " before supplying or withdrawing";
         }
         return`
         <div class="ui container">

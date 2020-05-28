@@ -13,8 +13,8 @@ class Token {
     }
 
     render() {
-        let message = this.props.name + " is a token which represents your share of the liquidity pool inside uniswap and" +
-            " entitles you to a proportional percentage of the 0.3% fee for each trade of " + this.props.name.replace("Uniswap", "").replace("V1", "") + " & ETH";
+        let message = this.props.label + " is a token which represents your share of the liquidity pool inside uniswap and" +
+            " entitles you to a proportional percentage of the 0.3% fee for each trade of " + this.props.label.replace("Uniswap", "").replace("V1", "") + " & ETH";
         return`
         <div class="ui container">
           <div class="ui segment">

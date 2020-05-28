@@ -16,7 +16,7 @@ class Token {
 
     getBestRate() {
         let url = 'https://public.defipulse.com/api/GetRates?token=' +
-            this.props.name + '&amount=' + this.props.balance / 1e+18;
+            this.props.label + '&amount=' + this.props.balance / 1e+18;
         fetch(url).then((response) => {
             return response.json();
         })

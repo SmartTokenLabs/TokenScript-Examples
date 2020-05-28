@@ -13,7 +13,7 @@ class Token {
     }
 
     render() {
-        let message = this.props.name + " allows you to earn interest and trade. Please visit the website below in the dapp browser.";
+        let message = this.props.label + " allows you to earn interest and trade. Please visit the website below in the dapp browser.";
         return`
         <div class="ui container">
           <div class="ui segment">
