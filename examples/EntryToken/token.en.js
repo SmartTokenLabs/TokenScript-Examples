@@ -108,7 +108,7 @@ class Token {
         }
         return `<div>
             <div>
-                <span class="ts-count">x${this.props._count}</span>  <span class="ts-category">${this.props.name}</span>
+                <span class="ts-count">x${this.props._count}</span>  <span class="ts-category">${this.props.label}</span>
             </div>
             <div>
                 <span class="ts-venue">${this.props.building}</span>

@@ -8,10 +8,10 @@ class Token {
     render() {
         let message = "";
         if(this.props.allowance > 0) {
-            message = "DMM " + this.props.name + " is already enabled";
+            message = "DMM " + this.props.label + " is already enabled";
             window.onConfirm = function() { window.close(); }
         } else {
-           message = "Please enable DMM " + this.props.name +  " before supplying or withdrawing";
+           message = "Please enable DMM " + this.props.label +  " before supplying or withdrawing";
         }
         return`
         <div class="ui container">
