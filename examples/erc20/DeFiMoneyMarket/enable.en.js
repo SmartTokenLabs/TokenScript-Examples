@@ -6,13 +6,7 @@ class Token {
     }
 
     render() {
-        let message = "";
-        if(this.props.allowance > 0) {
-            message = "DMM " + this.props.label + " is already enabled";
-            window.onConfirm = function() { window.close(); }
-        } else {
-           message = "Please enable DMM " + this.props.label +  " before supplying or withdrawing";
-        }
+        let message = "Please enable DMM " + this.props.label +  " before supplying or withdrawing";
         return`
         <div class="ui container">
           <div class="ui segment">
@@ -24,9 +18,9 @@ class Token {
     }
 }
 
-web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenIdCard) => {
     const currentTokenInstance = web3.tokens.data.currentInstance;
-    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+    document.getElementById(tokenIdCard).innerHTML = new Token(currentTokenInstance).render();
 };
 
 //]]>
