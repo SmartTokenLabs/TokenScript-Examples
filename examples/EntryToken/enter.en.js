@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('status').innerHTML = 'Verifying credentials ...'
             // 3. open door
             let contractAddress = document.getElementById("contractAddress").textContent;
-            fetch(`http://stormbird.duckdns.org:8080/api/checkSignature?contract=${contractAddress}&amp;challenge=${challenge}&amp;sig=${value}`)
+            fetch(`http://stormbird.duckdns.org:8080/api/checkSignature?contract=${contractAddress}&challenge=${challenge}&sig=${value}`)
                 .then(function (response) {
                     return response.text()
                 })

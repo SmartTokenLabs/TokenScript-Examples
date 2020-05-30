@@ -75,7 +75,7 @@
 
     if (typeof exports === 'object') {
         module.exports = GeneralizedTime
-    } else if (typeof define === 'function' &amp;&amp; define.amd) {
+    } else if (typeof define === 'function' && define.amd) {
         define(GeneralizedTime)
     } else {
         window.GeneralizedTime = GeneralizedTime

@@ -16,23 +16,23 @@
 
     GeneralizedTime.prototype.getDay = function () {
         return parseInt(this.rawData.substring(6, 8), 10)
-    },
+    }
 
     GeneralizedTime.prototype.getHours = function () {
         return parseInt(this.rawData.substring(8, 10), 10)
-    },
+    }
 
     GeneralizedTime.prototype.getMinutes = function () {
         var minutes = parseInt(this.rawData.substring(10, 12), 10)
         if (minutes) return minutes
         return 0
-    },
+    }
 
     GeneralizedTime.prototype.getSeconds = function () {
         var seconds = parseInt(this.rawData.substring(12, 14), 10)
         if (seconds) return seconds
         return 0
-    },
+    }
 
     GeneralizedTime.prototype.getMilliseconds = function () {
         var startIdx
@@ -48,7 +48,7 @@
         var fraction = '0' + '.' + time.substring(startIdx, stopIdx)
         var ms = parseFloat(fraction) * 1000
         return ms
-    },
+    }
 
     GeneralizedTime.prototype.getTimeZone = function () {
         let time = this.rawData;
@@ -75,7 +75,7 @@
 
     if (typeof exports === 'object') {
         module.exports = GeneralizedTime
-    } else if (typeof define === 'function' &amp;&amp; define.amd) {
+    } else if (typeof define === 'function' && define.amd) {
         define(GeneralizedTime)
     } else {
         window.GeneralizedTime = GeneralizedTime
