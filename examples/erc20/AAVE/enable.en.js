@@ -6,13 +6,7 @@ class Token {
     }
 
     render() {
-        let message = "";
-        if(this.props.allowance > 0) {
-            message = "Aave " + this.props.label + " is already enabled";
-            window.onConfirm = function() { window.close(); }
-        } else {
-           message = "Please enable Aave " + this.props.label +  " before depositing or withdrawing";
-        }
+        let message = "Please enable Aave " + this.props.label +  " before depositing or withdrawing";
         return`
         <div class="ui container">
           <div class="ui segment">
