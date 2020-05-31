@@ -17,6 +17,17 @@
           xmlns:ethereum="urn:ethereum:constantinople"
           custodian="false"
 >
+  <asnx:module name="ENS-Events">
+    <namedType name="NameRegistered">
+      <sequence>
+        <element name="name" ethereum:type="string"/>
+        <element name="label" ethereum:type="bytes32" ethereum:indexed="true"/>
+        <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
+        <element name="cost" ethereum:type="uint"/>
+        <element name="expires" ethereum:type="uint"/>
+      </sequence>
+    </namedType>
+  </asnx:module>
   <ts:label>
     <ts:plurals xml:lang="en">
       <ts:string quantity="one">ENS</ts:string>
@@ -35,15 +46,6 @@
   <!-- emitted via: function registerWithConfig(string memory name, address owner, uint duration, bytes32 secret, address resolver, address addr) public payable -->
   <ts:contract name="ETHRegistrarController">
     <ts:address network="1">0x283af0b28c62c092c9727f1ee09c02ca627eb7f5</ts:address>
-    <asnx:module name="NameRegistered">
-      <sequence>
-        <element name="name" ethereum:type="string"/>
-        <element name="label" ethereum:type="bytes32" ethereum:indexed="true"/>
-        <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
-        <element name="cost" ethereum:type="uint"/>
-        <element name="expires" ethereum:type="uint"/>
-      </sequence>
-    </asnx:module>
   </ts:contract>
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
@@ -146,7 +148,7 @@
   <ts:attribute name="ensName">
       <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
     <ts:origins>
-      <ethereum:event module="NameRegistered" filter="label=${tokenId}" select="name"/>
+      <ethereum:event type="NameRegistered" contract="ETHRegistrarController" filter="label=${tokenId}" select="name"/>
     </ts:origins>
   </ts:attribute>
 
