@@ -51,7 +51,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          design being that it is inside <token>. With this, it isn't
          apparent that the filters are applicable to the input token:
 
-        <ts:selection id="low_balance" filter="!(balance>1000000000)">
+        <ts:selection name="low_balance" filter="!(balance>1000000000)">
             <ts:denial>
                 <ts:string xml:lang="en">Not enough balance.</ts:string>
             </ts:denial>
