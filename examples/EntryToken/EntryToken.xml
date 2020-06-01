@@ -36,7 +36,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <!-- Define the contract which holds the token that the user will use -->
     <ts:ethereum contract="EntryToken"/>
   </ts:origins>
-    <ts:selection id="expired" filter="expired=TRUE">
+    <ts:selection name="expired" filter="expired=TRUE">
       <ts:label>
         <ts:plurals xml:lang="en">
           <ts:string quantity="one">Expired Ticket</ts:string>
