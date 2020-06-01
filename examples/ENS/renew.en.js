@@ -9,6 +9,11 @@ class Token {
         web3.action.setProps({
             userEnsName: this.props.fullName
         });
+		
+		if (this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
+			this.props.userEnsName = this.props.name;
+			this.props.fullName = this.props.name;
+		}
     }
 
     formatTimeStamp(UNIX_timestamp) {

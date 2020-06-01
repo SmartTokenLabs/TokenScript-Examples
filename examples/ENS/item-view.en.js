@@ -9,8 +9,14 @@ class Token {
 
     displayWarningNotOnLatestRegistry() {
         if(this.props.ensName == undefined || this.props.ensName === "") {
+			if (this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
+			this.props.fullName = this.props.name;
+			document.getElementById("ensNameText").innerText = this.props.fullName;
+		}
+		else {
             document.getElementById("ensNameText").innerText = "INVALID ENS NAME";
             document.getElementById("ensNameText").style.color = "#ff0000";
+        }
         }
     }
 
