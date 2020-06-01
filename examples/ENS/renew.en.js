@@ -10,9 +10,14 @@ class Token {
             userEnsName: this.props.fullName
         });
 		
-		if (this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
+		//try sourcing from the event attribute at first
+		if (this.props.ensName != undefined && this.props.ensName.length > 0) {
+			this.props.domainName = this.props.ensName;
+		}
+		else if (this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
 			this.props.userEnsName = this.props.name;
 			this.props.fullName = this.props.name;
+			this.props.domainName = this.props.name.substr(0, this.props.name.search(this.props.baseNode));
 		}
     }
 
@@ -34,6 +39,7 @@ class Token {
               <div id="inputBox">
                  <h3>Price of one year renewal: ${(this.props.renewalPricePerYear / 1e+18).toFixed(3)} ETH</h3>
                  <h3>Name expires: ${this.formatTimeStamp(this.props.nameExpires)}</h3>
+				 <p id="ensNameString" hidden/>
                  <br>
               </div>
           </div>
@@ -43,7 +49,9 @@ class Token {
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
     const currentTokenInstance = updatedTokens.currentInstance;
-    document.getElementById(tokenCardId).innerHTML = new Token(currentTokenInstance).render();
+	let token = new Token(currentTokenInstance);
+    document.getElementById(tokenCardId).innerHTML = token.render();
+	document.getElementById("ensNameString").innerHTML = token.props.domainName;
 };
 
 //]]>

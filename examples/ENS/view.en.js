@@ -9,9 +9,9 @@ class Token {
         web3.action.setProps({
             nodeHash: namehash.hash(this.props.fullName)
         });
-		if (this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
+		if ((this.props.ensName == undefined || this.props.ensName === "") && this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
 			this.props.fullName = this.props.name;
-			this.props.nodeHash = namehash.hash(this.props.fullName)
+			this.props.nodeHash = namehash.hash(this.props.fullName);
 		}
     }
 

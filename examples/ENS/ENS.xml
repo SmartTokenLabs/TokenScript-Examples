@@ -127,11 +127,21 @@
           </ethereum:call>
         </ts:origins>
       </ts:attribute>
+	  
+	  <ts:attribute name="ensNameString">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
+        <ts:label>
+          <ts:string xml:lang="en">ENS name</ts:string>
+        </ts:label>
+        <ts:origins>
+          <ts:user-entry as="utf8"/>
+        </ts:origins>
+      </ts:attribute>
 
       <ts:transaction>
         <ethereum:transaction function="renew" contract="ETHRegistrarController" as="uint">
           <ts:data>
-            <ts:string ref="ensName"/>
+            <ts:string ref="ensNameString"/>
             <ts:uint256>31556952</ts:uint256>
           </ts:data>
           <ethereum:value local-ref="renewalPricePerYear"/>

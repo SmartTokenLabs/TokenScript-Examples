@@ -8,8 +8,13 @@ class Token {
         this.props.fullName = this.props.ensName + this.props.baseNode;
         let namehash = require("eth-ens-namehash");
         web3.action.setProps({
-          nodeHash: namehash.hash(this.props.fullName)
+            nodeHash: namehash.hash(this.props.fullName)
         });
+		
+		if ((this.props.ensName == undefined || this.props.ensName === "") && this.props.name != undefined && this.props.name.search(this.props.baseNode) > 0) {
+			this.props.nodeHash = namehash.hash(this.props.name)
+			this.props.fullName = this.props.name;
+		}
     }
 
     setup() {
