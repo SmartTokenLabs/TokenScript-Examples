@@ -5,15 +5,24 @@ class Token {
         this.props = tokenInstance;
     }
 
+    formatTimeStamp(UNIX_timestamp) {
+        let a = new Date(UNIX_timestamp * 1000);
+        let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let year = a.getFullYear();
+        let month = months[a.getMonth()];
+        let date = a.getDate();
+        return date + ' ' + month + ' ' + year;
+    }
+
     render() {
-        let message = "";
-        if(parseInt(this.props.nextTime) > parseInt(this.props.getNow)) {
-            message = "Your dividend is not withdrawable yet, it will be in " + (this.props.nextTime - this.props.getNow) + " blocks";
-            window.onConfirm = function() {
+        let message = "Your NEST dividend is claimable on " + this.formatTimeStamp(parseInt(this.props.nextTime));
+        if(parseInt(this.props.nextTime) > (Date.now() / 1000)) {
+            window.onConfirm = function () {
                 window.close();
-            };
+            }
         } else {
-            message = "Claim your dividend from NEST"
+            message = "Your NEST dividend is claimable now until " +
+                this.formatTimeStamp(parseInt(this.props.nextTime) + parseInt(this.props.timeLimit));
         }
         return`
         <div class="ui container">
