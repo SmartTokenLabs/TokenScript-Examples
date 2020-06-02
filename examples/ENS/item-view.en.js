@@ -5,10 +5,14 @@ class Token {
         this.props = tokenInstance;
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
+        if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
+            // if ENS name cannot be retrieved by events because it is legacy, use the opensea format
+            this.props.fullName = this.props.name;
+        }
     }
 
     displayWarningNotOnLatestRegistry() {
-        if(this.props.ensName == undefined || this.props.ensName === "") {
+        if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
             document.getElementById("ensNameText").innerText = "INVALID ENS NAME";
             document.getElementById("ensNameText").style.color = "#ff0000";
         }

@@ -7,6 +7,10 @@
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
         let namehash = require("eth-ens-namehash");
+        if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
+          // if ENS name cannot be retrieved by events because it is legacy, use the opensea format
+          this.props.fullName = this.props.name;
+        }
         web3.action.setProps({
           nodeHash: namehash.hash(this.props.fullName)
         });
@@ -30,7 +34,7 @@
 
       resolvedImage() {
         let element = document.getElementById("resolvedImage");
-        if(this.props.resolverAddress !== "") {
+        if(parseInt(this.props.resolverAddress, 16) !== 0) {
           element.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABCFBMVEUAAAB5tklwuEd2ukVxvUJ2tkByuUZ3u0R4t0BzuUJ1uUN0uUJ2ukF2uUN1uUR2uUN1ukN2uEJ1uUR0uUN1ukN2uUN1uUN1uUN1uEN2uUN0ukR0ukR1uUR1uUR2uUN1uUN0uEN1uUJ1uUN2uEN0uUR1uUN1uUN0uUN1uUN1uUN1uUN1uUN1uUN3ukV3ukZ4u0d6u0p6vEp+vU9+vlB/vlCEwFeFwViJw16MxWOOxmWSyGqSyGuVyW6VyW+WynCeznqfznyq1Iu53KDG4rHI47TK5LfS6MHT6cPU6cTa7M3f79Pn897o8+Du9ujw9+rw+Ov0+fD1+vH2+vL3+/X4+/X5/Pf9/vz///91iZ+mAAAALHRSTlMAFRkaGxwdHiBJTE1OUGlqa2xtbm+RmJmbnJ6iqrW2t7jX2Nnb8fLz9Pv8/R/3l70AAAABYktHRFd9CtkfAAAA7UlEQVQYGW3Bh0KCUAAF0JuJNrBU2kUqBU95t7237WllZe///yTGi0A7B1qxWneaTadeKSAtP+tTk0sjSJQEUzwT2pRkhrQQKUn2kSYChuAAbxjAAv8xBxR9Zlx+XZD0DVjMaH+rNgNl1Jh20lNXDNlYZcrBu7phxIFg6Pp2g+ReRz2sMSIgGOqo+3VuP6unTcZcrDB01FV3W4/qZZdaAzVGjj/Vm3rd5y8bFcZOe+rjkIkJFHzGzrrnTLQMYJ7aDv/MAMh7HODmEBj12UeOI2JJZsgqNNNjijuGxNB0i5pczCHNKC83hGjYkwZiP8OEUpHyjBkvAAAAAElFTkSuQmCC";
         } else {
           element.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAzFBMVEUAAAD/OS//Ny7/Piz/PDP/ODD/Pi7/OS//PDL/OzH/PC//PC7/OjD/PTD/PDD/PDD/Oy//OjH/OjH/OzH/OjD/PDD/OzD/Oi//PDD/OzD/OzD/Oy//OzD/OzD/OjD/OzD/OzD/PDD/OzD/OzD/OzD/OzD/OzD/OzD/OzD/OzD/PDH/PTL/S0H/TEL/TUP/TkT/WVD/a2P/bGT/bmb/eHH/fHT/k43/pJ7/qaT/rqr/tK//y8n/3Nr/3dv/4N//9PT/9fT/9/b/9/f////fda20AAAAKXRSTlMAGxwdHiAhR0hJTE1PUGprbG1umJmam6K0tba32Nna29zw8fLz9Pv8/dNkKy8AAAABYktHRENn0A1iAAAA+UlEQVQoz3VS6VrCQAwMtIgISosiUO6WxUbuG4GqkPd/J3Y3LYe18yfzTXa/TA4AhmnX20K0HMuAW6Tf+hiiX3m46rku3sB7jnTbxzv4NuuPH/gHfl7phocxuGmZeMd/UJY+tZ9lMNPCaL9lbyaUNFnTca70gPb8xYK6jp9fdFrg8EDfY07UoMNksKPjKqBgFBZpgQiZ/EOX94g96EV0/EO0urYP7ZDJur/sQKMJDhNVd6IdMKpgRe9lXeWA+8EXMHSDG/YjMwduUK6lrMh0M2TX66WOr2pJbnxU3ZQabzY+9qeERVkJqy0kHEPm7k7MotMUolErRudzBmGRTFZJf51RAAAAAElFTkSuQmCC";
@@ -39,7 +43,7 @@
 
       resolvedText() {
         let element = document.getElementById("resolvedText");
-        if(this.props.resolverAddress !== "") {
+        if(parseInt(this.props.resolverAddress, 16) !== 0) {
           element.innerText = "Set Correctly";
         } else {
           element.innerText = "Not Set - Action Required";

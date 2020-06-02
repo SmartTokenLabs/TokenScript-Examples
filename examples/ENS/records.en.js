@@ -5,6 +5,17 @@ class Token {
         this.props = tokenInstance;
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
+        if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
+            // if ENS name cannot be retrieved by events because it is legacy, use the opensea format
+            this.props.fullName = this.props.name;
+            this.setNodeHash();
+        } else {
+            // use the event set name
+            this.setNodeHash();
+        }
+    }
+
+    setNodeHash() {
         let namehash = require("eth-ens-namehash");
         web3.action.setProps({
             nodeHash: namehash.hash(this.props.fullName)
@@ -12,9 +23,12 @@ class Token {
     }
 
     setup() {
-        if(this.props.emailRecord === "" || this.props.emailRecord === undefined) {
+        if(this.props.emailRecord === "" || this.props.emailRecord === undefined)
+        {
             document.getElementById("info").innerText = "No email record set";
-        } else {
+        }
+        else
+        {
             document.getElementById("info").innerText = `Email record is currently set to ${this.props.emailRecord}`;
         }
     }

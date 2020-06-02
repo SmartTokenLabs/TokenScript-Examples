@@ -2,23 +2,37 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 class Token {
 
-    constructor(tokenInstance) {
-        this.props = tokenInstance;
-        this.props.baseNode = ".eth";
-        this.props.fullName = this.props.ensName + this.props.baseNode;
-        let namehash = require("eth-ens-namehash");
-        web3.action.setProps({
-          nodeHash: namehash.hash(this.props.fullName)
-        });
+  constructor(tokenInstance) {
+    this.props = tokenInstance;
+    this.props.baseNode = ".eth";
+    this.props.fullName = this.props.ensName + this.props.baseNode;
+    if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
+      // if ENS name cannot be retrieved by events because it is legacy, use the opensea format
+      this.props.fullName = this.props.name;
+      this.setNodeHash();
+    } else {
+      // use the event set name
+      this.setNodeHash();
     }
+  }
 
-    setup() {
-      if(this.props.emailRecord === "" || this.props.emailRecord === undefined) {
-        document.getElementById("info").innerText = "No email record set";
-      } else {
-        document.getElementById("info").innerText = `Email record is currently set to ${this.props.emailRecord}`;
-      }
+  setNodeHash() {
+    let namehash = require("eth-ens-namehash");
+    web3.action.setProps({
+      nodeHash: namehash.hash(this.props.fullName)
+    });
+  }
+
+  setup() {
+    if(this.props.emailRecord === "" || this.props.emailRecord === undefined)
+    {
+      document.getElementById("info").innerText = "No email record set";
     }
+    else
+    {
+      document.getElementById("info").innerText = `Email record is currently set to ${this.props.emailRecord}`;
+    }
+  }
 
     render() {
         return`
