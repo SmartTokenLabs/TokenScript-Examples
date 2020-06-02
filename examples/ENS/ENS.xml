@@ -131,7 +131,7 @@
       <ts:transaction>
         <ethereum:transaction function="renew" contract="ETHRegistrarController" as="uint">
           <ts:data>
-            <ts:string ref="ensName"/>
+            <ts:string local-ref="userEnsName"/>
             <ts:uint256>31556952</ts:uint256>
           </ts:data>
           <ethereum:value local-ref="renewalPricePerYear"/>

@@ -6,8 +6,14 @@ class Token {
         this.props = tokenInstance;
         this.props.baseNode = ".eth";
         this.props.fullName = this.props.ensName + this.props.baseNode;
+        if(this.props.fullName === ".eth" || this.props.fullName === "undefined.eth") {
+            // if ENS name cannot be retrieved by events because it is legacy, use the opensea format
+            this.props.fullName = this.props.name;
+            //remove .eth
+            this.props.ensName = this.props.name.replace(this.props.baseNode, "");
+        }
         web3.action.setProps({
-            userEnsName: this.props.fullName
+            userEnsName: this.props.ensName
         });
     }
 
@@ -38,7 +44,8 @@ class Token {
 
 web3.tokens.dataChanged = (oldTokens, updatedTokens, tokenCardId) => {
     const currentTokenInstance = updatedTokens.currentInstance;
-    document.getElementById(tokenCardId).innerHTML = new Token(currentTokenInstance).render();
+	let token = new Token(currentTokenInstance);
+    document.getElementById(tokenCardId).innerHTML = token.render();
 };
 
 //]]>
