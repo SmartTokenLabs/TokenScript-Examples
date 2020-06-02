@@ -40,7 +40,7 @@
     <ts:address network="1">0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e</ts:address>
   </ts:contract>
   <ts:contract name="PublicResolver">
-    <ts:address network="1">0xDaaF96c344f63131acadD0Ea35170E7892d3dfBA</ts:address>
+    <ts:address network="1">0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41</ts:address>
   </ts:contract>
 
   <!-- emitted via: function registerWithConfig(string memory name, address owner, uint duration, bytes32 secret, address resolver, address addr) public payable -->
