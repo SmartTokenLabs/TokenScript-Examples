@@ -13,16 +13,18 @@ class Token {
         let date = a.getDate();
         return date + ' ' + month + ' ' + year;
     }
-
+    //require(nowTime >= nextTime.sub(timeLimit) && nowTime <= nextTime.sub(timeLimit).add(getAbonusTimeLimit));
     render() {
-        let message = "Your NEST dividend is claimable on " + this.formatTimeStamp(parseInt(this.props.nextTime));
-        if(parseInt(this.props.nextTime) > (Date.now() / 1000)) {
-            window.onConfirm = function () {
-                window.close();
-            }
+        let message = "";
+        let now = Date.now() / 1000;
+        let claimPeriod = parseInt(this.props.nextTime) - parseInt(this.props.timeLimit);
+        let bonusTimePeriod = parseInt(this.props.nextTime) - parseInt(this.props.timeLimit) + parseInt(this.props.checkGetAbonusTimeLimit);
+        if(now >= claimPeriod && now <= bonusTimePeriod) {
+            message = "Your NEST dividend is claimable now until " + this.formatTimeStamp(bonusTimePeriod);
+            window.onConfirm = null;
         } else {
-            message = "Your NEST dividend is claimable now until " +
-                this.formatTimeStamp(parseInt(this.props.nextTime) + parseInt(this.props.timeLimit));
+            message = "Your NEST dividend is claimable on " + this.formatTimeStamp(parseInt(this.props.nextTime)) + " please come back later";
+            window.onConfirm = function() { window.close() };
         }
         return`
         <div class="ui container">

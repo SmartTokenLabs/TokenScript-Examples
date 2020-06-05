@@ -192,6 +192,19 @@
             <ts:string xml:lang="en">gets the next time dividends are available</ts:string>
         </ts:label>
         <ts:origins>
+            <ethereum:call function="checkTimeLimit" contract="NESTRevenueDistribution" as="uint">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="checkGetAbonusTimeLimit">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the next time dividends are available</ts:string>
+        </ts:label>
+        <ts:origins>
             <ethereum:call function="checkGetAbonusTimeLimit" contract="NESTRevenueDistribution" as="uint">
             </ethereum:call>
         </ts:origins>
