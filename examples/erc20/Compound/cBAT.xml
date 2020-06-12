@@ -25,12 +25,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 <ts:origins>
     <ts:ethereum contract="cBAT"/>
 </ts:origins>
-<ts:selection name="enabled" filter="allowance>0">
+<ts:selection name="enabled" filter="${allowance}>0">
     <ts:label>
         <ts:string xml:lang="en">contract already enabled</ts:string>
     </ts:label>
 </ts:selection>
-<ts:selection name="notEnabled" filter="allowance=0">
+<ts:selection name="notEnabled" filter="${allowance}=0">
     <ts:label>
         <ts:string xml:lang="en">contract not enabled</ts:string>
     </ts:label>
