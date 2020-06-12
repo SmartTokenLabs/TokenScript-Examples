@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
-    <!ENTITY sai-to-dai.en SYSTEM "sai-to-dai.en.js">
-    <!ENTITY enable.en SYSTEM "enable.en.js">
     <!ENTITY important.en SYSTEM "important.en.js">
-    <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
@@ -17,73 +14,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <ts:label>
         <ts:string xml:lang="en">SAI</ts:string>
     </ts:label>
-    <ts:contract name="MakerMigration" interface="erc20">
-        <ts:address network="1">0xc73e0383f3aff3215e6f04b0331d58cecf0ab849</ts:address>
-    </ts:contract>
     <ts:contract name="SAI" interface="erc20">
         <ts:address network="1">0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359</ts:address>
     </ts:contract>
     <ts:origins>
         <ts:ethereum contract="SAI"/>
     </ts:origins>
-    <ts:selection name="enabled" filter="allowance>0">
-        <ts:label>
-            <ts:string xml:lang="en">contract already enabled</ts:string>
-        </ts:label>
-    </ts:selection>
-    <ts:selection name="notEnabled" filter="allowance=0">
-        <ts:label>
-            <ts:string xml:lang="en">contract not enabled</ts:string>
-        </ts:label>
-    </ts:selection>
     <ts:cards>
-        <ts:card type="action" exclude="notEnabled">
-            <ts:label>
-                <ts:string xml:lang="en">Convert to DAI</ts:string>
-            </ts:label>
-            <ts:attribute name="amount">
-                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-                <ts:label>
-                    <ts:string xml:lang="en">Amount in SAI</ts:string>
-                    <ts:string xml:lang="zh">代幣金額</ts:string>
-                </ts:label>
-                <ts:origins>
-                    <!-- e18 is a hard coded multiplier.
-                    rationale for hardcoding: avoiding over-design  -->
-                    <ts:user-entry as="e18"/>
-                </ts:origins>
-            </ts:attribute>
-            <ts:transaction>
-                <ethereum:transaction function="swapSaiToDai" contract="MakerMigration">
-                    <ts:data>
-                        <ts:uint256 ref="amount"/>
-                    </ts:data>
-                </ethereum:transaction>
-            </ts:transaction>
-            <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&sai-to-dai.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
-        <ts:card type="action" exclude="enabled">
-            <ts:label>
-                <ts:string xml:lang="en">Enable Migration</ts:string>
-            </ts:label>
-            <ts:transaction>
-                <ethereum:transaction function="approve" contract="SAI" as="bool">
-                    <ts:data>
-                        <ts:address>0xc73e0383F3Aff3215E6f04B0331D58CeCf0Ab849</ts:address>
-                        <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
-                    </ts:data>
-                </ethereum:transaction>
-            </ts:transaction>
-            <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
         <ts:card type="action">
             <ts:label>
                 <ts:string xml:lang="en">Important!</ts:string>
@@ -93,40 +30,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&important.en;</xhtml:script>
             </ts:view>
         </ts:card>
-
-        <ts:card type="action">
-            <ts:label>
-                <ts:string xml:lang="en">Best Rates</ts:string>
-            </ts:label>
-            <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
     </ts:cards>
-        <ts:attribute name="allowance">
-            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-            <ts:origins>
-                <ethereum:call function="allowance" contract="SAI" as="uint">
-                    <ts:data>
-                        <ts:address ref="ownerAddress"/>
-                        <ts:address>0xc73e0383f3aff3215e6f04b0331d58cecf0ab849</ts:address>
-                    </ts:data>
-                </ethereum:call>
-            </ts:origins>
-        </ts:attribute>
-        <ts:attribute name="balance">
-            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-            <ts:label>
-                <ts:string xml:lang="en">SAI-Balance</ts:string>
-            </ts:label>
-            <ts:origins>
-                <ethereum:call function="balanceOf" contract="SAI" as="uint">
-                    <ts:data>
-                        <ts:address ref="ownerAddress"/>
-                    </ts:data>
-                </ethereum:call>
-            </ts:origins>
-        </ts:attribute>
+    <ts:attribute name="allowance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:origins>
+            <ethereum:call function="allowance" contract="SAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0xc73e0383f3aff3215e6f04b0331d58cecf0ab849</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
 </ts:token>
