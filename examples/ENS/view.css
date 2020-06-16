@@ -113,10 +113,10 @@
 
 .resolverAddressBox {
     width: 100%;
-    height: 94px;
+    /*height: 94px;*/
 }
 
-.resolverAddressTitle {
+.subtitle {
     width: 100%;
     height: 2px;
     font-family: SourceSansPro, sans-serif;
@@ -129,9 +129,9 @@
     color: #727272;
 }
 
-.resolverAddressText {
+.viewText {
     width: 100%;
-    height: 58px;
+    /*height: 58px;*/
     font-family: SourceSansPro, sans-serif;
     font-size: 17px;
     font-weight: normal;

@@ -72,8 +72,13 @@ class Token {
             </div>
             
             <div id="resolverAddressBox">
-                <p class="resolverAddressTitle">Resolver Address</p>
-                <p class="resolverAddressText">${this.props.resolverAddress}</p>
+                <p class="subtitle">Resolver Address</p>
+                <p class="viewText">${this.props.resolverAddress}</p>
+            </div>
+       
+            <div id="description">
+                <p class="subtitle">Description</p>
+                <p class="viewText">${this.props.description}</p>
             </div>
         </div>
         `;
