@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE token  [
+        <!ENTITY view.en SYSTEM "view.en.js">
+        <!ENTITY about.en SYSTEM "about.en.js">
+        <!ENTITY style SYSTEM "shared.css">
+        ]>
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          custodian="false"
+>
+    <ts:label>
+        <ts:plurals xml:lang="en">
+            <ts:string quantity="one">MagazineToken #CAC</ts:string>
+            <ts:string quantity="other">MagazineTokens #CAC</ts:string>
+        </ts:plurals>
+        <ts:plurals xml:lang="es">
+            <ts:string quantity="one">Boleto de admisión</ts:string>
+            <ts:string quantity="other">Boleto de admisiónes</ts:string>
+        </ts:plurals>
+        <ts:plurals xml:lang="zh">
+            <ts:string quantity="one">入場券</ts:string>
+            <ts:string quantity="other">入場券</ts:string>
+        </ts:plurals>
+    </ts:label>
+
+    <ts:contract name="CAC" interface="erc875">
+        <ts:address network="1">0x8E6223AEcf9F508C412e9CbCE7EEBfC20f05F637</ts:address>
+    </ts:contract>
+
+    <ts:origins>
+        <!-- Define the contract which holds the token that the user will use -->
+        <ts:ethereum contract="CAC"/>
+    </ts:origins>
+
+    <ts:cards>
+        <ts:card type="token">
+            <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&view.en;</script>
+            </ts:item-view>
+            <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <script type="text/javascript">&view.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">About</ts:string>
+            </ts:label>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&about.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+    </ts:cards>
+
+</ts:token>
