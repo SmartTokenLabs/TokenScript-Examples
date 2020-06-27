@@ -19,7 +19,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         </ts:plurals>
         <ts:plurals xml:lang="es">
             <ts:string quantity="one">MagazineTokens #CAC</ts:string>
-            <ts:string quantity="other">BMagazineTokens #CAC</ts:string>
+            <ts:string quantity="other">MagazineTokens #CAC</ts:string>
         </ts:plurals>
         <ts:plurals xml:lang="zh">
             <ts:string quantity="one">MagazineTokens #CAC</ts:string>
