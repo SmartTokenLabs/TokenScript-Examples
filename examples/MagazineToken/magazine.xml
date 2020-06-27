@@ -18,12 +18,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:string quantity="other">MagazineTokens #CAC</ts:string>
         </ts:plurals>
         <ts:plurals xml:lang="es">
-            <ts:string quantity="one">Boleto de admisión</ts:string>
-            <ts:string quantity="other">Boleto de admisiónes</ts:string>
+            <ts:string quantity="one">MagazineTokens #CAC</ts:string>
+            <ts:string quantity="other">BMagazineTokens #CAC</ts:string>
         </ts:plurals>
         <ts:plurals xml:lang="zh">
-            <ts:string quantity="one">入場券</ts:string>
-            <ts:string quantity="other">入場券</ts:string>
+            <ts:string quantity="one">MagazineTokens #CAC</ts:string>
+            <ts:string quantity="other">MagazineTokens #CAC</ts:string>
         </ts:plurals>
     </ts:label>
 
