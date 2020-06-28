@@ -1,0 +1,96 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "James-Sangalli",
+      "name": "James Sangalli",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16630514?v=4",
+      "profile": "https://github.com/James-Sangalli",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "colourful-land",
+      "name": "Weiwu Zhang",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/548435?v=4",
+      "profile": "https://github.com/colourful-land",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jzaki",
+      "name": "James Zaki",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/939603?v=4",
+      "profile": "https://github.com/jzaki",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JamesSmartCell",
+      "name": "James Brown",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12689544?v=4",
+      "profile": "https://github.com/JamesSmartCell",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hboon",
+      "name": "Hwee-Boon Yar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/56189?v=4",
+      "profile": "https://github.com/hboon",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "zhangzhongnan928",
+      "name": "Victor Zhang",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/33795543?v=4",
+      "profile": "https://github.com/zhangzhongnan928",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hellolucas",
+      "name": "Lucas Toledo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17125002?v=4",
+      "profile": "https://github.com/hellolucas",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ChintanRathod",
+      "name": "Chintan Rathod",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4371780?s=460&u=aeffa77e91dfaf95990f355328b2b0636bcb9877&v=4",
+      "profile": "https://github.com/ChintanRathod",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "coreycaplan3",
+      "name": "Corey Caplan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13280244?s=460&u=4a4261476b882e93238af58910e3b39150216454&v=4",
+      "profile": "https://github.com/coreycaplan3",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 5,
+  "projectName": "tokenscript-examples",
+  "projectOwner": "AlphaWallet",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
