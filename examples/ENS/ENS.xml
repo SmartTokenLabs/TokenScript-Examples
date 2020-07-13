@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE token  [
+
         <!ENTITY style SYSTEM "shared.css">
         <!ENTITY item-view-style SYSTEM "item-view.css">
         <!ENTITY view-style SYSTEM "view.css">
@@ -19,13 +20,15 @@
 >
   <asnx:module name="ENS-Events">
     <namedType name="NameRegistered">
-      <sequence>
-        <element name="name" ethereum:type="string"/>
-        <element name="label" ethereum:type="bytes32" ethereum:indexed="true"/>
-        <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
-        <element name="cost" ethereum:type="uint"/>
-        <element name="expires" ethereum:type="uint"/>
-      </sequence>
+      <type>
+        <sequence>
+          <element name="name" ethereum:type="string"/>
+          <element name="label" ethereum:type="bytes32" ethereum:indexed="true"/>
+          <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
+          <element name="cost" ethereum:type="uint"/>
+          <element name="expires" ethereum:type="uint"/>
+        </sequence>
+      </type>
     </namedType>
   </asnx:module>
   <ts:label>
