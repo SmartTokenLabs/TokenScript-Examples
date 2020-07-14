@@ -16,10 +16,11 @@ class Token {
     render() {
         const decimals18 = 1e+18;
         const decimals8 = 1e+8; //cToken decimals
-        let cTokenBalance = (this.props.cTokenBalance / decimals8).toFixed(2);
-        let tokenBalance = (this.props.tokenBalance / decimals18).toFixed(2);
+        let cTokenBalance = Math.floor((this.props.cTokenBalance / decimals8) * 100) / 100;
+        let tokenBalance = Math.floor((this.props.tokenBalance / decimals18 * 100)) / 100;
         let interestRatePerBlock = this.props.supplyInterestRate;
         const averageBlocksPerYear = 2102400;
+        const withdrawable = Math.floor((cTokenBalance / this.props.rate) * 100) / 100;
         let APR = (((interestRatePerBlock * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
         return`
         <div class="ui container">
@@ -31,8 +32,8 @@ class Token {
             <span><bold><h3>1 ${this.props.underlyingToken} = ${this.props.rate} ${this.props.label}</h3></bold></span>
           </div>
           <div id="inputBox">
-              <bold><h3>Withdraw ${this.props.label} for ${this.props.underlyingToken} from Compound</h3></bold>
-              <span><input id="redeemAmount" type="number"></span>
+              <bold><h3>Withdraw ${this.props.underlyingToken} from Compound</h3></bold>
+              <span><input id="redeemAmount" type="number" placeholder="withdraw up to ${withdrawable} ${this.props.underlyingToken}"></span>
           </div>
         </div>`;
     }
