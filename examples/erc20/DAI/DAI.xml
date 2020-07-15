@@ -2,25 +2,90 @@
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
     <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.js">
+    <!ENTITY item-view-ownerApproved.en SYSTEM "item-view-ownerApproved.en.js">
+    <!ENTITY item-view-minted.en SYSTEM "item-view-minted.en.js">
+    <!ENTITY item-view-redeemed.en SYSTEM "item-view-redeemed.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
+    <!ENTITY supply.en SYSTEM "../Compound/supply.en.js">
+    <!ENTITY withdraw.en SYSTEM "../Compound/withdraw.en.js">
+    <!ENTITY enable.en SYSTEM "../Compound/enable.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           custodian="false"
 >
+
+    <asnx:module name="ERC20-Events">
+        <namedType name="Approval">
+            <type>
+                <sequence>
+                    <element name="owner" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="spender" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Mint">
+            <type>
+                <sequence>
+                    <element name="minter" ethereum:type="address" ethereum:indexed="false"/>
+                    <element name="mintAmount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="mintTokens" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Redeem">
+            <type>
+                <sequence>
+                    <element name="redeemer" ethereum:type="address" ethereum:indexed="false"/>
+                    <element name="redeemAmount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="redeemTokens" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Transfer">
+            <type>
+                <sequence>
+                    <element name="from" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="to" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+    </asnx:module>
+
     <ts:label>
         <ts:string xml:lang="en">DAI</ts:string>
     </ts:label>
+
     <ts:contract name="DAI" interface="erc20">
         <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
     </ts:contract>
+
+    <ts:contract name="cDAI" interface="erc20">
+        <ts:address network="1">0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</ts:address>
+    </ts:contract>
+
     <ts:origins>
         <ts:ethereum contract="DAI"/>
     </ts:origins>
+
+    <ts:selection name="enabled" filter="allowance>0">
+        <ts:label>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+    <ts:selection name="notEnabled" filter="allowance=0">
+        <ts:label>
+            <ts:string xml:lang="en">contract not enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+
     <ts:cards>
         <ts:card type="action">
             <ts:label>
@@ -61,18 +126,202 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
             </ts:view>
         </ts:card>
-    </ts:cards>
-        <ts:attribute name="balance">
-            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+
+        <!-- Do not show this card if the token contract is already enabled -->
+        <ts:card type="action" exclude="enabled">
             <ts:label>
-                <ts:string xml:lang="en">DAI-Balance</ts:string>
+                <ts:string xml:lang="en">Enable</ts:string>
             </ts:label>
-            <ts:origins>
-                <ethereum:call function="balanceOf" contract="DAI" as="uint">
+            <ts:transaction>
+                <ethereum:transaction function="approve" contract="DAI" as="bool">
                     <ts:data>
-                        <ts:address ref="ownerAddress"/>
+                        <ts:address>0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</ts:address>
+                        <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
                     </ts:data>
-                </ethereum:call>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Deposit</ts:string>
+            </ts:label>
+            <ts:attribute name="mintAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to supply</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="mint" contract="cDAI" as="uint">
+                    <ts:data>
+                        <ts:uint256 ref="mintAmount"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&supply.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Withdraw</ts:string>
+            </ts:label>
+            <ts:attribute name="redeemAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to withdraw</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="e8"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="redeem" contract="cDAI" as="uint">
+                    <ts:data>
+                        <ts:uint256 ref="redeemAmount"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="enabledForCDAI">
+            <ts:origins>
+                <ethereum:event type="Approval" filter="(&amp;(owner=${ownerAddress})(spender=0x5d3a536e4d6dbd6114cc1ead35777bab948e3643))"/>
             </ts:origins>
-        </ts:attribute>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-ownerApproved.en;</script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-ownerApproved.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="mintedCDAI">
+            <ts:origins>
+                <ethereum:event type="Mint" filter="minter=${ownerAddress}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-minted.en;</script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-minted.en;</script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="redeemedCDAI">
+            <ts:origins>
+                <ethereum:event type="Redeem" filter="redeemer=${ownerAddress}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-redeemed.en;</script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <script  type="text/javascript">&item-view-redeemed.en;</script>
+            </ts:view>
+        </ts:card>
+
+    </ts:cards>
+
+    <ts:attribute name="allowance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:origins>
+            <ethereum:call function="allowance" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <!-- your balance in DAI (not compound DAI) -->
+    <ts:attribute name="tokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <!-- DAI to cDAI exchange rate -->
+    <ts:attribute name="exchangeRate">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Exchange Rate</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="exchangeRateCurrent" contract="cDAI" as="uint">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="cTokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="cDAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="supplyInterestRate">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Supply Interest Rate</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="supplyRatePerBlock" contract="cDAI" as="uint">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="balance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">DAI-Balance</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
 </ts:token>
