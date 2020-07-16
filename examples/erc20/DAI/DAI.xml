@@ -10,7 +10,9 @@
     <!ENTITY supply.en SYSTEM "../AAVE/supply.en.js">
     <!ENTITY withdraw.en SYSTEM "../AAVE/withdraw.en.js">
     <!ENTITY enable.en SYSTEM "../AAVE/enable.en.js">
-    ]>
+    <!ENTITY borrow.en SYSTEM "../AAVE/borrow.en.js">
+    <!ENTITY repay.en SYSTEM "../AAVE/repay.en.js">
+]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -204,6 +206,85 @@
                 <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Borrow</ts:string>
+            </ts:label>
+            <ts:attribute name="borrowAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Borrow</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <!-- 1 is stable rate, 2 is variable rate -->
+            <ts:attribute name="interestRateModel">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">choice between variable and fixed interest rate</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="uint"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="borrow" contract="${lendingPoolAddress}" as="uint">
+                    <ts:data>
+                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                        <ts:uint256 ref="borrowAmount"/>
+                        <ts:uint256 ref="interestRateModel"/>
+                        <ts:uint256>0</ts:uint256> <!-- referral code -->
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&borrow.en;</ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Repay</ts:string>
+            </ts:label>
+            <ts:attribute name="repayAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Borrow</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <!-- default to user, unless they explicitly write someone else's address -->
+            <ts:attribute name="debtHolder">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">the address of whom's debt to repay</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="address"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="repay" contract="${lendingPoolAddress}" as="uint">
+                    <ts:data>
+                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                        <ts:uint256 ref="repayAmount"/>
+                        <ts:address ref="debtHolder"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&repay.en;</ts:view>
         </ts:card>
 
         <ts:card type="activity" name="enabledForaDAI">
