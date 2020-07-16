@@ -93,6 +93,18 @@
         </ts:label>
     </ts:selection>
 
+    <ts:selection name="enabledForBorrowing" filter="enabledForBorrowing=true">
+        <ts:label>
+            <ts:string xml:lang="en">contract already enabled for borrowing</ts:string>
+        </ts:label>
+    </ts:selection>
+
+    <ts:selection name="notEnabledForBorrowing" filter="enabledForBorrowing=false">
+        <ts:label>
+            <ts:string xml:lang="en">contract not enabled for borrowing</ts:string>
+        </ts:label>
+    </ts:selection>
+
     <ts:cards>
         <ts:card type="action">
             <ts:label>
@@ -145,6 +157,24 @@
                     <ts:data>
                         <ts:address>0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
                         <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="enabledForBorrowing">
+            <ts:label>
+                <ts:string xml:lang="en">Enable Borrowing</ts:string>
+            </ts:label>
+            <ts:transaction>
+                <ethereum:transaction function="setUserUseReserveAsCollateral" contract="LendingPoolProvider" as="bool">
+                    <ts:data>
+                        <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                        <ts:bool>true</ts:bool>
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
@@ -208,7 +238,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" exclude="notEnabledForBorrowing">
             <ts:label>
                 <ts:string xml:lang="en">Borrow</ts:string>
             </ts:label>
@@ -236,7 +266,7 @@
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>
-                <ethereum:transaction function="borrow" contract="${lendingPoolAddress}" as="uint">
+                <ethereum:transaction function="borrow" contract="LendingPoolProvider" as="uint">
                     <ts:data>
                         <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                         <ts:uint256 ref="borrowAmount"/>
@@ -249,7 +279,7 @@
             <ts:view xml:lang="en">&borrow.en;</ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" exclude="notEnabledForBorrowing">
             <ts:label>
                 <ts:string xml:lang="en">Repay</ts:string>
             </ts:label>
@@ -275,7 +305,7 @@
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>
-                <ethereum:transaction function="repay" contract="${lendingPoolAddress}" as="uint">
+                <ethereum:transaction function="repay" contract="LendingPoolProvider" as="uint">
                     <ts:data>
                         <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                         <ts:uint256 ref="repayAmount"/>
@@ -391,6 +421,21 @@
         <ts:origins>
             <ethereum:call function="principalBalanceOf" contract="aDAI" as="uint">
                 <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="enabledForBorrowing">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">enabled for borrowing</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="isUserUseReserveAsCollateralEnabled" contract="LendingPoolProvider" as="bool">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
