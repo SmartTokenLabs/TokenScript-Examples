@@ -9,11 +9,11 @@
     <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     <!ENTITY aaveStyle SYSTEM "../AAVE/shared.css">
-    <!ENTITY supply.en SYSTEM "../AAVE/supply.en.js">
-    <!ENTITY withdraw.en SYSTEM "../AAVE/withdraw.en.js">
-    <!ENTITY enable.en SYSTEM "../AAVE/enable.en.js">
-    <!ENTITY borrow.en SYSTEM "../AAVE/borrow.en.js">
-    <!ENTITY repay.en SYSTEM "../AAVE/repay.en.js">
+    <!ENTITY supply.en SYSTEM "supply.en.js">
+    <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
+    <!ENTITY enable.en SYSTEM "enable.en.js">
+    <!ENTITY borrow.en SYSTEM "borrow.en.js">
+    <!ENTITY repay.en SYSTEM "repay.en.js">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
