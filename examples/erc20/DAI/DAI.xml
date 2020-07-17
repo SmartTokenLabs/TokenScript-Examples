@@ -5,6 +5,8 @@
     <!ENTITY item-view-ownerApproved.en SYSTEM "item-view-ownerApproved.en.js">
     <!ENTITY item-view-minted.en SYSTEM "item-view-minted.en.js">
     <!ENTITY item-view-redeemed.en SYSTEM "item-view-redeemed.en.js">
+    <!ENTITY item-view-repay.en SYSTEM "item-view-repay.en.js">
+    <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     <!ENTITY aaveStyle SYSTEM "../AAVE/shared.css">
     <!ENTITY supply.en SYSTEM "../AAVE/supply.en.js">
@@ -59,6 +61,34 @@
                     <element name="from" ethereum:type="address" ethereum:indexed="true"/>
                     <element name="to" ethereum:type="address" ethereum:indexed="true"/>
                     <element name="amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Repay">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_repayer" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amountMinusFees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Borrow">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRateMode" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRate" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_originationFee" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_referral" ethereum:type="uint16" ethereum:indexed="true"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
                 </sequence>
             </type>
         </namedType>
@@ -208,8 +238,10 @@
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&supply.en;</ts:view>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
         </ts:card>
 
         <ts:card type="action" exclude="notEnabled">
@@ -275,8 +307,10 @@
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&borrow.en;</ts:view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&borrow.en;</xhtml:script>
+            </ts:view>
         </ts:card>
 
         <ts:card type="action" exclude="notEnabledForBorrowing">
@@ -313,8 +347,10 @@
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
-            <style type="text/css">&style;</style>
-            <ts:view xml:lang="en">&repay.en;</ts:view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&repay.en;</xhtml:script>
+            </ts:view>
         </ts:card>
 
         <ts:card type="activity" name="enabledForaDAI">
@@ -322,12 +358,12 @@
                 <ethereum:event type="Approval" filter="(&amp;(ownerAddress=${owner})(spender=0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d))"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-ownerApproved.en;</script>
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-ownerApproved.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-ownerApproved.en;</script>
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-ownerApproved.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
@@ -336,12 +372,12 @@
                 <ethereum:event type="Mint" filter="ownerAddress=${_fromMinter}"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-minted.en;</script>
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-minted.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-minted.en;</script>
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-minted.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
@@ -351,11 +387,53 @@
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-redeemed.en;</script>
+                <xhtml:script  type="text/javascript">&item-view-redeemed.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&aaveStyle;</style>
-                <script  type="text/javascript">&item-view-redeemed.en;</script>
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-redeemed.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aDAIRepaid">
+            <ts:origins>
+                <ethereum:event type="Repay" filter="ownerAddress=${_user}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aDAIRepaidFromAnotherUser">
+            <ts:origins>
+                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}&amp;!(ownerAddress=${_repayer})"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aDAIBorrowed">
+            <ts:origins>
+                <ethereum:event type="Borrow" filter="ownerAddress=${_user}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&aaveStyle;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
