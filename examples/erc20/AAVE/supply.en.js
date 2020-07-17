@@ -19,9 +19,9 @@ class Token {
         const decimals18 = 1e+18;
         let aTokenBalance = (this.props.aTokenBalance / decimals18).toFixed(2);
         let tokenBalance = (this.props.tokenBalance / decimals18).toFixed(2);
-        let interestRatePerBlock = this.props.supplyInterestRate;
+        let interestRatePerBlockSupply = this.props.interestRateSupply;
         const averageBlocksPerYear = 2102400;
-        let APR = (((interestRatePerBlock * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
+        let APR = (((interestRatePerBlockSupply * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
         return`
         <div class="ui container">
           <div class="ui segment">
