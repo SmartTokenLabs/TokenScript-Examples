@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE token  [
+    <!ENTITY style SYSTEM "shared.css">
+    <!ENTITY item-view-minted.en SYSTEM "item-view-minted.en.js">
+    <!ENTITY item-view-redeemed.en SYSTEM "item-view-redeemed.en.js">
+    <!ENTITY item-view-repay.en SYSTEM "item-view-repay.en.js">
+    <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
+    <!ENTITY style SYSTEM "./shared.css">
+    <!ENTITY deposit.en SYSTEM "supply.en.js">
+    <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
+    <!ENTITY borrow.en SYSTEM "borrow.en.js">
+    <!ENTITY repay.en SYSTEM "repay.en.js">
+]>
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          custodian="false"
+>
+
+    <asnx:module name="ERC20-Events">
+        <namedType name="MintOnDeposit">
+            <type>
+                <sequence>
+                    <element name="_fromMinter" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_valueMinted" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fromBalanceIncreaseMinted" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fromIndexMinted" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Redeem">
+            <type>
+                <sequence>
+                    <element name="_fromRedeemer" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_valueRedeemed" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fromBalanceIncreaseRedeemed" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fromIndexRedeemed" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Transfer">
+            <type>
+                <sequence>
+                    <element name="from" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="to" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Repay">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_repayer" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amountMinusFees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Borrow">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRateMode" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRate" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_originationFee" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_referral" ethereum:type="uint16" ethereum:indexed="true"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+    </asnx:module>
+
+    <ts:label>
+        <ts:string xml:lang="en">ETH</ts:string>
+    </ts:label>
+
+    <ts:contract name="balance">
+        <ts:address network="1">0xb8c9fc923e67da6d7979bf2c290bd1df9c512bfa</ts:address>
+    </ts:contract>
+    <ts:contract name="aETH" interface="erc20">
+        <ts:address network="1">0x3a3a65aab0dd2a17e3f1947ba16138cd37d08c04</ts:address>
+    </ts:contract>
+    <ts:contract name="ETH">
+        <ts:address network="1">0x0000000000000000000000000000000000000000</ts:address>
+    </ts:contract>
+    <ts:contract name="LendingPoolProvider">
+        <ts:address network="1">0x24a42fD28C976A61Df5D00D0599C34c4f90748c8</ts:address>
+    </ts:contract>
+    <ts:contract name="AAVELendingPool">
+        <ts:address network="1">0x398eC7346DcD622eDc5ae82352F02bE94C62d119</ts:address>
+    </ts:contract>
+    <ts:contract name="AAVELendingPoolCore">
+        <ts:address network="1">0x3dfd23A6c5E8BbcFc9581d2E864a68feb6a076d3</ts:address>
+    </ts:contract>
+
+    <ts:origins>
+        <ts:ethereum contract="ETH"/>
+    </ts:origins>
+
+    <ts:cards>
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Deposit</ts:string>
+            </ts:label>
+            <ts:attribute name="mintAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Deposit</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="deposit" contract="LendingPoolProvider" as="uint">
+                    <ts:data>
+                        <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                        <ts:uint256 ref="mintAmount"/>
+                        <ts:uint256>1101</ts:uint256> <!-- placeholder referral -->
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&deposit.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Withdraw</ts:string>
+            </ts:label>
+            <ts:attribute name="redeemAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to withdraw</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="e8"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="redeem" contract="aETH" as="uint">
+                    <ts:data>
+                        <ts:uint256 ref="redeemAmount"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Borrow</ts:string>
+            </ts:label>
+            <ts:attribute name="borrowAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Borrow</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <!-- 1 is stable rate, 2 is variable rate -->
+            <ts:attribute name="interestRateModel">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">choice between variable and fixed interest rate</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="uint"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="borrow" contract="LendingPoolProvider" as="uint">
+                    <ts:data>
+                        <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                        <ts:uint256 ref="borrowAmount"/>
+                        <ts:uint256 ref="interestRateModel"/>
+                        <ts:uint256>0</ts:uint256> <!-- referral code -->
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&borrow.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action">
+            <ts:label>
+                <ts:string xml:lang="en">Repay</ts:string>
+            </ts:label>
+            <ts:attribute name="repayAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Borrow</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <!-- default to user, unless they explicitly write someone else's address -->
+            <ts:attribute name="debtHolder">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">the address of whom's debt to repay</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="address"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="repay" contract="LendingPoolProvider" as="uint">
+                    <ts:data>
+                        <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                        <ts:uint256 ref="repayAmount"/>
+                        <ts:address ref="debtHolder"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHMinted">
+            <ts:origins>
+                <ethereum:event type="Mint" filter="ownerAddress=${_fromMinter}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-minted.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-minted.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHRedeemed">
+            <ts:origins>
+                <ethereum:event type="Redeem" filter="ownerAddress=${_fromRedeemed}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&style;</style>
+                <xhtml:script  type="text/javascript">&item-view-redeemed.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-redeemed.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHRepaid">
+            <ts:origins>
+                <ethereum:event type="Repay" filter="ownerAddress=${_user}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHRepaidFromAnotherUser">
+            <ts:origins>
+                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}&amp;!(ownerAddress=${_repayer})"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHBorrowed">
+            <ts:origins>
+                <ethereum:event type="Borrow" filter="ownerAddress=${_user}"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+    </ts:cards>
+
+    <!-- your balance in ETH -->
+    <ts:attribute name="tokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="balance" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="lendingPoolAddress">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.15</ts:syntax></ts:type>
+        <ts:origins>
+            <ethereum:call function="getLendingPool" contract="LendingPoolProvider" as="address">
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="allowance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:origins>
+            <ethereum:call function="allowance" contract="ETH" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0x3a3a65aab0dd2a17e3f1947ba16138cd37d08c04</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="aTokenBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="aETH" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="stableInterestRateBorrow">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Stable interest rate</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getReserveCurrentStableBorrowRate" contract="AAVELendingPool" as="uint">
+                <ts:data>
+                    <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="variableInterestRateBorrow">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Variable interest rate borrow</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getReserveCurrentVariableBorrowRate" contract="AAVELendingPool" as="uint">
+                <ts:data>
+                    <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="interestRateSupply">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">interest rate supply</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getReserveCurrentLiquidityRate" contract="AAVELendingPoolCore" as="uint">
+                <ts:data>
+                    <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="aTokenPrincipleBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Principal Balance</ts:string>
+            <ts:string xml:lang="zh">餘額</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="principalBalanceOf" contract="aETH" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="enabledForBorrowing">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">enabled for borrowing</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="isUserUseReserveAsCollateralEnabled" contract="LendingPoolProvider" as="bool">
+                <ts:data>
+                    <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+</ts:token>
