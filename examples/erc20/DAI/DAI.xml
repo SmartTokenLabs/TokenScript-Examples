@@ -4,7 +4,7 @@
     <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.js">
     <!ENTITY repay.en SYSTEM "repay.en.js">
     <!ENTITY enable.en SYSTEM "enable.en.js">
-    <!ENTITY item-view-repay.en SYSTEM "item-view-repay.en.js">
+    <!ENTITY view-repay.en SYSTEM "view-repay.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
@@ -12,14 +12,35 @@
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           custodian="false"
 >
+
+    <asnx:module name="aDAIEvents">
+        <namedType name="Repay">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_repayer" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amountMinusFees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+    </asnx:module>
+
     <ts:label>
         <ts:string xml:lang="en">DAI</ts:string>
     </ts:label>
     <ts:contract name="DAI" interface="erc20">
         <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+    </ts:contract>
+    <ts:contract name="aDAI" interface="erc20">
+        <ts:address network="1">0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
     </ts:contract>
     <ts:contract name="balance">
         <ts:address network="1">0xb8c9fc923e67da6d7979bf2c290bd1df9c512bfa</ts:address>
@@ -115,7 +136,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
-                <ts:string xml:lang="en">Repay AAVE Debt</ts:string>
+                <ts:string xml:lang="en">Repay DAI to Aave</ts:string>
             </ts:label>
             <ts:attribute name="repayAmount">
                 <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
@@ -153,31 +174,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             </ts:view>
         </ts:card>
 
-        <ts:card type="activity" name="aETHRepaid">
+        <ts:card type="activity" name="daiRepaid">
             <ts:origins>
-                <ethereum:event type="Repay" filter="ownerAddress=${_user}"/>
+                <ethereum:event type="Repay" filter="_user=${ownerAddress}" contract="aDAI"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+                <xhtml:script  type="text/javascript">&view-repay.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
-        <ts:card type="activity" name="aETHRepaidFromAnotherUser">
-            <ts:origins>
-                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}&amp;!(ownerAddress=${_repayer})"/>
-            </ts:origins>
-            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
-            </ts:item-view>
-            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
+                <xhtml:script  type="text/javascript">&view-repay.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
