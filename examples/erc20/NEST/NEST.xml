@@ -35,13 +35,15 @@
 
     <ts:selection name="enabled" filter="allowance>0">
         <ts:label>
-            <ts:string xml:lang="en">contract already enabled</ts:string>
+            <ts:string xml:lang="en">Contract already enabled</ts:string>
+            <ts:string xml:lang="zh">合约已经启用</ts:string>
         </ts:label>
     </ts:selection>
 
     <ts:selection name="notEnabled" filter="allowance=0">
         <ts:label>
-            <ts:string xml:lang="en">contract not enabled</ts:string>
+            <ts:string xml:lang="en">Contract not enabled</ts:string>
+            <ts:string xml:lang="zh">合约没有启用</ts:string>
         </ts:label>
     </ts:selection>
 
@@ -49,13 +51,15 @@
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Deposit</ts:string>
+                <ts:string xml:lang="zh">存款</ts:string>
             </ts:label>
             <ts:attribute name="amount">
                 <ts:type>
                     <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
                 </ts:type>
                 <ts:label>
-                    <ts:string xml:lang="en">amount to deposit</ts:string>
+                    <ts:string xml:lang="en">Amount to deposit</ts:string>
+                    <ts:string xml:lang="zh">存款金额</ts:string>
                 </ts:label>
                 <ts:origins>
                     <ts:user-entry as="e18"/>
@@ -78,13 +82,15 @@
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
                 <ts:string xml:lang="en">Withdraw</ts:string>
+                <ts:string xml:lang="zh">取出</ts:string>
             </ts:label>
             <ts:attribute name="amount">
                 <ts:type>
                     <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
                 </ts:type>
                 <ts:label>
-                    <ts:string xml:lang="en">amount to withdraw</ts:string>
+                    <ts:string xml:lang="en">Amount to withdraw</ts:string>
+                    <ts:string xml:lang="zh">取出金额</ts:string>
                 </ts:label>
                 <ts:origins>
                     <ts:user-entry as="e18"/>
@@ -121,6 +127,7 @@
         <ts:card type="action" exclude="enabled">
             <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
+                <ts:string xml:lang="zh">启用</ts:string>
             </ts:label>
             <ts:transaction>
                 <ethereum:transaction function="approve" contract="NEST" as="uint">
@@ -144,6 +151,7 @@
         </ts:type>
         <ts:label>
             <ts:string xml:lang="en">balanceOf</ts:string>
+            <ts:string xml:lang="zh">余额</ts:string>
         </ts:label>
         <ts:origins>
             <ethereum:call function="balanceOf" contract="NEST" as="uint">
@@ -159,7 +167,8 @@
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
         <ts:label>
-            <ts:string xml:lang="en">allowance</ts:string>
+            <ts:string xml:lang="en">Allowance</ts:string>
+            <ts:string xml:lang="zh">许可额度</ts:string>
         </ts:label>
         <ts:origins>
             <ethereum:call function="allowance" contract="NEST" as="uint">
