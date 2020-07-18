@@ -15,6 +15,9 @@ class Token {
         const averageBlocksPerYear = 2102400;
         let stableAPR = (((interestRatePerBlockStable * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
         let variableAPR = (((interestRatePerBlockVariable * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
+        let collateralValueInEth = this.token.totalCollateral / decimals18;
+        let daiPriceInEth = this.token.assetPriceDAI / decimals18;
+        let borrowable = this.token.availableBorrowsETH / decimals18;
         return`
         <div class="ui container">
           <div class="ui segment">
@@ -24,9 +27,11 @@ class Token {
             <span><bold><h3>Interest Rate Stable: ${stableAPR}%</h3></bold></span>
             <span><bold><h3>Interest Rate Variable: ${variableAPR}%</h3></bold></span>
             <span><bold><h3>1 ETH = ${this.token.rate} aETH</h3></bold></span>
+            <span><bold><h3>Your collateral is worth ${collateralValueInEth} ETH (${collateralValueInEth / daiPriceInEth} DAI)</h3></bold></span>
+            <span><bold><h3>You can borrow up to ${borrowable} ETH (${borrowable / daiPriceInEth} DAI)</h3></bold></span>
           </div>
           <div id="inputBox">
-              <bold><h3>Borrow ETH from AAVE</h3></bold>
+              <bold><h3>Borrow DAI from AAVE</h3></bold>
               <span><input id="interestRateModel" placeholder="1 for stable rate, 2 for variable rate" type="number"></span>
               <span><input id="borrowAmount" type="number"></span>
           </div>
