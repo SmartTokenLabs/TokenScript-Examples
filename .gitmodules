@@ -1,0 +1,3 @@
+[submodule "examples/erc20/AAVE/aave-protocol"]
+	path = examples/erc20/AAVE/aave-protocol
+	url = https://github.com/aave/aave-protocol.git
