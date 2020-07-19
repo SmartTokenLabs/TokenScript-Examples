@@ -169,7 +169,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
         <ts:card type="activity" name="aETHRepaidFromAnotherUser">
             <ts:origins>
-                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}&amp;!(ownerAddress=${_repayer})"/>
+                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}(!(ownerAddress=${_repayer})))"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>
