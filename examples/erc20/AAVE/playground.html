@@ -20,6 +20,7 @@
                         }
                         // Examine the text in the response
                         response.json().then(jsonContract => {
+                            console.log("Number of functions:" + jsonContract.abi.length);
                             const contract = web3.eth.contract(jsonContract.abi).at(this.strAddr);
                             this.callback(contract);
                         });
@@ -30,16 +31,58 @@
                 });
         }
 
-        // logging aETH balance
-        doSomethingWithTheContract('aave-protocol/build/contracts/AToken.json', '0x3a3A65aAb0dd2A17E3F1947bA16138cd37d08c04', contract => {
-            contract.balanceOf('0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+        doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
+            contract.getUserReserveData('0x6B175474E89094C44Da98b954EedeAC495271d0F','0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
                 if (!error) {
-                    console.log(result.toNumber());
+                    console.log(result[0].div(1e18, 10).toNumber());
+                    console.log(result[1].div(1e18, 10).toNumber());
+                    console.log(result[2].div(1e18, 10).toNumber());
+                    console.log(result);
                 } else
                     console.error(error);
             });
         });
 
+
+        /* ------------- getReserveData ------------- */
+        /* for some strange reasons, the following doesn't work (TypeError: getReserveConfigurationData is not a function )
+        doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '​0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
+            contract.getReserveConfigurationData('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', (error, result) => {
+                if (!error)
+                    console.log(result);
+                else
+                    console.error(error);
+            });
+        });
+        */
+
+        // so I had to do it without using doSomethingWithTheContract
+        var LendingPool;
+        fetch('aave-protocol/build/contracts/LendingPool.json')
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+
+                    // Examine the text in the response
+                    response.json().then(function (contract) {
+                        LendingPool = web3.eth.contract(contract.abi).at('0x398eC7346DcD622eDc5ae82352F02bE94C62d119');
+                        LendingPool.getReserveConfigurationData('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', (error, result) => {
+                            if (!error) {
+                                console.log("LendingPool.getReserveConfigurationData");
+                                console.log(result);
+                            } else
+                                console.error(error);
+                        });
+                    });
+                }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
     </script>
 </head>
 <body id="content">
