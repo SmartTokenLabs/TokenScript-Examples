@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>PlayGround</title>
+<script type="text/javascript">
+
+  var aETH;
+  
+  // these contract JSON in build directory are made by
+  // truffle compile
+  
+   fetch('build/contracts/AToken.json')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(contract) {
+          aETH = web3.eth.contract(contract.abi).at('0x3a3A65aAb0dd2A17E3F1947bA16138cd37d08c04');
+          aETH.balanceOf('0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+              if (!error) {
+                  console.log("hello");
+                  console.log(result.toNumber());
+
+              }
+              else
+                 console.error(error);
+          });
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+</script>
+
+</head>
+<body id="content">
+</body>
+</html>
