@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/strict.dtd">
+<html xmlns="http://www.w3.org/TR/xhtml1/strict">
+<head>
+    <title>Playground</title>
+    <script type="text/javascript">
+
+        function doSomethingWithTheContract(pathContractJSON, strAddr, callback) {
+            this.strAddr = strAddr;
+            this.callback = callback;
+
+            fetch(pathContractJSON)
+                .then(
+                    response => {
+                        if (response.status !== 200) {
+                            console.log('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                            return;
+                        }
+                        // Examine the text in the response
+                        response.json().then(jsonContract => {
+                            const contract = web3.eth.contract(jsonContract.abi).at(this.strAddr);
+                            this.callback(contract);
+                        });
+                    }
+                )
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+
+        // logging aETH balance
+        doSomethingWithTheContract('aave-protocol/build/contracts/AToken.json', '0x3a3A65aAb0dd2A17E3F1947bA16138cd37d08c04', contract => {
+            contract.balanceOf('0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+                if (!error) {
+                    console.log(result.toNumber());
+                } else
+                    console.error(error);
+            });
+        });
+
+    </script>
+</head>
+<body id="content">
+</body>
+</html>
