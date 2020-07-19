@@ -8,8 +8,8 @@ class Token {
 
     render() {
         const decimals18 = 1e+18;
-        let daiDebt = this.props.borrowBalance / decimals18;
-        let daiDebtAccured = this.props.borrowInterestAccrued / decimals18;
+        let daiDebt = this.token.borrowBalance / decimals18;
+        let daiDebtAccured = this.token.borrowInterestAccrued / decimals18;
         let tokenBalance = (this.token.tokenBalance / decimals18).toFixed(2);
         let interestRatePerBlock = this.token.borrowRate;
         let rateMode = "";
@@ -32,7 +32,7 @@ class Token {
           <div id="inputBox">
               <bold><h3>Repay DAI debt to AAVE</h3></bold>
               <span><input id="repayAmount" type="number"></span>
-              <span><input id="debtHolder" type="text">${this.props.ownerAddress}</span>
+              <span><input id="debtHolder" type="text">${this.token.ownerAddress}</span>
           </div>
         </div>
 `;
