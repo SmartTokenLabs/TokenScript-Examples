@@ -188,20 +188,6 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="activity" name="daiRepaidFromAnotherUser">
-            <ts:origins>
-                <ethereum:event type="Repay" filter="&amp;(_user=${ownerAddress}(!(_repayer=${ownerAddress})))" contract="aDAI"/>
-            </ts:origins>
-            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
-            </ts:item-view>
-            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-repay.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
     </ts:cards>
 
     <ts:attribute name="assetPriceDAI">
