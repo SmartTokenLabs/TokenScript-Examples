@@ -20,7 +20,6 @@ class Token {
             <span><bold><h3>ETH Balance: ${aTokenBalance}</h3></bold></span>
             <span><bold><h3>aETH Balance: ${tokenBalance}</h3></bold></span>
             <span><bold><h3>Interest Rate: ${APR}%</h3></bold></span>
-            <span><bold><h3>1 aETH = ${this.token.rate} ETH</h3></bold></span>
           </div>
           <div id="inputBox">
               <bold><h3>Supply ETH to AAVE</h3></bold>

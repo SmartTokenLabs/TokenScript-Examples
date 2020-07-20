@@ -46,7 +46,7 @@
     <ts:contract name="aETH" interface="erc20">
         <ts:address network="1">0x3a3a65aab0dd2a17e3f1947ba16138cd37d08c04</ts:address>
     </ts:contract>
-    <ts:contract name="ETH">
+    <ts:contract name="ETH" interface="erc20">
         <ts:address network="1">0x0000000000000000000000000000000000000000</ts:address>
     </ts:contract>
     <ts:contract name="LendingPoolProvider">

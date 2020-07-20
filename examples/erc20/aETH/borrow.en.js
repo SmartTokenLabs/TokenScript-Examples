@@ -26,7 +26,6 @@ class Token {
             <span><bold><h3>ETH Balance: ${tokenBalance}</h3></bold></span>
             <span><bold><h3>Interest Rate Stable: ${stableAPR}%</h3></bold></span>
             <span><bold><h3>Interest Rate Variable: ${variableAPR}%</h3></bold></span>
-            <span><bold><h3>1 ETH = ${this.token.rate} aETH</h3></bold></span>
             <span><bold><h3>Your collateral is worth ${collateralValueInEth} ETH (${collateralValueInEth / daiPriceInEth} DAI)</h3></bold></span>
             <span><bold><h3>You can borrow up to ${borrowable} ETH (${borrowable / daiPriceInEth} DAI)</h3></bold></span>
           </div>
