@@ -17,7 +17,7 @@ class Token {
         } else {
             rateMode = "variable rate";
         }
-        let APR = (this.token.borrowRate / 1e+27).toFixed(2);
+        let APR = ((this.token.borrowRate / 1e+27) * 100).toFixed(2);
         return`
         <div class="ui container">
           <div class="ui segment">

@@ -10,7 +10,7 @@ class Token {
         const decimals18 = 1e+18;
         let aTokenBalance = (this.token.aTokenBalance / decimals18).toFixed(2);
         let tokenBalance = (this.token.tokenBalance / decimals18).toFixed(2);
-        let APR = (this.token.interestRateSupply / 1e+27).toFixed(2);
+        let APR = ((this.token.interestRateSupply / 1e+27) * 100).toFixed(2);
         return`
         <div class="ui container">
           <div class="ui segment">
