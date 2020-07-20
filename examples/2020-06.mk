@@ -1,5 +1,5 @@
 ifeq ($(TOKENSCRIPT_SCHEMA),)
-TOKENSCRIPT_SCHEMA=/Users/jamessangalli/Documents/projects/TokenScript/schema/tokenscript.xsd
+TOKENSCRIPT_SCHEMA=http://tokenscript.org/2020/06/tokenscript.xsd
 endif
 
 ifeq ($(XMLSECTOOL),)
