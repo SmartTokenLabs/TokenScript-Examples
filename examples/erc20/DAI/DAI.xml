@@ -176,7 +176,7 @@
 
         <ts:card type="activity" name="daiRepaid">
             <ts:origins>
-                <ethereum:event type="Repay" filter="ownerAddress=${_user}" contract="aDAI"/>
+                <ethereum:event type="Repay" filter="_user=${ownerAddress}" contract="aDAI"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>
@@ -190,7 +190,7 @@
 
         <ts:card type="activity" name="daiRepaidFromAnotherUser">
             <ts:origins>
-                <ethereum:event type="Repay" filter="&amp;(ownerAddress=${_user}(!(ownerAddress=${_repayer})))" contract="aDAI"/>
+                <ethereum:event type="Repay" filter="&amp;(_user=${ownerAddress}(!(_repayer=${ownerAddress})))" contract="aDAI"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>

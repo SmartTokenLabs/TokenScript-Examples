@@ -166,7 +166,7 @@
 
         <ts:card type="activity" name="aETHRedeemed">
             <ts:origins>
-                <ethereum:event filter="ownerAddress=${_fromRedeemer}" type="Redeem" contract="aETH"/>
+                <ethereum:event filter="_fromRedeemer=${ownerAddress}" type="Redeem" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <style type="text/css">&style;</style>
