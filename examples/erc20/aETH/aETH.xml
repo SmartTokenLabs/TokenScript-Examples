@@ -27,6 +27,21 @@
                 </sequence>
             </type>
         </namedType>
+        <namedType name="Borrow">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRateMode" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRate" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_originationFee" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_referral" ethereum:type="uint16" ethereum:indexed="true"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
         <namedType name="Redeem">
             <type>
                 <sequence>
@@ -151,7 +166,7 @@
 
         <ts:card type="activity" name="aETHRedeemed">
             <ts:origins>
-                <ethereum:event filter="ownerAddress=${_fromRedeemer}" type="Redeem"/>
+                <ethereum:event filter="ownerAddress=${_fromRedeemer}" type="Redeem" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <style type="text/css">&style;</style>
@@ -165,7 +180,7 @@
 
         <ts:card type="activity" name="aETHBorrowed">
             <ts:origins>
-                <ethereum:event type="Borrow" filter="_user=${ownerAddress}"/>
+                <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>

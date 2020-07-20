@@ -98,7 +98,7 @@
 
         <ts:card type="activity" name="aETHMinted">
             <ts:origins>
-                <ethereum:event type="MintOnDeposit" filter="ownerAddress=${_fromMinter}"/>
+                <ethereum:event type="MintOnDeposit" filter="ownerAddress=${_fromMinter}" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&style;</xhtml:style>
