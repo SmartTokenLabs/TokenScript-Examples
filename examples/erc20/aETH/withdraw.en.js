@@ -10,9 +10,7 @@ class Token {
         const decimals18 = 1e+18;
         let aTokenBalance = (this.token.aTokenBalance / decimals18).toFixed(2);
         let tokenBalance = (this.token.tokenBalance / decimals18).toFixed(2);
-        let interestRatePerBlockSupply = this.token.interestRateSupply;
-        const averageBlocksPerYear = 2102400;
-        let APR = (((interestRatePerBlockSupply * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
+        let APR = (this.token.interestRateSupply / 1e+27).toFixed(2);
         let collateralValueInEth = this.token.totalCollateral / decimals18;
         let totalBorrows = this.token.totalBorrowsETH / decimals18;
         let liquidationThreshold = (this.token.liquidationThreshold / decimals18) / 100;

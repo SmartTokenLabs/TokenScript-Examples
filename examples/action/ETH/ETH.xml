@@ -58,6 +58,9 @@
     <ts:contract name="AAVELendingPoolCore">
         <ts:address network="1">0x3dfd23A6c5E8BbcFc9581d2E864a68feb6a076d3</ts:address>
     </ts:contract>
+    <ts:contract name="AAVEGetters">
+        <ts:address network="1">0x38ba1173f498f7a89ac474edba1d587cc1ab021d</ts:address>
+    </ts:contract>
 
     <ts:origins>
         <ts:ethereum contract="ETH"/>
@@ -197,13 +200,13 @@
     <ts:attribute name="interestRateSupply">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
-            <ts:string xml:lang="en">Current Deposite Interest Rate</ts:string>
-            <ts:string xml:lang="zh">当下存款利率</ts:string>
+            <ts:string xml:lang="en">interest rate supply</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getReserveCurrentLiquidityRate" contract="AAVELendingPoolCore" as="uint">
+            <ethereum:call function="getLiquidityRate" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
+                    <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
         </ts:origins>

@@ -279,9 +279,10 @@
             <ts:string xml:lang="en">interest rate supply</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getReserveCurrentLiquidityRate" contract="AAVELendingPoolCore" as="uint">
+            <ethereum:call function="getLiquidityRate" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
         </ts:origins>

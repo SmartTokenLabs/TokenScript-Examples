@@ -11,15 +11,13 @@ class Token {
         let daiDebt = this.token.borrowBalance / decimals18;
         let daiDebtAccured = this.token.borrowInterestAccrued / decimals18;
         let tokenBalance = (this.token.tokenBalance / decimals18).toFixed(2);
-        let interestRatePerBlock = this.token.borrowRate;
         let rateMode = "";
         if(this.token.borrowRateMode === 1) {
             rateMode = "stable rate";
         } else {
             rateMode = "variable rate";
         }
-        const averageBlocksPerYear = 2102400;
-        let APR = (((interestRatePerBlock * averageBlocksPerYear) / decimals18) * 100).toFixed(2);
+        let APR = (this.token.borrowRate / 1e+27).toFixed(2);
         return`
         <div class="ui container">
           <div class="ui segment">
