@@ -136,7 +136,7 @@
 
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
-                <ts:string xml:lang="en">Repay AAVE Debt</ts:string>
+                <ts:string xml:lang="en">Repay DAI to Aave</ts:string>
             </ts:label>
             <ts:attribute name="repayAmount">
                 <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>

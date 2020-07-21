@@ -2,8 +2,9 @@
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
     <!ENTITY item-view-minted.en SYSTEM "item-view-supply.en.js">
+    <!ENTITY item-view-received.en SYSTEM "item-view-received.en.js">
     <!ENTITY style SYSTEM "shared.css">
-    <!ENTITY deposit.en SYSTEM "supply.en.js">
+    <!ENTITY deposit.en SYSTEM "deposit.en.js">
 ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:ethereum="urn:ethereum:constantinople"
@@ -69,7 +70,7 @@
     <ts:cards>
         <ts:card type="action">
             <ts:label>
-                <ts:string xml:lang="en">Deposit</ts:string>
+                <ts:string xml:lang="en">Deposit to AAVE</ts:string>
                 <ts:string xml:lang="zh">存款</ts:string>
             </ts:label>
             <ts:attribute name="mintAmount">
@@ -100,6 +101,20 @@
         </ts:card>
 
         <ts:card type="activity" name="aETHMinted">
+            <ts:origins>
+                <ethereum:event type="Transfer" filter="to=${ownerAddress}" contract="aETH"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-received.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-received.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHReceived">
             <ts:origins>
                 <ethereum:event type="MintOnDeposit" filter="_fromMinter=${ownerAddress}" contract="aETH"/>
             </ts:origins>
