@@ -2,6 +2,9 @@
 <!DOCTYPE token  [
     <!ENTITY style SYSTEM "shared.css">
     <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.js">
+    <!ENTITY repay.en SYSTEM "repay.en.js">
+    <!ENTITY enable.en SYSTEM "enable.en.js">
+    <!ENTITY view-repay.en SYSTEM "view-repay.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
@@ -9,18 +12,69 @@
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
           xmlns:xml="http://www.w3.org/XML/1998/namespace"
           xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           custodian="false"
 >
+
+    <asnx:module name="aDAIEvents">
+        <namedType name="Repay">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_repayer" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amountMinusFees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_fees" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+    </asnx:module>
+
     <ts:label>
         <ts:string xml:lang="en">DAI</ts:string>
     </ts:label>
     <ts:contract name="DAI" interface="erc20">
         <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
     </ts:contract>
+    <ts:contract name="aDAI" interface="erc20">
+        <ts:address network="1">0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
+    </ts:contract>
+    <ts:contract name="balance">
+        <ts:address network="1">0xb8c9fc923e67da6d7979bf2c290bd1df9c512bfa</ts:address>
+    </ts:contract>
+    <ts:contract name="LendingPoolProvider">
+        <ts:address network="1">0x24a42fD28C976A61Df5D00D0599C34c4f90748c8</ts:address>
+    </ts:contract>
+    <ts:contract name="AAVELendingPool">
+        <ts:address network="1">0x398eC7346DcD622eDc5ae82352F02bE94C62d119</ts:address>
+    </ts:contract>
+    <ts:contract name="AAVELendingPoolCore">
+        <ts:address network="1">0x3dfd23A6c5E8BbcFc9581d2E864a68feb6a076d3</ts:address>
+    </ts:contract>
+    <ts:contract name="PriceOracle">
+        <ts:address network="1">0x76B47460d7F7c5222cFb6b6A75615ab10895DDe4</ts:address>
+    </ts:contract>
+    <ts:contract name="AAVEGetters">
+        <ts:address network="1">0x38ba1173f498f7a89ac474edba1d587cc1ab021d</ts:address>
+    </ts:contract>
     <ts:origins>
         <ts:ethereum contract="DAI"/>
     </ts:origins>
+
+    <ts:selection name="enabled" filter="allowance>0">
+        <ts:label>
+            <ts:string xml:lang="en">contract already enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+    <ts:selection name="notEnabled" filter="allowance=0">
+        <ts:label>
+            <ts:string xml:lang="en">contract not enabled</ts:string>
+        </ts:label>
+    </ts:selection>
+
     <ts:cards>
         <ts:card type="action">
             <ts:label>
@@ -61,18 +115,178 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&bestRates.en;</xhtml:script>
             </ts:view>
         </ts:card>
-    </ts:cards>
-        <ts:attribute name="balance">
-            <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+
+        <ts:card type="action" exclude="enabled">
             <ts:label>
-                <ts:string xml:lang="en">DAI-Balance</ts:string>
+                <ts:string xml:lang="en">Enable AAVE</ts:string>
             </ts:label>
-            <ts:origins>
-                <ethereum:call function="balanceOf" contract="DAI" as="uint">
+            <ts:transaction>
+                <ethereum:transaction function="approve" contract="DAI" as="bool">
                     <ts:data>
-                        <ts:address ref="ownerAddress"/>
+                        <ts:address>0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
+                        <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
                     </ts:data>
-                </ethereum:call>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="action" exclude="notEnabled">
+            <ts:label>
+                <ts:string xml:lang="en">Repay DAI to Aave</ts:string>
+            </ts:label>
+            <ts:attribute name="repayAmount">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">Amount to Repay</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <!-- e18 is a hard coded multiplier.
+                    rationale for hardcoding: avoiding over-design  -->
+                    <ts:user-entry as="e18"/>
+                </ts:origins>
+            </ts:attribute>
+            <!-- default to user, unless they explicitly write someone else's address -->
+            <ts:attribute name="debtHolder">
+                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+                <ts:label>
+                    <ts:string xml:lang="en">the address of whom's debt to repay</ts:string>
+                </ts:label>
+                <ts:origins>
+                    <ts:user-entry as="address"/>
+                </ts:origins>
+            </ts:attribute>
+            <ts:transaction>
+                <ethereum:transaction function="repay" contract="LendingPoolProvider" as="uint">
+                    <ts:data>
+                        <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                        <ts:uint256 ref="repayAmount"/>
+                        <ts:address ref="debtHolder"/>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="daiRepaid">
+            <ts:origins>
+                <ethereum:event type="Repay" filter="_user=${ownerAddress}" contract="aDAI"/>
             </ts:origins>
-        </ts:attribute>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-repay.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-repay.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+    </ts:cards>
+
+    <ts:attribute name="assetPriceDAI">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">asset price</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getAssetPrice" contract="PriceOracle" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowRate">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">borrow rate on DAI debt</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getBorrowRate" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowRateMode">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">borrow rate on DAI debt (1 is stable, 2 is variable)</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getBorrowRateMode" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBorrowBalance" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowInterestAccrued">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBalanceMinusPrincipal" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="balance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">DAI-Balance</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="allowance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:origins>
+            <ethereum:call function="allowance" contract="DAI" as="uint">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                    <ts:address>0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
 </ts:token>
