@@ -23,10 +23,10 @@
         <ts:address network="1">0x04abEdA201850aC0124161F037Efd70c74ddC74C</ts:address>
     </ts:contract>
     <ts:contract name="NESTRevenueDistribution">
-        <ts:address network="1">0xF67B829397Dc05751a98f243DbdE5Db63f86E7f6</ts:address>
+        <ts:address network="1">0xc3591cE63Edd202bF3B583E559B7257c1c2F76e3</ts:address>
     </ts:contract>
     <ts:contract name="NESTEarnings">
-        <ts:address network="1">0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+        <ts:address network="1">0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102</ts:address>
     </ts:contract>
 
     <ts:origins>
@@ -125,7 +125,7 @@
             <ts:transaction>
                 <ethereum:transaction function="approve" contract="NEST" as="uint">
                     <ts:data>
-                        <ts:address>0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+                        <ts:address>0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102</ts:address>
                         <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
                     </ts:data>
                 </ethereum:transaction>
