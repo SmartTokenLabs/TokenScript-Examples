@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
         <!ENTITY style SYSTEM "shared.css">
-        <!ENTITY supply.en SYSTEM "supply.en.js">
-        <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
-        <!ENTITY enable.en SYSTEM "enable.en.js">
+        <!ENTITY credit-table.en SYSTEM "credit-table.en.shtml">
+        <!ENTITY debt-table.en SYSTEM "debt-table.en.shtml">
+        <!ENTITY credit-table.zh SYSTEM "credit-table.zh.shtml">
+        <!ENTITY debt-table.zh SYSTEM "debt-table.zh.shtml">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -59,7 +60,14 @@
     </ts:origins>
     <ts:cards>
         <ts:card type="token">
-
+            <ts:view xml:lang="en">
+                &debt-table.en;
+                &credit-table.en;
+            </ts:view>
+            <ts:view xml:lang="zh">
+                &debt-table.zh;
+                &credit-table.zh;
+            </ts:view>
         </ts:card>
     </ts:cards>
     <ts:attribute name="currentBorrowBalance">
