@@ -68,7 +68,7 @@
     </ts:origins>
 
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="depositeAAVE">
             <ts:label>
                 <ts:string xml:lang="en">Deposit to AAVE</ts:string>
                 <ts:string xml:lang="zh">存款</ts:string>
