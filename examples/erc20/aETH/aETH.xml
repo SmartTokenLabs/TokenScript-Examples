@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
     <!ENTITY view SYSTEM "view.css">
+    <!ENTITY action SYSTEM "action.css">
     <!ENTITY item-view SYSTEM "view.css">
     <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
     <!ENTITY item-view-withdraw.en SYSTEM "item-view-withdraw.en.js">
@@ -99,7 +100,7 @@
     <ts:cards>
         <ts:card type="action">
             <ts:label>
-                <ts:string xml:lang="en">Withdraw ETH</ts:string>
+                <ts:string xml:lang="en">Withdraw ETH from Aave</ts:string>
             </ts:label>
             <ts:attribute name="redeemAmount">
                 <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
@@ -118,7 +119,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&action;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -138,30 +139,18 @@
                     <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute>
-            <!-- 1 is stable rate, 2 is variable rate -->
-            <ts:attribute name="interestRateModel">
-                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-                <ts:label>
-                    <ts:string xml:lang="en">choice between variable and fixed interest rate</ts:string>
-                </ts:label>
-                <ts:origins>
-                    <!-- e18 is a hard coded multiplier.
-                    rationale for hardcoding: avoiding over-design  -->
-                    <ts:user-entry as="uint"/>
-                </ts:origins>
-            </ts:attribute>
             <ts:transaction>
                 <ethereum:transaction function="borrow" contract="LendingPoolProvider" as="uint">
                     <ts:data>
                         <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
                         <ts:uint256 ref="borrowAmount"/>
-                        <ts:uint256 ref="interestRateModel"/>
+                        <ts:uint256>2</ts:uint256> <!-- 1 is stable rate, 2 is variable rate -->
                         <ts:uint256>0</ts:uint256> <!-- referral code -->
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&action;</xhtml:style>
                 <xhtml:script  type="text/javascript">&borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -248,29 +237,91 @@
         </ts:origins>
     </ts:attribute>
 
-    <ts:attribute name="stableInterestRateBorrow">
-        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-        <ts:label>
-            <ts:string xml:lang="en">Stable interest rate</ts:string>
-        </ts:label>
-        <ts:origins>
-            <ethereum:call function="getReserveCurrentStableBorrowRate" contract="AAVELendingPool" as="uint">
-                <ts:data>
-                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
-                </ts:data>
-            </ethereum:call>
-        </ts:origins>
-    </ts:attribute>
-
-    <ts:attribute name="variableInterestRateBorrow">
+    <ts:attribute name="userInterestRateBorrow">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
             <ts:string xml:lang="en">Variable interest rate borrow</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getReserveCurrentVariableBorrowRate" contract="AAVELendingPool" as="uint">
+            <ethereum:call function="getBorrowRate" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="userInterestRateBorrowMode">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Variable interest rate borrow</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getBorrowRateMode" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="originationFee">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Origination fee</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getOriginationFee" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="variableBorrowIndex">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Variable borrow index</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getVariableBorrowIndex" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="lastUpdateTimestamp">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">last update</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getLastUpdateTimestamp" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="usageAsCollateralEnabled">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">usage as collateral enabled</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getUsageAsCollateralEnabled" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
         </ts:origins>
@@ -383,7 +434,7 @@
             <ts:string xml:lang="en">total borrows in ETH</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getAvailableBorrowsETH" contract="AAVEGetters" as="uint">
+            <ethereum:call function="getTotalBorrowsETH" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>

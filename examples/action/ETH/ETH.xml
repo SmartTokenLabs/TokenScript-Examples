@@ -2,6 +2,7 @@
 <!DOCTYPE token  [
     <!ENTITY view SYSTEM "view.css">
     <!ENTITY item-view SYSTEM "item-view.css">
+    <!ENTITY action SYSTEM "action.css">
     <!ENTITY view-deposit.en SYSTEM "view-deposit.en.js">
     <!ENTITY view-received.en SYSTEM "view-received.en.js">
     <!ENTITY item-view-deposit.en SYSTEM "item-view-deposit.en.js">
@@ -72,7 +73,7 @@
     <ts:cards>
         <ts:card type="action" name="depositeAAVE">
             <ts:label>
-                <ts:string xml:lang="en">Deposit to AAVE</ts:string>
+                <ts:string xml:lang="en">Deposit ETH to Aave</ts:string>
                 <ts:string xml:lang="zh">存款</ts:string>
             </ts:label>
             <ts:attribute name="mintAmount">
@@ -97,7 +98,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&action;</xhtml:style>
                 <xhtml:script type="text/javascript">&deposit.en;</xhtml:script>
             </ts:view>
         </ts:card>

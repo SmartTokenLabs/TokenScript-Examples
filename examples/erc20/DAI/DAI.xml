@@ -2,6 +2,8 @@
 <!DOCTYPE token  [
     <!ENTITY view SYSTEM "view.css">
     <!ENTITY item-view SYSTEM "item-view.css">
+    <!ENTITY action SYSTEM "action.css">
+    <!ENTITY style SYSTEM "shared.css">
     <!ENTITY DAI-bridge.en SYSTEM "dai-bridge.en.js">
     <!ENTITY repay.en SYSTEM "repay.en.js">
     <!ENTITY enable.en SYSTEM "enable.en.js">
@@ -104,7 +106,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&DAI-bridge.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -121,7 +123,7 @@
 
         <ts:card type="action" exclude="enabled">
             <ts:label>
-                <ts:string xml:lang="en">Enable AAVE</ts:string>
+                <ts:string xml:lang="en">Enable Repayment</ts:string>
             </ts:label>
             <ts:transaction>
                 <ethereum:transaction function="approve" contract="DAI" as="bool">
@@ -132,7 +134,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&action;</xhtml:style>
                 <xhtml:script type="text/javascript">&enable.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -172,7 +174,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:style type="text/css">&action;</xhtml:style>
                 <xhtml:script  type="text/javascript">&repay.en;</xhtml:script>
             </ts:view>
         </ts:card>
