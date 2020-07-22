@@ -40,6 +40,11 @@
 						const principalBorrowBalance = result[2].div(1e18, 10).toNumber();
 						const borrowRateMode = result[3].toNumber();
 						const borrowRate = result[4].div(1e25, 10).toPrecision(4);
+						const liquidityRate = result[5].div(1e25, 10).toPrecision(4);
+						const originationFee = result[6].div(1e18, 10).toNumber();
+						const variableBorrowIndex = result[7].div(1e18, 10).toNumber();
+						const lastUpdateTimestamp = result[8].div(1e18, 10).toNumber();
+						const usageAsCollateralEnabled = result[9];
 						document.getElementById("currentBorrowBalance").innerText = currentBorrowBalance + " Dai Debt";
 						document.getElementById("principalBorrowBalance").innerText = principalBorrowBalance + "DAI";
 						document.getElementById("interest").innerText = currentBorrowBalance - principalBorrowBalance + "DAI";
