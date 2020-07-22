@@ -1,9 +1,0 @@
-<table>
-	<caption>Debt</caption>
-	<tbody>
-	<tr><td>DeFi Provider</td><th>AAVE</th></tr>
-	<tr><td>Borrowed</td><td id="principalBorrowBalance"></td></tr>
-	<tr><td>Interest to date</td><td id="interest"></td></tr>
-	<tr><td>Interest Rate</td><td id="interestRate"></td></tr>
-	</tbody>
-</table>

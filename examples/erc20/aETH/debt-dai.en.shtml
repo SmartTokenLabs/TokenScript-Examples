@@ -1,0 +1,12 @@
+<h1><!-- -17.75DAI -->
+</h1>
+<p class="subtitle">Total borrowed from AAVE + Interest</p>
+<table>
+	<caption>Debt</caption>
+	<tbody>
+	<tr><th>DeFi Provider</th><td><strong>AAVE</strong></td></tr>
+	<tr><th>Borrowed</th><td id="principalBorrowBalance"></td></tr>
+	<tr><th>Interest to date</th><td id="interest"></td></tr>
+	<tr><th>Interest Rate</th><td id="interestRate"></td></tr>
+	</tbody>
+</table>
