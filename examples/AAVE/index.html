@@ -40,6 +40,7 @@
 						const principalBorrowBalance = result[2].div(1e18, 10).toNumber();
 						const borrowRateMode = result[3].toNumber();
 						const borrowRate = result[4].div(1e25, 10).toPrecision(4);
+						document.getElementById("currentBorrowBalance").innerText = currentBorrowBalance + " Dai Debt";
 						document.getElementById("principalBorrowBalance").innerText = principalBorrowBalance + "DAI";
 						document.getElementById("interest").innerText = currentBorrowBalance - principalBorrowBalance + "DAI";
 						document.getElementById("interestRate").innerText = borrowRate + " " + (borrowRateMode == 2 ? "Float Rate" : "Fixed Rate");
@@ -114,7 +115,10 @@
     </script>
 	<link rel="stylesheet" type="text/css" href="layout.css"/>
 </head>
-<body id="content">
+<body>
+<div style="width: 600px;">
+	<h1 id="currentBorrowBalance">Dai Debt</h1>
+	<p class="subtitle">Total borrowed from AAVE + Interest</p>
 <table>
 	<caption>Debt <button onclick="showDebt();">Show</button></caption>
 	<tbody>
@@ -132,6 +136,7 @@
 	<tr><th>Loan to value</th><td id="ltv"></td></tr>
 	<tr><th>Borrowing Power Used</th><td id="borrowingPowerUsed"></td></tr>
 	</tbody>
-</table
+</table>
+</div>
 </body>
 </html>
