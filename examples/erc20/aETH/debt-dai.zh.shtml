@@ -1,0 +1,13 @@
+<h1>
+	<!-- -17.75DAI -->
+</h1>
+<p class="subtitle">Total Deposited to AAVE + Interest</p>
+<table>
+	<caption>贷款</caption>
+	<tbody>
+	<tr><th>贷款合约</th><td><strong>AAVE</strong></td></tr>
+	<tr><th>贷款额（本金）</th><td>currentBorrowBalance</td></tr>
+	<tr><th>累计利息</th><td>interest</td></tr>
+	<tr><th>利率</th><td>interestRate</td></tr>
+	</tbody>
+</table>

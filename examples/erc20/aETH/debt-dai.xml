@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-        <!ENTITY style SYSTEM "shared.css">
+        <!ENTITY layout SYSTEM "layout.css">
         <!ENTITY credit-table.en SYSTEM "credit-table.en.shtml">
-        <!ENTITY debt-table.en SYSTEM "debt-table.en.shtml">
+        <!ENTITY debt-table.en SYSTEM "debt-dai.en.shtml">
         <!ENTITY credit-table.zh SYSTEM "credit-table.zh.shtml">
-        <!ENTITY debt-table.zh SYSTEM "debt-table.zh.shtml">
+        <!ENTITY debt-table.zh SYSTEM "debt-dai.zh.shtml">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -60,13 +60,19 @@
     </ts:origins>
     <ts:cards>
         <ts:card type="token">
-            <ts:view xml:lang="en">
-                &debt-table.en;
-                &credit-table.en;
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&layout;</style>
+                <body>
+                    &debt-table.en;
+                    &credit-table.en;
+                </body>
             </ts:view>
-            <ts:view xml:lang="zh">
-                &debt-table.zh;
-                &credit-table.zh;
+            <ts:view xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&layout;</style>
+                <body>
+                    &debt-table.zh;
+                    &credit-table.zh;
+                </body>
             </ts:view>
         </ts:card>
     </ts:cards>

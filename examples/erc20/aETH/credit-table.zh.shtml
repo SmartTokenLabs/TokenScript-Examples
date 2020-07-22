@@ -1,9 +1,9 @@
-<table>
+<table border="0">
 	<!-- this is shared between aToken and Debt token, per Tomke's design -->
 	<caption>信用额度</caption>
 	<tbody>
-	<tr><td>总抵押品</td><td id="totalCollateralETH"></td></tr>
-	<tr><td>贷款价值比</td><td id="totalLiquidityETH"></td></tr>
-	<tr><td>已经使用额度</td><td id="borrowingPowerUsed"></td></tr>
+	<tr><th>总抵押品</th><td>totalCollateralETH</td></tr>
+	<tr><th>贷款价值比</th><td>totalLiquidityETH</td></tr>
+	<tr><th>已经使用额度</th><td>borrowingPowerUsed</td></tr>
 	</tbody>
 </table>
