@@ -1,0 +1,27 @@
+table {
+	width: 100%;
+}
+
+table caption {
+	font-size: large;
+	font-weight: bold;
+	text-align: left;
+}
+
+table tr th {
+	text-align: left;
+}
+
+table tr td {
+	text-align: right;
+}
+
+table tr {
+	border-top: thin solid grey;
+	border-bottom: thin solid grey;
+}
+
+.subtitle {
+	text-align: center;
+	color: darkgrey;
+}

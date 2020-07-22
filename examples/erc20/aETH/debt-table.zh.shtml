@@ -1,9 +1,0 @@
-<table>
-	<caption>贷款</caption>
-	<tbody>
-	<tr><td>贷款合约</td><th>AAVE</th></tr>
-	<tr><td>贷款额（本金）</td><td id="currentBorrowBalance"></td></tr>
-	<tr><td>累计利息</td><td id="interest"></td></tr>
-	<tr><td>利率</td><td id="interestRate"></td></tr>
-	</tbody>
-</table>
