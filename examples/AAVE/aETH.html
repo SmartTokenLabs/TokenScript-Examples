@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/strict.dtd">
+<html xmlns="http://www.w3.org/TR/xhtml1/strict">
+<head>
+    <title>Playground</title>
+    <script type="text/javascript">
+
+        function doSomethingWithTheContract(pathContractJSON, strAddr, callback) {
+            this.strAddr = strAddr;
+            this.callback = callback;
+
+            fetch(pathContractJSON)
+                .then(
+                    response => {
+                        if (response.status !== 200) {
+                            console.log('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                            return;
+                        }
+                        // Examine the text in the response
+                        response.json().then(jsonContract => {
+                            console.log("Number of functions:" + jsonContract.abi.length);
+                            const contract = web3.eth.contract(jsonContract.abi).at(this.strAddr);
+                            this.callback(contract);
+                        });
+                    }
+                )
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+
+        function showDebt() {
+			doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
+				contract.getUserReserveData('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', '0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+					if (!error) {
+						const currentATokenBalance = result[0].div(1e18, 10).toNumber();
+						const currentBorrowBalance = result[1].div(1e18, 10).toNumber();
+						const principalBorrowBalance = result[2].div(1e18, 10).toNumber();
+						const borrowRateMode = result[3].toNumber();
+						const borrowRate = result[4].div(1e25, 10).toPrecision(4);
+						const liquidityRate = result[5].div(1e25, 10).toPrecision(4);
+						const originationFee = result[6].div(1e18, 10).toNumber();
+						const variableBorrowIndex = result[7].div(1e18, 10).toNumber();
+						const lastUpdateTimestamp = result[8].div(1e18, 10).toNumber();
+						const usageAsCollateralEnabled = result[9];
+						document.getElementById("currentBorrowBalanceInTitle").innerText = currentATokenBalance + " aETH";
+						document.getElementById("currentATokenBalance").innerText = currentATokenBalance + " aETH";
+						document.getElementById("principalBorrowBalance").innerText = principalBorrowBalance + "DAI";
+						console.log(result);
+					} else
+						console.error(error);
+				});
+			});
+		}
+
+		function showCredit() {
+			doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
+				contract.getUserAccountData('0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+					if (!error) {
+						const totalLiquidityETH = result[0].div(1e18, 10).toNumber();
+						const totalCollateralETH = result[1].div(1e18, 10).toNumber();
+						const totalBorrowsETH = result[2].div(1e18, 10).toNumber();
+						const totalFeesETH = result[3].div(1e18, 10).toNumber();
+						const availableBorrowsETH = result[4].div(1e18, 10).toNumber();
+						const currentLiquidationThreshold = result[5].div(1e18, 10).toNumber();
+						const ltv = result[6].div(1e25, 10).toPrecision(4);
+						const healthFactor = result[7].div(1e18, 10).toNumber();
+						/* the following calculation is actually incorrect.
+						 To my understanding, one can send more aETH than the amount of ETH he can borrow. But this
+						 is the nearest we can produce without diving into AAVE's internal algorithm */
+						document.getElementById("available").innerText = availableBorrowsETH + "aETH";
+						document.getElementById("totalCollateralETH").innerText = totalCollateralETH + "ETH";
+						document.getElementById("ltv").innerText = ltv + "%";
+						document.getElementById("borrowingPowerUsed").innerText = totalBorrowsETH / (totalBorrowsETH + availableBorrowsETH) / 100 + "%";
+						console.log(result);
+					} else
+						console.error(error);
+				});
+			});
+		}
+
+        /* ------------- getReserveData ------------- */
+        /* for some strange reasons, the following doesn't work (TypeError: getReserveConfigurationData is not a function )
+        doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '​0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
+            contract.getReserveConfigurationData('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', (error, result) => {
+                if (!error)
+                    console.log(result);
+                else
+                    console.error(error);
+            });
+        });
+        */
+
+        /* so I had to do it without using doSomethingWithTheContract
+        var LendingPool;
+        fetch('aave-protocol/build/contracts/LendingPool.json')
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+
+                    // Examine the text in the response
+                    response.json().then(function (contract) {
+                        LendingPool = web3.eth.contract(contract.abi).at('0x398eC7346DcD622eDc5ae82352F02bE94C62d119');
+                        LendingPool.getReserveConfigurationData('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', (error, result) => {
+                            if (!error) {
+                                console.log("LendingPool.getReserveConfigurationData");
+                                console.log(result);
+                            } else
+                                console.error(error);
+                        });
+                    });
+                }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });*/
+    </script>
+	<link rel="stylesheet" type="text/css" href="layout.css"/>
+</head>
+<body>
+<div style="max-width: 600px;">
+	<h1 id="currentBorrowBalanceInTitle">aETH</h1>
+	<p class="subtitle">Total Deposited to AAVE + Interest</p>
+	<table>
+		<caption>Balance <button onclick="showDebt();">Show</button></caption>
+		<tbody>
+		<tr><th>Total Deposited + Interest</th><td id="currentATokenBalance"></td></tr>
+		<tr><th>Borrowed</th><td id="principalBorrowBalance"></td></tr>
+		<tr><th>Available to Send (Total - Borrowed)</th><td id="available"></td></tr>
+		</tbody>
+	</table>
+	<!-- The following are not obtainable from token attributes - they belong to the activities
+	<table>
+		<caption>Deposits</caption>
+		<tbody>
+		<tr><th>DeFI Provider</th><td><strong>AAVE</strong></td></tr>
+		<tr><th>Deposited</th><td id="principalBorrowBalance"></td></tr>
+		<tr><th>Interest Earned</th><td id="available"></td></tr>
+		<tr><th>Deposit APY</th><td id="available"></td></tr>
+		</tbody>
+	</table>
+	-->
+	<table>
+		<!-- this is shared between aToken and Debt token, per Tomke's design -->
+		<caption>Credit <button onclick="showCredit();">Show</button> </caption>
+		<tbody>
+		<tr><th>Your Collateral</th><td id="totalCollateralETH"></td></tr>
+		<tr><th>Loan to value</th><td id="ltv"></td></tr>
+		<tr><th>Borrowing Power Used</th><td id="borrowingPowerUsed"></td></tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
