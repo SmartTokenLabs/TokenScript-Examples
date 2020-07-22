@@ -38,7 +38,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          the new token to create -->
     <ts:output>
         <ts:token name="dai">
-            <ts:contract>
+            <ts:contract name="dai-erc20">
                 <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
             </ts:contract>
         </ts:token>
