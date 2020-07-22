@@ -1,0 +1,81 @@
+.icons {
+  margin-top: 10%;
+}
+
+.date {
+  margin-top: 2%;
+  justify-content: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.sentSolid {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.depositContainer {
+  width: 375px;
+  height: 34px;
+  font-family: SourceSansPro-Semibold, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: normal;
+  text-align: center;
+  color: black;
+}
+
+.headerRectangle {
+  width: 375px;
+  height: 150px;
+  background-color: #ffffff;
+  margin-top: 10%;
+  text-align: center;
+}
+
+.date {
+  font-family: SourceSansPro, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #727272;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e9e9e9;
+  margin-top: 7.5%;
+}
+
+.amountBox{
+  width: 375px;
+  height: 47px;
+  font-family: SourceSansPro-Regular, sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: center;
+  color: black;
+}
+
+.midSection {
+  width: 375px;
+  height: 81px;
+  background-color: white;
+}
