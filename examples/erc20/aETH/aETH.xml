@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE token  [
-    <!ENTITY style SYSTEM "../../action/ETH/shared.css">
-    <!ENTITY view-redeemed.en SYSTEM "view-withdraw.en.js">
-    <!ENTITY item-view-borrow.en SYSTEM "view-borrow.en.js">
+    <!ENTITY view SYSTEM "view.css">
+    <!ENTITY item-view SYSTEM "view.css">
+    <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
+    <!ENTITY item-view-withdraw.en SYSTEM "item-view-withdraw.en.js">
+    <!ENTITY view-withdrawn.en SYSTEM "view-withdraw.en.js">
+    <!ENTITY view-borrow.en SYSTEM "view-borrow.en.js">
     <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
     <!ENTITY borrow.en SYSTEM "borrow.en.js">
 ]>
@@ -115,7 +118,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
-                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:style type="text/css">&view;</xhtml:style>
                 <xhtml:script type="text/javascript">&withdraw.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -158,7 +161,7 @@
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:style type="text/css">&view;</xhtml:style>
                 <xhtml:script  type="text/javascript">&borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
@@ -169,12 +172,12 @@
                 <ethereum:event filter="_fromRedeemer=${ownerAddress}" type="Redeem" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <style type="text/css">&style;</style>
-                <xhtml:script  type="text/javascript">&view-redeemed.en;</xhtml:script>
+                <style type="text/css">&item-view;</style>
+                <xhtml:script  type="text/javascript">&item-view-withdraw.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&view-redeemed.en;</xhtml:script>
+                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-withdrawn.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
@@ -183,12 +186,12 @@
                 <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="aETH"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
+                <xhtml:style type="text/css">&item-view;</xhtml:style>
                 <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
             </ts:item-view>
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&style;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
+                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
