@@ -55,10 +55,15 @@
     <ts:contract name="LendingPool">
         <ts:address network="1">0x398eC7346DcD622eDc5ae82352F02bE94C62d119</ts:address>
     </ts:contract>
+    <ts:contract name="AAVEGetters">
+        <ts:address network="1">0x38ba1173f498f7a89ac474edba1d587cc1ab021d</ts:address>
+    </ts:contract>
     <ts:origins>
-        <ts:ethereum contract="LendingPool"/>
+        <!-- TODO: should be LendingPool -->
+        <ts:ethereum contract="AAVEGetters"/>
     </ts:origins>
     <ts:cards>
+        <!-- TODO: finish these to make it a test case for supporting view for Token Card -->
         <ts:card type="token">
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <style type="text/css">&layout;</style>
@@ -76,6 +81,7 @@
             </ts:view>
         </ts:card>
     </ts:cards>
+
     <ts:attribute name="currentBorrowBalance">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
@@ -84,6 +90,7 @@
             <ts:string xml:lang="en">Payable</ts:string>
         </ts:label>
         <ts:origins>
+            <!-- TODO: alternatively, consider using SELECT
             <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
                            type="userReserveData" select="currentBorrowBalance">
                 <ts:data>
@@ -91,8 +98,16 @@
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
+            -->
+            <ethereum:call function="getCurrentBorrowBalance" as="e18">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute>
+
     <ts:attribute name="principleBorrowBalance">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
@@ -101,6 +116,7 @@
             <ts:string xml:lang="en">Principle</ts:string>
         </ts:label>
         <ts:origins>
+            <!-- TODO: alternatively, consider using SELECT
             <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
                            type="userReserveData" select="principleBorrowBalance">
                 <ts:data>
@@ -108,8 +124,16 @@
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
+            -->
+            <ethereum:call function="getPrincipalBorrowBalance" as="e18">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute>
+
     <ts:attribute name="borrowRateMode">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
@@ -118,17 +142,100 @@
             <ts:string xml:lang="en">Borrowing Rate Mode</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
-                           type="userReserveData" select="borrowRateMode"/>
+            <!-- TODO: consider if mapping is applicable here -->
+            <ethereum:call function="getBorrowRateMode" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute>
+
+    <ts:attribute name="borrowRate">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrowing Rate Mode</ts:string>
+        </ts:label>
+        <ts:origins>
+            <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
+            <ethereum:call function="getBorrowRate">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
     <ts:attribute name="liquidityRate">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
         <ts:origins>
-            <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
-                           type="userReserveData" select="borrowRateMode"/>
+            <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
+            <ethereum:call function="getLiquidityRate">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
         </ts:origins>
     </ts:attribute>
+
+    <ts:attribute name="totalCollateralETH">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:origins>
+            <ethereum:call function="getTotalCollateralETH" as="e18">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="totalBorrowsETH">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:origins>
+            <ethereum:call function="getTotalCollateralETH" as="e18">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="availableBorrowsETH">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:origins>
+            <ethereum:call function="getAvailableBorrowsETH" as="e18">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="tlv">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:origins>
+            <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
+            <ethereum:call function="getTlv">
+                <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
 </ts:token>
