@@ -140,7 +140,7 @@
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>
-                <ethereum:transaction function="borrow" contract="LendingPoolProvider" as="uint">
+                <ethereum:transaction function="borrow" contract="aETH" as="uint">
                     <ts:data>
                         <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
                         <ts:uint256 ref="borrowAmount"/>
