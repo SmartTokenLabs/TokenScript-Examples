@@ -161,7 +161,7 @@
         </ts:label>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getBorrowRate">
+            <ethereum:call function="getBorrowRate" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -176,7 +176,7 @@
         </ts:type>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getLiquidityRate">
+            <ethereum:call function="getLiquidityRate" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -230,7 +230,7 @@
         </ts:type>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getLtv">
+            <ethereum:call function="getLtv" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
