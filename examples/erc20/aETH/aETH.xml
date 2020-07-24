@@ -252,6 +252,81 @@
         </ts:origins>
     </ts:attribute>
 
+    <ts:attribute name="userInterestRateBorrowMode">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Variable interest rate borrow</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getBorrowRateMode" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="originationFee">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Origination fee</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getOriginationFee" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="variableBorrowIndex">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Variable borrow index</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getVariableBorrowIndex" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="lastUpdateTimestamp">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">last update</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getLastUpdateTimestamp" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="usageAsCollateralEnabled">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">usage as collateral enabled</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getUsageAsCollateralEnabled" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
     <ts:attribute name="interestRateSupply">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
