@@ -34,8 +34,8 @@
                 </sequence>
             </type>
         </namedType>
-        <namedType name="userAccountData"> 
-            <!-- reflects the shared collateralisable asset - would be a token of its own 
+        <namedType name="userAccountData">
+            <!-- reflects the shared collateralisable asset - would be a token of its own
             as this set of data is same for all kinds of debts -->
             <type>
                 <sequence>
@@ -122,22 +122,6 @@
 
     </ts:cards>
 
-    <ts:attribute name="borrowBalance">
-        <!-- used in the Repay action card -->
-        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-        <ts:label>
-            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
-        </ts:label>
-        <ts:origins>
-            <ethereum:call function="getCompoundedBorrowBalance" contract="AAVEGetters" as="uint">
-                <ts:data>
-                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
-                    <ts:address ref="ownerAddress"/>
-                </ts:data>
-            </ethereum:call>
-        </ts:origins>
-    </ts:attribute>
-
     <ts:attribute name="borrowInterestAccrued">
         <!-- used in the Repay action card -->
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
@@ -185,7 +169,7 @@
                 </ts:data>
             </ethereum:call>
             -->
-            <ethereum:call function="getCurrentBorrowBalance" as="e18">
+            <ethereum:call function="getCurrentBorrowBalance" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -211,7 +195,7 @@
                 </ts:data>
             </ethereum:call>
             -->
-            <ethereum:call function="getPrincipalBorrowBalance" as="e18">
+            <ethereum:call function="getPrincipalBorrowBalance" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -276,7 +260,7 @@
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
         <ts:origins>
-            <ethereum:call function="getTotalCollateralETH" as="e18">
+            <ethereum:call function="getTotalCollateralETH" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
@@ -284,12 +268,13 @@
         </ts:origins>
     </ts:attribute>
 
-    <ts:attribute name="totalBorrowsETH">
-        <ts:type>
-            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
-        </ts:type>
+    <ts:attribute name="totalBorrows">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">total borrows in ETH</ts:string>
+        </ts:label>
         <ts:origins>
-            <ethereum:call function="getTotalCollateralETH" as="e18">
+            <ethereum:call function="getTotalBorrowsETH" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
@@ -302,7 +287,7 @@
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
         <ts:origins>
-            <ethereum:call function="getAvailableBorrowsETH" as="e18">
+            <ethereum:call function="getAvailableBorrowsETH" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
@@ -318,6 +303,36 @@
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
             <ethereum:call function="getLTV" as="uint">
                 <ts:data>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowBalance">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBorrowBalance" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowBalancePrincipal">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBalanceMinusPrincipal" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
