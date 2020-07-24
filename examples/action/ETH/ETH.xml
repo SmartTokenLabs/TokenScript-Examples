@@ -89,12 +89,13 @@
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>
-                <ethereum:transaction function="deposit" contract="LendingPoolProvider" as="uint">
+                <ethereum:transaction function="deposit" contract="aETH" as="uint">
                     <ts:data>
                         <ts:address>0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE</ts:address>
                         <ts:uint256 ref="mintAmount"/>
                         <ts:uint256>1101</ts:uint256> <!-- placeholder referral -->
                     </ts:data>
+                    <ethereum:value ref="mintAmount"/>
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xml:lang="en">
