@@ -442,6 +442,21 @@
         </ts:origins>
     </ts:attribute>
 
+    <ts:attribute name="liquidityRate">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">total borrows in ETH</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getLiquidityRate" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
     <ts:attribute name="liquidationThreshold">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
