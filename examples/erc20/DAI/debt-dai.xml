@@ -194,7 +194,7 @@
         </ts:origins>
     </ts:attribute>
 
-    <ts:attribute name="principleBorrowBalance">
+    <ts:attribute name="principalBorrowBalance">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
@@ -204,7 +204,7 @@
         <ts:origins>
             <!-- TODO: alternatively, consider using SELECT
             <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
-                           type="userReserveData" select="principleBorrowBalance">
+                           type="userReserveData" select="principalBorrowBalance">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -247,7 +247,7 @@
         </ts:label>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getBorrowRate">
+            <ethereum:call function="getBorrowRate" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -262,7 +262,7 @@
         </ts:type>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getLiquidityRate">
+            <ethereum:call function="getLiquidityRate" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -310,13 +310,13 @@
         </ts:origins>
     </ts:attribute>
 
-    <ts:attribute name="tlv">
+    <ts:attribute name="ltv">
         <ts:type>
             <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
         </ts:type>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getTlv">
+            <ethereum:call function="getLtv" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
