@@ -60,6 +60,12 @@
     <ts:contract name="AAVEGetters">
         <ts:address network="1">0x38ba1173f498f7a89ac474edba1d587cc1ab021d</ts:address>
     </ts:contract>
+    <ts:contract name="LendingPoolProvider">
+        <ts:address network="1">0x24a42fD28C976A61Df5D00D0599C34c4f90748c8</ts:address>
+    </ts:contract>
+    <ts:contract name="PriceOracle">
+        <ts:address network="1">0x76B47460d7F7c5222cFb6b6A75615ab10895DDe4</ts:address>
+    </ts:contract>
     <ts:origins>
         <!-- TODO: should be LendingPool -->
         <ts:ethereum contract="AAVEGetters"/>
@@ -85,7 +91,7 @@
 
         <ts:card type="action" exclude="notEnabled">
             <ts:label>
-                <ts:string xml:lang="en">Repay DAI to Aave</ts:string>
+                <ts:string xml:lang="en">Repay</ts:string>
             </ts:label>
             <ts:attribute name="repayAmount">
                 <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
@@ -98,22 +104,13 @@
                     <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute>
-            <!-- default to user, unless they explicitly write someone else's address -->
-            <ts:attribute name="debtHolder">
-                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-                <ts:label>
-                    <ts:string xml:lang="en">the address of whom's debt to repay</ts:string>
-                </ts:label>
-                <ts:origins>
-                    <ts:user-entry as="address"/>
-                </ts:origins>
-            </ts:attribute>
+
             <ts:transaction>
                 <ethereum:transaction function="repay" contract="LendingPoolProvider" as="uint">
                     <ts:data>
                         <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
                         <ts:uint256 ref="repayAmount"/>
-                        <ts:address ref="debtHolder"/>
+                        <ts:address ref="ownerAddress"/>
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
@@ -124,6 +121,52 @@
         </ts:card>
 
     </ts:cards>
+
+    <ts:attribute name="borrowBalance">
+        <!-- used in the Repay action card -->
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBorrowBalance" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="borrowInterestAccrued">
+        <!-- used in the Repay action card -->
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBalanceMinusPrincipal" contract="AAVEGetters" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+
+    <ts:attribute name="assetPriceDAI">
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">asset price</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getAssetPrice" contract="PriceOracle" as="uint">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
 
     <ts:attribute name="currentBorrowBalance">
         <ts:type>
