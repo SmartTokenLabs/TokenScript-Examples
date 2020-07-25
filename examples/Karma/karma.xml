@@ -37,7 +37,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="CarToken"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="token">
+        <ts:card type="token" name="main">
             <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&item-view.en;</body>
