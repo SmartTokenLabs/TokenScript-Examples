@@ -8,6 +8,8 @@
     <!ENTITY repay.en SYSTEM "repay.en.js">
     <!ENTITY enable.en SYSTEM "enable.en.js">
     <!ENTITY item-view-repay.en SYSTEM "item-view-repay.en.js">
+    <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
+    <!ENTITY view-borrow.en SYSTEM "view-borrow.en.js">
     <!ENTITY view-repay.en SYSTEM "view-repay.en.js">
     <!ENTITY bestRates.en SYSTEM "../BestRates/bestRates.en.js">
     ]>
@@ -31,6 +33,21 @@
                     <element name="_amountMinusFees" ethereum:type="uint256" ethereum:indexed="false"/>
                     <element name="_fees" ethereum:type="uint256" ethereum:indexed="false"/>
                     <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
+                </sequence>
+            </type>
+        </namedType>
+        <namedType name="Borrow">
+            <type>
+                <sequence>
+                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
+                    <element name="_amount" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRateMode" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowRate" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_originationFee" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
+                    <element name="_referral" ethereum:type="uint16" ethereum:indexed="true"/>
                     <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
                 </sequence>
             </type>
@@ -97,6 +114,20 @@
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&DAI-bridge.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="DAIBorrowed">
+            <ts:origins>
+                <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="aDAI"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&item-view;</xhtml:style>
+                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
 

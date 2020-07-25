@@ -3,10 +3,8 @@
     <!ENTITY view SYSTEM "view.css">
     <!ENTITY action SYSTEM "action.css">
     <!ENTITY item-view SYSTEM "item-view.css">
-    <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
     <!ENTITY item-view-withdraw.en SYSTEM "item-view-withdraw.en.js">
     <!ENTITY view-withdrawn.en SYSTEM "view-withdraw.en.js">
-    <!ENTITY view-borrow.en SYSTEM "view-borrow.en.js">
     <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
     <!ENTITY borrow.en SYSTEM "borrow.en.js">
 ]>
@@ -28,21 +26,6 @@
                     <element name="_valueMinted" ethereum:type="uint256" ethereum:indexed="false"/>
                     <element name="_fromBalanceIncreaseMinted" ethereum:type="uint256" ethereum:indexed="false"/>
                     <element name="_fromIndexMinted" ethereum:type="uint256" ethereum:indexed="false"/>
-                </sequence>
-            </type>
-        </namedType>
-        <namedType name="Borrow">
-            <type>
-                <sequence>
-                    <element name="_reserve" ethereum:type="address" ethereum:indexed="true"/>
-                    <element name="_user" ethereum:type="address" ethereum:indexed="true"/>
-                    <element name="_amount" ethereum:type="uint256" ethereum:indexed="false"/>
-                    <element name="_borrowRateMode" ethereum:type="uint256" ethereum:indexed="false"/>
-                    <element name="_borrowRate" ethereum:type="uint256" ethereum:indexed="false"/>
-                    <element name="_originationFee" ethereum:type="uint256" ethereum:indexed="false"/>
-                    <element name="_borrowBalanceIncrease" ethereum:type="uint256" ethereum:indexed="false"/>
-                    <element name="_referral" ethereum:type="uint16" ethereum:indexed="true"/>
-                    <element name="_timestamp" ethereum:type="uint256" ethereum:indexed="false"/>
                 </sequence>
             </type>
         </namedType>
@@ -164,20 +147,6 @@
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&view;</xhtml:style>
                 <xhtml:script  type="text/javascript">&view-withdrawn.en;</xhtml:script>
-            </ts:view>
-        </ts:card>
-
-        <ts:card type="activity" name="aETHBorrowed">
-            <ts:origins>
-                <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="aETH"/>
-            </ts:origins>
-            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&item-view;</xhtml:style>
-                <xhtml:script  type="text/javascript">&item-view-borrow.en;</xhtml:script>
-            </ts:item-view>
-            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-                <xhtml:style type="text/css">&view;</xhtml:style>
-                <xhtml:script  type="text/javascript">&view-borrow.en;</xhtml:script>
             </ts:view>
         </ts:card>
 
