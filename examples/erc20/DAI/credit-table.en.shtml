@@ -1,0 +1,9 @@
+<table>
+	<!-- this is shared between aToken and Debt token, per Tomke's design -->
+	<caption>Credit</caption>
+	<tbody>
+	<tr><th>Your Collateral</th><td id="totalCollateralETH"></td></tr>
+	<tr><th>Loan to value</th><td id="totalLiquidityETH"></td></tr>
+	<tr><th>Borrowing Power Used</th><td id="borrowingPowerUsed"></td></tr>
+	</tbody>
+</table>
