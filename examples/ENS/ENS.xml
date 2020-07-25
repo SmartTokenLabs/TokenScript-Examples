@@ -56,7 +56,7 @@
   </ts:origins>
 
   <ts:cards>
-    <ts:card type="token">
+    <ts:card type="token" name="main">
       <ts:item-view xml:lang="en">
         <xhtml:style type="text/css">&item-view-style;</xhtml:style>
         <xhtml:script type="text/javascript">&item-view.en;</xhtml:script>
