@@ -47,7 +47,7 @@ class Token {
             <div class="separator"></div>
              
             <div class="amountBox">
-                <p>+ ${this.card._amount} DAI</p>
+                <p>+ ${this.card._amount / 1e+18} DAI</p>
             </div>
         </div>
 `;

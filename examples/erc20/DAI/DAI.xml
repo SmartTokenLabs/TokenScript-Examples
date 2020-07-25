@@ -119,7 +119,7 @@
 
         <ts:card type="activity" name="DAIBorrowed">
             <ts:origins>
-                <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="aDAI"/>
+                <ethereum:event type="Borrow" filter="_user=${ownerAddress}" contract="AAVELendingPool"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&item-view;</xhtml:style>
@@ -133,7 +133,7 @@
 
         <ts:card type="activity" name="daiRepaid">
             <ts:origins>
-                <ethereum:event type="Repay" filter="_user=${ownerAddress}" contract="aDAI"/>
+                <ethereum:event type="Repay" filter="_user=${ownerAddress}" contract="AAVELendingPool"/>
             </ts:origins>
             <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&item-view;</xhtml:style>
