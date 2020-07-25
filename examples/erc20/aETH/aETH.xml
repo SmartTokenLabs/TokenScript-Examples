@@ -434,8 +434,9 @@
             <ts:string xml:lang="en">total borrows in ETH</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getTotalBorrowsETH" contract="AAVEGetters" as="uint">
+            <ethereum:call function="getCurrentBorrowBalance" contract="AAVEGetters" as="uint">
                 <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
