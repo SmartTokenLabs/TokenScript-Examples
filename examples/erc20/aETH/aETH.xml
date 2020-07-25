@@ -2,7 +2,7 @@
 <!DOCTYPE token  [
     <!ENTITY view SYSTEM "view.css">
     <!ENTITY action SYSTEM "action.css">
-    <!ENTITY item-view SYSTEM "view.css">
+    <!ENTITY item-view SYSTEM "item-view.css">
     <!ENTITY item-view-borrow.en SYSTEM "item-view-borrow.en.js">
     <!ENTITY item-view-withdraw.en SYSTEM "item-view-withdraw.en.js">
     <!ENTITY view-withdrawn.en SYSTEM "view-withdraw.en.js">
