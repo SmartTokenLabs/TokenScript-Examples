@@ -154,22 +154,12 @@
                     <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute>
-            <!-- default to user, unless they explicitly write someone else's address -->
-            <ts:attribute name="debtHolder">
-                <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-                <ts:label>
-                    <ts:string xml:lang="en">the address of whom's debt to repay</ts:string>
-                </ts:label>
-                <ts:origins>
-                    <ts:user-entry as="address"/>
-                </ts:origins>
-            </ts:attribute>
             <ts:transaction>
                 <ethereum:transaction function="repay" contract="aDAI" as="uint">
                     <ts:data>
                         <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
                         <ts:uint256 ref="repayAmount"/>
-                        <ts:address ref="debtHolder"/>
+                        <ts:address ref="ownerAddress"/>
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
@@ -254,7 +244,7 @@
         </ts:origins>
     </ts:attribute>
 
-    <ts:attribute name="borrowInterestAccrued">
+    <ts:attribute name="borrowBalancePrincipal">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
         <ts:label>
             <ts:string xml:lang="en">Borrow balance compounded</ts:string>

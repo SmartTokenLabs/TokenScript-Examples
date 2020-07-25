@@ -33,7 +33,7 @@ class Token {
                  </tr>
                  <tr>
                     <th>You Already Borrowed</th>
-                    <td>${((this.token.totalBorrows / this.token.assetPriceDAI)).toFixed(2)} DAI</td>
+                    <td>${((this.token.totalBorrows / 1e+18)).toFixed(2)} DAI</td>
                  </tr>
                  <tr>
                     <th>New Health Factor</th>

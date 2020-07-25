@@ -140,7 +140,7 @@
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>
-                <ethereum:transaction function="borrow" contract="aETH" as="uint">
+                <ethereum:transaction function="borrow" contract="AAVELendingPool" as="uint">
                     <ts:data>
                         <ts:address>0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
                         <ts:uint256 ref="borrowAmount"/>
@@ -434,8 +434,9 @@
             <ts:string xml:lang="en">total borrows in ETH</ts:string>
         </ts:label>
         <ts:origins>
-            <ethereum:call function="getTotalBorrowsETH" contract="AAVEGetters" as="uint">
+            <ethereum:call function="getCurrentBorrowBalance" contract="AAVEGetters" as="uint">
                 <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
                 </ts:data>
             </ethereum:call>
