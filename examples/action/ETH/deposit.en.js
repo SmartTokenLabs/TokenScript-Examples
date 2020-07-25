@@ -27,7 +27,7 @@ class Token {
                  </tr>
                  <tr>
                     <th>Annual Earnings</th>
-                    <td>${annualEarnings.toFixed(5)} ETH</td>
+                    <td>${annualEarnings.toFixed(4)} ETH</td>
                  </tr>
                  <tr>
                     <th>Supply Balance</th>
