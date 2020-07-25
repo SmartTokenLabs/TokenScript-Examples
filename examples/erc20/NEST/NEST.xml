@@ -46,7 +46,7 @@
     </ts:selection>
 
     <ts:cards>
-        <ts:card type="action" exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled" name="deposit">
             <ts:label>
                 <ts:string xml:lang="en">Deposit</ts:string>
             </ts:label>
@@ -75,7 +75,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action" exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled" name="withdraw">
             <ts:label>
                 <ts:string xml:lang="en">Withdraw</ts:string>
             </ts:label>
@@ -104,7 +104,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" name="dividend">
             <ts:label>
                 <ts:string xml:lang="en">Dividend</ts:string>
             </ts:label>
@@ -118,7 +118,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action" exclude="enabled">
+        <ts:card type="action" exclude="enabled" name="enable">
             <ts:label>
                 <ts:string xml:lang="en">Enable</ts:string>
             </ts:label>

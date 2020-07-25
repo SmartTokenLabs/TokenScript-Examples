@@ -29,7 +29,7 @@
         <ts:ethereum contract="COMP"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="about">
             <ts:label>
                 <ts:string xml:lang="en">About</ts:string>
             </ts:label>
@@ -39,7 +39,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" name="claim">
             <ts:label>
                 <ts:string xml:lang="en">Claim COMP</ts:string>
             </ts:label>
@@ -56,7 +56,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" name="deligate">
             <ts:label>
                 <ts:string xml:lang="en">Delegate Vote</ts:string>
             </ts:label>

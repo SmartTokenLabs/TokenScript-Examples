@@ -23,7 +23,7 @@
 </ts:origins>
 
 <ts:cards>
-    <ts:card type="action">
+    <ts:card type="action" name="deposit">
         <ts:label>
             <ts:string xml:lang="en">Deposit</ts:string>
         </ts:label>
@@ -51,7 +51,7 @@
         </ts:view>
     </ts:card>
 
-    <ts:card type="action">
+    <ts:card type="action" name="withdraw">
         <ts:label>
             <ts:string xml:lang="en">Withdraw</ts:string>
         </ts:label>

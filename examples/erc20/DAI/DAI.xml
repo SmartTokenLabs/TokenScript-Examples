@@ -22,7 +22,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="DAI"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="convert-to-xdAI">
             <ts:label>
                 <ts:string xml:lang="en">Convert to xDAI</ts:string>
             </ts:label>
@@ -52,7 +52,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&DAI-bridge.en;</xhtml:script>
             </ts:view>
         </ts:card>
-        <ts:card type="action">
+        <ts:card type="action" name="best-rates">
             <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:label>

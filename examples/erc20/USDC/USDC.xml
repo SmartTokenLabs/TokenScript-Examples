@@ -21,7 +21,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="USDC"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="best-rates">
             <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:label>

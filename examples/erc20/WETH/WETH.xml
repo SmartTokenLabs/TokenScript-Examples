@@ -23,7 +23,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="weth"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="wrap">
             <ts:label>
                 <ts:string xml:lang="en">Wrap</ts:string>
             </ts:label>
@@ -48,7 +48,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&wrap.en;</xhtml:script>
             </ts:view>
         </ts:card>
-        <ts:card type="action">
+        <ts:card type="action" name="unwrap">
             <ts:label>
                 <ts:string xml:lang="en">Unwrap</ts:string>
             </ts:label>
@@ -75,7 +75,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <xhtml:script type="text/javascript">&unwrap.en;</xhtml:script>
             </ts:view>
         </ts:card>
-        <ts:card type="action">
+        <ts:card type="action" name="best-rate">
             <ts:label>
                 <ts:string xml:lang="en">Best Rates</ts:string>
             </ts:label>

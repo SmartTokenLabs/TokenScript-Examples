@@ -56,7 +56,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <script type="text/javascript">&token.en;</script>
       </ts:view>
     </ts:card>
-    <ts:card type="action" exclude="expired">
+    <ts:card type="action" exclude="expired" name="enter">
       <!-- this action is of the model confirm-back.
       It should be <ts:card type="action" model="confirm-back"> but Weiwu
       shied away from specifying that due to the likely change of design causing an upgrade path issue.
