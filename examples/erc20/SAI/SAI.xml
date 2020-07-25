@@ -21,7 +21,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="SAI"/>
     </ts:origins>
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="guide">
             <ts:label>
                 <ts:string xml:lang="en">Important!</ts:string>
             </ts:label>

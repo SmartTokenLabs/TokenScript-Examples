@@ -48,7 +48,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             </ts:view>
         </ts:card>
 
-        <ts:card type="action">
+        <ts:card type="action" name="start">
             <ts:label>
                 <ts:string xml:lang="en">Start</ts:string>
                 <ts:string xml:lang="zh">开车</ts:string>
@@ -59,7 +59,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <body>&start.en;</body>
             </ts:view>
         </ts:card>
-        <ts:card type="action">
+        <ts:card type="action" name="attest">
             <ts:label>
                 <ts:string xml:lang="en">Attestations</ts:string>
                 <ts:string xml:lang="zh">认证</ts:string>
@@ -70,7 +70,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 <body>&attestations.en;</body>
             </ts:view>
         </ts:card>
-        <ts:card type="action">
+        <ts:card type="action" name="market">
             <ts:label>
                 <ts:string xml:lang="en">Market</ts:string>
                 <ts:string xml:lang="zh">市场</ts:string>

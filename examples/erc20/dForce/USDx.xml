@@ -25,7 +25,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   </ts:origins>
 
   <ts:cards>
-    <ts:card type="action">
+    <ts:card type="action" name="guide">
       <ts:label>
         <ts:string xml:lang="en">Guide</ts:string>
       </ts:label>
@@ -35,7 +35,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       </ts:view>
     </ts:card>
 
-    <ts:card type="action">
+    <ts:card type="action" name="more-info">
       <ts:label>
         <ts:string xml:lang="en">More info</ts:string>
       </ts:label>

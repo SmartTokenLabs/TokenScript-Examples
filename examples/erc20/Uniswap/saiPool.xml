@@ -24,7 +24,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     </ts:origins>
 
     <ts:cards>
-        <ts:card type="action">
+        <ts:card type="action" name="about">
             <ts:label>
                 <ts:string xml:lang="en">About</ts:string>
             </ts:label>

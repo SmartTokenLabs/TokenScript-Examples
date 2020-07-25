@@ -37,7 +37,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 </ts:selection>
 <ts:cards>
     <!-- Do not show this card if the token contract is already enabled -->
-    <ts:card type="action" exclude="enabled">
+    <ts:card type="action" exclude="enabled" name="enable">
         <ts:label>
             <ts:string xml:lang="en">Enable</ts:string>
         </ts:label>
@@ -55,7 +55,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         </ts:view>
     </ts:card>
 
-    <ts:card type="action" exclude="notEnabled">
+    <ts:card type="action" exclude="notEnabled" name="deposit">
         <ts:label>
             <ts:string xml:lang="en">Deposit</ts:string>
         </ts:label>
@@ -83,7 +83,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         </ts:view>
     </ts:card>
 
-    <ts:card type="action">
+    <ts:card type="action" name="withdraw">
         <ts:label>
             <ts:string xml:lang="en">Withdraw</ts:string>
         </ts:label>

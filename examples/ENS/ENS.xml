@@ -67,7 +67,7 @@
       </ts:view>
     </ts:card>
 
-    <ts:card type="action">
+    <ts:card type="action" name="records">
       <ts:label>
         <ts:string xml:lang="en">Records</ts:string>
       </ts:label>
@@ -111,7 +111,7 @@
 
     </ts:card>
 
-    <ts:card type="action">
+    <ts:card type="action" name="renew">
       <ts:label>
         <ts:string xml:lang="en">Renew</ts:string>
       </ts:label>
