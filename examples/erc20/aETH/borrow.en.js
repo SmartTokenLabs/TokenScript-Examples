@@ -8,10 +8,7 @@ class Token {
 
     render() {
         const decimals18 = 1e+18;
-        let borrowAPY = ((this.token.userInterestRateBorrow / 1e+27) * 100).toFixed(2) + "%";
-        if(this.token.userInterestRateBorrow === 0) {
-            borrowAPY = "N/A";
-        }
+        let borrowAPY = ((this.token.variableBorrowRate / 1e+27) * 100).toFixed(2) + "%";
         let collateralValueInEth = (this.token.totalCollateral / decimals18).toFixed(2);
 
         return `
