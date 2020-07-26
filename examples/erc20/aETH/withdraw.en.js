@@ -11,10 +11,12 @@ class Token {
         const safetyMargin = 0.85;
         let aTokenBalance = (this.token.aTokenBalance / decimals18);
         let totalBorrows = (this.token.totalBorrows / decimals18);
-        let withdrawable = ((this.token.totalCollateral / decimals18) - totalBorrows) * safetyMargin;
+        let withdrawable = ((this.token.totalCollateral / decimals18) - totalBorrows);
         //if you have other assets that add to your collateral, your withdrawable could be larger than your aETH balance
         if(parseInt(withdrawable) > parseInt(aTokenBalance) || totalBorrows == 0) {
             withdrawable = aTokenBalance;
+        } else {
+            withdrawable = withdrawable * safetyMargin;
         }
 
         return `<div class="withdraw action">
