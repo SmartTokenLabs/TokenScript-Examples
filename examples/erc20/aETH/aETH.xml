@@ -88,7 +88,7 @@
                     <ts:string xml:lang="en">Amount to withdraw</ts:string>
                 </ts:label>
                 <ts:origins>
-                    <ts:user-entry as="e8"/>
+                    <ts:user-entry as="e18"/>
                 </ts:origins>
             </ts:attribute>
             <ts:transaction>

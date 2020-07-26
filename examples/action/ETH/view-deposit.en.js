@@ -40,7 +40,7 @@ class Token {
                 </div>
                 
                 <div class="depositContainer">
-                    <p>Deposit ETH</p>
+                    <p>Deposited ETH</p>
                 </div>
             </div>
             

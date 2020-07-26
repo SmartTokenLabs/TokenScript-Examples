@@ -40,7 +40,7 @@ class Token {
                 </div>
                 
                 <div class="depositContainer">
-                    <p>Approving Aave</p>
+                    <p>Approved Aave</p>
                 </div>
             </div>
             

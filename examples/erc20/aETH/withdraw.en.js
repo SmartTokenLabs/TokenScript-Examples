@@ -8,11 +8,12 @@ class Token {
 
     render() {
         const decimals18 = 1e+18;
-        let aTokenBalance = (this.token.aTokenBalance / decimals18).toFixed(2);
-        let totalBorrows = (this.token.totalBorrows / decimals18).toFixed(2);
-        let withdrawable = (this.token.availableBorrowsETH / decimals18);
+        const safetyMargin = 0.85;
+        let aTokenBalance = (this.token.aTokenBalance / decimals18);
+        let totalBorrows = (this.token.totalBorrows / decimals18);
+        let withdrawable = ((this.token.totalCollateral / decimals18) - totalBorrows) * safetyMargin;
         //if you have other assets that add to your collateral, your withdrawable could be larger than your aETH balance
-        if(withdrawable > aTokenBalance) {
+        if(parseInt(withdrawable) > parseInt(aTokenBalance) || totalBorrows == 0) {
             withdrawable = aTokenBalance;
         }
 
@@ -26,15 +27,15 @@ class Token {
               <tbody>
                  <tr>
                     <th>Total Deposited + Interest </th>
-                    <td>${aTokenBalance}</td> 
+                    <td>${aTokenBalance.toFixed(4)} ETH</td> 
                  </tr>
                  <tr>
                     <th>Borrowed</th>
-                    <td>${totalBorrows} ETH</td> 
+                    <td>${totalBorrows.toFixed(4)} ETH</td> 
                  </tr>
                  <tr>
                     <th>Available to withdraw</th>
-                    <td>${withdrawable.toFixed(3)} ETH</td> 
+                    <td>${withdrawable.toFixed(4)} ETH</td> 
                  </tr>
               </tbody>
            </table>

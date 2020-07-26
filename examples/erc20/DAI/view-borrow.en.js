@@ -40,7 +40,7 @@ class Token {
                 </div>
                 
                 <div class="depositContainer">
-                    <p>Borrowing DAI</p>
+                    <p>Borrowed DAI</p>
                 </div>
             </div>
             

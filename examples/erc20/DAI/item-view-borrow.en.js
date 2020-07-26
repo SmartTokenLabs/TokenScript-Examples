@@ -30,7 +30,7 @@ class Token {
                     <div class="time">${this.time}</div>
                 </div>
                 <div class="title">
-                    Borrow <strong>DAI</strong>
+                    Borrowed <strong>DAI</strong>
                 </div>
                 <div class="subtitle">
                     from Aave

@@ -30,7 +30,7 @@ class Token {
                     <div class="time">${this.time}</div>
                 </div>
                 <div class="title">
-                    Enabling <strong>Aave</strong>
+                    Enabled <strong>DAI</strong>
                 </div>
                 <div class="subtitle">
                     to Aave

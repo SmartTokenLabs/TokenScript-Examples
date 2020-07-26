@@ -30,7 +30,7 @@ class Token {
                     <div class="time">${this.time}</div>
                 </div>
                 <div class="title">
-                    Repayment <strong>DAI</strong>
+                    Repaid <strong>DAI</strong>
                 </div>
                 <div class="subtitle">
                     to Aave

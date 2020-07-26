@@ -30,7 +30,7 @@ class Token {
                     <div class="time"><div class="time">${this.time}</div></div>
                 </div>
                 <div class="title">
-                    Receive <strong>aETH</strong>
+                    Received <strong>aETH</strong>
                 </div>
                 <div class="subtitle">
                     from Aave
