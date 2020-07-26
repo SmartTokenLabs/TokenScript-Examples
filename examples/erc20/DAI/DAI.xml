@@ -22,6 +22,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         <ts:ethereum contract="DAI"/>
     </ts:origins>
     <ts:cards>
+        <ts:card type="token" name="main">
+            <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en">
+                <body>
+                    <h1>What is DAI?</h1>
+                    <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                </body>
+            </ts:guide-view>
+            <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="es">
+                <body>
+                    <h1>Que es DAI?</h1>
+                    <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                </body>
+            </ts:guide-view>
+        </ts:card>
         <ts:card type="action" name="convert-to-xdAI">
             <ts:label>
                 <ts:string xml:lang="en">Convert to xDAI</ts:string>
@@ -47,6 +61,18 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
+            <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en">
+                <body>
+                    <h1>Convert xDAI</h1>
+                    <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                </body>
+            </ts:guide-view>
+            <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="es">
+            <body>
+                <h1>Convertir xDAI</h1>
+                <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+            </body>
+            </ts:guide-view>
             <ts:view xml:lang="en">
                 <xhtml:style type="text/css">&style;</xhtml:style>
                 <xhtml:script type="text/javascript">&DAI-bridge.en;</xhtml:script>
