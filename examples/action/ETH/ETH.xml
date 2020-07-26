@@ -101,7 +101,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="activity" name="aETHMinted">
+        <ts:card type="activity" name="aETHReceived">
             <ts:origins>
                 <ethereum:event type="Transfer" filter="to=${ownerAddress}" contract="aETH"/>
             </ts:origins>
@@ -115,7 +115,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="activity" name="aETHReceived">
+        <ts:card type="activity" name="aETHMinted">
             <ts:origins>
                 <ethereum:event type="MintOnDeposit" filter="_fromMinter=${ownerAddress}" contract="aETH"/>
             </ts:origins>
