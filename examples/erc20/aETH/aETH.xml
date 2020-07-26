@@ -80,7 +80,7 @@
     <ts:cards>
         <ts:card type="action">
             <ts:label>
-                <ts:string xml:lang="en">Withdraw ETH from Aave</ts:string>
+                <ts:string xml:lang="en">Withdraw ETH</ts:string>
             </ts:label>
             <ts:attribute name="redeemAmount">
                 <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
