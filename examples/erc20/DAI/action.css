@@ -38,7 +38,7 @@ input {
   border: none;
   line-height: 40px;
   text-align: right;
-  width: 5ex;
+  width: 10ex;
 }
 
 h2 img {
@@ -118,4 +118,18 @@ table tr {
 
 table tr:last-child {
   border-bottom: 1px solid #727272;
+}
+
+.repayAll {
+  width: 71px;
+  height: 29px;
+  font-family: SourceSansPro;
+  font-size: 17px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: right;
+  color: #007fed;
 }
