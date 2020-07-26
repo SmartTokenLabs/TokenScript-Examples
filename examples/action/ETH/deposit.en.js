@@ -8,9 +8,9 @@ class Token {
 
     render() {
         const decimals18 = 1e+18;
-        let aTokenBalance = (this.token.aTokenBalance / decimals18).toFixed(2);
-        let tokenBalance = (this.token.tokenBalance / decimals18).toFixed(2);
-        let APR = ((this.token.interestRateSupply / 1e+27) * 100).toFixed(2);
+        let aTokenBalance = (this.token.aTokenBalance / decimals18);
+        let tokenBalance = (this.token.tokenBalance / decimals18);
+        let APR = ((this.token.interestRateSupply / 1e+27) * 100);
         let annualEarnings = (aTokenBalance * APR) / 100;
         return`
         <div class="deposit action">
@@ -23,7 +23,7 @@ class Token {
               <tbody>
                  <tr>
                     <th>Interest Rate (APY) </th>
-                    <td>${APR}%</td>
+                    <td>${APR.toFixed(4)}%</td>
                  </tr>
                  <tr>
                     <th>Annual Earnings</th>
@@ -31,7 +31,7 @@ class Token {
                  </tr>
                  <tr>
                     <th>Supply Balance</th>
-                    <td>${aTokenBalance} ETH</td>
+                    <td>${aTokenBalance.toFixed(4)} ETH</td>
                  </tr>
               </tbody>
            </table>

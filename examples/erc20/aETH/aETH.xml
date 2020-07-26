@@ -5,6 +5,8 @@
     <!ENTITY item-view SYSTEM "item-view.css">
     <!ENTITY item-view-withdraw.en SYSTEM "item-view-withdraw.en.js">
     <!ENTITY view-withdrawn.en SYSTEM "view-withdraw.en.js">
+    <!ENTITY item-view-redeem.en SYSTEM "item-view-redeem.en.js">
+    <!ENTITY view-redeem.en SYSTEM "view-redeem.en.js">
     <!ENTITY withdraw.en SYSTEM "withdraw.en.js">
     <!ENTITY borrow.en SYSTEM "borrow.en.js">
 ]>
@@ -136,7 +138,7 @@
         </ts:card>
 
 
-        <ts:card type="activity" name="aETHRedeemed">
+        <ts:card type="activity" name="ETHWithdrawn">
             <ts:origins>
                 <ethereum:event filter="_fromRedeemer=${ownerAddress}" type="Redeem" contract="aETH"/>
             </ts:origins>
@@ -147,6 +149,20 @@
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <xhtml:style type="text/css">&view;</xhtml:style>
                 <xhtml:script  type="text/javascript">&view-withdrawn.en;</xhtml:script>
+            </ts:view>
+        </ts:card>
+
+        <ts:card type="activity" name="aETHRedeemed">
+            <ts:origins>
+                <ethereum:event filter="_fromRedeemer=${ownerAddress}" type="Redeem" contract="aETH"/>
+            </ts:origins>
+            <ts:item-view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <style type="text/css">&item-view;</style>
+                <xhtml:script  type="text/javascript">&item-view-redeem.en;</xhtml:script>
+            </ts:item-view>
+            <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <xhtml:style type="text/css">&view;</xhtml:style>
+                <xhtml:script  type="text/javascript">&view-redeem.en;</xhtml:script>
             </ts:view>
         </ts:card>
 

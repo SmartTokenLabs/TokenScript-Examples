@@ -27,7 +27,7 @@ class Token {
                 </div>
                 <div class="info">
                     + ${(this.card.amount / 1e+18).toFixed(4)} aETH<br/>
-                    <div class="time"><div class="time">${this.time}</div></div>
+                    <div class="time">${this.time}</div>
                 </div>
                 <div class="title">
                     Received <strong>aETH</strong>

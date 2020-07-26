@@ -47,7 +47,7 @@ class Token {
             <div class="separator"></div>
              
             <div class="amountBox">
-                <p>- ${this.card._valueRedeemed / 1e+18} ETH</p>
+                <p>+ ${this.card._valueRedeemed / 1e+18} ETH</p>
             </div>
         </div>
 `;

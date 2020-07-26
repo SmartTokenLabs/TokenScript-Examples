@@ -38,7 +38,7 @@ class Token {
                  </tr>
                  <tr>
                     <th>Your collateral is worth</th>
-                    <td>${collateralValueInEth} ETH (${((this.token.totalCollateral / this.token.assetPriceDAI)).toFixed(2)} DAI)</td>
+                    <td>${collateralValueInEth} ETH (${((this.token.totalCollateral / this.token.assetPriceDAI)).toFixed(2)} USD)</td>
                  </tr>
               </tbody>
            </table>
