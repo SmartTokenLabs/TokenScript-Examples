@@ -57,22 +57,26 @@
 
 		function showCredit() {
 			doSomethingWithTheContract('aave-protocol/build/contracts/LendingPool.json', '0x398eC7346DcD622eDc5ae82352F02bE94C62d119', contract => {
-				contract.getUserAccountData('0x147615dceb7aac2e7389037300b65e99b3b94f96', (error, result) => {
+				contract.getUserAccountData('0x147615dCEb7AAC2E7389037300b65e99B3b94F96', (error, result) => {
 					if (!error) {
 						const totalLiquidityETH = result[0].div(1e18, 10).toNumber();
 						const totalCollateralETH = result[1].div(1e18, 10).toNumber();
 						const totalBorrowsETH = result[2].div(1e18, 10).toNumber();
 						const totalFeesETH = result[3].div(1e18, 10).toNumber();
 						const availableBorrowsETH = result[4].div(1e18, 10).toNumber();
-						const currentLiquidationThreshold = result[5].div(1e18, 10).toNumber();
-						const ltv = result[6].div(1e25, 10).toPrecision(4);
-						const healthFactor = result[7].div(1e18, 10).toNumber();
+						const currentLiquidationThreshold = result[5].toNumber();
+					        const ltv = result[6].toNumber();
+						const healthFactor = result[7].div(1e25, 10).toNumber();
 						/* the following calculation is actually incorrect.
 						 To my understanding, one can send more aETH than the amount of ETH he can borrow. But this
 						 is the nearest we can produce without diving into AAVE's internal algorithm */
 						document.getElementById("available").innerText = availableBorrowsETH + "aETH";
 						document.getElementById("totalCollateralETH").innerText = totalCollateralETH + "ETH";
-						document.getElementById("ltv").innerText = ltv + "%";
+						document.getElementById("totalBorrowsETH").innerText = totalBorrowsETH + "ETH";
+						document.getElementById("availableBorrowsETH").innerText = availableBorrowsETH + "ETH";
+					    document.getElementById("ltv").innerText = ltv + "%";
+					    document.getElementById("currentLiquidationThreshold").innerText = currentLiquidationThreshold + "%";
+                                            
 						document.getElementById("borrowingPowerUsed").innerText = totalBorrowsETH / (totalBorrowsETH + availableBorrowsETH) / 100 + "%";
 						console.log(result);
 					} else
@@ -150,9 +154,12 @@
 		<!-- this is shared between aToken and Debt token, per Tomke's design -->
 		<caption>Credit <button onclick="showCredit();">Show</button> </caption>
 		<tbody>
-		<tr><th>Your Collateral</th><td id="totalCollateralETH"></td></tr>
-		<tr><th>Loan to value</th><td id="ltv"></td></tr>
-		<tr><th>Borrowing Power Used</th><td id="borrowingPowerUsed"></td></tr>
+		  <tr><th>Your Collateral</th><td id="totalCollateralETH"></td></tr>
+                  <tr><th>Total Borrows</th><td id="totalBorrowsETH"></td></tr>
+                  <tr><th>Available Borrows</th><td id="availableBorrowsETH"></td></tr>
+		  <tr><th>Maximum Loan to value</th><td id="ltv"></td></tr>
+		  <tr><th>Borrowing Power Used</th><td id="borrowingPowerUsed"></td></tr>
+                  <tr><th>currentLiquidationThreshold</th><td id="currentLiquidationThreshold"></td></tr>
 		</tbody>
 	</table>
 </div>
