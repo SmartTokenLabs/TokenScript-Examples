@@ -19,11 +19,12 @@ class Token {
         let now = Date.now() / 1000;
         let claimPeriod = parseInt(this.props.nextTime) - parseInt(this.props.timeLimit);
         let bonusTimePeriod = parseInt(this.props.nextTime) - parseInt(this.props.timeLimit) + parseInt(this.props.checkGetAbonusTimeLimit);
+        let NESTTotalCirculation = 10000000000000000000000000000 - this.props.NESTLockedForMining
         if(now >= claimPeriod && now <= bonusTimePeriod) {
-            message = "Your NEST dividend is claimable now until " + this.formatTimeStamp(bonusTimePeriod);
+            message = "This week's total dividend is " + (this.props.TotalDividend / 1e18).toFixed(2) + " ETH." + " Your estimate income is " + ((this.props.TotalDividend / 1e18) * (this.props.withdrawable / NESTTotalCirculation)).toFixed(2) + " Your NEST dividend is claimable now until " + this.formatTimeStamp(bonusTimePeriod);
             window.onConfirm = null;
         } else {
-            message = "Your NEST dividend is claimable on " + this.formatTimeStamp(parseInt(this.props.nextTime)) + " please come back later";
+            message = "This week's total dividend is " + (this.props.TotalDividend / 1e18).toFixed(2) + " ETH." + " Your estimate income is " + ((this.props.TotalDividend / 1e18) * (this.props.withdrawable / NESTTotalCirculation)).toFixed(2) + " ETH." + " Your NEST dividend is claimable on " + this.formatTimeStamp(parseInt(this.props.nextTime)) + " please come back later";
             window.onConfirm = function() { window.close() };
         }
         return`
