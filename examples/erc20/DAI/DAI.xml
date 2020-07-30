@@ -32,7 +32,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="es">
                 <body>
                     <h1>Que es DAI?</h1>
-                    <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                    <p>DAI es un token ERC20 en la Ethereum blockchain con un valor constante de Un dólar americano. DAI es también la criptomoneda del sistema de prestamos MakerDAO. Cuando se toma un préstamo en MakerDAO, se crea DAI. Es la criptomoneda que los usuarios piden prestados y reembolsan. Una vez que se crea DAI, funciona simplemente como una stablecoin de Ethereum.</p>
                 </body>
             </ts:guide-view>
         </ts:card>
@@ -64,13 +64,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en">
                 <body>
                     <h1>Convert xDAI</h1>
-                    <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                    <p>xDAI is currency derivate of DAI that comes with lower transaction fees and faster transaction speed. Its the native token of the POA Network chain, similar to how ETH is the native token of the Ethereum chain. xDAI is a 1:1 representation of MakerDAO’s DAI stable coin.</p>
                 </body>
             </ts:guide-view>
             <ts:guide-view xmlns="http://www.w3.org/1999/xhtml"  xml:lang="es">
             <body>
                 <h1>Convertir xDAI</h1>
-                <p>DAI is an ERC20 token on the Ethereum blockchain that has a steady value of one US dollar. It is also the key to the MakerDAO lending system. When a loan is taken out on MakerDAO, DAI is created. It's the currency users borrow and pay-back. Once DAI is created, it functions simply as a stable Ethereum token.</p>
+                <p>xDAI es una criptomoneda derivada de DAI, con tarifas de transacción más bajas y una velocidad de transacción más rápida. Asi cómo ETH es el token nativo de la cadena Ethereum, xDAI es el token nativo de la cadena POA Network. xDAI es una representación 1: 1 de la stablecoin DAI de MakerDAO.</p>
             </body>
             </ts:guide-view>
             <ts:view xml:lang="en">
