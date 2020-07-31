@@ -23,12 +23,16 @@
         <ts:address network="1">0x04abEdA201850aC0124161F037Efd70c74ddC74C</ts:address>
     </ts:contract>
     <ts:contract name="NESTRevenueDistribution">
-        <ts:address network="1">0xF67B829397Dc05751a98f243DbdE5Db63f86E7f6</ts:address>
+        <ts:address network="1">0x19E1d193A448bD13097EFC2aea867468726e67c5</ts:address>
     </ts:contract>
     <ts:contract name="NESTEarnings">
-        <ts:address network="1">0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+        <ts:address network="1">0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102</ts:address>
     </ts:contract>
-
+ <ts:contract name="nest.v3.abonus">
+        <ts:address network="1">0x43121397631551357EA511E62163B76e39D44852</ts:address>
+    </ts:contract>
+        
+        
     <ts:origins>
         <ts:ethereum contract="NEST"/>
     </ts:origins>
@@ -65,6 +69,7 @@
                 <ethereum:transaction function="depositIn" contract="NESTRevenueDistribution">
                     <ts:data>
                         <ts:uint256 ref="amount"/>
+                        <ts:address>0x04abeda201850ac0124161f037efd70c74ddc74c</ts:address>
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
@@ -94,6 +99,7 @@
                 <ethereum:transaction function="takeOut" contract="NESTRevenueDistribution">
                     <ts:data>
                         <ts:uint256 ref="amount"/>
+                        <ts:address>0x04abeda201850ac0124161f037efd70c74ddc74c</ts:address>  
                     </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
@@ -109,7 +115,10 @@
                 <ts:string xml:lang="en">Dividend</ts:string>
             </ts:label>
             <ts:transaction>
-                <ethereum:transaction function="getETH" contract="NESTRevenueDistribution">
+                <ethereum:transaction function="getAbonus" contract="NESTRevenueDistribution">
+                    <ts:data>
+                        <ts:address>0x04abeda201850ac0124161f037efd70c74ddc74c</ts:address>
+                    </ts:data>
                 </ethereum:transaction>
             </ts:transaction>
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -125,7 +134,7 @@
             <ts:transaction>
                 <ethereum:transaction function="approve" contract="NEST" as="uint">
                     <ts:data>
-                        <ts:address>0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+                        <ts:address>0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102</ts:address>
                         <ts:uint256>115792089237316195423570985008687907853269984665640564039457584007913129639935</ts:uint256>
                     </ts:data>
                 </ethereum:transaction>
@@ -165,7 +174,7 @@
             <ethereum:call function="allowance" contract="NEST" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
-                    <ts:address>0x561d0d6c498a379574eAaA4a5F2532b223fFaeBF</ts:address>
+                    <ts:address>0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102</ts:address>
                 </ts:data>
             </ethereum:call>
         </ts:origins>
@@ -221,9 +230,41 @@
             <ethereum:call function="checkAmount" contract="NESTEarnings" as="uint">
                 <ts:data>
                     <ts:address ref="ownerAddress"/>
+                    <ts:address>0x04abeda201850ac0124161f037efd70c74ddc74c</ts:address>
                 </ts:data>
             </ethereum:call>
         </ts:origins>
     </ts:attribute>
-
+        
+    <ts:attribute name="TotalDividend">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the amount total dividend for this week</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getETHNum" contract="nest.v3.abonus" as="uint">
+                <ts:data>
+                    <ts:address>0x04abeda201850ac0124161f037efd70c74ddc74c</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+        
+    <ts:attribute name="NESTLockedForMining">
+        <ts:type>
+            <ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax>
+        </ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">gets the amount total NEST locked for mining</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="balanceOf" contract="NEST" as="uint">
+                <ts:data>
+                    <ts:address>0x2f979C933AEF4fCDdD27C0Fa5C54d8a780555b0a</ts:address>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
 </ts:token>
