@@ -5,9 +5,9 @@
         <!ENTITY debt-table.en SYSTEM "debt-dai.en.shtml">
         <!ENTITY credit-table.zh SYSTEM "credit-table.zh.shtml">
         <!ENTITY debt-table.zh SYSTEM "debt-dai.zh.shtml">
-        <!ENTITY repay.en SYSTEM "repay.en.js">
-        <!ENTITY action SYSTEM "action.css">
-        <!ENTITY enable.en SYSTEM "enable.en.js">
+        <!ENTITY repay.en SYSTEM "../erc20/DAI/repay.en.js">
+        <!ENTITY action SYSTEM "../erc20/DAI/action.css">
+        <!ENTITY enable.en SYSTEM "../erc20/DAI/enable.en.js">
         ]>
 <ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
           xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -88,7 +88,7 @@
 
     <ts:cards>
         <!-- TODO: finish these to make it a test case for supporting view for Token Card -->
-        <ts:card type="token">
+        <ts:card type="token" name="main">
             <ts:view xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <style type="text/css">&layout;</style>
                 <body>
@@ -105,7 +105,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action" exclude="enabled">
+        <ts:card type="action" exclude="enabled" name="approve">
             <ts:label>
                 <ts:string xml:lang="en">Enable Repayment</ts:string>
             </ts:label>
@@ -123,7 +123,7 @@
             </ts:view>
         </ts:card>
 
-        <ts:card type="action" exclude="notEnabled">
+        <ts:card type="action" exclude="notEnabled" name="repay">
             <ts:label>
                 <ts:string xml:lang="en">Repay DAI to Aave</ts:string>
             </ts:label>
