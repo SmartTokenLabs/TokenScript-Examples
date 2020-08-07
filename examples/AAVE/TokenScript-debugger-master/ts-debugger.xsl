@@ -19,7 +19,24 @@
 				<title>TokenScript Debugger</title>
 				<h3>Debug your TokenScript XML by refreshing the page</h3>
 				<!--script src="jquery.min.js" type="text/javascript" charset="utf-8">/* */</script-->
-				<script src="ts-debugger.js" type="text/javascript" charset="utf-8">/* */</script>
+			<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+function loadIframe(){
+	var iframes = document.getElementsByTagName("iframe");
+	for(var i=0; i<iframes.length; i++){
+		var iframe = iframes[i];
+		var textContent = iframe.textContent;
+		var wrapper = document.createElement('div');
+		wrapper.innerHTML = textContent;
+		
+		iframeContentDocument = iframe.contentDocument || iframe.contentWindow.document;
+		iframeContentDocument.write(wrapper.innerHTML);
+		iframe.textContent = "";
+	}
+
+}
+//]]>
+		</script>
 			</head>
 			<body onload="loadIframe()">
 				<xsl:apply-templates select="@*|node()"/>
