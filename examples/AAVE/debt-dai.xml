@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="TokenScript-debugger-master/ts-debugger.xsl" type="text/xsl"?>
 <!DOCTYPE token  [
         <!ENTITY layout SYSTEM "layout.css">
         <!ENTITY credit-table.en SYSTEM "credit-table.en.shtml">
