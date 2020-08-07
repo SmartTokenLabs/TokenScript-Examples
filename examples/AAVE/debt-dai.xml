@@ -59,9 +59,6 @@
     <ts:contract name="LendingPool">
         <ts:address network="1">0x398eC7346DcD622eDc5ae82352F02bE94C62d119</ts:address>
     </ts:contract>
-    <ts:contract name="AAVEGetters">
-        <ts:address network="1">0x38ba1173f498f7a89ac474edba1d587cc1ab021d</ts:address>
-    </ts:contract>
     <ts:contract name="LendingPoolProvider">
         <ts:address network="1">0x24a42fD28C976A61Df5D00D0599C34c4f90748c8</ts:address>
     </ts:contract>
@@ -72,8 +69,7 @@
         <ts:address network="1">0x6b175474e89094c44da98b954eedeac495271d0f</ts:address>
     </ts:contract>
     <ts:origins>
-        <!-- TODO: should be LendingPool -->
-        <ts:ethereum contract="AAVEGetters"/>
+        <ts:ethereum contract="LendingPool"/>
     </ts:origins>
 
     <ts:selection name="enabled" filter="allowance>0">
@@ -156,21 +152,6 @@
 
     </ts:cards>
 
-    <ts:attribute name="borrowInterestAccrued">
-        <!-- used in the Repay action card -->
-        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
-        <ts:label>
-            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
-        </ts:label>
-        <ts:origins>
-            <ethereum:call function="getCompoundedBalanceMinusPrincipal" contract="AAVEGetters" as="uint">
-                <ts:data>
-                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
-                    <ts:address ref="ownerAddress"/>
-                </ts:data>
-            </ethereum:call>
-        </ts:origins>
-    </ts:attribute>
 
     <ts:attribute name="assetPriceDAI">
         <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
@@ -194,16 +175,8 @@
             <ts:string xml:lang="en">Payable</ts:string>
         </ts:label>
         <ts:origins>
-            <!-- TODO: alternatively, consider using SELECT
             <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
                            type="userReserveData" select="currentBorrowBalance">
-                <ts:data>
-                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
-                    <ts:address ref="ownerAddress"/>
-                </ts:data>
-            </ethereum:call>
-            -->
-            <ethereum:call function="getCurrentBorrowBalance" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -220,16 +193,8 @@
             <ts:string xml:lang="en">Principle</ts:string>
         </ts:label>
         <ts:origins>
-            <!-- TODO: alternatively, consider using SELECT
             <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
                            type="userReserveData" select="principalBorrowBalance">
-                <ts:data>
-                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
-                    <ts:address ref="ownerAddress"/>
-                </ts:data>
-            </ethereum:call>
-            -->
-            <ethereum:call function="getPrincipalBorrowBalance" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -247,7 +212,8 @@
         </ts:label>
         <ts:origins>
             <!-- TODO: consider if mapping is applicable here -->
-            <ethereum:call function="getBorrowRateMode" as="uint">
+            <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
+                           type="userReserveData" select="borrowRateMode">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -265,7 +231,8 @@
         </ts:label>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getBorrowRate" as="uint">
+            <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
+                           type="userReserveData" select="borrowRate">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
@@ -280,7 +247,24 @@
         </ts:type>
         <ts:origins>
             <!-- strange enough, they seem to be using e23 here and we don't have as="e23" -->
-            <ethereum:call function="getLiquidityRate" as="uint">
+            <ethereum:call contract="LendingPool" function="getUserReserveData" as="e18"
+                           type="userReserveData" select="liquidityRate">
+                <ts:data>
+                    <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
+                    <ts:address ref="ownerAddress"/>
+                </ts:data>
+            </ethereum:call>
+        </ts:origins>
+    </ts:attribute>
+    
+    <ts:attribute name="borrowInterestAccrued">
+        <!-- used in the Repay action card -->
+        <ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.36</ts:syntax></ts:type>
+        <ts:label>
+            <ts:string xml:lang="en">Borrow balance compounded</ts:string>
+        </ts:label>
+        <ts:origins>
+            <ethereum:call function="getCompoundedBalanceMinusPrincipal" contract="AAVEGetters" as="uint">
                 <ts:data>
                     <ts:address>0x6B175474E89094C44Da98b954EedeAC495271d0F</ts:address>
                     <ts:address ref="ownerAddress"/>
