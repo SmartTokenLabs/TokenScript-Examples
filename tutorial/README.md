@@ -242,6 +242,13 @@ Congratulations, you can now add `Coin.canonicalized.xml` TokenScript for use in
 
 ## Tools
 
+### [ABI-to-TokenScript tool](https://alphawallet.github.io/ABI-to-TokenScript/)
+ABI to TokenScript
+
+### [TokenScript Visualiser](https://github.com/AlphaWallet/TokenScript-Viewer)
+You can use the TokenScript Viewer to see the major parts in a TokenScript file.
+
+
 ### xmllint
 To get started you will need `xmllint` to import you resource files (eg html/css/js...) into a single canonicalized xml file.
 
