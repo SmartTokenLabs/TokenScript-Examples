@@ -16,7 +16,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:asnx="urn:ietf:params:xml:ns:asnx"
           xmlns:ethereum="urn:ethereum:constantinople"
-          custodian="false"
+          name="ENS"
 >
   <asnx:module name="ENS-Events">
     <namedType name="NameRegistered">
