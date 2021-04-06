@@ -14,12 +14,9 @@ ifeq ($(XMLSEC),)
 XMLSEC=xmlsec1 # xmlsec for Linux/Windows
 endif
 
-
-ifndef KEY
-KEY=1
-endif
-
+ifeq ($(SIGNATURE_ALGORITHM),)
 SIGNATURE_ALGORITHM=rsa-sha256
+endif
 
 help:
 	# Needs a target, example: $$ make EntryToken.canonicalized.xml
@@ -37,19 +34,19 @@ help:
 	 (mv $@ $@.TEST && exit 1)
 
 %.tsml: %.canonicalized.xml
-ifeq (,$(KEYPASSWORD))
-	$(error KEYPASSWORD is not set)
-endif
-ifeq (,$(KEYSTORE))
-	@echo ---------------- Keystore missing. Try this ----------------
-	@echo $$ make KEYSTORE=shong.wang.p12 KEYPASSWORD=shong.wang KEYINFO='"Shong Wang"' $@
+ifeq (,$(KEYPARAMS))
+	@echo ---------------- KEYPARAMS missing. Examples on how to use this ----------------
+	@echo Example using key file and certificate files
+	@echo $$ make SIGNATURE_ALGORITHM=ecdsa-sha256 KEYPARAMS='"--key ~/KEYS/aw.app.key --certificate ~/KEYS/positiveSSL/aw_app.crt --keyInfoKeyName AlphaWallet"' $@
+	@echo Example using keystore file
+	@echo $$ make KEYPARAMS='--keystore shong.wang.p12 --keyPassword=shong.wang --keyInfoName="Shong Wang"' $@
 	@echo replace it with your .p12 file and your password
 	rm $^
 else
 	# Signing with xmlsec requires original .xml file to contain the Signature tag.
 	# $(XMLSEC) sign --pkcs12:"$(KEYINFO)" $(KEYSTORE) --pwd "$(KEYPASSWORD)" --output $@ $^
 	# For now use xmlsectool...
-	$(XMLSECTOOL) --sign --keyInfoKeyName "$(KEYINFO)" --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@ --keystore $(KEYSTORE) --keystoreType PKCS12 --key $(KEY) --keyPassword "$(KEYPASSWORD)" --signaturePosition LAST
+	$(XMLSECTOOL) --sign --digest SHA-256 --signatureAlgorithm http://www.w3.org/2001/04/xmldsig-more#$(SIGNATURE_ALGORITHM) --inFile $^ --outFile $@  --signaturePosition LAST $(KEYPARAMS)
 	# removing the canonicalized created for validation
 	rm $^
 endif
