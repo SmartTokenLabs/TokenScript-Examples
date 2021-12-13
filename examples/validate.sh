@@ -22,6 +22,11 @@ do
 	if [ -f "${i%.xml}.canonicalized.xml" ]; then
 	    rm  "${i%.xml}.canonicalized.xml"
 	fi
+	
+	if [ ${i##*.} != "xml" ]; then
+	    echo "Only accepts .xml file."
+	    exit
+	fi
 
 	BN=`basename "$i" .xml`
 
