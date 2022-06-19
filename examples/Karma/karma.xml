@@ -57,7 +57,7 @@
             <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
                 <style type="text/css">&style;</style>
                 <body>&start.en;</body>
-            </ts:view>
+            </ts:view> 
         </ts:card>
         <ts:card type="action" name="attest">
             <ts:label>
