@@ -15,14 +15,14 @@
       <ts:string quantity="other">###</ts:string>
     </ts:plurals-->
   </ts:name>
-  <ts:contract interface="erc20" name="YOUR_ERC20_TOKEN_NAME">
-    <ts:address network="1">0xYOUR_CONTRACT_ADDRESS_HERE</ts:address>     <!--mainnet-->
+  <ts:contract interface="erc20" name="FuYoH">
+    <ts:address network="1">0x0d450bf37ec899cca90ede124b3e69c9ae2f2f1c</ts:address>     <!--mainnet-->
     <!--ts:address network="3">0x###</ts:address-->     <!--test networks if desired etc-->
   </ts:contract>
 
   <ts:origins>
     <!-- Define the contract which holds the token that the user will use -->
-    <ts:ethereum contract="YOUR_ERC20_TOKEN_NAME"> <!-- as above ts:contract name -->
+    <ts:ethereum contract="FuYoH"> <!-- as above ts:contract name -->
     </ts:ethereum>
   </ts:origins>
   <ts:cards>
