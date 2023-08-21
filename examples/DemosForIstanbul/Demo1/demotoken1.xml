@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+          xmlns:ethereum="urn:ethereum:constantinople"
+          custodian="false">  
+   <ts:label>
+    <ts:plurals xml:lang="en">
+      <ts:string quantity="one">TokenScript Demo #1 Token</ts:string>
+      <ts:string quantity="other">TokenScript Demo #1 Tokens</ts:string>
+    </ts:plurals>
+    <ts:plurals xml:lang="es">
+      <ts:string quantity="one">Token #1 de demostración de TokenScript</ts:string>
+      <ts:string quantity="other">Token #1 de demostración de TokenScript</ts:string>
+    </ts:plurals>
+  </ts:label>
+
+  <!-- Define all the contracts the script interacts with -->
+  <ts:contract interface="erc721" name="NFTToken">
+    <ts:address network="11155111">0x910179fa965CB822c95BF7c21a1846A1B6DE1D99</ts:address>
+  </ts:contract>
+  <ts:contract interface="erc20" name="STLDiLithium">
+    <ts:address network="11155111">0x62130D3EC0A74D797BD3B1645222843a601F92Ae</ts:address>
+  </ts:contract>
+
+  <ts:origins>
+    <!-- Define the contract which holds the token that the user will use -->
+    <ts:ethereum contract="NFTToken">
+    </ts:ethereum>
+  </ts:origins>
+
+  <ts:cards>
+      <ts:card type="action">
+      <ts:label>
+        <ts:string xml:lang="en">Mint Rewards</ts:string>
+      </ts:label>
+      <ts:transaction>
+                <ethereum:transaction contract="STLDiLithium" function="mint">
+                    <ts:data>
+                    </ts:data>
+                </ethereum:transaction>
+            </ts:transaction>
+    </ts:card>
+  </ts:cards>
+</ts:token>

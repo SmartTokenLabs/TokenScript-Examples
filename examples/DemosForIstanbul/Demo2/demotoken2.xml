@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ts:token xmlns:ts="http://tokenscript.org/2020/06/tokenscript"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xsi:schemaLocation="http://tokenscript.org/2020/06/tokenscript http://tokenscript.org/2020/06/tokenscript.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:asnx="urn:ietf:params:xml:ns:asnx"
+  xmlns:ethereum="urn:ethereum:constantinople"
+  custodian="false">
+  <ts:label>
+    <ts:plurals xml:lang="en">
+      <ts:string quantity="one">TokenScript Demo #2 Token</ts:string>
+      <ts:string quantity="other">TokenScript Demo #2 Tokens</ts:string>
+    </ts:plurals>
+    <ts:plurals xml:lang="es">
+      <ts:string quantity="one">Token #2 de demostración de TokenScript</ts:string>
+      <ts:string quantity="other">Token #2 de demostración de TokenScript</ts:string>
+    </ts:plurals>
+  </ts:label>
+
+  <!-- Define all the contracts the script interacts with -->
+  <ts:contract interface="erc721" name="TokenScriptTest">
+    <ts:address network="11155111">0xc6906a1D878B9e09c80964dd60b52aC92E1113E6</ts:address>
+  </ts:contract>
+  <ts:contract interface="erc20" name="STLDiLithium">
+    <ts:address network="11155111">0x62130D3EC0A74D797BD3B1645222843a601F92Ae</ts:address>
+  </ts:contract>
+  <ts:contract interface="erc721" name="SecretNFT">
+    <ts:address network="11155111">0x8D975a1404603314886B7Ca9d3fC711B5eEf23A8</ts:address>
+  </ts:contract>
+
+  <ts:origins>
+    <!-- Define the contract which holds the token that the user will use -->
+    <ts:ethereum contract="TokenScriptTest"></ts:ethereum>
+  </ts:origins>
+
+  <ts:selection filter="canMint=FALSE" name="ableToMint">
+		<ts:label>
+			<ts:string xml:lang="en">Cannot Mint</ts:string>
+		</ts:label>
+	</ts:selection>
+
+  <ts:cards>
+    <ts:card exclude="ableToMint" type="action">
+      <ts:label>
+        <ts:string xml:lang="en">Mint Secret</ts:string>
+      </ts:label>
+      <ts:attribute name="tokenName">
+        <ts:type>
+          <ts:syntax>1.3.6.1.4.1.1466.115.121.1.26</ts:syntax>
+        </ts:type>
+        <ts:origins>
+          <ts:user-entry as="string" />
+        </ts:origins>
+      </ts:attribute>
+      <ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <style type="text/css">
+          body {
+            background-color: #725BA4;
+            color: #FCE8DF;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+          }
+        </style>
+        <script type="text/javascript">
+          class Token {
+            constructor(tokenInstance) {
+            this.props = tokenInstance
+          }
+
+          render() {
+          return `
+          &lt;h2&gt;Create new Secret Token&lt;/h2&gt;
+          &lt;div class="input-group"&gt;
+          &lt;h3&gt;Name&lt;/h3&gt;
+          &lt;input id="tokenName" type="text" placeholder="Enter Token Name ..." /&gt;
+          &lt;/div&gt;
+          `;
+          }
+          }
+
+          web3.tokens.dataChanged = (oldTokens, updatedTokens, cardId) => {
+            const currentTokenInstance = updatedTokens.currentInstance;
+            document.getElementById(cardId).innerHTML = new Token(currentTokenInstance).render();
+          };
+
+        </script>
+      </ts:view>
+
+      <!-- Call the mintWithName function on the secret TokenScript -->
+      <ts:transaction>
+        <ethereum:transaction contract="SecretNFT" function="mintWithName">
+          <ts:data>
+            <ts:string ref="tokenName"></ts:string>
+          </ts:data>
+        </ethereum:transaction>
+      </ts:transaction>
+    </ts:card>
+  </ts:cards>
+
+  <!-- Attribute which determines if the base token can mint or not, thus "hiding" the reward -->
+
+  <!-- NB this was done for clarity, but you could hide the check and the mint function -->
+  <!--  within the TokenScriptTest token to keep it a secret (almost!) -->
+  <ts:attribute name="canMint">
+		<ts:type><ts:syntax>1.3.6.1.4.1.1466.115.121.1.7</ts:syntax></ts:type>
+		<ts:origins>
+			<ethereum:call as="bool" contract="TokenScriptTest" function="canMint">
+				<ts:data>
+				</ts:data>
+			</ethereum:call>
+		</ts:origins>
+	</ts:attribute>
+
+</ts:token>
